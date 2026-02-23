@@ -42,3 +42,6 @@ next-env.d.ts
 
 # claude
 .claude/
+
+# docs privati
+docs/STATO_PROGETTO.md
