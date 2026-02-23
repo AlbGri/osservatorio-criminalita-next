@@ -44,7 +44,7 @@ next-env.d.ts
 .claude/
 
 # dati generati (rigenerabili con scripts/csv_to_json.py)
-/public/data/
+# /public/data/
 
 # docs privati
 docs/STATO_PROGETTO.md

@@ -10,7 +10,8 @@ export function useFetchData<T>(url: string) {
   useEffect(() => {
     let cancelled = false;
 
-    fetch(url)
+    const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+    fetch(`${base}${url}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
