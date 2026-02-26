@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChartMappaRegioni } from "@/components/charts/chart-mappa-regioni";
+import { ChartRankingRegioni } from "@/components/charts/chart-ranking-regioni";
 import { ChartTabellaProvince } from "@/components/charts/chart-tabella-province";
 import { ChartNumeroOscuro } from "@/components/charts/chart-numero-oscuro";
 
@@ -89,6 +90,13 @@ export default function AnalisiTerritoriale() {
           Criminalita Registrata per Regione ({anno})
         </h2>
         <ChartMappaRegioni anno={anno} />
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="text-lg sm:text-xl font-semibold">
+          Ranking Regioni ({anno})
+        </h3>
+        <ChartRankingRegioni anno={anno} />
       </section>
 
       <hr />

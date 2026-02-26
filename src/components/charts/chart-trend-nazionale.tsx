@@ -11,7 +11,7 @@ import {
 } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card, CardContent } from "@/components/ui/card";
+
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -35,14 +35,6 @@ export function ChartTrendNazionale() {
 
   const anni = data.map((d) => d.Anno);
   const tassi = data.map((d) => d.Tasso_per_1000);
-
-  const variazione =
-    ((data[data.length - 1].Tasso_per_1000 - data[0].Tasso_per_1000) /
-      data[0].Tasso_per_1000) *
-    100;
-
-  const idxMin = tassi.indexOf(Math.min(...tassi));
-  const idxMax = tassi.indexOf(Math.max(...tassi));
 
   return (
     <div className="space-y-4">
@@ -81,27 +73,6 @@ export function ChartTrendNazionale() {
           className="w-full"
         />
       </ChartFullscreenWrapper>
-
-      <div className="grid grid-cols-3 gap-2 sm:gap-3">
-        <Card>
-          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">Var. tasso 2014-2023</p>
-            <p className="text-lg sm:text-2xl font-bold">{variazione.toFixed(2)}%</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">Anno tasso minimo</p>
-            <p className="text-lg sm:text-2xl font-bold">{anni[idxMin]}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">Anno tasso massimo</p>
-            <p className="text-lg sm:text-2xl font-bold">{anni[idxMax]}</p>
-          </CardContent>
-        </Card>
-      </div>
     </div>
   );
 }

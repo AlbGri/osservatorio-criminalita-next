@@ -81,11 +81,22 @@ export function ChartMappaRegioni({ anno }: Props) {
   const dataPrev = data.filter((d) => d.Anno === annoPrecedente);
   const prevMap = new Map(dataPrev.map((d) => [d.REF_AREA, d.Tasso_per_1000]));
 
-  const sorted = [...dataAnno].sort(
-    (a, b) => b.Tasso_per_1000 - a.Tasso_per_1000
-  );
-  const top = sorted[0];
-  const bottom = sorted[sorted.length - 1];
+  const sortedForRank = [...dataAnno].sort((a, b) => b.Tasso_per_1000 - a.Tasso_per_1000);
+  const rankMap = new Map(sortedForRank.map((d, i) => [d.REF_AREA, i + 1]));
+
+  const customdata = dataAnno.map((d) => {
+    const prev = prevMap.get(d.REF_AREA);
+    const diff = prev != null ? d.Tasso_per_1000 - prev : null;
+    return [
+      d.Popolazione.toLocaleString("it-IT"),
+      d.Delitti.toLocaleString("it-IT"),
+      diff != null ? `${diff > 0 ? "+" : ""}${diff.toFixed(1)}` : "n/d",
+      `${rankMap.get(d.REF_AREA)}/${dataAnno.length}`,
+    ];
+  });
+
+  const top = sortedForRank[0];
+  const bottom = sortedForRank[sortedForRank.length - 1];
   const totDelitti = dataAnno.reduce((s, d) => s + d.Delitti, 0);
   const totPop = dataAnno.reduce((s, d) => s + d.Popolazione, 0);
   const media = totPop > 0 ? (totDelitti / totPop) * 1000 : 0;
@@ -163,8 +174,9 @@ export function ChartMappaRegioni({ anno }: Props) {
                 thickness: 12,
               },
               text: nomi,
+              customdata: customdata,
               hovertemplate:
-                "<b>%{text}</b><br>Tasso: %{z:.1f} per 1000 ab.<extra></extra>",
+                "<b>%{text}</b><br>Tasso: %{z:.1f} per 1000 ab.<br>Delitti: %{customdata[1]}<br>Popolazione: %{customdata[0]}<br>Var. anno prec.: %{customdata[2]}<br>Ranking: %{customdata[3]}<extra></extra>",
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } as any,
             ...trendAnnotations.map((t) => ({
