@@ -18,8 +18,8 @@ export const COLORS = {
 } as const;
 
 export const COVID_PERIOD = {
-  start: 2019.5,
-  end: 2021.5,
+  start: 2019.8,
+  end: 2021.2,
   color: "rgba(200, 200, 200, 0.2)",
   label: "COVID-19",
 } as const;

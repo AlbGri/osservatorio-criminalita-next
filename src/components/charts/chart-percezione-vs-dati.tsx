@@ -41,8 +41,8 @@ export function ChartPercezioneVsDati() {
   const varTasso =
     data[data.length - 1].Tasso_per_1000 - data[0].Tasso_per_1000;
 
-  const gaps = data.map((d) => d.Percezione_pct - d.Tasso_per_1000);
-  const idxMaxGap = gaps.indexOf(Math.max(...gaps));
+  const percezioni = data.map((d) => d.Percezione_pct);
+  const idxMaxPercezione = percezioni.indexOf(Math.max(...percezioni));
 
   return (
     <div className="space-y-4">
@@ -122,8 +122,8 @@ export function ChartPercezioneVsDati() {
         </Card>
         <Card>
           <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">Anno gap massimo</p>
-            <p className="text-lg sm:text-2xl font-bold">{anni[idxMaxGap]}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground">Anno percezione max</p>
+            <p className="text-lg sm:text-2xl font-bold">{anni[idxMaxPercezione]}</p>
           </CardContent>
         </Card>
       </div>

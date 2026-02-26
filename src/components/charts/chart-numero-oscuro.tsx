@@ -130,7 +130,7 @@ export function ChartNumeroOscuro() {
       </ChartFullscreenWrapper>
 
       <p>
-        Le aggressioni denunciate sono <strong>raddoppiate</strong> (+20 punti),
+        Le aggressioni denunciate sono <strong>raddoppiate</strong> (+21 punti),
         probabilmente per maggiore fiducia nelle istituzioni e campagne di
         sensibilizzazione. Gli scippi denunciati sono invece{" "}
         <strong>calati</strong> (-21 punti), forse per rassegnazione su reati

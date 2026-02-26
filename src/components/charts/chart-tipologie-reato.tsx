@@ -137,7 +137,7 @@ export function ChartTipologieReato() {
     <div className="space-y-4">
       <Alert>
         <AlertDescription className="block">
-          <strong>Dinamiche diverse per tipologia:</strong> aumenti in specifiche categorie (es. truffe online) possono riflettere cambiamenti sociali e tecnologici senza indicare piu criminalita complessiva.
+          <strong>Dinamiche diverse per tipologia:</strong> aumenti in specifiche categorie (es. truffe online) possono riflettere cambiamenti sociali e tecnologici senza indicare piu criminalita complessiva. Le macro-categorie non sono mutuamente esclusive: uno stesso reato puo rientrare in piu categorie, pertanto la loro somma supera il totale nazionale.
         </AlertDescription>
       </Alert>
 

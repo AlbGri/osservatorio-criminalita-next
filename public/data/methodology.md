@@ -28,7 +28,7 @@ I numeri mostrati rappresentano le **denunce** registrate dalle forze di polizia
 
 ### Percezione di sicurezza
 
-Il dato sulla percezione proviene da indagine campionaria ISTAT Multiscopo su famiglie italiane. Misura la **percezione soggettiva** di insicurezza nella zona di residenza, non l'esperienza diretta di vittimizzazione.
+Il dato sulla percezione proviene da indagine campionaria ISTAT Multiscopo su famiglie italiane. Misura la **percezione soggettiva** di insicurezza nella zona di residenza, non l'esperienza diretta di vittimizzazione. La serie potrebbe risentire di variazioni metodologiche tra edizioni dell'indagine (es. il salto 30.0% → 41.1% tra 2014 e 2015 potrebbe riflettere un cambiamento nel questionario).
 
 ## Cosa NON rappresentano
 
@@ -60,6 +60,8 @@ Nuove leggi possono modificare:
 - Modalità di registrazione (es. GDPR 2018 limita pubblicazione dati disaggregati)
 - Pene (es. depenalizzazioni modificano classificazione)
 
+**Caso rilevante nei dati:** il D.Lgs. 7/2016 (in vigore dal 6 febbraio 2016) ha depenalizzato le ingiurie, trasformandole da reato penale a illecito civile. Questo spiega il calo del -23% nella categoria "Violenze contro la persona" tra 2015 e 2016: circa 50.000-60.000 denunce/anno per ingiurie sono uscite dalle statistiche penali. Non si tratta di un calo reale della violenza.
+
 ### Propensione a denunciare
 
 La propensione a denunciare varia per:
@@ -68,11 +70,15 @@ La propensione a denunciare varia per:
 - **Gravità del reato**: crimini gravi più probabilmente denunciati
 - **Utilità pratica**: denunce per assicurazione vs rassegnazione per piccoli furti
 
-**Esempio critico**: l'aumento delle denunce per violenze sessuali (+49.7% dal 2014 al 2023) riflette principalmente l'effetto di campagne come #MeToo e maggiore fiducia nelle autorità, NON necessariamente un aumento delle violenze reali. Questo è un risultato positivo: il numero oscuro si sta riducendo.
+**Esempio critico**: l'aumento delle denunce per violenze sessuali (+46.4% in numeri assoluti dal 2014 al 2023, da 4.257 a 6.231) riflette principalmente l'effetto di campagne come #MeToo e maggiore fiducia nelle autorità, NON necessariamente un aumento delle violenze reali. Questo è un risultato positivo: il numero oscuro si sta riducendo.
 
 ### Anno di riferimento
 
 È l'anno della denuncia, non necessariamente dell'evento criminoso. Reati scoperti anni dopo (es. truffe complesse) vengono registrati nell'anno della denuncia.
+
+### Periodo COVID nei grafici
+
+Nei grafici temporali è evidenziata la finestra COVID (indicativamente 2020-2021). Il calo dei reati nel 2020 (-17% circa) è in larga parte dovuto ai lockdown e alle restrizioni di movimento, non a un miglioramento strutturale della sicurezza. I dati sono annuali, quindi l'evidenziazione è approssimativa.
 
 ## Normalizzazione per popolazione
 
@@ -89,7 +95,7 @@ La normalizzazione è essenziale perché la popolazione italiana è diminuita da
 
 ### Aggregazione in macro-categorie
 
-I 56 tipi di delitto ISTAT sono stati aggregati in 6 macro-categorie per leggibilità:
+I 56 tipi di delitto ISTAT sono stati aggregati in 6 macro-categorie per leggibilità. **Le macro-categorie non sono mutuamente esclusive**: uno stesso reato può rientrare in più categorie (es. una rapina con violenza può figurare sia in "Rapine" che in "Violenze contro la persona"). La somma delle categorie supera pertanto il totale nazionale del 25-35%.
 
 1. **Furti**: tutti i furti (con strappo, destrezza, abitazioni, auto, moto, esercizi commerciali, ecc.)
 2. **Rapine**: rapine in abitazione, banca, uffici postali, esercizi commerciali, pubblica via
@@ -254,6 +260,10 @@ I dati territoriali provengono dallo stesso dataset ISTAT dei delitti nazionali,
 - **2019-2023**: esploradati.istat.it (Popolazione residente al 1° gennaio)
 
 Trentino-Alto Adige: nel dataset ISTAT i delitti sono separati in Bolzano (ITD1) e Trento (ITD2). Vengono sommati in ITD12 per il confronto con il GeoJSON regionale (openpolis).
+
+**Codici NUTS**: i dati utilizzano la classificazione NUTS pre-2021 (es. ITD3 per Veneto, ITD5 per Emilia-Romagna), coerente con la distribuzione ISTAT dei dati. Dal 2021 i codici ufficiali sono cambiati (ITH3, ITH5).
+
+**Residuo nazionale**: la somma dei delitti regionali differisce dal totale nazionale di circa 50 unità/anno, presumibilmente per reati non attribuibili a una regione specifica (es. acque internazionali).
 
 ### Cautele nell'interpretazione
 

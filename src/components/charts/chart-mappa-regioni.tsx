@@ -29,8 +29,8 @@ type GeoJSON = any;
 const REGION_CENTROIDS: Record<string, { lat: number; lon: number }> = {
   ITC1: { lat: 45.05, lon: 7.9 },    // Piemonte
   ITC2: { lat: 45.74, lon: 7.35 },   // Valle d'Aosta
-  ITC3: { lat: 45.58, lon: 9.9 },    // Lombardia
-  ITC4: { lat: 44.35, lon: 8.5 },    // Liguria
+  ITC3: { lat: 44.35, lon: 8.5 },    // Liguria
+  ITC4: { lat: 45.58, lon: 9.9 },    // Lombardia
   ITD12: { lat: 46.5, lon: 11.35 },  // Trentino-Alto Adige
   ITD3: { lat: 45.55, lon: 11.85 },  // Veneto
   ITD4: { lat: 46.07, lon: 13.23 },  // Friuli-Venezia Giulia
@@ -86,11 +86,14 @@ export function ChartMappaRegioni({ anno }: Props) {
   );
   const top = sorted[0];
   const bottom = sorted[sorted.length - 1];
-  const media =
-    dataAnno.reduce((s, d) => s + d.Tasso_per_1000, 0) / dataAnno.length;
+  const totDelitti = dataAnno.reduce((s, d) => s + d.Delitti, 0);
+  const totPop = dataAnno.reduce((s, d) => s + d.Popolazione, 0);
+  const media = totPop > 0 ? (totDelitti / totPop) * 1000 : 0;
+  const totDelittiPrev = dataPrev.reduce((s, d) => s + d.Delitti, 0);
+  const totPopPrev = dataPrev.reduce((s, d) => s + d.Popolazione, 0);
   const mediaPrev =
-    dataPrev.length > 0
-      ? dataPrev.reduce((s, d) => s + d.Tasso_per_1000, 0) / dataPrev.length
+    dataPrev.length > 0 && totPopPrev > 0
+      ? (totDelittiPrev / totPopPrev) * 1000
       : null;
 
   const trendAnnotations = dataPrev.length > 0
@@ -222,7 +225,7 @@ export function ChartMappaRegioni({ anno }: Props) {
         <Card>
           <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              Tasso medio regioni
+              Tasso nazionale
             </p>
             <p className="text-lg sm:text-2xl font-bold">{media.toFixed(1)}{varIndicator(media, mediaPrev)}</p>
           </CardContent>
