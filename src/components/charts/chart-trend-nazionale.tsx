@@ -9,6 +9,7 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
 } from "@/lib/config";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -23,11 +24,12 @@ interface DelittiItalia {
 }
 
 export function ChartTrendNazionale() {
+  const isMobile = useIsMobile();
   const { data, loading, error } = useFetchData<DelittiItalia[]>(
     "/data/delitti_italia.json"
   );
 
-  if (loading) return <div className="h-[450px] animate-pulse bg-muted rounded" />;
+  if (loading) return <div className="h-[250px] sm:h-[450px] animate-pulse bg-muted rounded" />;
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
@@ -69,7 +71,7 @@ export function ChartTrendNazionale() {
             hovermode: "closest" as const,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
-            height: CHART_HEIGHT,
+            height: isMobile ? 250 : CHART_HEIGHT,
             margin: { l: 50, r: 20, t: 20, b: 50 },
             shapes: COVID_SHAPES,
             annotations: COVID_ANNOTATIONS,
@@ -80,23 +82,23 @@ export function ChartTrendNazionale() {
         />
       </ChartFullscreenWrapper>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">Variazione tasso 2014-2023</p>
-            <p className="text-2xl font-bold">{variazione.toFixed(2)}%</p>
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">Var. tasso 2014-2023</p>
+            <p className="text-lg sm:text-2xl font-bold">{variazione.toFixed(2)}%</p>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">Anno tasso minimo</p>
-            <p className="text-2xl font-bold">{anni[idxMin]}</p>
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">Anno tasso minimo</p>
+            <p className="text-lg sm:text-2xl font-bold">{anni[idxMin]}</p>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">Anno tasso massimo</p>
-            <p className="text-2xl font-bold">{anni[idxMax]}</p>
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">Anno tasso massimo</p>
+            <p className="text-lg sm:text-2xl font-bold">{anni[idxMax]}</p>
           </CardContent>
         </Card>
       </div>

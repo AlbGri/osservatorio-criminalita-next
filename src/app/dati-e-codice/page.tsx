@@ -109,7 +109,7 @@ npm run dev`}</code>
         <p className="text-sm text-muted-foreground">
           I dataset processati sono nella cartella{" "}
           <code className="bg-muted px-1 rounded">data/processed/</code> del
-          repository originale. Il dataset raw ISTAT (
+          repository. Il dataset raw ISTAT (
           <code className="bg-muted px-1 rounded">
             delitti_2014_2023_istat.csv
           </code>
@@ -124,23 +124,23 @@ npm run dev`}</code>
           <li>
             <strong>Codice</strong>:{" "}
             <a
-              href="https://opensource.org/licenses/MIT"
+              href="https://www.gnu.org/licenses/agpl-3.0.html"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline hover:no-underline"
             >
-              MIT License
+              AGPL-3.0
             </a>
           </li>
           <li>
-            <strong>Documentazione</strong>:{" "}
+            <strong>Documentazione e testi</strong>:{" "}
             <a
-              href="https://creativecommons.org/licenses/by/4.0/"
+              href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline hover:no-underline"
             >
-              CC BY 4.0
+              CC BY-NC-ND 4.0
             </a>
           </li>
           <li>

@@ -1,10 +1,10 @@
-"""Converte i CSV processati del repo Streamlit in JSON per il frontend Next.js.
+"""Converte i CSV processati in JSON per il frontend Next.js.
 
-Output: public/data/ nel repo Next.js.
-Uso: python scripts/csv_to_json.py [path_repo_streamlit]
+I CSV sorgente sono in data/processed/ di questo stesso repo.
+Output: public/data/.
+Uso: python scripts/csv_to_json.py
 """
 
-import argparse
 import json
 import logging
 import shutil
@@ -52,15 +52,17 @@ CSV_CONFIG = {
 }
 
 
-def convert_csv_to_json(src_dir: Path, out_dir: Path) -> None:
-    """Legge i CSV dal repo Streamlit e scrive JSON in public/data/."""
+def convert_csv_to_json(project_root: Path) -> None:
+    """Legge i CSV da data/processed/ e scrive JSON in public/data/."""
+    csv_dir = project_root / "data" / "processed"
+    out_dir = project_root / "public" / "data"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    log.info("Sorgente:  %s", src_dir)
+    log.info("Sorgente:  %s", csv_dir)
     log.info("Output:    %s", out_dir)
 
     for csv_name, config in CSV_CONFIG.items():
-        csv_path = src_dir / "data" / "processed" / csv_name
+        csv_path = csv_dir / csv_name
         if not csv_path.exists():
             log.warning("SKIP  %s (non trovato)", csv_name)
             continue
@@ -77,7 +79,7 @@ def convert_csv_to_json(src_dir: Path, out_dir: Path) -> None:
         size_kb = out_path.stat().st_size / 1024
         log.info("OK    %-40s (%5d record, %.1f KB)", config["output"], len(records), size_kb)
 
-    geojson_src = src_dir / "data" / "raw" / "geojson_regioni_italia.geojson"
+    geojson_src = project_root / "data" / "raw" / "geojson_regioni_italia.geojson"
     geojson_dst = out_dir / "geojson_regioni_italia.geojson"
     if geojson_src.exists():
         shutil.copy2(geojson_src, geojson_dst)
@@ -90,21 +92,10 @@ def convert_csv_to_json(src_dir: Path, out_dir: Path) -> None:
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-    parser = argparse.ArgumentParser(description="CSV -> JSON per Osservatorio Criminalita")
-    parser.add_argument(
-        "src",
-        nargs="?",
-        default="../osservatorio-criminalita-italia",
-        help="Path al repo Streamlit (default: ../osservatorio-criminalita-italia)",
-    )
-    args = parser.parse_args()
-
     script_dir = Path(__file__).resolve().parent
     project_root = script_dir.parent
-    src_dir = Path(args.src).resolve()
-    out_dir = project_root / "public" / "data"
 
-    convert_csv_to_json(src_dir, out_dir)
+    convert_csv_to_json(project_root)
 
 
 if __name__ == "__main__":

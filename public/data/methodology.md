@@ -277,4 +277,4 @@ Questo progetto non afferma di mostrare "la criminalità in Italia", ma solo i d
 
 **Questo progetto mostra cosa è possibile vedere con i dati disponibili. L'assenza di dati migliori non è limite statistico: è responsabilità istituzionale.**
 
-Tutti i dati raw, script di elaborazione e codice sorgente della dashboard sono disponibili pubblicamente su GitHub: https://github.com/AlbGri/osservatorio-criminalita-italia
+Tutti i dati raw, script di elaborazione e codice sorgente della dashboard sono disponibili pubblicamente su GitHub: https://github.com/AlbGri/osservatorio-criminalita-next

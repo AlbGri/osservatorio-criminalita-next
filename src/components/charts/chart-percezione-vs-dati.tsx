@@ -9,6 +9,7 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
 } from "@/lib/config";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -24,11 +25,12 @@ interface PercezioneVsDati {
 }
 
 export function ChartPercezioneVsDati() {
+  const isMobile = useIsMobile();
   const { data, loading, error } = useFetchData<PercezioneVsDati[]>(
     "/data/percezione_vs_dati.json"
   );
 
-  if (loading) return <div className="h-[450px] animate-pulse bg-muted rounded" />;
+  if (loading) return <div className="h-[250px] sm:h-[450px] animate-pulse bg-muted rounded" />;
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
@@ -89,7 +91,7 @@ export function ChartPercezioneVsDati() {
             hovermode: "closest" as const,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
-            height: CHART_HEIGHT,
+            height: isMobile ? 250 : CHART_HEIGHT,
             margin: { l: 50, r: 50, t: 30, b: 50 },
             legend: { x: 0.5, y: 1.08, xanchor: "center", orientation: "h" as const },
             shapes: COVID_SHAPES,
@@ -101,23 +103,23 @@ export function ChartPercezioneVsDati() {
         />
       </ChartFullscreenWrapper>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">Delta Percezione 2014-2023</p>
-            <p className="text-2xl font-bold">{varPercezione.toFixed(1)} punti %</p>
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">Delta Percezione 2014-2023</p>
+            <p className="text-lg sm:text-2xl font-bold">{varPercezione.toFixed(1)} punti %</p>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">Delta Tasso criminalita</p>
-            <p className="text-2xl font-bold">{varTasso.toFixed(1)} per 1000 ab.</p>
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">Delta Tasso criminalita</p>
+            <p className="text-lg sm:text-2xl font-bold">{varTasso.toFixed(1)} per 1000 ab.</p>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">Anno gap massimo</p>
-            <p className="text-2xl font-bold">{anni[idxMaxGap]}</p>
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">Anno gap massimo</p>
+            <p className="text-lg sm:text-2xl font-bold">{anni[idxMaxGap]}</p>
           </CardContent>
         </Card>
       </div>

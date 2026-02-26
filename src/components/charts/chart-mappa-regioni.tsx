@@ -7,6 +7,7 @@ import {
   PLOTLY_CONFIG,
   NUTS_TO_ISTAT,
 } from "@/lib/config";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -30,6 +31,7 @@ interface Props {
 }
 
 export function ChartMappaRegioni({ anno }: Props) {
+  const isMobile = useIsMobile();
   const { data, loading, error } = useFetchData<DelittiRegione[]>(
     "/data/delitti_regioni.json"
   );
@@ -40,7 +42,7 @@ export function ChartMappaRegioni({ anno }: Props) {
   } = useFetchData<GeoJSON>("/data/geojson_regioni_italia.geojson");
 
   if (loading || geoLoading)
-    return <div className="h-[550px] animate-pulse bg-muted rounded" />;
+    return <div className="h-[350px] sm:h-[550px] animate-pulse bg-muted rounded" />;
   if (error || geoError)
     return (
       <p className="text-destructive">Errore: {error || geoError}</p>
@@ -52,6 +54,10 @@ export function ChartMappaRegioni({ anno }: Props) {
   const tassi = dataAnno.map((d) => d.Tasso_per_1000);
   const nomi = dataAnno.map((d) => d.Territorio);
 
+  const annoPrecedente = anno - 1;
+  const dataPrev = data.filter((d) => d.Anno === annoPrecedente);
+  const prevMap = new Map(dataPrev.map((d) => [d.REF_AREA, d.Tasso_per_1000]));
+
   const sorted = [...dataAnno].sort(
     (a, b) => b.Tasso_per_1000 - a.Tasso_per_1000
   );
@@ -59,6 +65,19 @@ export function ChartMappaRegioni({ anno }: Props) {
   const bottom = sorted[sorted.length - 1];
   const media =
     dataAnno.reduce((s, d) => s + d.Tasso_per_1000, 0) / dataAnno.length;
+  const mediaPrev =
+    dataPrev.length > 0
+      ? dataPrev.reduce((s, d) => s + d.Tasso_per_1000, 0) / dataPrev.length
+      : null;
+
+  const varIndicator = (current: number, prev: number | undefined | null) => {
+    if (prev == null) return null;
+    const diff = current - prev;
+    if (Math.abs(diff) < 0.05) return <span className="text-muted-foreground text-xs sm:text-sm ml-1">=</span>;
+    return diff > 0
+      ? <span className="text-red-600 text-xs sm:text-sm ml-1">&#9650;</span>
+      : <span className="text-green-600 text-xs sm:text-sm ml-1">&#9660;</span>;
+  };
 
   return (
     <div className="space-y-4">
@@ -133,7 +152,7 @@ export function ChartMappaRegioni({ anno }: Props) {
                 yanchor: "top",
               },
             ],
-            height: CHART_HEIGHT_MAP,
+            height: isMobile ? 350 : CHART_HEIGHT_MAP,
             margin: { r: 0, t: 10, l: 0, b: 50 },
             dragmode: false,
             plot_bgcolor: "white",
@@ -145,32 +164,32 @@ export function ChartMappaRegioni({ anno }: Props) {
         />
       </ChartFullscreenWrapper>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Tasso medio regioni
             </p>
-            <p className="text-2xl font-bold">{media.toFixed(1)}</p>
+            <p className="text-lg sm:text-2xl font-bold">{media.toFixed(1)}{varIndicator(media, mediaPrev)}</p>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Piu alto: {top.Territorio}
             </p>
-            <p className="text-2xl font-bold">
-              {top.Tasso_per_1000.toFixed(1)}
+            <p className="text-lg sm:text-2xl font-bold">
+              {top.Tasso_per_1000.toFixed(1)}{varIndicator(top.Tasso_per_1000, prevMap.get(top.REF_AREA))}
             </p>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground">
+          <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Piu basso: {bottom.Territorio}
             </p>
-            <p className="text-2xl font-bold">
-              {bottom.Tasso_per_1000.toFixed(1)}
+            <p className="text-lg sm:text-2xl font-bold">
+              {bottom.Tasso_per_1000.toFixed(1)}{varIndicator(bottom.Tasso_per_1000, prevMap.get(bottom.REF_AREA))}
             </p>
           </CardContent>
         </Card>
