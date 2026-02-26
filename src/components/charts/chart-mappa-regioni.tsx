@@ -26,6 +26,29 @@ interface DelittiRegione {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GeoJSON = any;
 
+const REGION_CENTROIDS: Record<string, { lat: number; lon: number }> = {
+  ITC1: { lat: 45.05, lon: 7.9 },    // Piemonte
+  ITC2: { lat: 45.74, lon: 7.35 },   // Valle d'Aosta
+  ITC3: { lat: 45.58, lon: 9.9 },    // Lombardia
+  ITC4: { lat: 44.35, lon: 8.5 },    // Liguria
+  ITD12: { lat: 46.5, lon: 11.35 },  // Trentino-Alto Adige
+  ITD3: { lat: 45.55, lon: 11.85 },  // Veneto
+  ITD4: { lat: 46.07, lon: 13.23 },  // Friuli-Venezia Giulia
+  ITD5: { lat: 44.55, lon: 11.0 },   // Emilia-Romagna
+  ITE1: { lat: 43.35, lon: 11.15 },  // Toscana
+  ITE2: { lat: 42.9, lon: 12.55 },   // Umbria
+  ITE3: { lat: 43.4, lon: 13.35 },   // Marche
+  ITE4: { lat: 41.9, lon: 12.85 },   // Lazio
+  ITF1: { lat: 42.25, lon: 13.6 },   // Abruzzo
+  ITF2: { lat: 41.65, lon: 14.55 },  // Molise
+  ITF3: { lat: 40.85, lon: 14.75 },  // Campania
+  ITF4: { lat: 41.1, lon: 16.15 },   // Puglia
+  ITF5: { lat: 40.5, lon: 16.0 },    // Basilicata
+  ITF6: { lat: 39.0, lon: 16.55 },   // Calabria
+  ITG1: { lat: 37.6, lon: 14.15 },   // Sicilia
+  ITG2: { lat: 40.05, lon: 9.05 },   // Sardegna
+};
+
 interface Props {
   anno: number;
 }
@@ -69,6 +92,22 @@ export function ChartMappaRegioni({ anno }: Props) {
     dataPrev.length > 0
       ? dataPrev.reduce((s, d) => s + d.Tasso_per_1000, 0) / dataPrev.length
       : null;
+
+  const trendAnnotations = dataPrev.length > 0
+    ? dataAnno.map((d) => {
+        const prev = prevMap.get(d.REF_AREA);
+        const centroid = REGION_CENTROIDS[d.REF_AREA];
+        if (prev == null || !centroid) return null;
+        const diff = d.Tasso_per_1000 - prev;
+        if (Math.abs(diff) < 0.05) return null;
+        return {
+          lat: centroid.lat,
+          lon: centroid.lon,
+          markerSymbol: diff > 0 ? "triangle-up" : "triangle-down",
+          color: diff > 0 ? "#dc2626" : "#16a34a",
+        };
+      }).filter(Boolean) as { lat: number; lon: number; markerSymbol: string; color: string }[]
+    : [];
 
   const varIndicator = (current: number, prev: number | undefined | null) => {
     if (prev == null) return null;
@@ -125,6 +164,21 @@ export function ChartMappaRegioni({ anno }: Props) {
                 "<b>%{text}</b><br>Tasso: %{z:.1f} per 1000 ab.<extra></extra>",
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } as any,
+            ...trendAnnotations.map((t) => ({
+              type: "scattergeo",
+              lat: [t.lat],
+              lon: [t.lon],
+              mode: "markers",
+              marker: {
+                symbol: t.markerSymbol,
+                size: isMobile ? 8 : 11,
+                color: t.color,
+                line: { color: "white", width: 1 },
+              },
+              hoverinfo: "skip",
+              showlegend: false,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any)),
           ]}
           layout={{
             geo: {

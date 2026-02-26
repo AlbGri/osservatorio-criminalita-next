@@ -30,7 +30,7 @@ export function ChartPercezioneVsDati() {
     "/data/percezione_vs_dati.json"
   );
 
-  if (loading) return <div className="h-[250px] sm:h-[450px] animate-pulse bg-muted rounded" />;
+  if (loading) return <div className="h-[300px] sm:h-[450px] animate-pulse bg-muted rounded" />;
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
@@ -91,11 +91,15 @@ export function ChartPercezioneVsDati() {
             hovermode: "closest" as const,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
-            height: isMobile ? 250 : CHART_HEIGHT,
-            margin: { l: 50, r: 50, t: 30, b: 50 },
-            legend: { x: 0.5, y: 1.08, xanchor: "center", orientation: "h" as const },
+            height: isMobile ? 300 : CHART_HEIGHT,
+            margin: isMobile ? { l: 45, r: 45, t: 40, b: 50 } : { l: 50, r: 50, t: 30, b: 50 },
+            legend: isMobile
+              ? { x: 0.5, y: -0.25, xanchor: "center", yanchor: "top", orientation: "h" as const, font: { size: 9 } }
+              : { x: 0.5, y: 1.08, xanchor: "center", orientation: "h" as const },
             shapes: COVID_SHAPES,
-            annotations: COVID_ANNOTATIONS,
+            annotations: isMobile
+              ? COVID_ANNOTATIONS.map((a) => ({ ...a, y: 0.92, font: { ...a.font, size: 8 } }))
+              : COVID_ANNOTATIONS,
           }}
           config={PLOTLY_CONFIG}
           useResizeHandler

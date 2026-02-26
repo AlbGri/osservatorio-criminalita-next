@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,6 +17,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Osservatorio Criminalita Italia",
   description: "Dati e analisi sulla criminalita in Italia con fonti ufficiali ISTAT",
+  openGraph: {
+    title: "Osservatorio Criminalita Italia",
+    description: "Dati e analisi sulla criminalita in Italia 2014-2023 con fonti ufficiali ISTAT",
+    type: "website",
+    locale: "it_IT",
+    url: "https://albgri.github.io/osservatorio-criminalita-next",
+    siteName: "Osservatorio Criminalita Italia",
+  },
+  twitter: {
+    card: "summary",
+    title: "Osservatorio Criminalita Italia",
+    description: "Dati e analisi sulla criminalita in Italia 2014-2023 con fonti ufficiali ISTAT",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +43,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        {children}
+        <div className="min-h-[calc(100vh-3.5rem)]">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
