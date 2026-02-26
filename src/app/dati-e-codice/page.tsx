@@ -45,63 +45,63 @@ npm run dev`}</code>
                 <th className="text-left py-2 pr-4 font-semibold">
                   Descrizione
                 </th>
-                <th className="text-left py-2 font-semibold">Righe</th>
+                <th className="text-left py-2 font-semibold hidden sm:table-cell">Righe</th>
               </tr>
             </thead>
             <tbody className="text-muted-foreground">
               <tr className="border-b">
-                <td className="py-2 pr-4 font-mono text-xs">
+                <td className="py-2 pr-4 font-mono text-xs break-all">
                   delitti_italia_normalizzato_2014_2023.csv
                 </td>
                 <td className="py-2 pr-4">
                   Totale delitti, tasso per 1.000 ab.
                 </td>
-                <td className="py-2">10</td>
+                <td className="py-2 hidden sm:table-cell">10</td>
               </tr>
               <tr className="border-b">
-                <td className="py-2 pr-4 font-mono text-xs">
+                <td className="py-2 pr-4 font-mono text-xs break-all">
                   percezione_vs_dati_2014_2023.csv
                 </td>
                 <td className="py-2 pr-4">
                   Percezione + tasso + popolazione
                 </td>
-                <td className="py-2">10</td>
+                <td className="py-2 hidden sm:table-cell">10</td>
               </tr>
               <tr className="border-b">
-                <td className="py-2 pr-4 font-mono text-xs">
+                <td className="py-2 pr-4 font-mono text-xs break-all">
                   delitti_categorie_normalizzato_2014_2023.csv
                 </td>
                 <td className="py-2 pr-4">
                   6 macro-categorie, tasso per 1.000 ab.
                 </td>
-                <td className="py-2">60</td>
+                <td className="py-2 hidden sm:table-cell">60</td>
               </tr>
               <tr className="border-b">
-                <td className="py-2 pr-4 font-mono text-xs">
+                <td className="py-2 pr-4 font-mono text-xs break-all">
                   reati_allarme_sociale_2014_2023.csv
                 </td>
                 <td className="py-2 pr-4">
                   6 reati specifici, tasso per 100k ab.
                 </td>
-                <td className="py-2">60</td>
+                <td className="py-2 hidden sm:table-cell">60</td>
               </tr>
               <tr className="border-b">
-                <td className="py-2 pr-4 font-mono text-xs">
+                <td className="py-2 pr-4 font-mono text-xs break-all">
                   delitti_regioni_normalizzato_2014_2023.csv
                 </td>
                 <td className="py-2 pr-4">
                   20 regioni, tasso per 1.000 ab.
                 </td>
-                <td className="py-2">200</td>
+                <td className="py-2 hidden sm:table-cell">200</td>
               </tr>
               <tr className="border-b">
-                <td className="py-2 pr-4 font-mono text-xs">
+                <td className="py-2 pr-4 font-mono text-xs break-all">
                   delitti_province_normalizzato_2014_2023.csv
                 </td>
                 <td className="py-2 pr-4">
                   106 province, tasso per 1.000 ab.
                 </td>
-                <td className="py-2">1060</td>
+                <td className="py-2 hidden sm:table-cell">1060</td>
               </tr>
             </tbody>
           </table>

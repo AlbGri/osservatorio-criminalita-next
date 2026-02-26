@@ -5,6 +5,7 @@ import { ChartMappaRegioni } from "@/components/charts/chart-mappa-regioni";
 import { ChartRankingRegioni } from "@/components/charts/chart-ranking-regioni";
 import { ChartTabellaProvince } from "@/components/charts/chart-tabella-province";
 import { ChartNumeroOscuro } from "@/components/charts/chart-numero-oscuro";
+import { ChartTrendRegione } from "@/components/charts/chart-trend-regione";
 
 const ANNI = Array.from({ length: 10 }, (_, i) => 2014 + i);
 const PLAY_INTERVAL_MS = 1500;
@@ -97,6 +98,13 @@ export default function AnalisiTerritoriale() {
           Ranking Regioni ({anno})
         </h3>
         <ChartRankingRegioni anno={anno} />
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="text-lg sm:text-xl font-semibold">
+          Trend Temporale Regione (2014-2023)
+        </h3>
+        <ChartTrendRegione />
       </section>
 
       <hr />

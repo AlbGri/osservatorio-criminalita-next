@@ -36,15 +36,13 @@ export function ChartTabellaProvince({ anno }: Props) {
   }, [data]);
 
   const handleSort = useCallback((key: SortKey) => {
-    setSortKey((prev) => {
-      if (prev === key) {
-        setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-        return key;
-      }
+    if (key === sortKey) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
       setSortDir(key === "Territorio" || key === "Regione" ? "asc" : "desc");
-      return key;
-    });
-  }, []);
+    }
+  }, [sortKey]);
 
   const righe = useMemo(() => {
     if (!data) return [];
