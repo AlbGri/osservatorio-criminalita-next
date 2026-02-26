@@ -1,0 +1,89 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+const NAV_ITEMS = [
+  { href: "/", label: "Dashboard" },
+  { href: "/analisi-territoriale", label: "Analisi Territoriale" },
+  { href: "/metodologia", label: "Metodologia" },
+  { href: "/guida", label: "Guida" },
+  { href: "/limitazioni", label: "Limitazioni" },
+  { href: "/dati-e-codice", label: "Dati e Codice" },
+];
+
+export function Header() {
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <header className="border-b bg-background sticky top-0 z-50">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex h-14 items-center justify-between">
+          <Link href="/" className="text-lg font-bold whitespace-nowrap">
+            Osservatorio Criminalita
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex gap-1">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`px-3 py-2 text-sm rounded-md transition-colors ${
+                  pathname === item.href
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu navigazione"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <nav className="md:hidden pb-3 space-y-1">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={`block px-3 py-2 text-sm rounded-md transition-colors ${
+                  pathname === item.href
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+}

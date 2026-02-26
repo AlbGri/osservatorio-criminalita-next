@@ -26,6 +26,30 @@ export const COVID_PERIOD = {
 
 export const CHART_HEIGHT = 450;
 export const CHART_HEIGHT_SMALL = 400;
+export const CHART_HEIGHT_MAP = 550;
+
+export const NUTS_TO_ISTAT: Record<string, number> = {
+  ITC1: 1,
+  ITC2: 2,
+  ITC3: 7,
+  ITC4: 3,
+  ITD12: 4,
+  ITD3: 5,
+  ITD4: 6,
+  ITD5: 8,
+  ITE1: 9,
+  ITE2: 10,
+  ITE3: 11,
+  ITE4: 12,
+  ITF1: 13,
+  ITF2: 14,
+  ITF3: 15,
+  ITF4: 16,
+  ITF5: 17,
+  ITF6: 18,
+  ITG1: 19,
+  ITG2: 20,
+};
 
 export const PLOTLY_CONFIG: Partial<Plotly.Config> = {
   displayModeBar: false,

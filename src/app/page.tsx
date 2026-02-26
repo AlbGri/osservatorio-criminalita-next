@@ -5,15 +5,6 @@ import { ChartTipologieReato } from "@/components/charts/chart-tipologie-reato";
 export default function Home() {
   return (
     <main className="mx-auto max-w-7xl px-4 py-4 sm:py-8 space-y-6 sm:space-y-10">
-      <div>
-        <h1 className="text-2xl sm:text-4xl font-bold">Osservatorio Criminalita Italia</h1>
-        <p className="mt-1 sm:mt-2 text-base sm:text-lg text-muted-foreground">
-          Dati e analisi sulla criminalita in Italia con fonti ufficiali ISTAT
-        </p>
-      </div>
-
-      <hr />
-
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
           Trend Delitti Denunciati in Italia (2014-2023)

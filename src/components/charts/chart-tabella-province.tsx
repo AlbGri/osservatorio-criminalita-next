@@ -1,0 +1,148 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import { useFetchData } from "@/lib/use-fetch-data";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
+interface DelittiProvincia {
+  REF_AREA: string;
+  Territorio: string;
+  Anno: number;
+  Delitti: number;
+  Regione: string;
+  Popolazione: number;
+  Tasso_per_1000: number;
+}
+
+interface Props {
+  anno: number;
+}
+
+export function ChartTabellaProvince({ anno }: Props) {
+  const { data, loading, error } = useFetchData<DelittiProvincia[]>(
+    "/data/delitti_province.json"
+  );
+  const [regioneSelezionata, setRegioneSelezionata] = useState("Tutte le regioni");
+
+  const regioni = useMemo(() => {
+    if (!data) return [];
+    const set = new Set(data.map((d) => d.Regione));
+    return Array.from(set).sort();
+  }, [data]);
+
+  const righe = useMemo(() => {
+    if (!data) return [];
+
+    const dataAnno = data.filter((d) => d.Anno === anno);
+    const data2014 = data.filter((d) => d.Anno === 2014);
+    const mappa2014 = new Map(
+      data2014.map((d) => [d.REF_AREA, d.Tasso_per_1000])
+    );
+
+    let filtrate = dataAnno;
+    if (regioneSelezionata !== "Tutte le regioni") {
+      filtrate = dataAnno.filter((d) => d.Regione === regioneSelezionata);
+    }
+
+    return filtrate
+      .map((d) => {
+        const tasso2014 = mappa2014.get(d.REF_AREA);
+        const variazione =
+          tasso2014 != null
+            ? (((d.Tasso_per_1000 - tasso2014) / tasso2014) * 100).toFixed(1)
+            : "-";
+        return { ...d, variazione };
+      })
+      .sort((a, b) => b.Tasso_per_1000 - a.Tasso_per_1000);
+  }, [data, anno, regioneSelezionata]);
+
+  if (loading) return <div className="h-64 animate-pulse bg-muted rounded" />;
+  if (error) return <p className="text-destructive">Errore: {error}</p>;
+  if (!data) return null;
+
+  return (
+    <div className="space-y-4">
+      <Alert>
+        <AlertDescription className="block">
+          <strong>Dati provinciali: limiti importanti.</strong> Province con meno
+          di 150.000 abitanti possono mostrare variabilita elevata anno su anno
+          per effetto statistico (pochi eventi = alta variazione percentuale).
+          Guardare trend pluriennali, non singoli anni.
+        </AlertDescription>
+      </Alert>
+
+      <div>
+        <label
+          htmlFor="regione-select"
+          className="block text-sm font-medium mb-1"
+        >
+          Filtra per regione
+        </label>
+        <select
+          id="regione-select"
+          value={regioneSelezionata}
+          onChange={(e) => setRegioneSelezionata(e.target.value)}
+          className="border rounded-md px-3 py-2 text-sm bg-background"
+        >
+          <option>Tutte le regioni</option>
+          {regioni.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="overflow-x-auto max-h-[250px] overflow-y-auto border rounded-lg">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b bg-muted sticky top-0">
+              <th className="text-left py-2 px-3 font-semibold">Provincia</th>
+              <th className="text-left py-2 px-3 font-semibold">Regione</th>
+              <th className="text-right py-2 px-3 font-semibold">
+                Tasso {anno}
+              </th>
+              <th className="text-right py-2 px-3 font-semibold">
+                Var. vs 2014
+              </th>
+              <th className="text-right py-2 px-3 font-semibold">
+                Delitti {anno}
+              </th>
+              <th className="text-right py-2 px-3 font-semibold">
+                Popolazione
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {righe.map((r) => (
+              <tr key={r.REF_AREA} className="border-b hover:bg-muted/30">
+                <td className="py-2 px-3">{r.Territorio}</td>
+                <td className="py-2 px-3 text-muted-foreground">{r.Regione}</td>
+                <td className="py-2 px-3 text-right">
+                  {r.Tasso_per_1000.toFixed(1)}
+                </td>
+                <td
+                  className={`py-2 px-3 text-right ${
+                    r.variazione !== "-" && parseFloat(r.variazione) < 0
+                      ? "text-green-600"
+                      : r.variazione !== "-" && parseFloat(r.variazione) > 0
+                        ? "text-red-600"
+                        : ""
+                  }`}
+                >
+                  {r.variazione !== "-" ? `${r.variazione}%` : "-"}
+                </td>
+                <td className="py-2 px-3 text-right">
+                  {r.Delitti.toLocaleString("it-IT")}
+                </td>
+                <td className="py-2 px-3 text-right">
+                  {r.Popolazione.toLocaleString("it-IT")}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
