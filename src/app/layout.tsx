@@ -15,20 +15,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Osservatorio Criminalita Italia",
+  title: "Osservatorio Criminalita",
   description: "Dati e analisi sulla criminalita in Italia con fonti ufficiali ISTAT",
   openGraph: {
-    title: "Osservatorio Criminalita Italia",
+    title: "Osservatorio Criminalita",
     description: "Dati e analisi sulla criminalita in Italia 2014-2023 con fonti ufficiali ISTAT",
     type: "website",
     locale: "it_IT",
     url: "https://albgri.github.io/osservatorio-criminalita-next",
-    siteName: "Osservatorio Criminalita Italia",
+    siteName: "Osservatorio Criminalita",
+    images: [
+      {
+        url: "https://albgri.github.io/osservatorio-criminalita-next/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Osservatorio Criminalita - Dati e analisi sulla criminalita in Italia",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "Osservatorio Criminalita Italia",
+    card: "summary_large_image",
+    title: "Osservatorio Criminalita",
     description: "Dati e analisi sulla criminalita in Italia 2014-2023 con fonti ufficiali ISTAT",
+    images: ["https://albgri.github.io/osservatorio-criminalita-next/og-image.png"],
   },
 };
 

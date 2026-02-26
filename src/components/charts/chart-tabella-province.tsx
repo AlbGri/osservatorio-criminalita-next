@@ -94,6 +94,26 @@ export function ChartTabellaProvince({ anno }: Props) {
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
+  const handleDownloadCsv = () => {
+    const header = ["Provincia", "Regione", `Tasso ${anno}`, "Var. vs 2014 (%)", `Delitti ${anno}`, "Popolazione"];
+    const rows = righe.map((r) => [
+      r.Territorio,
+      r.Regione,
+      r.Tasso_per_1000.toFixed(1),
+      r.variazione !== "-" ? r.variazione : "",
+      r.Delitti,
+      r.Popolazione,
+    ]);
+    const csv = [header, ...rows].map((row) => row.join(";")).join("\n");
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `province_${anno}${regioneSelezionata !== "Tutte le regioni" ? "_" + regioneSelezionata.replace(/\s/g, "_") : ""}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const sortIcon = (key: SortKey) => {
     if (sortKey !== key) return <span className="text-muted-foreground/40 ml-1">&#8693;</span>;
     return sortDir === "asc"
@@ -114,26 +134,34 @@ export function ChartTabellaProvince({ anno }: Props) {
         </AlertDescription>
       </Alert>
 
-      <div>
-        <label
-          htmlFor="regione-select"
-          className="block text-sm font-medium mb-1"
+      <div className="flex items-end gap-4 flex-wrap">
+        <div>
+          <label
+            htmlFor="regione-select"
+            className="block text-sm font-medium mb-1"
+          >
+            Filtra per regione
+          </label>
+          <select
+            id="regione-select"
+            value={regioneSelezionata}
+            onChange={(e) => setRegioneSelezionata(e.target.value)}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            <option>Tutte le regioni</option>
+            {regioni.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button
+          onClick={handleDownloadCsv}
+          className="border rounded-md px-3 py-2 text-sm bg-background hover:bg-muted transition-colors"
         >
-          Filtra per regione
-        </label>
-        <select
-          id="regione-select"
-          value={regioneSelezionata}
-          onChange={(e) => setRegioneSelezionata(e.target.value)}
-          className="border rounded-md px-3 py-2 text-sm bg-background"
-        >
-          <option>Tutte le regioni</option>
-          {regioni.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
-          ))}
-        </select>
+          Scarica CSV
+        </button>
       </div>
 
       <div className="overflow-x-auto max-h-[250px] overflow-y-auto border rounded-lg">

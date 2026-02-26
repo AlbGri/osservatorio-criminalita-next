@@ -153,7 +153,7 @@ npm run dev`}</code>
             >
               CC BY 3.0 IT
             </a>{" "}
-            - elaborati da Osservatorio Criminalita Italia
+            - elaborati da Osservatorio Criminalita
           </li>
         </ul>
       </section>
