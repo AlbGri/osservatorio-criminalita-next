@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Dashboard" },
+  { href: "/", label: "Home" },
   { href: "/analisi-territoriale", label: "Analisi Territoriale" },
+  { href: "/reati-allarme-sociale", label: "Allarme Sociale" },
   { href: "/metodologia", label: "Metodologia" },
   { href: "/guida", label: "Guida" },
   { href: "/limitazioni", label: "Limitazioni" },
