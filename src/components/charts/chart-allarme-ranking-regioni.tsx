@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { COLORS, PLOTLY_CONFIG } from "@/lib/config";
+import { COLORS, PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -80,11 +80,11 @@ export function ChartAllarmeRankingRegioni({ anno, reato }: Props) {
           },
         ]}
         layout={{
-          xaxis: {
+          xaxis: { ...AXIS_FIXED,
             title: { text: "Tasso per 100k ab." },
             range: [0, Math.max(...tassi) * 1.2],
           },
-          yaxis: { automargin: true },
+          yaxis: { ...AXIS_FIXED, automargin: true },
           shapes: [
             {
               type: "line",

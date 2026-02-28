@@ -22,7 +22,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="text-lg font-bold whitespace-nowrap">
-            Osservatorio Criminalita
+            Osservatorio Criminalit&agrave;
           </Link>
 
           {/* Desktop nav */}

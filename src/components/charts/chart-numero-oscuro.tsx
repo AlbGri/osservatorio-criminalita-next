@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { COLORS, CHART_HEIGHT_SMALL, PLOTLY_CONFIG } from "@/lib/config";
+import { COLORS, CHART_HEIGHT_SMALL, PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -33,45 +33,85 @@ const pct2023 = [24.1, 40.6, 68.2];
 // Propensione denuncia per macroarea - ISTAT Tavola 6 (2022-2023)
 const macroaree = ["Nord-ovest", "Nord-est", "Centro", "Sud", "Isole"];
 const macroCat2023 = {
-  "Reati proprieta individuale": [45.5, 34.0, 44.6, 52.6, 34.6],
+  "Reati proprietà individuale": [45.5, 34.0, 44.6, 52.6, 34.6],
   "Reati violenti": [37.3, 10.4, 65.2, 58.6, 13.0],
   "Reati abitazione": [59.7, 67.3, 48.8, 48.1, 33.9],
   "Reati veicoli": [40.1, 31.8, 43.2, 50.6, 43.4],
 };
 const mediaNazionale2023: Record<string, number> = {
-  "Reati proprieta individuale": 44.7,
+  "Reati proprietà individuale": 44.7,
   "Reati violenti": 41.6,
   "Reati abitazione": 55.3,
   "Reati veicoli": 41.3,
 };
 const coloriMacro = ["#2E86AB", "#E63946", "#ff7f0e", "#9467bd"];
 
-// Confronto storico per macroarea - singoli reati comparabili
+// Confronto storico per macroarea - tutti i singoli reati
 // 2015-2016: Prospetto 6 report ISTAT 1 feb 2019
 // 2022-2023: Tavola 6 report ISTAT 9 giu 2025
-const reatiStorico = ["Scippi", "Rapine", "Aggressioni", "Furti abitazione"];
+// Ordine: NO, NE, Centro, Sud, Isole
+const reatiStorico = [
+  "Scippi", "Borseggi", "Rapine", "Furti oggetti personali",
+  "Aggressioni", "Minacce",
+  "Furti abitazione", "Furti veicoli", "Furti oggetti dai veicoli",
+];
 const storico2016: Record<string, number[]> = {
   "Scippi": [71.7, 64.4, 51.1, 46.9, 8.5],
+  "Borseggi": [62.5, 44.2, 37.1, 31.7, 33.2],
   "Rapine": [59.9, 52.0, 32.1, 40.0, 22.5],
+  "Furti oggetti personali": [37.4, 16.3, 20.1, 30.8, 19.8],
   "Aggressioni": [14.3, 26.2, 17.0, 9.2, 41.9],
+  "Minacce": [36.9, 26.9, 40.1, 22.2, 24.6],
   "Furti abitazione": [73.1, 63.3, 51.3, 54.9, 64.0],
+  "Furti veicoli": [38.5, 30.3, 23.4, 49.2, 24.7],
+  "Furti oggetti dai veicoli": [42.9, 55.5, 48.4, 45.9, 34.6],
+};
+// Asterisco (*) = errore campionario >35% nel report ISTAT
+const asterischi2016: Record<string, boolean[]> = {
+  "Scippi": [false, false, false, false, true],
+  "Borseggi": [false, false, false, false, false],
+  "Rapine": [false, false, false, false, true],
+  "Furti oggetti personali": [false, false, false, false, false],
+  "Aggressioni": [false, false, false, true, false],
+  "Minacce": [false, false, false, false, false],
+  "Furti abitazione": [false, false, false, false, false],
+  "Furti veicoli": [false, false, false, false, false],
+  "Furti oggetti dai veicoli": [false, false, false, false, false],
 };
 const storico2023: Record<string, number[]> = {
   "Scippi": [33.9, 39.2, 63.0, 54.2, 52.9],
+  "Borseggi": [51.4, 47.8, 62.5, 68.5, 28.4],
   "Rapine": [23.5, 23.5, 57.0, 74.7, 42.9],
+  "Furti oggetti personali": [45.5, 26.4, 15.9, 38.0, 33.2],
   "Aggressioni": [42.3, 10.4, 69.0, 55.3, 11.1],
+  "Minacce": [34.6, 16.9, 13.8, 32.5, 16.0],
   "Furti abitazione": [63.5, 79.3, 61.0, 68.9, 38.5],
+  "Furti veicoli": [38.3, 41.8, 44.6, 65.7, 55.9],
+  "Furti oggetti dai veicoli": [73.5, 68.9, 49.0, 57.6, 30.0],
 };
+const asterischi2023: Record<string, boolean[]> = {
+  "Scippi": [false, false, false, false, true],
+  "Borseggi": [false, false, false, false, true],
+  "Rapine": [false, true, false, false, true],
+  "Furti oggetti personali": [false, false, true, false, false],
+  "Aggressioni": [false, true, false, false, true],
+  "Minacce": [false, true, true, true, false],
+  "Furti abitazione": [false, false, false, false, false],
+  "Furti veicoli": [false, false, false, false, false],
+  "Furti oggetti dai veicoli": [false, false, false, false, true],
+};
+const fmtAst = (vals: number[], ast: boolean[]) =>
+  vals.map((v, i) => `${v}%${ast[i] ? "*" : ""}`);
 
 export function ChartNumeroOscuro() {
   return (
     <div className="space-y-6">
       <Alert>
         <AlertDescription className="block">
-          <strong>Il numero oscuro</strong> e la differenza tra reati commessi e
+          <strong>Il numero oscuro</strong> è la differenza tra reati commessi e
           reati denunciati. L&apos;Indagine ISTAT sulla Sicurezza dei Cittadini
           stima la quota di vittime che denuncia, permettendo di misurare quanto
-          le statistiche ufficiali sottostimino la realta.
+          le statistiche ufficiali sottostimino la realtà.
         </AlertDescription>
       </Alert>
 
@@ -101,7 +141,8 @@ export function ChartNumeroOscuro() {
           ]}
           layout={{
             barmode: "stack",
-            xaxis: { title: { text: "Percentuale (%)" }, range: [0, 100] },
+            xaxis: { ...AXIS_FIXED, title: { text: "Percentuale (%)" }, range: [0, 100] },
+            yaxis: { ...AXIS_FIXED },
             height: CHART_HEIGHT_SMALL,
             legend: { orientation: "h" as const, y: -0.22 },
             margin: { t: 20, l: 150, r: 20, b: 60 },
@@ -149,7 +190,8 @@ export function ChartNumeroOscuro() {
           ]}
           layout={{
             barmode: "group",
-            yaxis: {
+            xaxis: { ...AXIS_FIXED },
+            yaxis: { ...AXIS_FIXED,
               title: { text: "% vittime che hanno denunciato" },
               range: [0, 100],
             },
@@ -173,7 +215,7 @@ export function ChartNumeroOscuro() {
         <strong>calati</strong> (da 88.9% a 68.2%), forse per rassegnazione su
         reati percepiti come a basso recupero. Le frodi/truffe mostrano un{" "}
         <strong>lieve aumento</strong> (da 18.4% a 24.1%), probabilmente legato
-        alla crescita delle truffe bancarie online dove c&apos;e maggiore
+        alla crescita delle truffe bancarie online dove c&apos;è maggiore
         consapevolezza e incentivo a denunciare.
       </p>
 
@@ -181,7 +223,7 @@ export function ChartNumeroOscuro() {
 
       <div className="space-y-3">
         <h3 className="text-lg font-semibold">
-          Chi denuncia di piu? La propensione per territorio (2022-2023)
+          Chi denuncia di più? La propensione per territorio (2022-2023)
         </h3>
         <p className="text-muted-foreground">
           La propensione alla denuncia varia per tipo di reato e territorio. Il
@@ -206,13 +248,14 @@ export function ChartNumeroOscuro() {
           ]}
           layout={{
             barmode: "group",
-            yaxis: {
+            xaxis: { ...AXIS_FIXED },
+            yaxis: { ...AXIS_FIXED,
               title: { text: "% vittime che hanno denunciato" },
               range: [0, 85],
             },
             height: CHART_HEIGHT_SMALL,
             legend: { orientation: "h" as const, y: -0.22 },
-            margin: { t: 20, l: 50, r: 20, b: 60 },
+            margin: { t: 20, l: 50, r: 50, b: 60 },
             dragmode: false,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
@@ -226,6 +269,16 @@ export function ChartNumeroOscuro() {
               y1: val,
               line: { color: coloriMacro[i], width: 1, dash: "dot" as const },
             })),
+            annotations: Object.entries(mediaNazionale2023).map(([, val], i) => ({
+              xref: "paper" as const,
+              yref: "y" as const,
+              x: 1,
+              y: val,
+              xanchor: "left" as const,
+              text: `${val}%`,
+              showarrow: false,
+              font: { size: 9, color: coloriMacro[i] },
+            })),
           }}
           config={PLOTLY_CONFIG}
           useResizeHandler
@@ -234,22 +287,35 @@ export function ChartNumeroOscuro() {
       </ChartFullscreenWrapper>
 
       <p>
-        Il <strong>Sud</strong> denuncia piu della media nazionale per reati
-        contro la proprieta (52.6% vs 44.7%), reati violenti (58.6% vs 41.6%) e
+        Il <strong>Sud</strong> denuncia più della media nazionale per reati
+        contro la proprietà (52.6% vs 44.7%), reati violenti (58.6% vs 41.6%) e
         reati contro i veicoli (50.6% vs 41.3%). Sono il{" "}
         <strong>Nord-est</strong> e le <strong>Isole</strong> a denunciare meno
         per quasi tutte le categorie. Il <strong>Centro</strong> ha la
-        propensione piu alta per i reati violenti (65.2%).
+        propensione più alta per i reati violenti (65.2%).
       </p>
+
+      <Alert>
+        <AlertDescription className="block">
+          <strong>Macro-categorie vs singoli reati.</strong> Le macro-categorie
+          ISTAT aggregano più reati: &quot;Reati proprietà individuale&quot; =
+          scippi + borseggi + furti oggetti personali;
+          &quot;Reati violenti&quot; = aggressioni + minacce;
+          &quot;Reati abitazione&quot; = furti in abitazione + tentati furti;
+          &quot;Reati veicoli&quot; = furti di veicoli + furti di oggetti dai
+          veicoli. Le macro-categorie sono disponibili solo per il 2022-2023;
+          il report 2015-2016 riporta solo i singoli reati.
+        </AlertDescription>
+      </Alert>
 
       <div className="space-y-3">
         <h3 className="text-lg font-semibold">
           Come cambia la propensione per territorio nel tempo
         </h3>
         <p className="text-muted-foreground">
-          Confronto tra le edizioni 2015-2016 e 2022-2023 per i reati con dati
-          comparabili a livello di macroarea. I valori con asterisco (*) nel
-          report ISTAT hanno errore campionario &gt;35%.
+          Confronto tra le edizioni 2015-2016 e 2022-2023 per tutti i singoli
+          reati disponibili. I valori con asterisco (*) nel report ISTAT hanno
+          errore campionario &gt;35%.
         </p>
       </div>
 
@@ -265,7 +331,7 @@ export function ChartNumeroOscuro() {
                   y: storico2016[reato],
                   type: "bar",
                   marker: { color: "#b0c4de" },
-                  text: storico2016[reato].map((v) => `${v}%`),
+                  text: fmtAst(storico2016[reato], asterischi2016[reato]),
                   textposition: "outside" as const,
                 },
                 {
@@ -274,13 +340,14 @@ export function ChartNumeroOscuro() {
                   y: storico2023[reato],
                   type: "bar",
                   marker: { color: COLORS.primary },
-                  text: storico2023[reato].map((v) => `${v}%`),
+                  text: fmtAst(storico2023[reato], asterischi2023[reato]),
                   textposition: "outside" as const,
                 },
               ]}
               layout={{
                 barmode: "group",
-                yaxis: {
+                xaxis: { ...AXIS_FIXED },
+                yaxis: { ...AXIS_FIXED,
                   title: { text: "% denunciato" },
                   range: [0, 105],
                 },
@@ -300,13 +367,17 @@ export function ChartNumeroOscuro() {
       ))}
 
       <p>
-        I cambiamenti piu marcati riguardano i{" "}
+        I cambiamenti più marcati riguardano i{" "}
         <strong>reati violenti al Centro-Sud</strong>: le aggressioni denunciate
         al Sud passano da 9.2% a 55.3% (+46 punti), al Centro da 17.0% a 69.0%
         (+52 punti). Le rapine al Sud passano da 40.0% a 74.7% (+35 punti).
         Al contrario, gli scippi denunciati calano drasticamente al{" "}
         <strong>Nord-ovest</strong> (da 71.7% a 33.9%) e al{" "}
-        <strong>Nord-est</strong> (da 64.4% a 39.2%).
+        <strong>Nord-est</strong> (da 64.4% a 39.2%). I borseggi aumentano
+        ovunque tranne che alle Isole. I furti di veicoli crescono fortemente al{" "}
+        <strong>Sud</strong> (da 49.2% a 65.7%) e alle{" "}
+        <strong>Isole</strong> (da 24.7% a 55.9%). I furti di oggetti dai
+        veicoli aumentano al Nord ma calano alle Isole.
       </p>
 
       <p className="text-xs text-muted-foreground">

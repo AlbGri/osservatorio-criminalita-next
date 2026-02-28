@@ -138,10 +138,10 @@ export function ChartMappaRegioni({ anno }: Props) {
         <AlertDescription className="block">
           <strong>Confronti territoriali: cautela necessaria.</strong> Regioni
           con alta presenza turistica o pendolarismo mostrano tassi elevati
-          perche il denominatore e la popolazione residente, non quella
-          effettiva. Il Nord Italia ha propensione alla denuncia mediamente piu
-          alta del Sud (fonte: ISTAT Indagine Vittimizzazione). I dati mostrano
-          criminalita REGISTRATA, non reale.
+          perch&eacute; il denominatore &egrave; la popolazione residente, non quella
+          effettiva. La propensione alla denuncia varia per tipo di reato e
+          territorio (vedi sezione Numero Oscuro in Home). I dati mostrano
+          delitti denunciati, non criminalit&agrave; reale.
         </AlertDescription>
       </Alert>
 

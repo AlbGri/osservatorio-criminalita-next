@@ -11,12 +11,12 @@ export default function Guida() {
         </h2>
         <p>
           Se leggi <strong>45 delitti per 1.000 abitanti</strong>, significa: in
-          una citta di 100.000 persone, ci sono stati circa 4.500 delitti
+          una citt&agrave; di 100.000 persone, ci sono stati circa 4.500 delitti
           denunciati in un anno.
         </p>
         <p>
           <strong>Non</strong> significa che il 4,5% della popolazione ha subito
-          un reato: alcuni ne subiscono piu di uno, molti zero.
+          un reato: alcuni ne subiscono pi&ugrave; di uno, molti zero.
         </p>
         <p>
           Per i reati rari (omicidi, violenze sessuali) si usa il{" "}
@@ -31,7 +31,7 @@ export default function Guida() {
         </h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong>Pendenza della linea</strong>: indica la velocita del
+            <strong>Pendenza della linea</strong>: indica la velocit&agrave; del
             cambiamento
           </li>
           <li>
@@ -41,7 +41,7 @@ export default function Guida() {
           <li>
             <strong>Attenzione agli outlier</strong>: il periodo COVID
             (2020-2021) ha alterato tutti i dati per effetto dei lockdown, non
-            per cambiamenti reali nella criminalita
+            per cambiamenti reali nella criminalit&agrave;
           </li>
           <li>
             <strong>Un singolo anno anomalo non fa un trend</strong>: servono
@@ -52,32 +52,32 @@ export default function Guida() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Cosa NON si puo concludere
+          Cosa NON si pu&ograve; concludere
         </h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
             <strong>
-              &quot;Il territorio X e piu sicuro di Y&quot;
+              &quot;Il territorio X &egrave; pi&ugrave; sicuro di Y&quot;
             </strong>
             : la propensione alla denuncia varia tra territori e tipi di reato.
-            L&apos;Indagine ISTAT 2022-2023 mostra che il Sud denuncia piu della
-            media per reati contro la proprieta e reati violenti, mentre Nord-est
+            L&apos;Indagine ISTAT 2022-2023 mostra che il Sud denuncia pi&ugrave; della
+            media per reati contro la propriet&agrave; e reati violenti, mentre Nord-est
             e Isole denunciano meno (vedi Metodologia)
           </li>
           <li>
             <strong>
-              &quot;La criminalita e colpa del gruppo Z&quot;
+              &quot;La criminalit&agrave; &egrave; colpa del gruppo Z&quot;
             </strong>
             : i dati non mostrano autori, solo denunce. Nessuna inferenza su
-            gruppi demografici e possibile
+            gruppi demografici &egrave; possibile
           </li>
           <li>
             <strong>&quot;Non devo preoccuparmi&quot;</strong>: la percezione di
-            rischio e legittima e personale. Questi dati mostrano un quadro
-            aggregato, non la realta del singolo quartiere
+            rischio &egrave; legittima e personale. Questi dati mostrano un quadro
+            aggregato, non la realt&agrave; del singolo quartiere
           </li>
           <li>
-            <strong>Se un territorio e sicuro o pericoloso</strong>: i dati
+            <strong>Se un territorio &egrave; sicuro o pericoloso</strong>: i dati
             provinciali sono troppo aggregati e il numero oscuro varia
             localmente
           </li>
@@ -86,8 +86,8 @@ export default function Guida() {
             modellazione predittiva
           </li>
           <li>
-            <strong>La criminalita reale totale</strong>: solo quella registrata
-            tramite denunce
+            <strong>La criminalit&agrave; reale totale</strong>: solo quella denunciata
+            alle forze dell&apos;ordine
           </li>
         </ul>
       </section>
@@ -99,12 +99,12 @@ export default function Guida() {
 
         <div className="space-y-2">
           <h3 className="font-semibold">
-            Perche alcuni reati aumentano ma il totale cala?
+            Perch&eacute; alcuni reati aumentano ma il totale cala?
           </h3>
           <p>
             La composizione cambia. Esempio: se i furti calano del 20% ma le
             truffe aumentano del 50%, e i furti erano l&apos;80% del totale
-            mentre le truffe il 5%, il totale puo comunque calare. E il peso
+            mentre le truffe il 5%, il totale pu&ograve; comunque calare. &Egrave; il peso
             relativo delle categorie che conta.
           </p>
         </div>
@@ -114,21 +114,21 @@ export default function Guida() {
             Posso usare questi dati per decidere dove vivere?
           </h3>
           <p>
-            Con estrema cautela. I dati provinciali mascherano una variabilita
+            Con estrema cautela. I dati provinciali mascherano una variabilit&agrave;
             interna enorme: la provincia di Milano include sia zone centrali
-            dense sia comuni rurali con realta completamente diverse.
+            dense sia comuni rurali con realt&agrave; completamente diverse.
           </p>
         </div>
 
         <div className="space-y-2">
           <h3 className="font-semibold">
-            Perche le denunce per violenza sessuale aumentano?
+            Perch&eacute; le denunce per violenza sessuale aumentano?
           </h3>
           <p>
             L&apos;aumento delle denunce riflette principalmente l&apos;effetto
             di campagne di sensibilizzazione (es. #MeToo) e maggiore fiducia
-            nelle autorita. Non indica necessariamente un aumento delle violenze
-            reali. E un risultato <strong>positivo</strong>: il numero oscuro si
+            nelle autorit&agrave;. Non indica necessariamente un aumento delle violenze
+            reali. &Egrave; un risultato <strong>positivo</strong>: il numero oscuro si
             sta riducendo.
           </p>
         </div>
@@ -146,17 +146,17 @@ export default function Guida() {
             (violenze di genere, domestiche)
           </li>
           <li>
-            <strong>Over-reporting</strong> su altri (furti auto per necessita
+            <strong>Over-reporting</strong> su altri (furti auto per necessit&agrave;
             assicurativa)
           </li>
           <li>
-            <strong>Variabilita territoriale</strong> nella propensione alla
+            <strong>Variabilit&agrave; territoriale</strong> nella propensione alla
             denuncia: varia per tipo di reato e area geografica, senza un
             pattern uniforme Nord-Sud (fonte: ISTAT Sicurezza dei Cittadini
             2022-2023)
           </li>
           <li>
-            <strong>Effetto copertura mediatica</strong>: un caso mediatico puo
+            <strong>Effetto copertura mediatica</strong>: un caso mediatico pu&ograve;
             provocare un picco temporaneo nelle denunce di reati simili
           </li>
         </ul>
@@ -168,12 +168,12 @@ export default function Guida() {
         </h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong>Livello minimo: provincia</strong> - sacrifica utilita locale
+            <strong>Livello minimo: provincia</strong> - sacrifica utilit&agrave; locale
             per evitare stigmatizzazione di aree specifiche
           </li>
           <li>
-            <strong>No dati anteriori al 2014</strong> - per qualita e
-            comparabilita dubbia delle serie precedenti
+            <strong>No dati anteriori al 2014</strong> - per qualit&agrave; e
+            comparabilit&agrave; dubbia delle serie precedenti
           </li>
           <li>
             <strong>No dati real-time</strong> - ISTAT ha un ritardo fisiologico

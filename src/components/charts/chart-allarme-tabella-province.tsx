@@ -4,36 +4,42 @@ import { useState, useMemo, useCallback } from "react";
 import { useFetchData } from "@/lib/use-fetch-data";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
-interface DelittiProvincia {
+interface ReatoAllarme {
   REF_AREA: string;
   Territorio: string;
   Anno: number;
+  Reato: string;
   Delitti: number;
   Regione: string;
   Popolazione: number;
-  Tasso_per_1000: number;
+  Tasso_per_100k: number;
 }
 
 interface Props {
   anno: number;
+  reato: string;
 }
 
-type SortKey = "Territorio" | "Regione" | "Tasso_per_1000" | "variazione" | "Delitti" | "Popolazione";
+type SortKey = "Territorio" | "Regione" | "Tasso_per_100k" | "variazione" | "Delitti" | "Popolazione";
 type SortDir = "asc" | "desc";
 
-export function ChartTabellaProvince({ anno }: Props) {
-  const { data, loading, error } = useFetchData<DelittiProvincia[]>(
-    "/data/delitti_province.json"
+export function ChartAllarmeTabellaProvince({ anno, reato }: Props) {
+  const { data, loading, error } = useFetchData<ReatoAllarme[]>(
+    "/data/reati_allarme_sociale_province.json"
   );
   const [regioneSelezionata, setRegioneSelezionata] = useState("Tutte le regioni");
-  const [sortKey, setSortKey] = useState<SortKey>("Tasso_per_1000");
+  const [sortKey, setSortKey] = useState<SortKey>("Tasso_per_100k");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
-  const regioni = useMemo(() => {
+  const dataReato = useMemo(() => {
     if (!data) return [];
-    const set = new Set(data.map((d) => d.Regione));
+    return data.filter((d) => d.Reato === reato);
+  }, [data, reato]);
+
+  const regioni = useMemo(() => {
+    const set = new Set(dataReato.map((d) => d.Regione));
     return Array.from(set).sort();
-  }, [data]);
+  }, [dataReato]);
 
   const handleSort = useCallback((key: SortKey) => {
     if (key === sortKey) {
@@ -45,12 +51,12 @@ export function ChartTabellaProvince({ anno }: Props) {
   }, [sortKey]);
 
   const righe = useMemo(() => {
-    if (!data) return [];
+    if (!dataReato.length) return [];
 
-    const dataAnno = data.filter((d) => d.Anno === anno);
-    const data2014 = data.filter((d) => d.Anno === 2014);
+    const dataAnno = dataReato.filter((d) => d.Anno === anno);
+    const data2014 = dataReato.filter((d) => d.Anno === 2014);
     const mappa2014 = new Map(
-      data2014.map((d) => [d.REF_AREA, d.Tasso_per_1000])
+      data2014.map((d) => [d.REF_AREA, d.Tasso_per_100k])
     );
 
     let filtrate = dataAnno;
@@ -61,8 +67,8 @@ export function ChartTabellaProvince({ anno }: Props) {
     const mapped = filtrate.map((d) => {
       const tasso2014 = mappa2014.get(d.REF_AREA);
       const varNum =
-        tasso2014 != null
-          ? ((d.Tasso_per_1000 - tasso2014) / tasso2014) * 100
+        tasso2014 != null && tasso2014 > 0
+          ? ((d.Tasso_per_100k - tasso2014) / tasso2014) * 100
           : null;
       return { ...d, varNum, variazione: varNum != null ? varNum.toFixed(1) : "-" };
     });
@@ -74,8 +80,8 @@ export function ChartTabellaProvince({ anno }: Props) {
           return dir * a.Territorio.localeCompare(b.Territorio);
         case "Regione":
           return dir * a.Regione.localeCompare(b.Regione);
-        case "Tasso_per_1000":
-          return dir * (a.Tasso_per_1000 - b.Tasso_per_1000);
+        case "Tasso_per_100k":
+          return dir * (a.Tasso_per_100k - b.Tasso_per_100k);
         case "variazione":
           return dir * ((a.varNum ?? -Infinity) - (b.varNum ?? -Infinity));
         case "Delitti":
@@ -86,31 +92,11 @@ export function ChartTabellaProvince({ anno }: Props) {
           return 0;
       }
     });
-  }, [data, anno, regioneSelezionata, sortKey, sortDir]);
+  }, [dataReato, anno, regioneSelezionata, sortKey, sortDir]);
 
   if (loading) return <div className="h-64 animate-pulse bg-muted rounded" />;
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
-
-  const handleDownloadCsv = () => {
-    const header = ["Provincia", "Regione", `Tasso ${anno}`, "Var. vs 2014 (%)", `Delitti ${anno}`, "Popolazione"];
-    const rows = righe.map((r) => [
-      r.Territorio,
-      r.Regione,
-      r.Tasso_per_1000.toFixed(1),
-      r.variazione !== "-" ? r.variazione : "",
-      r.Delitti,
-      r.Popolazione,
-    ]);
-    const csv = [header, ...rows].map((row) => row.join(";")).join("\n");
-    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `province_${anno}${regioneSelezionata !== "Tutte le regioni" ? "_" + regioneSelezionata.replace(/\s/g, "_") : ""}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
 
   const sortIcon = (key: SortKey) => {
     if (sortKey !== key) return <span className="text-muted-foreground/40 ml-1">&#8693;</span>;
@@ -125,23 +111,23 @@ export function ChartTabellaProvince({ anno }: Props) {
     <div className="space-y-4">
       <Alert>
         <AlertDescription className="block">
-          <strong>Dati provinciali: limiti importanti.</strong> Province con meno
-          di 150.000 abitanti possono mostrare variabilit&agrave; elevata anno su anno
-          per effetto statistico (pochi eventi = alta variazione percentuale).
-          Guardare trend pluriennali, non singoli anni.
+          <strong>Reati rari: cautela necessaria.</strong> Per reati come omicidi
+          o sequestri, province piccole possono avere 0-2 casi/anno. Una singola
+          unit&agrave; di differenza causa variazioni percentuali enormi. Confrontare
+          sempre i valori assoluti e i trend pluriennali.
         </AlertDescription>
       </Alert>
 
       <div className="flex items-end gap-4 flex-wrap">
         <div>
           <label
-            htmlFor="regione-select"
+            htmlFor="regione-allarme-select"
             className="block text-sm font-medium mb-1"
           >
             Filtra per regione
           </label>
           <select
-            id="regione-select"
+            id="regione-allarme-select"
             value={regioneSelezionata}
             onChange={(e) => setRegioneSelezionata(e.target.value)}
             className="border rounded-md px-3 py-2 text-sm bg-background"
@@ -154,12 +140,6 @@ export function ChartTabellaProvince({ anno }: Props) {
             ))}
           </select>
         </div>
-        <button
-          onClick={handleDownloadCsv}
-          className="border rounded-md px-3 py-2 text-sm bg-background hover:bg-muted transition-colors"
-        >
-          Scarica CSV
-        </button>
       </div>
 
       <div className="overflow-x-auto max-h-[250px] overflow-y-auto border rounded-lg">
@@ -172,8 +152,8 @@ export function ChartTabellaProvince({ anno }: Props) {
               <th className={`text-left ${thClass}`} onClick={() => handleSort("Regione")}>
                 Regione{sortIcon("Regione")}
               </th>
-              <th className={`text-right ${thClass}`} onClick={() => handleSort("Tasso_per_1000")}>
-                Tasso {anno}{sortIcon("Tasso_per_1000")}
+              <th className={`text-right ${thClass}`} onClick={() => handleSort("Tasso_per_100k")}>
+                Tasso {anno}{sortIcon("Tasso_per_100k")}
               </th>
               <th className={`text-right ${thClass}`} onClick={() => handleSort("variazione")}>
                 Var. vs 2014{sortIcon("variazione")}
@@ -192,7 +172,7 @@ export function ChartTabellaProvince({ anno }: Props) {
                 <td className="py-2 px-3">{r.Territorio}</td>
                 <td className="py-2 px-3 text-muted-foreground">{r.Regione}</td>
                 <td className="py-2 px-3 text-right">
-                  {r.Tasso_per_1000.toFixed(1)}
+                  {r.Tasso_per_100k.toFixed(2)}
                 </td>
                 <td
                   className={`py-2 px-3 text-right ${

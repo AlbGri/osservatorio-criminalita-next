@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { PLOTLY_CONFIG } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -63,11 +63,11 @@ export function ChartRankingRegioni({ anno }: Props) {
           },
         ]}
         layout={{
-          xaxis: {
+          xaxis: { ...AXIS_FIXED,
             title: { text: "Tasso per 1000 ab." },
             range: [0, Math.max(...tassi) * 1.15],
           },
-          yaxis: {
+          yaxis: { ...AXIS_FIXED,
             automargin: true,
           },
           shapes: [

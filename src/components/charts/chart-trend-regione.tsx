@@ -9,6 +9,7 @@ import {
   PLOTLY_CONFIG,
   COVID_SHAPES,
   COVID_ANNOTATIONS,
+  AXIS_FIXED,
 } from "@/lib/config";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -106,8 +107,8 @@ export function ChartTrendRegione() {
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: CHART_HEIGHT_SMALL,
-            xaxis: { title: { text: "Anno" } },
-            yaxis: { title: { text: "Tasso per 1000 ab.", font: { size: 12 } } },
+            xaxis: { ...AXIS_FIXED, title: { text: "Anno" } },
+            yaxis: { ...AXIS_FIXED, title: { text: "Tasso per 1000 ab.", font: { size: 12 } } },
             legend: {
               x: 0,
               y: -0.25,

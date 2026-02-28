@@ -55,16 +55,34 @@ Il numero oscuro varia nel tempo: un aumento delle denunce può indicare maggior
 
 ### Propensione alla denuncia per territorio
 
-L'Indagine ISTAT sulla Sicurezza dei Cittadini 2022-2023 ([Tavola 6](https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/)) disaggrega la propensione alla denuncia per macroarea geografica e tipo di reato. I dati sfatano il luogo comune "il Sud denuncia meno":
+L'Indagine ISTAT sulla Sicurezza dei Cittadini 2022-2023 ([Tavola 6](https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/)) disaggrega la propensione alla denuncia per macroarea geografica e tipo di reato. I dati sfatano il luogo comune "il Sud denuncia meno".
 
-- **Reati contro la proprietà individuale**: Sud 52.6%, Nord-ovest 45.5%, Centro 44.6%, Nord-est 34.0%, Isole 34.6% (media Italia: 44.7%)
-- **Reati violenti**: Centro 65.2%, Sud 58.6%, Nord-ovest 37.3%, Isole 13.0\*, Nord-est 10.4\* (media Italia: 41.6%)
-- **Reati contro l'abitazione**: Nord-est 67.3%, Nord-ovest 59.7%, Sud 48.1%, Centro 48.8%, Isole 33.9% (media Italia: 55.3%)
-- **Reati contro i veicoli**: Sud 50.6%, Isole 43.4%, Centro 43.2%, Nord-ovest 40.1%, Nord-est 31.8% (media Italia: 41.3%)
+**Macro-categorie** (disponibili solo per il 2022-2023, non presenti nel report 2015-2016):
+
+- **Reati contro la proprietà individuale** (= scippi + borseggi + furti oggetti personali): Sud 52.6%, Nord-ovest 45.5%, Centro 44.6%, Nord-est 34.0%, Isole 34.6% (media Italia: 44.7%)
+- **Reati violenti** (= aggressioni + minacce): Centro 65.2%, Sud 58.6%, Nord-ovest 37.3%, Isole 13.0\*, Nord-est 10.4\* (media Italia: 41.6%)
+- **Reati contro l'abitazione** (= furti in abitazione + tentati furti): Nord-est 67.3%, Nord-ovest 59.7%, Centro 48.8%, Sud 48.1%, Isole 33.9% (media Italia: 55.3%)
+- **Reati contro i veicoli** (= furti di veicoli + furti di oggetti dai veicoli): Sud 50.6%, Isole 43.4%, Centro 43.2%, Nord-ovest 40.1%, Nord-est 31.8% (media Italia: 41.3%)
+
+**Singoli reati** (disponibili per entrambe le edizioni, % vittime che hanno denunciato, ordine: NO / NE / Centro / Sud / Isole):
+
+| Reato | 2015-2016 | 2022-2023 |
+|---|---|---|
+| Scippi | 71.7 / 64.4 / 51.1 / 46.9 / 8.5\* | 33.9 / 39.2 / 63.0 / 54.2 / 52.9\* |
+| Borseggi | 62.5 / 44.2 / 37.1 / 31.7 / 33.2 | 51.4 / 47.8 / 62.5 / 68.5 / 28.4\* |
+| Rapine | 59.9 / 52.0 / 32.1 / 40.0 / 22.5\* | 23.5 / 23.5\* / 57.0 / 74.7 / 42.9\* |
+| Furti oggetti personali | 37.4 / 16.3 / 20.1 / 30.8 / 19.8 | 45.5 / 26.4 / 15.9\* / 38.0 / 33.2 |
+| Aggressioni | 14.3 / 26.2 / 17.0 / 9.2\* / 41.9 | 42.3 / 10.4\* / 69.0 / 55.3 / 11.1\* |
+| Minacce | 36.9 / 26.9 / 40.1 / 22.2 / 24.6 | 34.6 / 16.9\* / 13.8\* / 32.5\* / 16.0 |
+| Furti abitazione | 73.1 / 63.3 / 51.3 / 54.9 / 64.0 | 63.5 / 79.3 / 61.0 / 68.9 / 38.5 |
+| Furti veicoli | 38.5 / 30.3 / 23.4 / 49.2 / 24.7 | 38.3 / 41.8 / 44.6 / 65.7 / 55.9 |
+| Furti oggetti dai veicoli | 42.9 / 55.5 / 48.4 / 45.9 / 34.6 | 73.5 / 68.9 / 49.0 / 57.6 / 30.0\* |
 
 \* Errore campionario >35% (dato poco affidabile).
 
-Il confronto con l'edizione 2015-2016 ([Prospetto 6, report ISTAT 1 febbraio 2019](https://www.istat.it/it/files/2019/02/Reati-contro-la-persona-e-contro-la-proprieta.pdf)) mostra cambiamenti drammatici, soprattutto per i reati violenti: le aggressioni denunciate al Sud passano da 9.2% a 55.3% (+46 punti), al Centro da 17.0% a 69.0% (+52 punti). Le rapine denunciate al Sud passano da 40.0% a 74.7% (+35 punti). Al contrario, gli scippi denunciati calano drasticamente al Nord-ovest (da 71.7% a 33.9%) e al Nord-est (da 64.4% a 39.2%).
+Fonti: [Prospetto 6, report ISTAT 1 febbraio 2019](https://www.istat.it/it/files/2019/02/Reati-contro-la-persona-e-contro-la-proprieta.pdf) (2015-2016), [Tavola 6, report ISTAT 9 giugno 2025](https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/) (2022-2023).
+
+Il confronto storico mostra cambiamenti drammatici, soprattutto per i reati violenti: le aggressioni denunciate al Sud passano da 9.2% a 55.3% (+46 punti), al Centro da 17.0% a 69.0% (+52 punti). Le rapine denunciate al Sud passano da 40.0% a 74.7% (+35 punti). Al contrario, gli scippi denunciati calano drasticamente al Nord-ovest (da 71.7% a 33.9%) e al Nord-est (da 64.4% a 39.2%). I furti di veicoli crescono fortemente al Sud (da 49.2% a 65.7%) e alle Isole (da 24.7% a 55.9%).
 
 ### Cambiamenti normativi
 
@@ -299,5 +317,11 @@ I confini regionali provengono dal dataset [openpolis/geojson-italy](https://git
 Questo progetto non afferma di mostrare "la criminalità in Italia", ma solo i dati ufficiali sulle denunce e sulla percezione, con piena consapevolezza dei limiti. L'obiettivo è facilitare la comprensione del divario tra percezione pubblica e dati registrati, non di dimostrare una tesi precostituita.
 
 **Questo progetto mostra cosa è possibile vedere con i dati disponibili. L'assenza di dati migliori non è limite statistico: è responsabilità istituzionale.**
+
+## Nota sul processo di sviluppo
+
+Questo progetto è stato sviluppato con VS Code e [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (Anthropic, modello Claude Opus), in una modalità di interazione continua tra analista e modello. La scelta è deliberata: costruire una dashboard statistica non è un problema di ingegneria del software risolvibile in autonomia da un agente. Ogni grafico richiede decisioni metodologiche — quale indicatore esporre, a quale scala, con quale contesto — che sono il contenuto intellettuale del lavoro stesso, non dettagli implementativi.
+
+La statistica non è una scienza esatta: è uno strumento interpretativo, e come tale uno strumento politico in senso ampio. Le stesse cifre possono sostenere narrative opposte a seconda di cosa si sceglie di mostrare, come lo si aggrega e cosa si omette. Per questo il paradigma utile non è quello dell'"agente autonomo che esegue", ma quello del collaboratore intelligente che propone e lascia decidere. Il modello non decide la storia da raccontare: aiuta a raccontare meglio quella che l'analista ha già scelto di raccontare.
 
 Tutti i dati raw, script di elaborazione e codice sorgente della dashboard sono disponibili pubblicamente su GitHub: https://github.com/AlbGri/osservatorio-criminalita-next

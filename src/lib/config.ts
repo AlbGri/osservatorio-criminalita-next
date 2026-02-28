@@ -57,7 +57,20 @@ export const PLOTLY_CONFIG: Partial<Plotly.Config> = {
   responsive: true,
   doubleClick: false,
   editable: false,
+  edits: {
+    axisTitleText: false,
+    titleText: false,
+    legendText: false,
+    annotationText: false,
+    annotationTail: false,
+    annotationPosition: false,
+    shapePosition: false,
+    legendPosition: false,
+  },
 };
+
+/** Proprietà base per tutti gli assi: disabilita zoom/pan/editing range */
+export const AXIS_FIXED = { fixedrange: true } as const;
 
 export const COVID_SHAPES = [
   {

@@ -8,6 +8,7 @@ import {
   PLOTLY_CONFIG,
   COVID_SHAPES,
   COVID_ANNOTATIONS,
+  AXIS_FIXED,
 } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -57,8 +58,8 @@ export function ChartTrendNazionale() {
             },
           ]}
           layout={{
-            xaxis: { title: { text: "Anno" } },
-            yaxis: { title: { text: "Delitti per 1000 ab." } },
+            xaxis: { ...AXIS_FIXED, title: { text: "Anno" } },
+            yaxis: { ...AXIS_FIXED, title: { text: "Delitti per 1000 ab." } },
             dragmode: false,
             hovermode: "closest" as const,
             plot_bgcolor: "white",

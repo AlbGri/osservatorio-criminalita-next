@@ -8,6 +8,7 @@ import {
   PLOTLY_CONFIG,
   COVID_SHAPES,
   COVID_ANNOTATIONS,
+  AXIS_FIXED,
 } from "@/lib/config";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -137,7 +138,7 @@ export function ChartTipologieReato() {
     <div className="space-y-4">
       <Alert>
         <AlertDescription className="block">
-          <strong>Dinamiche diverse per tipologia:</strong> aumenti in specifiche categorie (es. truffe online) possono riflettere cambiamenti sociali e tecnologici senza indicare piu criminalita complessiva. Le macro-categorie non sono mutuamente esclusive: uno stesso reato puo rientrare in piu categorie, pertanto la loro somma supera il totale nazionale.
+          <strong>Dinamiche diverse per tipologia:</strong> aumenti in specifiche categorie (es. truffe online) possono riflettere cambiamenti sociali e tecnologici senza indicare pi&ugrave; criminalit&agrave; complessiva. Le macro-categorie non sono mutuamente esclusive: uno stesso reato pu&ograve; rientrare in pi&ugrave; categorie, pertanto la loro somma supera il totale nazionale.
         </AlertDescription>
       </Alert>
 
@@ -149,8 +150,8 @@ export function ChartTipologieReato() {
               data={traceCategorie}
               layout={{
                 ...baseLayout,
-                xaxis: { title: { text: "Anno" } },
-                yaxis: { title: { text: "Tasso per 1000 ab.", font: { size: 12 } } },
+                xaxis: { ...AXIS_FIXED, title: { text: "Anno" } },
+                yaxis: { ...AXIS_FIXED, title: { text: "Tasso per 1000 ab.", font: { size: 12 } } },
               }}
               config={PLOTLY_CONFIG}
               useResizeHandler
@@ -174,8 +175,8 @@ export function ChartTipologieReato() {
               data={traceAllarme}
               layout={{
                 ...baseLayout,
-                xaxis: { title: { text: "Anno" } },
-                yaxis: { title: { text: "Tasso per 100k ab.", font: { size: 12 } } },
+                xaxis: { ...AXIS_FIXED, title: { text: "Anno" } },
+                yaxis: { ...AXIS_FIXED, title: { text: "Tasso per 100k ab.", font: { size: 12 } } },
               }}
               config={PLOTLY_CONFIG}
               useResizeHandler

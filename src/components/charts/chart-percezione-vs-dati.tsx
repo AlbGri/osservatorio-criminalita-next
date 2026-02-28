@@ -8,6 +8,7 @@ import {
   PLOTLY_CONFIG,
   COVID_SHAPES,
   COVID_ANNOTATIONS,
+  AXIS_FIXED,
 } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -48,7 +49,7 @@ export function ChartPercezioneVsDati() {
     <div className="space-y-4">
       <Alert>
         <AlertDescription className="block">
-          <strong>Divario percezione-dati:</strong> la percezione di insicurezza non e &quot;sbagliata&quot; - risponde a fattori legittimi come copertura mediatica, degrado urbano, sfiducia istituzionale. Percezione e criminalita registrata seguono dinamiche diverse.
+          <strong>Divario percezione-dati:</strong> la percezione di insicurezza non &egrave; &quot;sbagliata&quot; - risponde a fattori legittimi come copertura mediatica, degrado urbano, sfiducia istituzionale. Percezione e delitti denunciati seguono dinamiche diverse.
         </AlertDescription>
       </Alert>
 
@@ -75,13 +76,13 @@ export function ChartPercezioneVsDati() {
             },
           ]}
           layout={{
-            xaxis: { title: { text: "Anno" } },
-            yaxis: {
+            xaxis: { ...AXIS_FIXED, title: { text: "Anno" } },
+            yaxis: { ...AXIS_FIXED,
               title: { text: "% Percezione rischio", font: { color: COLORS.secondary, size: 12 } },
               tickfont: { color: COLORS.secondary },
               side: "left",
             },
-            yaxis2: {
+            yaxis2: { ...AXIS_FIXED,
               title: { text: "Tasso per 1000 ab.", font: { color: COLORS.primary, size: 12 } },
               tickfont: { color: COLORS.primary },
               overlaying: "y" as const,
@@ -116,7 +117,7 @@ export function ChartPercezioneVsDati() {
         </Card>
         <Card>
           <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">Delta Tasso criminalita</p>
+            <p className="text-xs sm:text-sm text-muted-foreground">Delta Tasso delitti denunciati</p>
             <p className="text-lg sm:text-2xl font-bold">{varTasso.toFixed(1)} per 1000 ab.</p>
           </CardContent>
         </Card>

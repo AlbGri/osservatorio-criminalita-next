@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChartAllarmeTrendNazionale } from "@/components/charts/chart-allarme-trend-nazionale";
 import { ChartAllarmeRankingRegioni } from "@/components/charts/chart-allarme-ranking-regioni";
 import { ChartAllarmeTrendRegione } from "@/components/charts/chart-allarme-trend-regione";
+import { ChartAllarmeTabellaProvince } from "@/components/charts/chart-allarme-tabella-province";
 import { ChartAllarmeTrendProvincia } from "@/components/charts/chart-allarme-trend-provincia";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -59,7 +60,7 @@ export default function ReatiAllarmeSociale() {
 
         <div>
           <span className="block text-sm font-medium mb-1">
-            Anno (ranking)
+            Anno
           </span>
           <div className="flex flex-wrap gap-1">
             {ANNI.map((a) => (
@@ -83,7 +84,7 @@ export default function ReatiAllarmeSociale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Trend Nazionale (2014-2023)
+          Trend Nazionale: {reato} (2014-2023)
         </h2>
         <ChartAllarmeTrendNazionale reatoSelezionato={reato} />
       </section>
@@ -106,6 +107,17 @@ export default function ReatiAllarmeSociale() {
         <ChartAllarmeTrendRegione reato={reato} />
       </section>
 
+      <hr />
+
+      <section className="space-y-3">
+        <h2 className="text-xl sm:text-2xl font-semibold">
+          Esplora i Dati Provinciali: {reato} ({anno})
+        </h2>
+        <ChartAllarmeTabellaProvince anno={anno} reato={reato} />
+      </section>
+
+      <hr />
+
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
           Trend Provinciale: {reato} (2014-2023)
@@ -119,7 +131,7 @@ export default function ReatiAllarmeSociale() {
         <AlertDescription className="block">
           <strong>Nota metodologica:</strong> i tassi sono calcolati sulla
           popolazione residente. Per reati rari (es. omicidi in regioni piccole),
-          poche unita di differenza possono causare variazioni percentuali
+          poche unit&agrave; di differenza possono causare variazioni percentuali
           significative. Confrontare sempre i valori assoluti.
         </AlertDescription>
       </Alert>

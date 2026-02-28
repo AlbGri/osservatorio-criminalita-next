@@ -19,7 +19,7 @@ export default function Home() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Percezione della Sicurezza vs Criminalita Registrata (2014-2023)
+          Percezione della Sicurezza vs Delitti Denunciati (2014-2023)
         </h2>
         <ChartPercezioneVsDati />
       </section>

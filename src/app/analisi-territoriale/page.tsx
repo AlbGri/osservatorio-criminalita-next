@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChartMappaRegioni } from "@/components/charts/chart-mappa-regioni";
+import { ChartRankingRegioni } from "@/components/charts/chart-ranking-regioni";
+import { ChartTrendRegione } from "@/components/charts/chart-trend-regione";
 import { ChartTabellaProvince } from "@/components/charts/chart-tabella-province";
 import { ChartTrendProvincia } from "@/components/charts/chart-trend-provincia";
-import { ChartTrendRegione } from "@/components/charts/chart-trend-regione";
 
 const ANNI = Array.from({ length: 10 }, (_, i) => 2014 + i);
 const PLAY_INTERVAL_MS = 1500;
@@ -87,9 +88,27 @@ export default function AnalisiTerritoriale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Criminalita Registrata per Regione ({anno})
+          Delitti Denunciati per Regione ({anno})
         </h2>
         <ChartMappaRegioni anno={anno} />
+      </section>
+
+      <hr />
+
+      <section className="space-y-3">
+        <h2 className="text-xl sm:text-2xl font-semibold">
+          Ranking Regioni ({anno})
+        </h2>
+        <ChartRankingRegioni anno={anno} />
+      </section>
+
+      <hr />
+
+      <section className="space-y-3">
+        <h2 className="text-xl sm:text-2xl font-semibold">
+          Trend Temporale Regione (2014-2023)
+        </h2>
+        <ChartTrendRegione />
       </section>
 
       <hr />
@@ -101,18 +120,13 @@ export default function AnalisiTerritoriale() {
         <ChartTabellaProvince anno={anno} />
       </section>
 
-      <section className="space-y-3">
-        <h3 className="text-lg sm:text-xl font-semibold">
-          Trend Temporale Provincia (2014-2023)
-        </h3>
-        <ChartTrendProvincia />
-      </section>
+      <hr />
 
       <section className="space-y-3">
-        <h3 className="text-lg sm:text-xl font-semibold">
-          Trend Temporale Regione (2014-2023)
-        </h3>
-        <ChartTrendRegione />
+        <h2 className="text-xl sm:text-2xl font-semibold">
+          Trend Temporale Provincia (2014-2023)
+        </h2>
+        <ChartTrendProvincia />
       </section>
     </main>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
 
 interface ChartFullscreenWrapperProps {
@@ -10,6 +10,24 @@ interface ChartFullscreenWrapperProps {
 export function ChartFullscreenWrapper({ children }: ChartFullscreenWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Ascolta l'evento nativo fullscreenchange per triggerare il resize di Plotly
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const nowFullscreen = !!document.fullscreenElement;
+      setIsFullscreen(nowFullscreen);
+      if (!nowFullscreen) {
+        // Plotly non ricalcola le dimensioni: forza resize con delay multipli
+        // per coprire diversi tempi di transizione del browser
+        const delays = [100, 300, 600];
+        delays.forEach((ms) =>
+          setTimeout(() => window.dispatchEvent(new Event("resize")), ms)
+        );
+      }
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
 
   const toggleFullscreen = useCallback(async () => {
     if (!containerRef.current) return;
@@ -22,10 +40,8 @@ export function ChartFullscreenWrapper({ children }: ChartFullscreenWrapperProps
       } catch {
         // orientation lock non supportato su desktop
       }
-      setIsFullscreen(true);
     } else {
       await document.exitFullscreen();
-      setIsFullscreen(false);
     }
   }, []);
 
