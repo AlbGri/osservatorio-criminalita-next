@@ -295,90 +295,91 @@ export function ChartNumeroOscuro() {
         propensione più alta per i reati violenti (65.2%).
       </p>
 
-      <Alert>
-        <AlertDescription className="block">
-          <strong>Macro-categorie vs singoli reati.</strong> Le macro-categorie
-          ISTAT aggregano più reati: &quot;Reati proprietà individuale&quot; =
-          scippi + borseggi + furti oggetti personali;
-          &quot;Reati violenti&quot; = aggressioni + minacce;
-          &quot;Reati abitazione&quot; = furti in abitazione + tentati furti;
-          &quot;Reati veicoli&quot; = furti di veicoli + furti di oggetti dai
-          veicoli. Le macro-categorie sono disponibili solo per il 2022-2023;
-          il report 2015-2016 riporta solo i singoli reati.
-        </AlertDescription>
-      </Alert>
+      <details className="space-y-6">
+        <summary className="cursor-pointer text-lg font-semibold hover:text-primary transition-colors">
+          Come cambia la propensione per territorio nel tempo (9 grafici)
+        </summary>
 
-      <div className="space-y-3">
-        <h3 className="text-lg font-semibold">
-          Come cambia la propensione per territorio nel tempo
-        </h3>
+        <Alert>
+          <AlertDescription className="block">
+            <strong>Macro-categorie vs singoli reati.</strong> Le macro-categorie
+            ISTAT aggregano pi&ugrave; reati: &quot;Reati propriet&agrave; individuale&quot; =
+            scippi + borseggi + furti oggetti personali;
+            &quot;Reati violenti&quot; = aggressioni + minacce;
+            &quot;Reati abitazione&quot; = furti in abitazione + tentati furti;
+            &quot;Reati veicoli&quot; = furti di veicoli + furti di oggetti dai
+            veicoli. Le macro-categorie sono disponibili solo per il 2022-2023;
+            il report 2015-2016 riporta solo i singoli reati.
+          </AlertDescription>
+        </Alert>
+
         <p className="text-muted-foreground">
           Confronto tra le edizioni 2015-2016 e 2022-2023 per tutti i singoli
           reati disponibili. I valori con asterisco (*) nel report ISTAT hanno
           errore campionario &gt;35%.
         </p>
-      </div>
 
-      {reatiStorico.map((reato) => (
-        <div key={reato} className="space-y-2">
-          <h4 className="text-sm font-semibold">{reato}</h4>
-          <ChartFullscreenWrapper>
-            <Plot
-              data={[
-                {
-                  name: "2015-2016",
-                  x: macroaree,
-                  y: storico2016[reato],
-                  type: "bar",
-                  marker: { color: "#b0c4de" },
-                  text: fmtAst(storico2016[reato], asterischi2016[reato]),
-                  textposition: "outside" as const,
-                },
-                {
-                  name: "2022-2023",
-                  x: macroaree,
-                  y: storico2023[reato],
-                  type: "bar",
-                  marker: { color: COLORS.primary },
-                  text: fmtAst(storico2023[reato], asterischi2023[reato]),
-                  textposition: "outside" as const,
-                },
-              ]}
-              layout={{
-                barmode: "group",
-                xaxis: { ...AXIS_FIXED },
-                yaxis: { ...AXIS_FIXED,
-                  title: { text: "% denunciato" },
-                  range: [0, 105],
-                },
-                height: 280,
-                legend: { orientation: "h" as const, y: -0.28 },
-                margin: { t: 10, l: 50, r: 20, b: 60 },
-                dragmode: false,
-                plot_bgcolor: "white",
-                paper_bgcolor: "white",
-              }}
-              config={PLOTLY_CONFIG}
-              useResizeHandler
-              className="w-full"
-            />
-          </ChartFullscreenWrapper>
-        </div>
-      ))}
+        {reatiStorico.map((reato) => (
+          <div key={reato} className="space-y-2">
+            <h4 className="text-sm font-semibold">{reato}</h4>
+            <ChartFullscreenWrapper>
+              <Plot
+                data={[
+                  {
+                    name: "2015-2016",
+                    x: macroaree,
+                    y: storico2016[reato],
+                    type: "bar",
+                    marker: { color: "#b0c4de" },
+                    text: fmtAst(storico2016[reato], asterischi2016[reato]),
+                    textposition: "outside" as const,
+                  },
+                  {
+                    name: "2022-2023",
+                    x: macroaree,
+                    y: storico2023[reato],
+                    type: "bar",
+                    marker: { color: COLORS.primary },
+                    text: fmtAst(storico2023[reato], asterischi2023[reato]),
+                    textposition: "outside" as const,
+                  },
+                ]}
+                layout={{
+                  barmode: "group",
+                  xaxis: { ...AXIS_FIXED },
+                  yaxis: { ...AXIS_FIXED,
+                    title: { text: "% denunciato" },
+                    range: [0, 105],
+                  },
+                  height: 280,
+                  legend: { orientation: "h" as const, y: -0.28 },
+                  margin: { t: 10, l: 50, r: 20, b: 60 },
+                  dragmode: false,
+                  plot_bgcolor: "white",
+                  paper_bgcolor: "white",
+                }}
+                config={PLOTLY_CONFIG}
+                useResizeHandler
+                className="w-full"
+              />
+            </ChartFullscreenWrapper>
+          </div>
+        ))}
 
-      <p>
-        I cambiamenti più marcati riguardano i{" "}
-        <strong>reati violenti al Centro-Sud</strong>: le aggressioni denunciate
-        al Sud passano da 9.2% a 55.3% (+46 punti), al Centro da 17.0% a 69.0%
-        (+52 punti). Le rapine al Sud passano da 40.0% a 74.7% (+35 punti).
-        Al contrario, gli scippi denunciati calano drasticamente al{" "}
-        <strong>Nord-ovest</strong> (da 71.7% a 33.9%) e al{" "}
-        <strong>Nord-est</strong> (da 64.4% a 39.2%). I borseggi aumentano
-        ovunque tranne che alle Isole. I furti di veicoli crescono fortemente al{" "}
-        <strong>Sud</strong> (da 49.2% a 65.7%) e alle{" "}
-        <strong>Isole</strong> (da 24.7% a 55.9%). I furti di oggetti dai
-        veicoli aumentano al Nord ma calano alle Isole.
-      </p>
+        <p>
+          I cambiamenti pi&ugrave; marcati riguardano i{" "}
+          <strong>reati violenti al Centro-Sud</strong>: le aggressioni denunciate
+          al Sud passano da 9.2% a 55.3% (+46 punti), al Centro da 17.0% a 69.0%
+          (+52 punti). Le rapine al Sud passano da 40.0% a 74.7% (+35 punti).
+          Al contrario, gli scippi denunciati calano drasticamente al{" "}
+          <strong>Nord-ovest</strong> (da 71.7% a 33.9%) e al{" "}
+          <strong>Nord-est</strong> (da 64.4% a 39.2%). I borseggi aumentano
+          ovunque tranne che alle Isole. I furti di veicoli crescono fortemente al{" "}
+          <strong>Sud</strong> (da 49.2% a 65.7%) e alle{" "}
+          <strong>Isole</strong> (da 24.7% a 55.9%). I furti di oggetti dai
+          veicoli aumentano al Nord ma calano alle Isole.
+        </p>
+      </details>
 
       <p className="text-xs text-muted-foreground">
         Fonti:{" "}

@@ -176,8 +176,9 @@ export default function Guida() {
             comparabilit&agrave; dubbia delle serie precedenti
           </li>
           <li>
-            <strong>No dati real-time</strong> - ISTAT ha un ritardo fisiologico
-            di 12-18 mesi nella pubblicazione
+            <strong>No dati real-time</strong> - ISTAT pubblica i delitti
+            denunciati con un ritardo di circa 2 anni (vedi Metodologia per il
+            calendario atteso)
           </li>
           <li>
             <strong>Solo denunce</strong> - l&apos;Italia non pubblica dati su

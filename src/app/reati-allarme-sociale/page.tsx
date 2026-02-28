@@ -32,7 +32,8 @@ export default function ReatiAllarmeSociale() {
         <p className="mt-2 text-muted-foreground">
           Focus su reati rari ma ad alto impatto: rappresentano meno del 2% dei
           delitti totali ma dominano la percezione pubblica e la copertura
-          mediatica.
+          mediatica. Tutti i dati si riferiscono a delitti denunciati alle forze
+          dell&apos;ordine, non alla criminalit&agrave; reale.
         </p>
       </div>
 
@@ -111,7 +112,7 @@ export default function ReatiAllarmeSociale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Esplora i Dati Provinciali: {reato} ({anno})
+          Dati Provinciali: {reato} ({anno})
         </h2>
         <ChartAllarmeTabellaProvince anno={anno} reato={reato} />
       </section>
@@ -129,10 +130,11 @@ export default function ReatiAllarmeSociale() {
 
       <Alert>
         <AlertDescription className="block">
-          <strong>Nota metodologica:</strong> i tassi sono calcolati sulla
-          popolazione residente. Per reati rari (es. omicidi in regioni piccole),
-          poche unit&agrave; di differenza possono causare variazioni percentuali
-          significative. Confrontare sempre i valori assoluti.
+          <strong>Nota metodologica:</strong> tutti i tassi sono calcolati sui
+          delitti denunciati e sulla popolazione residente. Per reati rari (es.
+          omicidi in regioni piccole), poche unit&agrave; di differenza possono
+          causare variazioni percentuali significative. Confrontare sempre i
+          valori assoluti.
         </AlertDescription>
       </Alert>
     </main>

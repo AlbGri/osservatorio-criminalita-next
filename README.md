@@ -1,18 +1,18 @@
-# Osservatorio Criminalita
+# Osservatorio Criminalit&agrave;
 
-Dati e analisi sulla criminalita in Italia con fonti ufficiali ISTAT (2014-2023).
+Dati e analisi sulla criminalit&agrave; in Italia con fonti ufficiali ISTAT (2014-2023).
 
 **[Vai al sito](https://albgri.github.io/osservatorio-criminalita-next/)**
 
-![Osservatorio Criminalita](public/og-image.png)
+![Osservatorio Criminalit&agrave;](public/og-image.png)
 
 ## Contenuti
 
-- **Dashboard** - KPI nazionali, trend delitti denunciati, percezione vs dati reali, tipologie di reato
-- **Analisi Territoriale** - Mappa coropletica regioni con frecce trend, ranking regioni, tabella province con filtro, numero oscuro
-- **Metodologia** - Principi metodologici e trasparenza
-- **Guida alla Lettura** - Come interpretare grafici e dati
-- **Limitazioni** - Cosa i dati non possono dire, bias noti
+- **Home** - KPI nazionali, trend delitti denunciati, percezione vs dati, numero oscuro e propensione alla denuncia
+- **Analisi Territoriale** - Mappa coropletica regioni con frecce trend, ranking regionale, trend regione/provincia, tabella province con filtro
+- **Reati di Allarme Sociale** - Focus su 6 reati rari ad alto impatto (omicidi, violenze sessuali, rapine in abitazione, ecc.): trend nazionale, ranking regionale, trend regione/provincia, tabella province
+- **Metodologia** - Principi metodologici, fonti, frequenza aggiornamento e trasparenza
+- **Guida alla Lettura** - Come interpretare grafici e dati, cosa non si pu&ograve; concludere, bias noti
 - **Dati e Codice** - Dataset, istruzioni per replicare, licenze
 
 ## Stack

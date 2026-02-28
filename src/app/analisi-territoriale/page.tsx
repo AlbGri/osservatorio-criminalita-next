@@ -88,7 +88,7 @@ export default function AnalisiTerritoriale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Delitti Denunciati per Regione ({anno})
+          Mappa Regionale ({anno})
         </h2>
         <ChartMappaRegioni anno={anno} />
       </section>
@@ -97,7 +97,7 @@ export default function AnalisiTerritoriale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Ranking Regioni ({anno})
+          Ranking Regionale ({anno})
         </h2>
         <ChartRankingRegioni anno={anno} />
       </section>
@@ -106,7 +106,7 @@ export default function AnalisiTerritoriale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Trend Temporale Regione (2014-2023)
+          Trend Regionale (2014-2023)
         </h2>
         <ChartTrendRegione />
       </section>
@@ -115,7 +115,7 @@ export default function AnalisiTerritoriale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Esplora i Dati Provinciali ({anno})
+          Dati Provinciali ({anno})
         </h2>
         <ChartTabellaProvince anno={anno} />
       </section>
@@ -124,7 +124,7 @@ export default function AnalisiTerritoriale() {
 
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold">
-          Trend Temporale Provincia (2014-2023)
+          Trend Provinciale (2014-2023)
         </h2>
         <ChartTrendProvincia />
       </section>
