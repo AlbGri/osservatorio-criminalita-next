@@ -53,6 +53,19 @@ La differenza tra reati commessi e reati denunciati (il "numero oscuro") varia s
 
 Il numero oscuro varia nel tempo: un aumento delle denunce può indicare maggiore propensione a denunciare (positivo), non necessariamente più reati. Il raddoppio delle denunce per aggressioni tra 2015-2016 e 2022-2023 ne è un esempio. Le due edizioni dell'indagine comparabili sono l'[Indagine 2015-2016](https://www.istat.it/it/files/2019/02/Reati-contro-la-persona-e-contro-la-proprieta.pdf) e quella 2022-2023.
 
+### Propensione alla denuncia per territorio
+
+L'Indagine ISTAT sulla Sicurezza dei Cittadini 2022-2023 ([Tavola 6](https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/)) disaggrega la propensione alla denuncia per macroarea geografica e tipo di reato. I dati sfatano il luogo comune "il Sud denuncia meno":
+
+- **Reati contro la proprietà individuale**: Sud 52.6%, Nord-ovest 45.5%, Centro 44.6%, Nord-est 34.0%, Isole 34.6% (media Italia: 44.7%)
+- **Reati violenti**: Centro 65.2%, Sud 58.6%, Nord-ovest 37.3%, Isole 13.0\*, Nord-est 10.4\* (media Italia: 41.6%)
+- **Reati contro l'abitazione**: Nord-est 67.3%, Nord-ovest 59.7%, Sud 48.1%, Centro 48.8%, Isole 33.9% (media Italia: 55.3%)
+- **Reati contro i veicoli**: Sud 50.6%, Isole 43.4%, Centro 43.2%, Nord-ovest 40.1%, Nord-est 31.8% (media Italia: 41.3%)
+
+\* Errore campionario >35% (dato poco affidabile).
+
+Il confronto con l'edizione 2015-2016 ([Prospetto 6, report ISTAT 1 febbraio 2019](https://www.istat.it/it/files/2019/02/Reati-contro-la-persona-e-contro-la-proprieta.pdf)) mostra cambiamenti drammatici, soprattutto per i reati violenti: le aggressioni denunciate al Sud passano da 9.2% a 55.3% (+46 punti), al Centro da 17.0% a 69.0% (+52 punti). Le rapine denunciate al Sud passano da 40.0% a 74.7% (+35 punti). Al contrario, gli scippi denunciati calano drasticamente al Nord-ovest (da 71.7% a 33.9%) e al Nord-est (da 64.4% a 39.2%).
+
 ### Cambiamenti normativi
 
 Nuove leggi possono modificare:
@@ -269,7 +282,7 @@ Trentino-Alto Adige: nel dataset ISTAT i delitti sono separati in Bolzano (ITD1)
 
 I confronti territoriali richiedono estrema cautela per diversi motivi:
 
-1. **Propensione alla denuncia**: il Nord Italia denuncia mediamente il 15-20% in più del Sud (fonte: ISTAT Indagine Vittimizzazione). Un tasso più alto non significa necessariamente più criminalità reale.
+1. **Propensione alla denuncia**: la propensione a denunciare varia significativamente per tipo di reato e territorio. L'Indagine ISTAT 2022-2023 mostra che il Sud denuncia più della media nazionale per reati contro la proprietà (52.6% vs 44.7%) e per reati violenti (58.6% vs 41.6%), mentre Nord-est e Isole denunciano meno (vedi sezione "Propensione alla denuncia per territorio"). Un tasso più alto non significa necessariamente più criminalità reale.
 
 2. **Effetto turismo e pendolarismo**: regioni con alta presenza turistica (es. Lazio, Toscana) o forte pendolarismo mostrano tassi elevati perché il denominatore (popolazione residente) sottostima le persone effettivamente presenti.
 

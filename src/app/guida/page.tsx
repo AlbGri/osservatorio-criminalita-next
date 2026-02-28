@@ -59,8 +59,10 @@ export default function Guida() {
             <strong>
               &quot;Il territorio X e piu sicuro di Y&quot;
             </strong>
-            : la propensione alla denuncia varia tra territori. Il Nord denuncia
-            mediamente di piu del Sud (fonte: ISTAT Vittimizzazione)
+            : la propensione alla denuncia varia tra territori e tipi di reato.
+            L&apos;Indagine ISTAT 2022-2023 mostra che il Sud denuncia piu della
+            media per reati contro la proprieta e reati violenti, mentre Nord-est
+            e Isole denunciano meno (vedi Metodologia)
           </li>
           <li>
             <strong>
@@ -149,8 +151,9 @@ export default function Guida() {
           </li>
           <li>
             <strong>Variabilita territoriale</strong> nella propensione alla
-            denuncia: il Nord denuncia mediamente il 15-20% in piu del Sud
-            (fonte: ISTAT Vittimizzazione)
+            denuncia: varia per tipo di reato e area geografica, senza un
+            pattern uniforme Nord-Sud (fonte: ISTAT Sicurezza dei Cittadini
+            2022-2023)
           </li>
           <li>
             <strong>Effetto copertura mediatica</strong>: un caso mediatico puo
