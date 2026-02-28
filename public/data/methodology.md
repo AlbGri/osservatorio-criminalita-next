@@ -297,19 +297,21 @@ I confini regionali provengono dal dataset [openpolis/geojson-italy](https://git
 
 ### Delitti denunciati (ISTAT - dati.istat.it)
 
-ISTAT pubblica i dati sui delitti denunciati con un **ritardo strutturale di circa 2 anni** rispetto all'anno di riferimento. I dati provengono dalla banca dati interforze del Ministero dell'Interno (SDI/SSD) e vengono elaborati e strutturati dall'ISTAT prima della pubblicazione.
+ISTAT pubblica i dati sui delitti denunciati con un **ritardo strutturale di circa 2 anni** rispetto all'anno di riferimento. I dati provengono dalla banca dati interforze del Ministero dell'Interno (SDI/SSD) e vengono elaborati e strutturati dall'ISTAT prima della pubblicazione su [dati.istat.it](http://dati.istat.it/Index.aspx?DataSetCode=dccv_delittips).
 
-- **Dati 2023**: pubblicati su dati.istat.it tra fine 2025 e inizio 2026
+- **Dati 2023**: pubblicati su dati.istat.it tra fine 2025 e inizio 2026 (attualmente in uso in questa dashboard)
 - **Dati 2024**: attesi indicativamente nel **2026-2027**
 - **Dati 2025**: attesi indicativamente nel **2027-2028**
 
 Non esiste un calendario fisso per questo aggiornamento. ISTAT pubblica un [calendario settimanale delle diffusioni](https://www.istat.it/calendario/) che vale la pena monitorare. Schede qualità: [delitti denunciati da PdS, CC e GdF](https://www.istat.it/scheda-qualita/delitti-denunciati-allautorita-giudiziaria-da-polizia-di-stato-arma-dei-carabinieri-e-guardia-di-finanza/), [delitti con azione penale](https://www.istat.it/scheda-qualita/delitti-denunciati-per-i-quali-lautorita-giudiziaria-ha-iniziato-lazione-penale/).
 
-### Dati del Ministero dell'Interno
+### Perché non fonti alternative?
 
-Il Ministero dell'Interno pubblica dati aggregati aperti (licenza CC-BY) su [dati-coll.dfp.gov.it](https://dati-coll.dfp.gov.it/dataset/?tags=delitti&tags=denunce&tags=capoluogo&organization=min-interni&license_id=CC-BY-4.0&res_format=JSON), con i delitti denunciati per capoluogo e provincia in formato CSV e JSON. Questi dati possono essere **più aggiornati** rispetto a quelli ISTAT (che richiedono un'ulteriore fase di elaborazione), ma hanno una granularità e una struttura diverse.
+I dati 2024 esistono: il Sole 24 Ore li pubblica annualmente nel suo [Indice della criminalità](https://lab24.ilsole24ore.com/indice-della-criminalita/), ottenendoli in esclusiva dalla banca dati interforze del Ministero dell'Interno. Ma questi dati non sono scaricabili in formato strutturato.
 
-La banca dati CED/SDI interforze resta riservata alle forze dell'ordine e non è accessibile pubblicamente.
+Il Ministero dell'Interno pubblica dati aggregati aperti (licenza CC-BY) su [dati-coll.dfp.gov.it](https://dati-coll.dfp.gov.it/dataset/?tags=delitti&tags=denunce&tags=capoluogo&organization=min-interni&license_id=CC-BY-4.0&res_format=JSON), ma a febbraio 2026 il dataset risulta fermo al 2022. La banca dati CED/SDI interforze resta riservata alle forze dell'ordine.
+
+Di fatto, l'unica fonte pubblica con dati strutturati per provincia e tipologia di reato è ISTAT, con il suo ritardo di circa 2 anni. Questa è una scelta deliberata dell'architettura informativa italiana sulla criminalità, non un limite tecnico.
 
 ### Percezione di sicurezza (BES - ISTAT)
 
