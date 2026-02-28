@@ -1,6 +1,7 @@
 "use client";
 
 import { useFetchData } from "@/lib/use-fetch-data";
+import { varTriennale, TRIENNALE_PERIODI } from "@/lib/config";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface DelittiItalia {
@@ -25,12 +26,10 @@ export function KpiSummary() {
     );
   if (!data || data.length === 0) return null;
 
-  const primo = data[0];
   const ultimo = data[data.length - 1];
-  const varTasso =
-    primo.Tasso_per_1000 > 0
-      ? ((ultimo.Tasso_per_1000 - primo.Tasso_per_1000) / primo.Tasso_per_1000) * 100
-      : null;
+  const varTasso = varTriennale(
+    data.map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_1000 }))
+  );
 
   const items: { label: string; value: string; color?: string }[] = [
     {
@@ -44,7 +43,7 @@ export function KpiSummary() {
     ...(varTasso !== null
       ? [
           {
-            label: `Variazione ${primo.Anno}-${ultimo.Anno}`,
+            label: `Variazione ${TRIENNALE_PERIODI}`,
             value: `${varTasso > 0 ? "+" : ""}${varTasso.toFixed(1)}%`,
             color: varTasso < 0 ? "text-green-600" : "text-red-600",
           },

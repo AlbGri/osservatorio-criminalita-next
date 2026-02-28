@@ -10,6 +10,8 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
+  varTriennale,
+  TRIENNALE_PERIODI,
 } from "@/lib/config";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -78,13 +80,9 @@ export function ChartTrendProvincia() {
     Number((mediaRegionale.get(a) ?? 0).toFixed(1))
   );
 
-  const varProvincia =
-    provData.length >= 2 && provData[0].Tasso_per_1000 > 0
-      ? ((provData[provData.length - 1].Tasso_per_1000 -
-          provData[0].Tasso_per_1000) /
-          provData[0].Tasso_per_1000) *
-        100
-      : null;
+  const varProvincia = varTriennale(
+    provData.map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_1000 }))
+  );
 
   return (
     <div className="space-y-3">
@@ -182,16 +180,13 @@ export function ChartTrendProvincia() {
 
       {varProvincia !== null && (
         <p className="text-sm text-muted-foreground">
-          <strong>{selectedProvincia} 2014-2023:</strong>{" "}
+          <strong>{selectedProvincia} ({TRIENNALE_PERIODI}):</strong>{" "}
           <span
             className={varProvincia < 0 ? "text-green-600" : "text-red-600"}
           >
             {varProvincia > 0 ? "+" : ""}
             {varProvincia.toFixed(1)}%
-          </span>{" "}
-          (da {provData[0]?.Tasso_per_1000.toFixed(1)} a{" "}
-          {provData[provData.length - 1]?.Tasso_per_1000.toFixed(1)} per 1000
-          ab.)
+          </span>
         </p>
       )}
     </div>

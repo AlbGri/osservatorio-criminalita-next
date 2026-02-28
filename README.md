@@ -1,6 +1,6 @@
 # Osservatorio Criminalit&agrave;
 
-Dati e analisi sulla criminalit&agrave; in Italia con fonti ufficiali ISTAT (2014-2023).
+Un progetto open source per rendere accessibili e comprensibili i dati ufficiali ISTAT sulla criminalit&agrave; in Italia. Nasce dalla constatazione che il dibattito pubblico sulla sicurezza si basa spesso su percezioni e titoli di giornale anzich&eacute; sui dati: questo sito mette i numeri a disposizione di tutti, con metodologia trasparente e codice aperto.
 
 **[Vai al sito](https://albgri.github.io/osservatorio-criminalita-next/)**
 
@@ -35,7 +35,7 @@ Apri http://localhost:3000
 
 I dati ISTAT sono in `public/data/` come JSON, pronti per il frontend.
 
-Per rigenerarli dai CSV del [repo Streamlit](https://github.com/AlbGri/osservatorio-criminalita-italia):
+Per rigenerarli dai CSV sorgente:
 
 ```bash
 python scripts/csv_to_json.py

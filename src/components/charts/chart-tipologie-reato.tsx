@@ -9,6 +9,8 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
+  varTriennale,
+  TRIENNALE_PERIODI,
 } from "@/lib/config";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -88,33 +90,19 @@ export function ChartTipologieReato() {
     };
   });
 
-  const furti2014 = categorie.find((d) => d.Anno === 2014 && d.Categoria === "Furti");
-  const furti2023 = categorie.find((d) => d.Anno === 2023 && d.Categoria === "Furti");
-  const varFurti =
-    furti2014 && furti2023
-      ? ((furti2023.Tasso_per_1000 - furti2014.Tasso_per_1000) / furti2014.Tasso_per_1000) * 100
-      : null;
+  const calcVarCat = (cat: string) =>
+    varTriennale(
+      categorie.filter((d) => d.Categoria === cat).map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_1000 }))
+    );
+  const calcVarAll = (reato: string) =>
+    varTriennale(
+      allarme.filter((d) => d.Reato === reato).map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_100k }))
+    );
 
-  const truffe2014 = categorie.find((d) => d.Anno === 2014 && d.Categoria === "Truffe e Frodi");
-  const truffe2023 = categorie.find((d) => d.Anno === 2023 && d.Categoria === "Truffe e Frodi");
-  const varTruffe =
-    truffe2014 && truffe2023
-      ? ((truffe2023.Tasso_per_1000 - truffe2014.Tasso_per_1000) / truffe2014.Tasso_per_1000) * 100
-      : null;
-
-  const omicidi2014 = allarme.find((d) => d.Anno === 2014 && d.Reato === "Omicidi volontari consumati");
-  const omicidi2023 = allarme.find((d) => d.Anno === 2023 && d.Reato === "Omicidi volontari consumati");
-  const varOmicidi =
-    omicidi2014 && omicidi2023
-      ? ((omicidi2023.Tasso_per_100k - omicidi2014.Tasso_per_100k) / omicidi2014.Tasso_per_100k) * 100
-      : null;
-
-  const violenze2014 = allarme.find((d) => d.Anno === 2014 && d.Reato === "Violenze sessuali");
-  const violenze2023 = allarme.find((d) => d.Anno === 2023 && d.Reato === "Violenze sessuali");
-  const varViolenze =
-    violenze2014 && violenze2023
-      ? ((violenze2023.Tasso_per_100k - violenze2014.Tasso_per_100k) / violenze2014.Tasso_per_100k) * 100
-      : null;
+  const varFurti = calcVarCat("Furti");
+  const varTruffe = calcVarCat("Truffe e Frodi");
+  const varOmicidi = calcVarAll("Omicidi volontari consumati");
+  const varViolenze = calcVarAll("Violenze sessuali");
 
   const baseLayout = {
     dragmode: false as const,
@@ -160,7 +148,7 @@ export function ChartTipologieReato() {
           </ChartFullscreenWrapper>
           {varFurti !== null && varTruffe !== null && (
             <p className="text-sm text-muted-foreground">
-              <strong>Variazioni 2014-2023:</strong> Furti {varFurti.toFixed(1)}% | Truffe {varTruffe.toFixed(1)}%
+              <strong>Variazioni ({TRIENNALE_PERIODI}):</strong> Furti {varFurti.toFixed(1)}% | Truffe {varTruffe.toFixed(1)}%
             </p>
           )}
         </div>
@@ -185,7 +173,7 @@ export function ChartTipologieReato() {
           </ChartFullscreenWrapper>
           {varOmicidi !== null && varViolenze !== null && (
             <p className="text-sm text-muted-foreground">
-              <strong>Variazioni 2014-2023:</strong> Omicidi {varOmicidi.toFixed(1)}% | Violenze sessuali {varViolenze.toFixed(1)}%
+              <strong>Variazioni ({TRIENNALE_PERIODI}):</strong> Omicidi {varOmicidi.toFixed(1)}% | Violenze sessuali {varViolenze.toFixed(1)}%
             </p>
           )}
         </div>

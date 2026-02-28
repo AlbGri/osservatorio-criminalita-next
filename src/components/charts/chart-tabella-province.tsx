@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { useFetchData } from "@/lib/use-fetch-data";
+import { varTriennale, TRIENNALE_LABEL } from "@/lib/config";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface DelittiProvincia {
@@ -48,10 +49,29 @@ export function ChartTabellaProvince({ anno }: Props) {
     if (!data) return [];
 
     const dataAnno = data.filter((d) => d.Anno === anno);
-    const data2014 = data.filter((d) => d.Anno === 2014);
-    const mappa2014 = new Map(
-      data2014.map((d) => [d.REF_AREA, d.Tasso_per_1000])
-    );
+
+    // Mappa REF_AREA -> serie storica per calcolo variazione triennale
+    const seriePerProvincia = new Map<string, { anno: number; tasso: number }[]>();
+    for (const d of data) {
+      const arr = seriePerProvincia.get(d.REF_AREA) ?? [];
+      arr.push({ anno: d.Anno, tasso: d.Tasso_per_1000 });
+      seriePerProvincia.set(d.REF_AREA, arr);
+    }
+
+    // Variazione triennale per regione (per controtendenza)
+    const varPerRegione = new Map<string, number | null>();
+    const regioniUniche = [...new Set(data.map((d) => d.Regione))];
+    for (const reg of regioniUniche) {
+      const regData = data.filter((d) => d.Regione === reg);
+      const anniReg = [...new Set(regData.map((d) => d.Anno))];
+      const tassiPerAnno = anniReg.map((a) => {
+        const rows = regData.filter((d) => d.Anno === a);
+        const totDel = rows.reduce((s, d) => s + d.Delitti, 0);
+        const totPop = rows.reduce((s, d) => s + d.Popolazione, 0);
+        return { anno: a, tasso: totPop > 0 ? (totDel / totPop) * 1000 : 0 };
+      });
+      varPerRegione.set(reg, varTriennale(tassiPerAnno));
+    }
 
     let filtrate = dataAnno;
     if (regioneSelezionata !== "Tutte le regioni") {
@@ -59,12 +79,14 @@ export function ChartTabellaProvince({ anno }: Props) {
     }
 
     const mapped = filtrate.map((d) => {
-      const tasso2014 = mappa2014.get(d.REF_AREA);
-      const varNum =
-        tasso2014 != null
-          ? ((d.Tasso_per_1000 - tasso2014) / tasso2014) * 100
-          : null;
-      return { ...d, varNum, variazione: varNum != null ? varNum.toFixed(1) : "-" };
+      const serie = seriePerProvincia.get(d.REF_AREA) ?? [];
+      const varNum = varTriennale(serie);
+      const varRegNum = varPerRegione.get(d.Regione) ?? null;
+      const controtendenza =
+        varNum !== null && varRegNum !== null &&
+        Math.sign(varNum) !== Math.sign(varRegNum) &&
+        Math.abs(varNum) > 5;
+      return { ...d, varNum, variazione: varNum != null ? varNum.toFixed(1) : "-", controtendenza };
     });
 
     return mapped.sort((a, b) => {
@@ -93,7 +115,7 @@ export function ChartTabellaProvince({ anno }: Props) {
   if (!data) return null;
 
   const handleDownloadCsv = () => {
-    const header = ["Provincia", "Regione", `Tasso ${anno}`, "Var. vs 2014 (%)", `Delitti ${anno}`, "Popolazione"];
+    const header = ["Provincia", "Regione", `Tasso ${anno}`, `${TRIENNALE_LABEL} (%)`, `Delitti ${anno}`, "Popolazione"];
     const rows = righe.map((r) => [
       r.Territorio,
       r.Regione,
@@ -175,8 +197,8 @@ export function ChartTabellaProvince({ anno }: Props) {
               <th className={`text-right ${thClass}`} onClick={() => handleSort("Tasso_per_1000")}>
                 Tasso {anno}{sortIcon("Tasso_per_1000")}
               </th>
-              <th className={`text-right ${thClass}`} onClick={() => handleSort("variazione")}>
-                Var. vs 2014{sortIcon("variazione")}
+              <th className={`text-right ${thClass}`} onClick={() => handleSort("variazione")} title="Media 2014-2016 vs 2021-2023">
+                {TRIENNALE_LABEL}{sortIcon("variazione")}
               </th>
               <th className={`text-right ${thClass}`} onClick={() => handleSort("Delitti")}>
                 Delitti {anno}{sortIcon("Delitti")}
@@ -202,8 +224,10 @@ export function ChartTabellaProvince({ anno }: Props) {
                         ? "text-red-600"
                         : ""
                   }`}
+                  title={r.controtendenza ? "Controtendenza rispetto alla regione" : undefined}
                 >
                   {r.variazione !== "-" ? `${r.variazione}%` : "-"}
+                  {r.controtendenza && <span className="ml-1" aria-label="controtendenza">&#9888;</span>}
                 </td>
                 <td className="py-2 px-3 text-right">
                   {r.Delitti.toLocaleString("it-IT")}

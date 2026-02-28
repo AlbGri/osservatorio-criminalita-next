@@ -10,6 +10,8 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
+  varTriennale,
+  TRIENNALE_PERIODI,
 } from "@/lib/config";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -77,13 +79,9 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
     Number((mediaNazionale.get(a) ?? 0).toFixed(2))
   );
 
-  const varRegione =
-    regioneData.length >= 2 && regioneData[0].Tasso_per_100k > 0
-      ? ((regioneData[regioneData.length - 1].Tasso_per_100k -
-          regioneData[0].Tasso_per_100k) /
-          regioneData[0].Tasso_per_100k) *
-        100
-      : null;
+  const varRegione = varTriennale(
+    regioneData.map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_100k }))
+  );
 
   const lineColor = COLORI_ALLARME[reato] ?? COLORS.primary;
 
@@ -159,17 +157,14 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
       {varRegione !== null && (
         <p className="text-sm text-muted-foreground">
           <strong>
-            {selected} 2014-2023:
+            {selected} ({TRIENNALE_PERIODI}):
           </strong>{" "}
           <span
             className={varRegione < 0 ? "text-green-600" : "text-red-600"}
           >
             {varRegione > 0 ? "+" : ""}
             {varRegione.toFixed(1)}%
-          </span>{" "}
-          (da {regioneData[0]?.Tasso_per_100k.toFixed(2)} a{" "}
-          {regioneData[regioneData.length - 1]?.Tasso_per_100k.toFixed(2)} per
-          100k ab.)
+          </span>
         </p>
       )}
     </div>

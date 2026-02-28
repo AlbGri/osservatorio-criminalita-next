@@ -10,6 +10,8 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
+  varTriennale,
+  TRIENNALE_PERIODI,
 } from "@/lib/config";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -60,9 +62,9 @@ export function ChartTrendRegione() {
   const anni = regioneData.map((d) => d.Anno);
   const mediaNazArr = anni.map((a) => mediaNazionale.get(a) ?? 0);
 
-  const varRegione = regioneData.length >= 2
-    ? ((regioneData[regioneData.length - 1].Tasso_per_1000 - regioneData[0].Tasso_per_1000) / regioneData[0].Tasso_per_1000) * 100
-    : null;
+  const varRegione = varTriennale(
+    regioneData.map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_1000 }))
+  );
 
   return (
     <div className="space-y-3">
@@ -128,11 +130,10 @@ export function ChartTrendRegione() {
 
       {varRegione !== null && (
         <p className="text-sm text-muted-foreground">
-          <strong>{selected} 2014-2023:</strong>{" "}
+          <strong>{selected} ({TRIENNALE_PERIODI}):</strong>{" "}
           <span className={varRegione < 0 ? "text-green-600" : "text-red-600"}>
             {varRegione > 0 ? "+" : ""}{varRegione.toFixed(1)}%
           </span>
-          {" "}(da {regioneData[0].Tasso_per_1000.toFixed(1)} a {regioneData[regioneData.length - 1].Tasso_per_1000.toFixed(1)} per 1000 ab.)
         </p>
       )}
     </div>

@@ -72,6 +72,23 @@ export const PLOTLY_CONFIG: Partial<Plotly.Config> = {
 /** Proprietà base per tutti gli assi: disabilita zoom/pan/editing range */
 export const AXIS_FIXED = { fixedrange: true } as const;
 
+/** Variazione % media triennale: media(2021-2023) vs media(2014-2016).
+ *  Piu robusto del confronto puntuale perche smussa outlier annuali. */
+export function varTriennale(
+  values: { anno: number; tasso: number }[]
+): number | null {
+  const primi = values.filter((v) => v.anno >= 2014 && v.anno <= 2016);
+  const ultimi = values.filter((v) => v.anno >= 2021 && v.anno <= 2023);
+  if (primi.length < 2 || ultimi.length < 2) return null;
+  const mp = primi.reduce((s, v) => s + v.tasso, 0) / primi.length;
+  const mu = ultimi.reduce((s, v) => s + v.tasso, 0) / ultimi.length;
+  if (mp === 0) return null;
+  return ((mu - mp) / mp) * 100;
+}
+
+export const TRIENNALE_LABEL = "Var. triennale";
+export const TRIENNALE_PERIODI = "'14-'16 vs '21-'23";
+
 export const COVID_SHAPES = [
   {
     type: "rect" as const,
