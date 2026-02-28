@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChartAllarmeTrendNazionale } from "@/components/charts/chart-allarme-trend-nazionale";
 import { ChartAllarmeRankingRegioni } from "@/components/charts/chart-allarme-ranking-regioni";
 import { ChartAllarmeTrendRegione } from "@/components/charts/chart-allarme-trend-regione";
+import { ChartAllarmeTrendProvincia } from "@/components/charts/chart-allarme-trend-provincia";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const REATI = [
@@ -103,6 +104,13 @@ export default function ReatiAllarmeSociale() {
           Trend Regionale: {reato} (2014-2023)
         </h2>
         <ChartAllarmeTrendRegione reato={reato} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl sm:text-2xl font-semibold">
+          Trend Provinciale: {reato} (2014-2023)
+        </h2>
+        <ChartAllarmeTrendProvincia reato={reato} />
       </section>
 
       <hr />

@@ -92,9 +92,9 @@ export function ChartPercezioneVsDati() {
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: isMobile ? 300 : CHART_HEIGHT,
-            margin: isMobile ? { l: 45, r: 45, t: 40, b: 50 } : { l: 50, r: 50, t: 30, b: 50 },
+            margin: isMobile ? { l: 45, r: 45, t: 40, b: 60 } : { l: 50, r: 50, t: 30, b: 50 },
             legend: isMobile
-              ? { x: 0.5, y: -0.25, xanchor: "center", yanchor: "top", orientation: "h" as const, font: { size: 9 } }
+              ? { x: 0.5, y: -0.3, xanchor: "center", yanchor: "top", orientation: "h" as const, font: { size: 9 } }
               : { x: 0.5, y: 1.08, xanchor: "center", orientation: "h" as const },
             shapes: COVID_SHAPES,
             annotations: isMobile

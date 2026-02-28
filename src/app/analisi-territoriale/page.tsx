@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChartMappaRegioni } from "@/components/charts/chart-mappa-regioni";
-import { ChartRankingRegioni } from "@/components/charts/chart-ranking-regioni";
 import { ChartTabellaProvince } from "@/components/charts/chart-tabella-province";
-import { ChartNumeroOscuro } from "@/components/charts/chart-numero-oscuro";
+import { ChartTrendProvincia } from "@/components/charts/chart-trend-provincia";
 import { ChartTrendRegione } from "@/components/charts/chart-trend-regione";
 
 const ANNI = Array.from({ length: 10 }, (_, i) => 2014 + i);
@@ -93,20 +92,6 @@ export default function AnalisiTerritoriale() {
         <ChartMappaRegioni anno={anno} />
       </section>
 
-      <section className="space-y-3">
-        <h3 className="text-lg sm:text-xl font-semibold">
-          Ranking Regioni ({anno})
-        </h3>
-        <ChartRankingRegioni anno={anno} />
-      </section>
-
-      <section className="space-y-3">
-        <h3 className="text-lg sm:text-xl font-semibold">
-          Trend Temporale Regione (2014-2023)
-        </h3>
-        <ChartTrendRegione />
-      </section>
-
       <hr />
 
       <section className="space-y-3">
@@ -116,13 +101,18 @@ export default function AnalisiTerritoriale() {
         <ChartTabellaProvince anno={anno} />
       </section>
 
-      <hr />
+      <section className="space-y-3">
+        <h3 className="text-lg sm:text-xl font-semibold">
+          Trend Temporale Provincia (2014-2023)
+        </h3>
+        <ChartTrendProvincia />
+      </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
-          Il Numero Oscuro: Cosa Non Vediamo
-        </h2>
-        <ChartNumeroOscuro />
+        <h3 className="text-lg sm:text-xl font-semibold">
+          Trend Temporale Regione (2014-2023)
+        </h3>
+        <ChartTrendRegione />
       </section>
     </main>
   );

@@ -9,22 +9,24 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
 const URL_REATI_2023 =
   "https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/";
+const URL_REPORT_2025 =
+  "https://www.istat.it/wp-content/uploads/2025/06/Report_REATI-CONTRO-LA-PERSONA-E-LA-PROPRIETA_VITTIME-ED-EVENTI.pdf";
 const URL_VIOLENZA_2025 =
   "https://www.istat.it/comunicato-stampa/la-violenza-contro-le-donne-dentro-e-fuori-la-famiglia-primi-risultati-anno-2025/";
 
 const categorie = [
   "Violenza da partner",
+  "Frodi/truffe",
   "Aggressioni",
-  "Frodi/clonazione carte",
   "Scippi",
   "Furti auto/moto",
 ];
-const pctDenunciati = [11, 41, 59, 68, 95];
-const pctNonDenunciati = [89, 59, 41, 32, 5];
+const pctDenunciati = [11, 24, 41, 68, 95];
+const pctNonDenunciati = [89, 76, 59, 32, 5];
 
-const catConfronto = ["Aggressioni", "Scippi"];
-const pct2016 = [20, 89];
-const pct2023 = [41, 68];
+const catConfronto = ["Frodi/truffe", "Aggressioni", "Scippi"];
+const pct2016 = [18.4, 19.9, 88.9];
+const pct2023 = [24.1, 40.6, 68.2];
 
 export function ChartNumeroOscuro() {
   return (
@@ -66,8 +68,8 @@ export function ChartNumeroOscuro() {
             barmode: "stack",
             xaxis: { title: { text: "Percentuale (%)" }, range: [0, 100] },
             height: CHART_HEIGHT_SMALL,
-            legend: { orientation: "h" as const, y: -0.15 },
-            margin: { t: 20, l: 150, r: 20, b: 50 },
+            legend: { orientation: "h" as const, y: -0.22 },
+            margin: { t: 20, l: 150, r: 20, b: 60 },
             dragmode: false,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
@@ -117,8 +119,8 @@ export function ChartNumeroOscuro() {
               range: [0, 100],
             },
             height: 350,
-            legend: { orientation: "h" as const, y: -0.15 },
-            margin: { t: 20, l: 50, r: 20, b: 50 },
+            legend: { orientation: "h" as const, y: -0.22 },
+            margin: { t: 20, l: 50, r: 20, b: 60 },
             dragmode: false,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
@@ -130,11 +132,14 @@ export function ChartNumeroOscuro() {
       </ChartFullscreenWrapper>
 
       <p>
-        Le aggressioni denunciate sono <strong>raddoppiate</strong> (+21 punti),
-        probabilmente per maggiore fiducia nelle istituzioni e campagne di
-        sensibilizzazione. Gli scippi denunciati sono invece{" "}
-        <strong>calati</strong> (-21 punti), forse per rassegnazione su reati
-        percepiti come a basso recupero.
+        Le aggressioni denunciate sono <strong>raddoppiate</strong> (da 19.9% a
+        40.6%), probabilmente per maggiore fiducia nelle istituzioni e campagne
+        di sensibilizzazione. Gli scippi denunciati sono invece{" "}
+        <strong>calati</strong> (da 88.9% a 68.2%), forse per rassegnazione su
+        reati percepiti come a basso recupero. Le frodi/truffe mostrano un{" "}
+        <strong>lieve aumento</strong> (da 18.4% a 24.1%), probabilmente legato
+        alla crescita delle truffe bancarie online dove c&apos;e maggiore
+        consapevolezza e incentivo a denunciare.
       </p>
 
       <p className="text-xs text-muted-foreground">
@@ -149,6 +154,15 @@ export function ChartNumeroOscuro() {
         </a>
         ,{" "}
         <a
+          href={URL_REPORT_2025}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          ISTAT Report Reati 2025 (PDF)
+        </a>
+        ,{" "}
+        <a
           href={URL_VIOLENZA_2025}
           target="_blank"
           rel="noopener noreferrer"
@@ -156,8 +170,8 @@ export function ChartNumeroOscuro() {
         >
           ISTAT Violenza contro le donne 2025
         </a>
-        . I valori sono arrotondati. Violenza da partner e frodi/clonazione non
-        hanno confronto storico diretto.
+        . Violenza da partner non ha confronto storico diretto (fonte diversa).
+        Furti auto/moto stabili a ~95-98% in entrambe le edizioni.
       </p>
     </div>
   );

@@ -43,15 +43,15 @@ I dati NON mostrano:
 
 ### Numero oscuro
 
-La differenza tra reati commessi e reati denunciati (il "numero oscuro") varia significativamente per tipo di reato. Dati dall'[Indagine ISTAT sulla Sicurezza dei Cittadini 2022-2023](https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/):
+La differenza tra reati commessi e reati denunciati (il "numero oscuro") varia significativamente per tipo di reato. Dati dall'[Indagine ISTAT sulla Sicurezza dei Cittadini 2022-2023](https://www.istat.it/comunicato-stampa/reati-contro-la-persona-e-contro-la-proprieta-vittime-ed-eventi-2022-2023/) e dal [Report ISTAT Reati contro la persona e la proprietà 2025](https://www.istat.it/wp-content/uploads/2025/06/Report_REATI-CONTRO-LA-PERSONA-E-LA-PROPRIETA_VITTIME-ED-EVENTI.pdf):
 
-- **Furti auto/moto**: ~95% denunciati (necessità assicurativa)
-- **Scippi**: ~68% denunciati (era 89% nel 2015-2016: calo per rassegnazione)
-- **Frodi/clonazione carte**: ~59% denunciate
-- **Aggressioni**: ~41% denunciate (era 20% nel 2015-2016: forte miglioramento)
+- **Furti auto/moto**: ~95% denunciati (necessità assicurativa; stabile tra le due edizioni)
+- **Scippi**: 68.2% denunciati (era 88.9% nel 2015-2016: calo per rassegnazione)
+- **Aggressioni**: 40.6% denunciate (era 19.9% nel 2015-2016: forte miglioramento)
+- **Frodi/truffe**: 24.1% denunciate (era 18.4% nel 2015-2016: lieve aumento, legato a crescita truffe bancarie online)
 - **Violenza da partner**: ~11% denunciata ([ISTAT Violenza donne 2025](https://www.istat.it/comunicato-stampa/la-violenza-contro-le-donne-dentro-e-fuori-la-famiglia-primi-risultati-anno-2025/))
 
-Il numero oscuro varia nel tempo: un aumento delle denunce può indicare maggiore propensione a denunciare (positivo), non necessariamente più reati. Il raddoppio delle denunce per aggressioni tra 2015-2016 e 2022-2023 ne è un esempio.
+Il numero oscuro varia nel tempo: un aumento delle denunce può indicare maggiore propensione a denunciare (positivo), non necessariamente più reati. Il raddoppio delle denunce per aggressioni tra 2015-2016 e 2022-2023 ne è un esempio. Le due edizioni dell'indagine comparabili sono l'[Indagine 2015-2016](https://www.istat.it/it/files/2019/02/Reati-contro-la-persona-e-contro-la-proprieta.pdf) e quella 2022-2023.
 
 ### Cambiamenti normativi
 

@@ -1,0 +1,220 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import dynamic from "next/dynamic";
+import { useFetchData } from "@/lib/use-fetch-data";
+import {
+  COLORS,
+  CHART_HEIGHT_SMALL,
+  PLOTLY_CONFIG,
+  COVID_SHAPES,
+  COVID_ANNOTATIONS,
+} from "@/lib/config";
+import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
+
+const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
+
+interface AllarmeProvincia {
+  REF_AREA: string;
+  Territorio: string;
+  Anno: number;
+  Reato: string;
+  Delitti: number;
+  Regione: string;
+  Popolazione: number;
+  Tasso_per_100k: number;
+}
+
+const COLORI_ALLARME: Record<string, string> = {
+  "Omicidi volontari consumati": COLORS.omicidi,
+  "Tentati omicidi": COLORS.tentati_omicidi,
+  "Violenze sessuali": COLORS.violenze_sessuali,
+  "Atti sessuali con minorenne": COLORS.atti_minori,
+  "Rapine in abitazione": COLORS.rapine_abitazione,
+  "Sequestri di persona": COLORS.sequestri,
+};
+
+interface Props {
+  reato: string;
+}
+
+export function ChartAllarmeTrendProvincia({ reato }: Props) {
+  const { data, loading } = useFetchData<AllarmeProvincia[]>(
+    "/data/reati_allarme_sociale_province.json"
+  );
+  const [regione, setRegione] = useState<string>("");
+  const [provincia, setProvincia] = useState<string>("");
+
+  const regioni = useMemo(() => {
+    if (!data) return [];
+    return [...new Set(data.map((d) => d.Regione))].sort();
+  }, [data]);
+
+  const selectedRegione = regione || regioni[0] || "";
+
+  const province = useMemo(() => {
+    if (!data) return [];
+    return [...new Set(
+      data
+        .filter((d) => d.Regione === selectedRegione && d.Reato === reato)
+        .map((d) => d.Territorio)
+    )].sort();
+  }, [data, selectedRegione, reato]);
+
+  const selectedProvincia = province.includes(provincia)
+    ? provincia
+    : province[0] || "";
+
+  // Media regionale ponderata per anno per il reato selezionato
+  const mediaRegionale = useMemo(() => {
+    if (!data) return new Map<number, number>();
+    const reatoRegione = data.filter(
+      (d) => d.Regione === selectedRegione && d.Reato === reato
+    );
+    const anni = [...new Set(reatoRegione.map((d) => d.Anno))];
+    const map = new Map<number, number>();
+    for (const anno of anni) {
+      const rows = reatoRegione.filter((d) => d.Anno === anno);
+      const totDel = rows.reduce((s, d) => s + d.Delitti, 0);
+      const totPop = rows.reduce((s, d) => s + d.Popolazione, 0);
+      map.set(anno, totPop > 0 ? (totDel / totPop) * 100_000 : 0);
+    }
+    return map;
+  }, [data, selectedRegione, reato]);
+
+  if (loading)
+    return <div className="h-[400px] animate-pulse bg-muted rounded" />;
+  if (!data) return null;
+
+  const provData = data
+    .filter(
+      (d) => d.Territorio === selectedProvincia && d.Reato === reato
+    )
+    .sort((a, b) => a.Anno - b.Anno);
+
+  const anni = provData.map((d) => d.Anno);
+  const mediaRegArr = anni.map((a) =>
+    Number((mediaRegionale.get(a) ?? 0).toFixed(2))
+  );
+
+  const varProvincia =
+    provData.length >= 2 && provData[0].Tasso_per_100k > 0
+      ? ((provData[provData.length - 1].Tasso_per_100k -
+          provData[0].Tasso_per_100k) /
+          provData[0].Tasso_per_100k) *
+        100
+      : null;
+
+  const lineColor = COLORI_ALLARME[reato] ?? COLORS.primary;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap gap-4">
+        <div>
+          <label
+            htmlFor="allarme-prov-regione-select"
+            className="block text-sm font-medium mb-1"
+          >
+            Regione
+          </label>
+          <select
+            id="allarme-prov-regione-select"
+            value={selectedRegione}
+            onChange={(e) => {
+              setRegione(e.target.value);
+              setProvincia("");
+            }}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            {regioni.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label
+            htmlFor="allarme-prov-provincia-select"
+            className="block text-sm font-medium mb-1"
+          >
+            Provincia
+          </label>
+          <select
+            id="allarme-prov-provincia-select"
+            value={selectedProvincia}
+            onChange={(e) => setProvincia(e.target.value)}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            {province.map((p) => (
+              <option key={p} value={p}>
+                {p}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <ChartFullscreenWrapper>
+        <Plot
+          data={[
+            {
+              x: anni,
+              y: provData.map((d) => d.Tasso_per_100k),
+              mode: "lines+markers" as const,
+              name: selectedProvincia,
+              line: { width: 3, color: lineColor },
+              marker: { size: 6 },
+            },
+            {
+              x: anni,
+              y: mediaRegArr,
+              mode: "lines" as const,
+              name: `Media ${selectedRegione}`,
+              line: { width: 2, color: "#999999", dash: "dash" },
+            },
+          ]}
+          layout={{
+            dragmode: false as const,
+            hovermode: "x unified" as const,
+            plot_bgcolor: "white",
+            paper_bgcolor: "white",
+            height: CHART_HEIGHT_SMALL,
+            xaxis: { title: { text: "Anno" } },
+            yaxis: {
+              title: { text: "Tasso per 100k ab.", font: { size: 12 } },
+            },
+            legend: {
+              x: 0,
+              y: -0.25,
+              xanchor: "left" as const,
+              orientation: "h" as const,
+              font: { size: 10 },
+            },
+            margin: { l: 50, r: 20, t: 20, b: 80 },
+            shapes: COVID_SHAPES,
+            annotations: COVID_ANNOTATIONS,
+          }}
+          config={PLOTLY_CONFIG}
+          useResizeHandler
+          className="w-full"
+        />
+      </ChartFullscreenWrapper>
+
+      {varProvincia !== null && (
+        <p className="text-sm text-muted-foreground">
+          <strong>{selectedProvincia} 2014-2023:</strong>{" "}
+          <span
+            className={varProvincia < 0 ? "text-green-600" : "text-red-600"}
+          >
+            {varProvincia > 0 ? "+" : ""}
+            {varProvincia.toFixed(1)}%
+          </span>{" "}
+          (da {provData[0]?.Tasso_per_100k.toFixed(2)} a{" "}
+          {provData[provData.length - 1]?.Tasso_per_100k.toFixed(2)} per 100k
+          ab.)
+        </p>
+      )}
+    </div>
+  );
+}

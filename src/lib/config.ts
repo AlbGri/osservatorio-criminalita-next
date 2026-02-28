@@ -56,6 +56,7 @@ export const PLOTLY_CONFIG: Partial<Plotly.Config> = {
   scrollZoom: false,
   responsive: true,
   doubleClick: false,
+  editable: false,
 };
 
 export const COVID_SHAPES = [

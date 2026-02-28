@@ -9,8 +9,7 @@ const NAV_ITEMS = [
   { href: "/analisi-territoriale", label: "Analisi Territoriale" },
   { href: "/reati-allarme-sociale", label: "Allarme Sociale" },
   { href: "/metodologia", label: "Metodologia" },
-  { href: "/guida", label: "Guida" },
-  { href: "/limitazioni", label: "Limitazioni" },
+  { href: "/guida", label: "Guida alla Lettura" },
   { href: "/dati-e-codice", label: "Dati e Codice" },
 ];
 
