@@ -91,9 +91,9 @@ export function ChartAutoriTrend() {
           hovermode: "closest" as const,
           plot_bgcolor: "white",
           paper_bgcolor: "white",
-          height: isMobile ? 250 : CHART_HEIGHT,
+          height: isMobile ? 300 : CHART_HEIGHT,
           margin: isMobile
-            ? { l: 45, r: 45, t: 40, b: 70 }
+            ? { l: 45, r: 45, t: 40, b: 60 }
             : { l: 60, r: 60, t: 30, b: 50 },
           legend: isMobile
             ? {
