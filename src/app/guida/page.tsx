@@ -6,7 +6,7 @@ export default function Guida() {
       </h1>
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Cosa significa &quot;per 1.000 abitanti&quot;
         </h2>
         <p>
@@ -26,7 +26,7 @@ export default function Guida() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Come interpretare i trend
         </h2>
         <ul className="list-disc pl-6 space-y-2">
@@ -51,7 +51,7 @@ export default function Guida() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Cosa NON si pu&ograve; concludere
         </h2>
         <ul className="list-disc pl-6 space-y-2">
@@ -68,8 +68,10 @@ export default function Guida() {
             <strong>
               &quot;La criminalit&agrave; &egrave; colpa del gruppo Z&quot;
             </strong>
-            : i dati non mostrano autori, solo denunce. Nessuna inferenza su
-            gruppi demografici &egrave; possibile
+            : i dati sugli autori denunciati (sezione Persone Denunciate)
+            riguardano persone denunciate o arrestate, non condannate.
+            Sovra-rappresentazioni di un gruppo possono riflettere pratiche
+            di controllo differenziate, non maggiore propensione al crimine
           </li>
           <li>
             <strong>&quot;Non devo preoccuparmi&quot;</strong>: la percezione di
@@ -92,13 +94,40 @@ export default function Guida() {
         </ul>
       </section>
 
+      <section className="space-y-3">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
+          Autori e vittime: cosa significano
+        </h2>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>
+            <strong>Autore denunciato</strong>: persona denunciata o arrestata
+            dalle forze dell&apos;ordine. Non equivale a &quot;colpevole&quot;:
+            il procedimento penale potrebbe concludersi con
+            un&apos;archiviazione o un&apos;assoluzione
+          </li>
+          <li>
+            <strong>Vittima</strong>: persona offesa dal reato in senso
+            giuridico, non solo fisico. Per reati come incendi, danneggiamenti
+            o furti, la vittima &egrave; il titolare del bene
+            danneggiato o sottratto (es. il proprietario dell&apos;immobile
+            incendiato)
+          </li>
+          <li>
+            <strong>Dati 2007-2022</strong>: la sezione Persone Denunciate
+            copre un arco temporale diverso (2007-2022) rispetto alle altre
+            sezioni (2014-2023), perch&eacute; proviene da un dataset ISTAT
+            separato (DCCV_AUTVITTPS)
+          </li>
+        </ul>
+      </section>
+
       <hr />
 
       <section className="space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold">Domande comuni</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">Domande comuni</h2>
 
         <div className="space-y-2">
-          <h3 className="font-semibold">
+          <h3 className="font-semibold text-primary">
             Perch&eacute; alcuni reati aumentano ma il totale cala?
           </h3>
           <p>
@@ -110,7 +139,7 @@ export default function Guida() {
         </div>
 
         <div className="space-y-2">
-          <h3 className="font-semibold">
+          <h3 className="font-semibold text-primary">
             Posso usare questi dati per decidere dove vivere?
           </h3>
           <p>
@@ -121,7 +150,7 @@ export default function Guida() {
         </div>
 
         <div className="space-y-2">
-          <h3 className="font-semibold">
+          <h3 className="font-semibold text-primary">
             Perch&eacute; le denunce per violenza sessuale aumentano?
           </h3>
           <p>
@@ -137,7 +166,7 @@ export default function Guida() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Bias noti e non correggibili
         </h2>
         <ul className="list-disc pl-6 space-y-2">
@@ -163,7 +192,7 @@ export default function Guida() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Compromessi di design
         </h2>
         <ul className="list-disc pl-6 space-y-2">
@@ -172,8 +201,9 @@ export default function Guida() {
             per evitare stigmatizzazione di aree specifiche
           </li>
           <li>
-            <strong>No dati anteriori al 2014</strong> - per qualit&agrave; e
-            comparabilit&agrave; dubbia delle serie precedenti
+            <strong>Delitti denunciati dal 2014</strong> - per qualit&agrave; e
+            comparabilit&agrave; delle serie. Autori e vittime dal 2007 (fonte
+            diversa)
           </li>
           <li>
             <strong>No dati real-time</strong> - ISTAT pubblica i delitti
@@ -181,9 +211,9 @@ export default function Guida() {
             calendario atteso)
           </li>
           <li>
-            <strong>Solo denunce</strong> - l&apos;Italia non pubblica dati su
-            vittimizzazione, esiti processuali o dati sanitari aggregati (vedi
-            Metodologia per dettagli)
+            <strong>Solo denunce e denunciati</strong> - l&apos;Italia non pubblica
+            dati su vittimizzazione sistematica, esiti processuali o dati
+            sanitari aggregati (vedi Metodologia per dettagli)
           </li>
         </ul>
       </section>
@@ -191,7 +221,7 @@ export default function Guida() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Segnalazione errori
         </h2>
         <p>

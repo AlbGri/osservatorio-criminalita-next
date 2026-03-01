@@ -31,7 +31,7 @@ export function KpiSummary() {
     data.map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_1000 }))
   );
 
-  const items: { label: string; value: string; color?: string }[] = [
+  const items: { label: string; value: string; color?: string; subtitle?: string }[] = [
     {
       label: `Delitti denunciati ${ultimo.Anno}`,
       value: ultimo.Delitti.toLocaleString("it-IT"),
@@ -43,9 +43,10 @@ export function KpiSummary() {
     ...(varTasso !== null
       ? [
           {
-            label: `Variazione ${TRIENNALE_PERIODI}`,
+            label: "Variazione tasso delitti",
             value: `${varTasso > 0 ? "+" : ""}${varTasso.toFixed(1)}%`,
             color: varTasso < 0 ? "text-green-600" : "text-red-600",
+            subtitle: `media ${TRIENNALE_PERIODI}`,
           },
         ]
       : []),
@@ -58,6 +59,9 @@ export function KpiSummary() {
           <CardContent className="py-0 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">{item.label}</p>
             <p className={`text-xl sm:text-2xl font-bold ${item.color ?? ""}`}>{item.value}</p>
+            {item.subtitle && (
+              <p className="text-[10px] sm:text-xs text-muted-foreground">{item.subtitle}</p>
+            )}
           </CardContent>
         </Card>
       ))}

@@ -12,10 +12,10 @@ const components = {
     </h1>
   ),
   h2: ({ children }: P) => (
-    <h2 className="text-xl sm:text-2xl font-semibold mt-8">{children}</h2>
+    <h2 className="text-xl sm:text-2xl font-semibold text-primary mt-8">{children}</h2>
   ),
   h3: ({ children }: P) => (
-    <h3 className="text-lg font-semibold mt-6">{children}</h3>
+    <h3 className="text-lg font-semibold text-primary mt-6">{children}</h3>
   ),
   h4: ({ children }: P) => (
     <h4 className="font-semibold mt-4">{children}</h4>

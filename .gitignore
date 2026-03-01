@@ -46,5 +46,15 @@ next-env.d.ts
 # dati generati (rigenerabili con scripts/csv_to_json.py)
 # /public/data/
 
+# dati raw e notebook (troppo grandi per git, rigenerabili da fonti ISTAT)
+data/raw/delitti_2014_2023_istat.csv
+data/raw/popolazione/
+data/raw/geojson_regioni_italia.geojson
+data/raw/autvittps/
+data/raw/Vittime di delitto*
+notebooks/
+scripts/download_autvittps.py
+
 # docs privati
 docs/STATO_PROGETTO.md
+docs/FONTI_DATI.md

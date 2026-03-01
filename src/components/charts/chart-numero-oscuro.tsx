@@ -157,7 +157,7 @@ export function ChartNumeroOscuro() {
       </ChartFullscreenWrapper>
 
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold">
+        <h3 className="text-lg font-semibold text-primary">
           Come cambia la propensione alla denuncia nel tempo
         </h3>
         <p className="text-muted-foreground">
@@ -222,7 +222,7 @@ export function ChartNumeroOscuro() {
       <hr />
 
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold">
+        <h3 className="text-lg font-semibold text-primary">
           Chi denuncia di più? La propensione per territorio (2022-2023)
         </h3>
         <p className="text-muted-foreground">
@@ -296,7 +296,7 @@ export function ChartNumeroOscuro() {
       </p>
 
       <details className="space-y-6">
-        <summary className="cursor-pointer text-lg font-semibold hover:text-primary transition-colors">
+        <summary className="cursor-pointer text-lg font-semibold text-primary hover:text-primary transition-colors">
           Come cambia la propensione per territorio nel tempo (9 grafici)
         </summary>
 

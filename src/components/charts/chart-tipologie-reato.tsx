@@ -132,7 +132,7 @@ export function ChartTipologieReato() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <h3 className="text-lg font-semibold">Quadro Generale per Categoria</h3>
+          <h3 className="text-lg font-semibold text-primary">Quadro Generale per Categoria</h3>
           <ChartFullscreenWrapper>
             <Plot
               data={traceCategorie}
@@ -154,7 +154,7 @@ export function ChartTipologieReato() {
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-lg font-semibold">Reati ad Alto Impatto Mediatico</h3>
+          <h3 className="text-lg font-semibold text-primary">Reati ad Alto Impatto Mediatico</h3>
           <p className="text-sm text-muted-foreground">
             Focus su reati rari ma ad alto allarme sociale. Rappresentano &lt;2% dei delitti totali ma dominano percezione pubblica e copertura mediatica.
           </p>

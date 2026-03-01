@@ -2,7 +2,7 @@
 
 ## Fonti dei dati
 
-I dati provengono dal portale ufficiale ISTAT (dati.istat.it), sezione "Giustizia e sicurezza":
+I dati provengono dal portale ufficiale ISTAT ([esploradati.istat.it](https://esploradati.istat.it/databrowser/)), sezione "Giustizia e sicurezza":
 
 1. **Delitti denunciati dalle forze di polizia all'autorità giudiziaria** (periodo 2014-2023)
    - 56 tipologie di reato dettagliate
@@ -16,6 +16,22 @@ I dati provengono dal portale ufficiale ISTAT (dati.istat.it), sezione "Giustizi
    - Ricostruzione intercensuaria 2002-2019
    - POSAS (Popolazione residente al 1° gennaio) 2020-2023
 
+4. **Autori e vittime di delitto** (DCCV_AUTVITTPS, periodo 2007-2022)
+   - Autori denunciati/arrestati (DF_7) e vittime di delitto (DF_8)
+   - Breakdown per sesso, età (adulti/minori), cittadinanza (italiani/stranieri)
+   - Livello territoriale: Italia, ripartizioni, regioni, province (province dal 2022)
+   - Scaricati via API SDMX REST da esploradati.istat.it
+   - **Nota**: "vittima" è intesa in senso giuridico (persona offesa dal reato), non solo fisico. Per reati contro il patrimonio (furti, danneggiamenti, incendi) la vittima è il titolare del bene.
+
+### Criticità dataset AUTVITTPS
+
+- **Dato aggregato (TOT) solo fino al 2022**: dal 2023 ISTAT pubblica solo i singoli tipi di reato, non il totale. Per questo il trend nazionale autori si ferma al 2022.
+- **Dati provinciali solo dal 2022**: prima del 2022 sono disponibili solo Italia, ripartizioni e regioni.
+- **CITIZENSHIP=TOTAL solo dal 2022**: per gli anni 2007-2021, il totale autori è calcolato come somma italiani + stranieri (FRG+ITL). Verifica 2022: FRG(270.567) + ITL(548.265) = TOTAL(818.832).
+- **Dato minori limitato**: AGE=Y_UN17 è disponibile solo dal 2022 per il totale; per anni precedenti il dato è assente.
+- **Duplicato STALK/CP612BIS**: entrambi i codici rappresentano l'art. 612-bis c.p. (atti persecutori). STALK copre 2007-2024 con breakdown limitato, CP612BIS copre 2022+ con breakdown completo. Nelle visualizzazioni viene escluso STALK per evitare doppi conteggi.
+- **Totale vittime non disponibile**: il codice TOT esiste solo per gli autori (OFFEND). Per le vittime (VICTIM) non è possibile calcolare un totale perché una stessa persona può essere vittima di più reati contemporaneamente.
+
 ## Cosa rappresentano i dati
 
 ### Denunce vs Crimini
@@ -28,7 +44,7 @@ I numeri mostrati rappresentano le **denunce** registrate dalle forze di polizia
 
 ### Percezione di sicurezza
 
-Il dato sulla percezione proviene da indagine campionaria ISTAT Multiscopo su famiglie italiane. Misura la **percezione soggettiva** di insicurezza nella zona di residenza, non l'esperienza diretta di vittimizzazione. La serie potrebbe risentire di variazioni metodologiche tra edizioni dell'indagine (es. il salto 30.0% → 41.1% tra 2014 e 2015 potrebbe riflettere un cambiamento nel questionario).
+Il dato sulla percezione proviene da indagine campionaria ISTAT Multiscopo su famiglie italiane. Misura la **percezione soggettiva** di insicurezza nella zona di residenza, non l'esperienza diretta di vittimizzazione. La serie potrebbe risentire di **variazioni metodologiche** tra edizioni dell'indagine (es. il **salto 30.0% → 41.1%** tra 2014 e 2015 potrebbe riflettere un cambiamento nel questionario).
 
 ## Cosa NON rappresentano
 
@@ -68,9 +84,9 @@ Le macro-categorie sono disponibili solo per l'edizione 2022-2023. Il confronto 
 ### Cambiamenti normativi
 
 Nuove leggi possono modificare:
-- Cosa costituisce reato (es. reati informatici emersi con digitalizzazione)
-- Modalità di registrazione (es. GDPR 2018 limita pubblicazione dati disaggregati)
-- Pene (es. depenalizzazioni modificano classificazione)
+- **Cosa costituisce reato** (es. reati informatici emersi con digitalizzazione)
+- **Modalità di registrazione** (es. GDPR 2018 limita pubblicazione dati disaggregati)
+- **Pene** (es. depenalizzazioni modificano classificazione)
 
 **Caso rilevante nei dati:** il D.Lgs. 7/2016 (in vigore dal 6 febbraio 2016) ha depenalizzato le ingiurie, trasformandole da reato penale a illecito civile. Questo spiega il calo del -23% nella categoria "Violenze contro la persona" tra 2015 e 2016: circa 50.000-60.000 denunce/anno per ingiurie sono uscite dalle statistiche penali. Non si tratta di un calo reale della violenza.
 
@@ -86,11 +102,11 @@ La propensione a denunciare varia per:
 
 ### Anno di riferimento
 
-È l'anno della denuncia, non necessariamente dell'evento criminoso. Reati scoperti anni dopo (es. truffe complesse) vengono registrati nell'anno della denuncia.
+È l'**anno della denuncia**, non necessariamente dell'evento criminoso. Reati scoperti anni dopo (es. truffe complesse) vengono registrati nell'anno della denuncia.
 
 ### Periodo COVID nei grafici
 
-Nei grafici temporali è evidenziata la finestra COVID (indicativamente 2020-2021). Il calo dei reati nel 2020 (-17% circa) è in larga parte dovuto ai lockdown e alle restrizioni di movimento, non a un miglioramento strutturale della sicurezza. I dati sono annuali, quindi l'evidenziazione è approssimativa.
+Nei grafici temporali è evidenziata la finestra COVID (indicativamente 2020-2021). Il **calo dei reati nel 2020 (-17% circa)** è in larga parte dovuto ai lockdown e alle restrizioni di movimento, non a un miglioramento strutturale della sicurezza. I dati sono annuali, quindi l'evidenziazione è approssimativa.
 
 ## Normalizzazione per popolazione
 
@@ -101,7 +117,7 @@ Tutti i tassi sono calcolati per abitanti per permettere confronti temporali cor
 
 Formula: `Tasso = (Numero delitti / Popolazione) × 1000 (o 100.000)`
 
-La normalizzazione è essenziale perché la popolazione italiana è diminuita da 60.3 milioni (2014) a 59.0 milioni (2023).
+La normalizzazione è essenziale perché la **popolazione italiana è diminuita** da 60.3 milioni (2014) a 59.0 milioni (2023).
 
 ## Categorie di reato
 
@@ -127,25 +143,25 @@ Per il focus su reati mediatici, sono stati selezionati 6 tipi specifici (non ag
 - Rapine in abitazione
 - Sequestri di persona
 
-Questi reati rappresentano <2% dei delitti totali ma dominano percezione pubblica e copertura mediatica.
+Questi reati rappresentano **<2% dei delitti totali** ma dominano percezione pubblica e copertura mediatica.
 
 ## Indicatore di sicurezza percepita vs oggettiva
 
 I delitti denunciati sono più un indicatore dell'**attività delle forze dell'ordine** e della **propensione a denunciare** che della criminalità effettiva. Un aumento delle denunce può riflettere:
 
-- Maggiore efficienza nel rilevare reati
-- Maggiore fiducia dei cittadini
-- Reale aumento della criminalità
+- **Maggiore efficienza** nel rilevare reati
+- **Maggiore fiducia** dei cittadini
+- **Reale aumento** della criminalità
 
 Non è possibile distinguere tra queste cause senza analisi aggiuntive.
 
 Il **divario tra percezione e dati registrati** è documentato e normale. La percezione di insicurezza risponde a:
 
-- Copertura mediatica (focus su crimini violenti anche se rari)
-- Degrado urbano visibile (indipendente da crimini denunciati)
-- Sfiducia istituzionale generale
-- Esperienza personale o di conoscenti
-- Narrazioni politiche
+- **Copertura mediatica** (focus su crimini violenti anche se rari)
+- **Degrado urbano** visibile (indipendente da crimini denunciati)
+- **Sfiducia istituzionale** generale
+- **Esperienza personale** o di conoscenti
+- **Narrazioni politiche**
 
 Questi fattori sono legittimi e non rendono la percezione "sbagliata". Il progetto mira a visualizzare questa differenza senza giudizi di valore.
 
@@ -262,16 +278,16 @@ Italia equivalente: ~€9 milioni/anno
 
 **Ritardo: 40+ anni.**
 
-## Confronti territoriali (Fase 2)
+## Confronti territoriali
 
 ### Dati regionali e provinciali
 
-I dati territoriali provengono dallo stesso dataset ISTAT dei delitti nazionali, filtrati per codice NUTS regionale e provinciale. La popolazione per la normalizzazione proviene da due fonti ISTAT complementari:
+I dati territoriali provengono dallo **stesso dataset ISTAT** dei delitti nazionali, filtrati per codice NUTS regionale e provinciale. La popolazione per la normalizzazione proviene da due fonti ISTAT complementari:
 
 - **2014-2018**: demo.istat.it (Ricostruzione intercensuaria)
 - **2019-2023**: esploradati.istat.it (Popolazione residente al 1° gennaio)
 
-Trentino-Alto Adige: nel dataset ISTAT i delitti sono separati in Bolzano (ITD1) e Trento (ITD2). Vengono sommati in ITD12 per il confronto con il GeoJSON regionale (openpolis).
+**Trentino-Alto Adige**: nel dataset ISTAT i delitti sono separati in Bolzano (ITD1) e Trento (ITD2). Vengono sommati in ITD12 per il confronto con il GeoJSON regionale (openpolis).
 
 **Codici NUTS**: i dati utilizzano la classificazione NUTS pre-2021 (es. ITD3 per Veneto, ITD5 per Emilia-Romagna), coerente con la distribuzione ISTAT dei dati. Dal 2021 i codici ufficiali sono cambiati (ITH3, ITH5).
 
@@ -295,11 +311,11 @@ I confini regionali provengono dal dataset [openpolis/geojson-italy](https://git
 
 ## Frequenza di aggiornamento
 
-### Delitti denunciati (ISTAT - dati.istat.it)
+### Delitti denunciati (ISTAT - esploradati.istat.it)
 
-ISTAT pubblica i dati sui delitti denunciati con un **ritardo strutturale di circa 2 anni** rispetto all'anno di riferimento. I dati provengono dalla banca dati interforze del Ministero dell'Interno (SDI/SSD) e vengono elaborati e strutturati dall'ISTAT prima della pubblicazione su [dati.istat.it](http://dati.istat.it/Index.aspx?DataSetCode=dccv_delittips).
+ISTAT pubblica i dati sui delitti denunciati con un **ritardo strutturale di circa 2 anni** rispetto all'anno di riferimento. I dati provengono dalla banca dati interforze del Ministero dell'Interno (SDI/SSD) e vengono elaborati e strutturati dall'ISTAT prima della pubblicazione su [esploradati.istat.it](https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0840JUS,1.0/JUS_CRIMINAL/DCCV_DELITTIPS/IT1,73_67_DF_DCCV_DELITTIPS_1,1.0).
 
-- **Dati 2023**: pubblicati su dati.istat.it tra fine 2025 e inizio 2026 (attualmente in uso in questa dashboard)
+- **Dati 2023**: pubblicati su esploradati.istat.it tra fine 2025 e inizio 2026 (attualmente in uso in questa dashboard)
 - **Dati 2024**: attesi indicativamente nel **2026-2027**
 - **Dati 2025**: attesi indicativamente nel **2027-2028**
 
@@ -307,11 +323,11 @@ Non esiste un calendario fisso per questo aggiornamento. ISTAT pubblica un [cale
 
 ### Perché non fonti alternative?
 
-I dati 2024 esistono: il Sole 24 Ore li pubblica annualmente nel suo [Indice della criminalità](https://lab24.ilsole24ore.com/indice-della-criminalita/), ottenendoli in esclusiva dalla banca dati interforze del Ministero dell'Interno. Ma questi dati non sono scaricabili in formato strutturato.
+I dati 2024 esistono: il **Sole 24 Ore** li pubblica annualmente nel suo [Indice della criminalità](https://lab24.ilsole24ore.com/indice-della-criminalita/), ottenendoli in esclusiva dalla banca dati interforze del Ministero dell'Interno. Ma questi dati **non sono scaricabili** in formato strutturato.
 
-Il Ministero dell'Interno pubblica dati aggregati aperti (licenza CC-BY) su [dati-coll.dfp.gov.it](https://dati-coll.dfp.gov.it/dataset/?tags=delitti&tags=denunce&tags=capoluogo&organization=min-interni&license_id=CC-BY-4.0&res_format=JSON), ma a febbraio 2026 il dataset risulta fermo al 2022. La banca dati CED/SDI interforze resta riservata alle forze dell'ordine.
+Il **Ministero dell'Interno** pubblica dati aggregati aperti (licenza CC-BY) su [dati-coll.dfp.gov.it](https://dati-coll.dfp.gov.it/dataset/?tags=delitti&tags=denunce&tags=capoluogo&organization=min-interni&license_id=CC-BY-4.0&res_format=JSON), ma a febbraio 2026 il dataset risulta fermo al 2022. La banca dati CED/SDI interforze resta riservata alle forze dell'ordine.
 
-Di fatto, l'unica fonte pubblica con dati strutturati per provincia e tipologia di reato è ISTAT, con il suo ritardo di circa 2 anni. Questa è una scelta deliberata dell'architettura informativa italiana sulla criminalità, non un limite tecnico.
+Di fatto, **l'unica fonte pubblica** con dati strutturati per provincia e tipologia di reato è ISTAT, con il suo ritardo di circa 2 anni. Questa è una **scelta deliberata** dell'architettura informativa italiana sulla criminalità, non un limite tecnico.
 
 ### Percezione di sicurezza (BES - ISTAT)
 
@@ -322,7 +338,7 @@ Il rapporto BES viene aggiornato **annualmente** in autunno:
 
 ### Omicidi (ISTAT)
 
-I dati sugli omicidi seguono un percorso di pubblicazione separato e più rapido. Il report "[Le vittime di omicidio](https://www.istat.it/comunicato-stampa/le-vittime-di-omicidio-anno-2024/)" con dati 2024 è stato pubblicato a novembre 2025.
+Questa dashboard utilizza i dati sugli omicidi dal dataset DCCV_DELITTIPS (delitti denunciati), che segue il ciclo di pubblicazione standard con **circa 2 anni di ritardo**. Tuttavia, per gli omicidi ISTAT pubblica anche un report separato con ciclo più rapido: "[Le vittime di omicidio](https://www.istat.it/comunicato-stampa/le-vittime-di-omicidio-anno-2024/)" con **dati 2024 già disponibili** (pubblicato a novembre 2025). Chi cerca dati più aggiornati sugli omicidi può consultare direttamente quel report.
 
 ## Trasparenza
 
@@ -332,8 +348,8 @@ Questo progetto non afferma di mostrare "la criminalità in Italia", ma solo i d
 
 ## Nota sul processo di sviluppo
 
-Questo progetto è stato sviluppato con VS Code e [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (Anthropic, modello Claude Opus), in una modalità di interazione continua tra analista e modello. La scelta è deliberata: costruire una dashboard statistica non è un problema di ingegneria del software risolvibile in autonomia da un agente. Ogni grafico richiede decisioni metodologiche — quale indicatore esporre, a quale scala, con quale contesto — che sono il contenuto intellettuale del lavoro stesso, non dettagli implementativi.
+Questo progetto è stato sviluppato con **VS Code** e **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** (Anthropic, modello Claude Opus), in una modalità di **interazione continua tra analista e modello**. La scelta è deliberata: costruire una dashboard statistica **non è un problema di ingegneria del software risolvibile in autonomia** da un agente. Ogni grafico richiede **decisioni metodologiche** — quale indicatore esporre, a quale scala, con quale contesto — che sono il **contenuto intellettuale del lavoro**, non dettagli implementativi.
 
-La statistica non è una scienza esatta: è uno strumento interpretativo, e come tale uno strumento politico in senso ampio. Le stesse cifre possono sostenere narrative opposte a seconda di cosa si sceglie di mostrare, come lo si aggrega e cosa si omette. Per questo il paradigma utile non è quello dell'"agente autonomo che esegue", ma quello del collaboratore intelligente che propone e lascia decidere. Il modello non decide la storia da raccontare: aiuta a raccontare meglio quella che l'analista ha già scelto di raccontare.
+La statistica **non è una scienza esatta**: è uno strumento interpretativo, e come tale **uno strumento politico** in senso ampio. Le stesse cifre possono **sostenere narrative opposte** a seconda di cosa si sceglie di mostrare, come lo si aggrega e cosa si omette. Per questo il paradigma utile non è quello dell'"agente autonomo che esegue", ma quello del **collaboratore intelligente** che propone e lascia decidere. Il modello **non decide la storia** da raccontare: aiuta a **raccontare meglio** quella che l'analista ha già scelto di raccontare.
 
 Tutti i dati raw, script di elaborazione e codice sorgente della dashboard sono disponibili pubblicamente su GitHub: https://github.com/AlbGri/osservatorio-criminalita-next

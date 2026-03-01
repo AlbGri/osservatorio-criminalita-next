@@ -9,7 +9,7 @@ export default function Home() {
       <KpiSummary />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Trend Delitti Denunciati in Italia (2014-2023)
         </h2>
         <ChartTrendNazionale />
@@ -18,7 +18,7 @@ export default function Home() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Percezione della Sicurezza vs Delitti Denunciati (2014-2023)
         </h2>
         <ChartPercezioneVsDati />
@@ -27,7 +27,7 @@ export default function Home() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Il Numero Oscuro: Cosa Non Vediamo
         </h2>
         <ChartNumeroOscuro />

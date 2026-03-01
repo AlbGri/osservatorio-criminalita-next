@@ -84,7 +84,7 @@ export default function ReatiAllarmeSociale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Trend Nazionale: {reato} (2014-2023)
         </h2>
         <ChartAllarmeTrendNazionale reatoSelezionato={reato} />
@@ -93,7 +93,7 @@ export default function ReatiAllarmeSociale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Ranking Regioni: {reato} ({anno})
         </h2>
         <ChartAllarmeRankingRegioni anno={anno} reato={reato} />
@@ -102,7 +102,7 @@ export default function ReatiAllarmeSociale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Trend Regionale: {reato} (2014-2023)
         </h2>
         <ChartAllarmeTrendRegione reato={reato} />
@@ -111,7 +111,7 @@ export default function ReatiAllarmeSociale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Dati Provinciali: {reato} ({anno})
         </h2>
         <ChartAllarmeTabellaProvince anno={anno} reato={reato} />
@@ -120,7 +120,7 @@ export default function ReatiAllarmeSociale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Trend Provinciale: {reato} (2014-2023)
         </h2>
         <ChartAllarmeTrendProvincia reato={reato} />

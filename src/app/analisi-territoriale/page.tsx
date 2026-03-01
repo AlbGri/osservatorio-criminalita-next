@@ -87,7 +87,7 @@ export default function AnalisiTerritoriale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Mappa Regionale ({anno})
         </h2>
         <ChartMappaRegioni anno={anno} />
@@ -96,7 +96,7 @@ export default function AnalisiTerritoriale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Ranking Regionale ({anno})
         </h2>
         <ChartRankingRegioni anno={anno} />
@@ -105,7 +105,7 @@ export default function AnalisiTerritoriale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Trend Regionale (2014-2023)
         </h2>
         <ChartTrendRegione />
@@ -114,7 +114,7 @@ export default function AnalisiTerritoriale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Dati Provinciali ({anno})
         </h2>
         <ChartTabellaProvince anno={anno} />
@@ -123,7 +123,7 @@ export default function AnalisiTerritoriale() {
       <hr />
 
       <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Trend Provinciale (2014-2023)
         </h2>
         <ChartTrendProvincia />
