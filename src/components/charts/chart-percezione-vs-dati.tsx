@@ -118,7 +118,8 @@ export function ChartPercezioneVsDati() {
         <Card>
           <CardContent className="py-2 sm:pt-4 sm:pb-2 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">Delta Tasso delitti denunciati</p>
-            <p className="text-lg sm:text-2xl font-bold">{varTasso.toFixed(1)} per 1000 ab.</p>
+            <p className="text-lg sm:text-2xl font-bold">{varTasso.toFixed(1)}</p>
+            <p className="text-[10px] sm:text-xs text-muted-foreground">per 1.000 ab.</p>
           </CardContent>
         </Card>
         <Card>
