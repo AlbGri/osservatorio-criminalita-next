@@ -38,7 +38,8 @@ export function KpiSummary() {
     },
     {
       label: `Tasso ${ultimo.Anno}`,
-      value: `${ultimo.Tasso_per_1000.toFixed(1)} per 1000 ab.`,
+      value: ultimo.Tasso_per_1000.toFixed(1),
+      subtitle: "per 1.000 ab.",
     },
     ...(varTasso !== null
       ? [

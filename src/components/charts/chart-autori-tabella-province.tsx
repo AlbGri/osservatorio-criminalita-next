@@ -247,7 +247,7 @@ export function ChartAutoriTabellaProvince({ dataType }: Props) {
         </button>
       </div>
 
-      <div className="overflow-x-auto max-h-[350px] overflow-y-auto border rounded-lg">
+      <div className="overflow-x-auto max-h-[250px] overflow-y-auto border rounded-lg">
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr className="border-b bg-muted sticky top-0">

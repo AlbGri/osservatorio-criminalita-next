@@ -21,10 +21,6 @@ CSV_CONFIG = {
         "output": "delitti_italia.json",
         "round": {"Tasso_per_1000": 2},
     },
-    "delitti_totale_italia_2014_2023.csv": {
-        "output": "delitti_totale_italia.json",
-        "round": {},
-    },
     "delitti_categorie_normalizzato_2014_2023.csv": {
         "output": "delitti_categorie.json",
         "round": {"Tasso_per_1000": 2},
@@ -44,10 +40,6 @@ CSV_CONFIG = {
     "percezione_vs_dati_2014_2023.csv": {
         "output": "percezione_vs_dati.json",
         "round": {"Tasso_per_1000": 2, "Percezione_pct": 1},
-    },
-    "popolazione_regioni_province_2014_2023.csv": {
-        "output": "popolazione.json",
-        "round": {},
     },
 }
 

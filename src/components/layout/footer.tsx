@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="border-t bg-muted/50 mt-12">
       <div className="mx-auto max-w-7xl px-4 py-6 text-center text-sm text-muted-foreground space-y-1">
         <p>
-          Dati ISTAT 2014-2023 |{" "}
+          Dati ISTAT |{" "}
           <a
             href="https://github.com/AlbGri/osservatorio-criminalita-next"
             target="_blank"

@@ -93,7 +93,7 @@ export function ChartAutoriTrend() {
           paper_bgcolor: "white",
           height: isMobile ? 250 : CHART_HEIGHT,
           margin: isMobile
-            ? { l: 45, r: 45, t: 40, b: 60 }
+            ? { l: 45, r: 45, t: 40, b: 70 }
             : { l: 60, r: 60, t: 30, b: 50 },
           legend: isMobile
             ? {
