@@ -115,7 +115,7 @@ export function ChartNumeroOscuro() {
         </AlertDescription>
       </Alert>
 
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription="Grafico numero oscuro: percentuale di reati denunciati vs non denunciati per tipologia. Violenza da partner denunciata solo nell'11% dei casi">
         <Plot
           data={[
             {
@@ -166,7 +166,7 @@ export function ChartNumeroOscuro() {
         </p>
       </div>
 
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription="Grafico confronto propensione alla denuncia tra 2015-2016 e 2022-2023 per frodi, aggressioni e scippi">
         <Plot
           data={[
             {
@@ -232,7 +232,7 @@ export function ChartNumeroOscuro() {
         </p>
       </div>
 
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription="Grafico propensione alla denuncia per macro-area geografica e tipo di reato, 2022-2023. Il Sud denuncia piu' della media per reati violenti e contro la proprieta'">
         <Plot
           data={[
             ...Object.entries(macroCat2023).map(([cat, vals], i) => ({
@@ -322,7 +322,7 @@ export function ChartNumeroOscuro() {
         {reatiStorico.map((reato) => (
           <div key={reato} className="space-y-2">
             <h4 className="text-sm font-semibold">{reato}</h4>
-            <ChartFullscreenWrapper>
+            <ChartFullscreenWrapper ariaDescription={`Grafico confronto propensione alla denuncia per ${reato} tra 2015-2016 e 2022-2023 per macro-area`}>
               <Plot
                 data={[
                   {

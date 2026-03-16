@@ -48,7 +48,7 @@ export function ChartRankingRegioni({ anno }: Props) {
   });
 
   return (
-    <ChartFullscreenWrapper>
+    <ChartFullscreenWrapper ariaDescription={`Classifica regioni per tasso delitti denunciati per 1.000 abitanti, anno ${anno}`}>
       <Plot
         data={[
           {

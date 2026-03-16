@@ -7,6 +7,7 @@ import { ChartAutoriStranieriReato } from "@/components/charts/chart-autori-stra
 import { ChartAutoriMinoriReato } from "@/components/charts/chart-autori-minori-reato";
 import { ChartAutoriRankingProvince } from "@/components/charts/chart-autori-ranking-province";
 import { ChartAutoriTabellaProvince } from "@/components/charts/chart-autori-tabella-province";
+import Link from "next/link";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 type DataType = "OFFEND" | "VICTIM";
@@ -121,7 +122,7 @@ export default function PersoneDenunciate() {
           pu&ograve; comparire pi&ugrave; volte se coinvolta in pi&ugrave; procedimenti.
           Il dato provinciale &egrave; disponibile solo dal 2022.
           Per approfondimenti si rimanda alla{" "}
-          <a href="/metodologia" className="underline">nota metodologica</a>.
+          <Link href="/metodologia" className="underline">nota metodologica</Link>.
         </AlertDescription>
       </Alert>
     </main>

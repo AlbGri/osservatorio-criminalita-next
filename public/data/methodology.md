@@ -274,7 +274,7 @@ Italia equivalente: ~€9 milioni/anno
 **Confronto UK:**
 - 1973: inizia NCVS (USA)
 - 1982: inizia CSEW (UK)
-- 2024: Italia ancora dipendente solo da denunce
+- 2026: Italia ancora dipendente solo da denunce
 
 **Ritardo: 40+ anni.**
 

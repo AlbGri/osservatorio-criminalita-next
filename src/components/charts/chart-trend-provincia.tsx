@@ -132,7 +132,7 @@ export function ChartTrendProvincia() {
         </div>
       </div>
 
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription={`Grafico trend delitti denunciati per ${selectedProvincia} vs media ${selectedRegione}, 2014-2023`}>
         <Plot
           data={[
             {

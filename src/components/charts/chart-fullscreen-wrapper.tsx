@@ -5,9 +5,10 @@ import { Maximize2, Minimize2 } from "lucide-react";
 
 interface ChartFullscreenWrapperProps {
   children: React.ReactNode;
+  ariaDescription?: string;
 }
 
-export function ChartFullscreenWrapper({ children }: ChartFullscreenWrapperProps) {
+export function ChartFullscreenWrapper({ children, ariaDescription }: ChartFullscreenWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -36,7 +37,8 @@ export function ChartFullscreenWrapper({ children }: ChartFullscreenWrapperProps
   }, []);
 
   return (
-    <div ref={containerRef} className="relative fullscreen-chart">
+    <div ref={containerRef} className="relative fullscreen-chart" role="img" aria-label={ariaDescription}>
+      {ariaDescription && <span className="sr-only">{ariaDescription}</span>}
       <button
         onClick={toggleFullscreen}
         className="absolute top-2 right-2 z-10 p-1.5 rounded-md bg-white/80 hover:bg-white border border-gray-200 text-gray-500 hover:text-gray-700 transition-colors"

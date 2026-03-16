@@ -76,7 +76,7 @@ export function ChartAutoriStranieriReato({ dataType }: Props) {
 
   return (
     <div className="space-y-2">
-    <ChartFullscreenWrapper>
+    <ChartFullscreenWrapper ariaDescription={`Classifica reati per percentuale ${dataType === "OFFEND" ? "autori" : "vittime"} stranieri, 2022`}>
       <Plot
         data={[
           {

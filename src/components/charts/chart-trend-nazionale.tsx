@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
 import {
@@ -9,10 +10,11 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
+  varTriennale,
+  TRIENNALE_PERIODI,
 } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -24,56 +26,153 @@ interface DelittiItalia {
   Tasso_per_1000: number;
 }
 
+interface CategoriaReato {
+  Anno: number;
+  Categoria: string;
+  Delitti: number;
+  Popolazione: number;
+  Tasso_per_1000: number;
+}
+
+const COLORI_CATEGORIE: Record<string, string> = {
+  Furti: COLORS.furti,
+  "Violenze contro la persona": COLORS.violenze,
+  "Truffe e Frodi": COLORS.truffe,
+  Rapine: COLORS.rapine,
+  Droga: COLORS.droga,
+  Altro: COLORS.altro,
+};
+
+type ViewMode = "totale" | "tipologia";
+
 export function ChartTrendNazionale() {
+  const [view, setView] = useState<ViewMode>("totale");
   const isMobile = useIsMobile();
+
   const { data, loading, error } = useFetchData<DelittiItalia[]>(
     "/data/delitti_italia.json"
   );
+  const { data: categorie, loading: loadingCat } = useFetchData<CategoriaReato[]>(
+    "/data/delitti_categorie.json"
+  );
 
-  if (loading) return <div className="h-[250px] sm:h-[450px] animate-pulse bg-muted rounded" />;
+  if (loading || loadingCat) return <div className="h-[250px] sm:h-[450px] animate-pulse bg-muted rounded" />;
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
-  const anni = data.map((d) => d.Anno);
-  const tassi = data.map((d) => d.Tasso_per_1000);
+  const traceTotale = [
+    {
+      x: data.map((d) => d.Anno),
+      y: data.map((d) => d.Tasso_per_1000),
+      mode: "lines+markers" as const,
+      name: "Tasso delitti per 1.000 ab.",
+      line: { color: COLORS.primary, width: 3 },
+      marker: { size: 8 },
+    },
+  ];
+
+  const categorieUniche = categorie ? [...new Set(categorie.map((d) => d.Categoria))] : [];
+  const traceTipologia = categorieUniche.map((cat) => {
+    const filtered = categorie!.filter((d) => d.Categoria === cat);
+    return {
+      x: filtered.map((d) => d.Anno),
+      y: filtered.map((d) => d.Tasso_per_1000),
+      mode: "lines+markers" as const,
+      name: cat,
+      line: { width: 2, color: COLORI_CATEGORIE[cat] ?? "#999999" },
+      marker: { size: isMobile ? 4 : 6 },
+    };
+  });
+
+  const calcVar = (cat: string) =>
+    categorie
+      ? varTriennale(
+          categorie.filter((d) => d.Categoria === cat).map((d) => ({ anno: d.Anno, tasso: d.Tasso_per_1000 }))
+        )
+      : null;
+  const varFurti = calcVar("Furti");
+  const varTruffe = calcVar("Truffe e Frodi");
+
+  const isTipologia = view === "tipologia";
+  const showToggle = !!categorie;
 
   return (
     <div className="space-y-4">
       <Alert>
         <AlertDescription className="block">
-          <strong>Nota metodologica:</strong> questi dati mostrano <strong>denunce registrate</strong>, non crimini effettivamente commessi. Alcuni reati hanno bassa propensione alla denuncia (es. violenze domestiche), altri alta (es. furti auto assicurati).
+          {isTipologia ? (
+            <>
+              <strong>Composizione per tipologia:</strong> le macro-categorie non sono mutuamente esclusive (uno stesso reato pu&ograve; rientrare in pi&ugrave; categorie), pertanto la loro somma supera il totale nazionale.
+            </>
+          ) : (
+            <>
+              <strong>Nota metodologica:</strong> questi dati mostrano <strong>denunce registrate</strong>, non crimini effettivamente commessi. Alcuni reati hanno bassa propensione alla denuncia (es. violenze domestiche), altri alta (es. furti auto assicurati).
+            </>
+          )}
         </AlertDescription>
       </Alert>
 
-      <ChartFullscreenWrapper>
+      {showToggle && (
+        <div className="flex justify-center">
+          <div className="inline-flex rounded-md border border-border overflow-hidden text-sm">
+            <button
+              onClick={() => setView("totale")}
+              className={`px-3 py-1.5 transition-colors ${
+                view === "totale"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-background text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              Totale
+            </button>
+            <button
+              onClick={() => setView("tipologia")}
+              className={`px-3 py-1.5 transition-colors ${
+                view === "tipologia"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-background text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              Per tipologia
+            </button>
+          </div>
+        </div>
+      )}
+
+      <ChartFullscreenWrapper ariaDescription={isTipologia ? "Grafico trend delitti per tipologia in Italia dal 2014 al 2023: furti in calo, truffe in crescita costante" : "Grafico trend tasso delitti denunciati per 1.000 abitanti in Italia dal 2014 al 2023"}>
         <Plot
-          data={[
-            {
-              x: anni,
-              y: tassi,
-              mode: "lines+markers" as const,
-              name: "Tasso delitti per 1000 abitanti",
-              line: { color: COLORS.primary, width: 3 },
-              marker: { size: 8 },
-            },
-          ]}
+          data={isTipologia ? traceTipologia : traceTotale}
           layout={{
             xaxis: { ...AXIS_FIXED, title: { text: "Anno" } },
-            yaxis: { ...AXIS_FIXED, title: { text: "Delitti per 1000 ab." } },
+            yaxis: { ...AXIS_FIXED, title: { text: "Tasso per 1.000 ab.", font: { size: 12 } } },
             dragmode: false,
             hovermode: "closest" as const,
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: isMobile ? 250 : CHART_HEIGHT,
-            margin: { l: 50, r: 20, t: 20, b: 50 },
+            margin: isMobile ? { l: 45, r: 20, t: 20, b: 60 } : { l: 50, r: 20, t: 20, b: 50 },
+            legend: isTipologia
+              ? isMobile
+                ? { x: 0.5, y: -0.35, xanchor: "center" as const, yanchor: "top" as const, orientation: "h" as const, font: { size: 9 } }
+                : { x: 0.5, y: 1.08, xanchor: "center" as const, orientation: "h" as const }
+              : undefined,
+            showlegend: isTipologia,
             shapes: COVID_SHAPES,
-            annotations: COVID_ANNOTATIONS,
+            annotations: isMobile
+              ? COVID_ANNOTATIONS.map((a) => ({ ...a, y: 0.92, font: { ...a.font, size: 8 } }))
+              : COVID_ANNOTATIONS,
           }}
           config={PLOTLY_CONFIG}
           useResizeHandler
           className="w-full"
         />
       </ChartFullscreenWrapper>
+
+      {isTipologia && varFurti !== null && varTruffe !== null && (
+        <p className="text-sm text-muted-foreground text-center">
+          <strong>Variazioni ({TRIENNALE_PERIODI}):</strong> Furti {varFurti > 0 ? "+" : ""}{varFurti.toFixed(1)}% | Truffe e Frodi {varTruffe > 0 ? "+" : ""}{varTruffe.toFixed(1)}%
+        </p>
+      )}
     </div>
   );
 }

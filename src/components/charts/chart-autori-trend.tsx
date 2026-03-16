@@ -40,7 +40,7 @@ export function ChartAutoriTrend() {
   const anni = data.map((d) => d.anno);
 
   return (
-    <ChartFullscreenWrapper>
+    <ChartFullscreenWrapper ariaDescription="Grafico trend persone denunciate 2007-2022: totale autori e percentuale stranieri">
       <Plot
         data={[
           {

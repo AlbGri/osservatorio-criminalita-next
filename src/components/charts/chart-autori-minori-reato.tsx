@@ -68,7 +68,7 @@ export function ChartAutoriMinoriReato({ dataType }: Props) {
   const chartHeight = Math.max(400, nBars * barHeight + 80);
 
   return (
-    <ChartFullscreenWrapper>
+    <ChartFullscreenWrapper ariaDescription={`Classifica reati per percentuale ${dataType === "OFFEND" ? "autori" : "vittime"} minori, 2022`}>
       <Plot
         data={[
           {

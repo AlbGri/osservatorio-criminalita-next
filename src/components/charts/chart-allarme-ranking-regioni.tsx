@@ -64,7 +64,7 @@ export function ChartAllarmeRankingRegioni({ anno, reato }: Props) {
   });
 
   return (
-    <ChartFullscreenWrapper>
+    <ChartFullscreenWrapper ariaDescription={`Classifica regioni per ${reato}, tasso per 100.000 abitanti, anno ${anno}`}>
       <Plot
         data={[
           {

@@ -23,7 +23,9 @@ interface ReatiRecord {
   pct_minori: number | null;
 }
 
-/** Calcola variazione triennale: media(2020-2022) vs media(2017-2019). */
+/** Calcola variazione triennale: media(2020-2022) vs media(2017-2019).
+ *  Periodi diversi da varTriennale globale (2014-2016 vs 2021-2023)
+ *  perche' i dati autori AUTVITTPS finiscono al 2022. */
 function varTriennaleAutori(data: TrendRecord[]): number | null {
   const recente = data.filter((d) => d.anno >= 2020 && d.anno <= 2022);
   const precedente = data.filter((d) => d.anno >= 2017 && d.anno <= 2019);
@@ -84,7 +86,7 @@ export function KpiAutoriVittime({ dataType }: KpiProps) {
               label: "Variazione totale autori",
               value: `${varTot > 0 ? "+" : ""}${varTot.toFixed(1)}%`,
               color: varTot < 0 ? "text-green-600" : "text-red-600",
-              subtitle: "media '17-'19 vs '20-'22",
+              subtitle: "media '17-'19 vs '20-'22 (denunciati, non condannati)",
             },
           ]
         : []),

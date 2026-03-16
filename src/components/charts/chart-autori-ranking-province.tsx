@@ -88,7 +88,7 @@ export function ChartAutoriRankingProvince({ dataType }: Props) {
 
   return (
     <div className="space-y-2">
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription={`Top ${N_TOP} province per percentuale ${dataType === "OFFEND" ? "autori" : "vittime"} stranieri su ${reatoLabel}, 2022`}>
         <Plot
           data={[
             {

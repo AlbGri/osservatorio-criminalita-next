@@ -53,7 +53,7 @@ export function ChartPercezioneVsDati() {
         </AlertDescription>
       </Alert>
 
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription="Grafico percezione insicurezza vs tasso delitti denunciati dal 2014 al 2023: la percezione segue dinamiche diverse dai dati reali">
         <Plot
           data={[
             {
@@ -98,9 +98,25 @@ export function ChartPercezioneVsDati() {
               ? { x: 0.5, y: -0.3, xanchor: "center", yanchor: "top", orientation: "h" as const, font: { size: 9 } }
               : { x: 0.5, y: 1.08, xanchor: "center", orientation: "h" as const },
             shapes: COVID_SHAPES,
-            annotations: isMobile
-              ? COVID_ANNOTATIONS.map((a) => ({ ...a, y: 0.92, font: { ...a.font, size: 8 } }))
-              : COVID_ANNOTATIONS,
+            annotations: [
+              ...(isMobile
+                ? COVID_ANNOTATIONS.map((a) => ({ ...a, y: 0.92, font: { ...a.font, size: 8 } }))
+                : COVID_ANNOTATIONS),
+              {
+                x: 2015,
+                y: 41.1,
+                xref: "x" as const,
+                yref: "y" as const,
+                text: isMobile ? "+11 p.p." : "+11.1 p.p. sul 2014",
+                showarrow: true,
+                arrowhead: 2,
+                arrowsize: 1,
+                arrowcolor: "#999",
+                ax: isMobile ? 20 : 40,
+                ay: isMobile ? -25 : -35,
+                font: { size: isMobile ? 9 : 11, color: "#666" },
+              },
+            ],
           }}
           config={PLOTLY_CONFIG}
           useResizeHandler

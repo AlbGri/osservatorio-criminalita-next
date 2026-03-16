@@ -84,7 +84,7 @@ export function ChartTrendRegione() {
         </select>
       </div>
 
-      <ChartFullscreenWrapper>
+      <ChartFullscreenWrapper ariaDescription={`Grafico trend delitti denunciati per ${selected} vs media nazionale, 2014-2023`}>
         <Plot
           data={[
             {
