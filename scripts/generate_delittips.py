@@ -5,7 +5,7 @@ Sostituisce il notebook analisi_delitti.ipynb e assorbe generate_allarme_regioni
 Input:
   - data/raw/delittips/delittips_1.csv (DF_1: Italia + tutti territori, numeri assoluti)
   - data/processed/popolazione_regioni_province.csv
-  - data/raw/percezione_criminalita_2014_2023_istat.csv
+  - data/raw/percezione_criminalita_istat.csv
 
 Output CSV (data/processed/):
   - delitti_italia_normalizzato.csv
@@ -369,7 +369,7 @@ def generate_percezione(df: pd.DataFrame, pop: pd.DataFrame, project_root: Path)
     result["Tasso_per_1000"] = result["Delitti"] / result["Popolazione"] * 1000
 
     # Percezione
-    perc_path = project_root / "data" / "raw" / "percezione_criminalita_2014_2023_istat.csv"
+    perc_path = project_root / "data" / "raw" / "percezione_criminalita_istat.csv"
     df_perc = pd.read_csv(perc_path, sep=";")
     df_perc = df_perc.rename(columns={"TIME_PERIOD": "Anno", "Osservazione": "Percezione_pct"})
     df_perc = df_perc[["Anno", "Percezione_pct"]]
