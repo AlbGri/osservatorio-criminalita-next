@@ -11,7 +11,8 @@ I dati provengono dal portale ufficiale ISTAT ([esploradati.istat.it](https://es
 2. **Percezione di sicurezza delle famiglie** - Indagine Multiscopo ISTAT (2014-2024)
    - Indicatore: "Famiglie per presenza di alcuni problemi nella zona in cui abitano: rischio di criminalità: molto e abbastanza"
    - Espresso in percentuale di famiglie che percepiscono rischio
-   - Dato 2024 (26.6%) da Noi Italia 2025 (fonte indiretta: indicatore BES derivato dall'indagine Multiscopo)
+   - Dato 2024 (26.6%) da [Noi Italia 2025 - Criminalità e sicurezza](https://noi-italia.istat.it/pagina.php?id=3&categoria=9&action=show&L=0) (indicatore BES derivato dall'indagine Multiscopo)
+   - La serie storica è compilata manualmente da pubblicazioni ISTAT annuali (Noi Italia, rapporto BES, comunicati Multiscopo). Non esiste un dataset ISTAT scaricabile automaticamente per questo indicatore.
 
 3. **Popolazione residente** - ISTAT
    - Ricostruzione intercensuaria 2002-2019

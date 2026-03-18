@@ -75,17 +75,14 @@ export function ChartAutoriTabellaProvince({ dataType }: Props) {
         }
       }
     }
-    // TOT sempre primo, poi per totale decrescente
+    // TOT sempre primo, poi in ordine alfabetico
     const entries: [string, string][] = Array.from(info.entries()).map(
       ([codice, { nome }]) => [codice, nome]
-    );
-    const totali = new Map(
-      Array.from(info.entries()).map(([codice, { totale }]) => [codice, totale])
     );
     return entries.sort((a, b) => {
       if (a[0] === "TOT") return -1;
       if (b[0] === "TOT") return 1;
-      return (totali.get(b[0]) ?? 0) - (totali.get(a[0]) ?? 0);
+      return a[1].localeCompare(b[1], "it");
     });
   }, [data, dataType]);
 
