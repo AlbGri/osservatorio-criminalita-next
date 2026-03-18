@@ -25,11 +25,15 @@ interface TrendRecord {
   totale: number;
   stranieri: number;
   minori: number;
+  maschi: number;
+  femmine: number;
   pct_stranieri: number;
   pct_minori: number | null;
+  pct_maschi: number | null;
+  pct_femmine: number | null;
 }
 
-type Breakdown = "pct_stranieri" | "pct_minori";
+type Breakdown = "pct_stranieri" | "pct_minori" | "pct_maschi" | "pct_femmine";
 
 interface Props {
   dataType: "OFFEND" | "VICTIM";
@@ -87,12 +91,20 @@ export function ChartAutoriTrend({ dataType }: Props) {
       .sort((a, b) => a.anno - b.anno);
   }, [data, dataType, effectiveReato]);
 
-  // Il breakdown % minori ha dati?
+  // Disponibilita' breakdown
   const hasMinori = useMemo(
     () => filtered.some((r) => r.pct_minori !== null),
     [filtered]
   );
-  const effectiveBreakdown = breakdown === "pct_minori" && !hasMinori ? "pct_stranieri" : breakdown;
+  const hasSesso = useMemo(
+    () => filtered.some((r) => r.pct_maschi !== null),
+    [filtered]
+  );
+  const effectiveBreakdown = useMemo(() => {
+    if (breakdown === "pct_minori" && !hasMinori) return "pct_stranieri";
+    if ((breakdown === "pct_maschi" || breakdown === "pct_femmine") && !hasSesso) return "pct_stranieri";
+    return breakdown;
+  }, [breakdown, hasMinori, hasSesso]);
 
   if (loading)
     return (
@@ -106,11 +118,15 @@ export function ChartAutoriTrend({ dataType }: Props) {
   const annoMin = anni[0];
   const annoMax = anni[anni.length - 1];
 
-  const breakdownLabel = effectiveBreakdown === "pct_stranieri" ? "% stranieri" : "% minori";
-  const breakdownColor = effectiveBreakdown === "pct_stranieri" ? COLORS.secondary : "#7c3aed";
-  const breakdownValues = filtered.map((d) =>
-    effectiveBreakdown === "pct_stranieri" ? d.pct_stranieri : d.pct_minori
-  );
+  const BREAKDOWN_CONFIG: Record<Breakdown, { label: string; color: string }> = {
+    pct_stranieri: { label: "% stranieri", color: COLORS.secondary },
+    pct_minori: { label: "% minori", color: "#7c3aed" },
+    pct_maschi: { label: "% maschi", color: "#2563eb" },
+    pct_femmine: { label: "% femmine", color: "#db2777" },
+  };
+  const breakdownLabel = BREAKDOWN_CONFIG[effectiveBreakdown].label;
+  const breakdownColor = BREAKDOWN_CONFIG[effectiveBreakdown].color;
+  const breakdownValues = filtered.map((d) => d[effectiveBreakdown]);
 
   return (
     <div className="space-y-3">
@@ -145,6 +161,12 @@ export function ChartAutoriTrend({ dataType }: Props) {
             <option value="pct_stranieri">% stranieri</option>
             <option value="pct_minori" disabled={!hasMinori}>
               % minori{!hasMinori ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_maschi" disabled={!hasSesso}>
+              % maschi{!hasSesso ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_femmine" disabled={!hasSesso}>
+              % femmine{!hasSesso ? " (non disponibile)" : ""}
             </option>
           </select>
         </div>

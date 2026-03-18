@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { COLORS, PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
@@ -20,11 +20,15 @@ interface RegioneRecord {
   totale: number;
   stranieri: number;
   minori: number;
+  maschi: number;
+  femmine: number;
   pct_stranieri: number;
   pct_minori: number | null;
+  pct_maschi: number | null;
+  pct_femmine: number | null;
 }
 
-type Metrica = "pct_stranieri" | "pct_minori" | "tasso";
+type Metrica = "pct_stranieri" | "pct_minori" | "pct_maschi" | "pct_femmine" | "tasso";
 
 interface Props {
   dataType: "OFFEND" | "VICTIM";
@@ -93,16 +97,24 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
       r.anno === effectiveAnno
   );
 
-  // Verifica disponibilita' % minori per il filtro corrente
+  // Verifica disponibilita' breakdown per il filtro corrente
   const hasMinori = filtered.some((r) => r.pct_minori !== null);
-  const effectiveMetrica = metrica === "pct_minori" && !hasMinori ? "pct_stranieri" : metrica;
+  const hasSesso = filtered.some((r) => r.pct_maschi !== null);
+  const effectiveMetrica = (() => {
+    if (metrica === "pct_minori" && !hasMinori) return "pct_stranieri";
+    if ((metrica === "pct_maschi" || metrica === "pct_femmine") && !hasSesso) return "pct_stranieri";
+    return metrica;
+  })();
 
-  const getValue = (r: RegioneRecord) =>
-    effectiveMetrica === "tasso"
-      ? (r.tasso ?? 0)
-      : effectiveMetrica === "pct_minori"
-        ? (r.pct_minori ?? 0)
-        : r.pct_stranieri;
+  const getValue = (r: RegioneRecord) => {
+    switch (effectiveMetrica) {
+      case "tasso": return r.tasso ?? 0;
+      case "pct_minori": return r.pct_minori ?? 0;
+      case "pct_maschi": return r.pct_maschi ?? 0;
+      case "pct_femmine": return r.pct_femmine ?? 0;
+      default: return r.pct_stranieri;
+    }
+  };
 
   const sorted = [...filtered].sort((a, b) => getValue(a) - getValue(b));
   const nomi = sorted.map((r) => r.regione);
@@ -119,6 +131,12 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
     const totSum = withMinori.reduce((s, r) => s + r.totale, 0);
     const minSum = withMinori.reduce((s, r) => s + r.minori, 0);
     media = totSum > 0 ? (minSum / totSum) * 100 : 0;
+  } else if (effectiveMetrica === "pct_maschi" || effectiveMetrica === "pct_femmine") {
+    const field = effectiveMetrica === "pct_maschi" ? "maschi" : "femmine";
+    const withData = filtered.filter((r) => r[effectiveMetrica] !== null);
+    const totSum = withData.reduce((s, r) => s + r.totale, 0);
+    const partSum = withData.reduce((s, r) => s + r[field], 0);
+    media = totSum > 0 ? (partSum / totSum) * 100 : 0;
   } else {
     const tassiNonNull = filtered.filter((r) => r.tasso !== null);
     if (tassiNonNull.length > 0) {
@@ -134,6 +152,8 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
   const METRICA_LABELS: Record<Metrica, string> = {
     pct_stranieri: "% stranieri",
     pct_minori: "% minori",
+    pct_maschi: "% maschi",
+    pct_femmine: "% femmine",
     tasso: "Tasso per 100k ab.",
   };
   const etichettaMetrica = METRICA_LABELS[effectiveMetrica];
@@ -197,6 +217,12 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
             <option value="pct_minori" disabled={!hasMinori}>
               % minori{!hasMinori ? " (non disponibile)" : ""}
             </option>
+            <option value="pct_maschi" disabled={!hasSesso}>
+              % maschi{!hasSesso ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_femmine" disabled={!hasSesso}>
+              % femmine{!hasSesso ? " (non disponibile)" : ""}
+            </option>
             <option value="tasso">Tasso per 100k ab.</option>
           </select>
         </div>
@@ -215,16 +241,22 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
               marker: { color: colors },
               text: valori.map((v) => v.toFixed(decimali) + (effectiveMetrica !== "tasso" ? "%" : "")),
               textposition: "outside" as const,
-              hovertemplate:
-                effectiveMetrica === "pct_stranieri"
-                  ? "<b>%{y}</b><br>Stranieri: %{x:.1f}%<br>Totale: %{customdata[0]}<br>Stranieri: %{customdata[1]}<extra></extra>"
-                  : effectiveMetrica === "pct_minori"
-                    ? "<b>%{y}</b><br>Minori: %{x:.1f}%<br>Totale: %{customdata[0]}<br>Minori: %{customdata[2]}<extra></extra>"
-                    : "<b>%{y}</b><br>Tasso: %{x:.1f} per 100k<br>Totale: %{customdata[0]}<extra></extra>",
+              hovertemplate: (() => {
+                const base = "<b>%{y}</b><br>";
+                switch (effectiveMetrica) {
+                  case "pct_stranieri": return base + "Stranieri: %{x:.1f}%<br>Totale: %{customdata[0]}<br>Stranieri: %{customdata[1]}<extra></extra>";
+                  case "pct_minori": return base + "Minori: %{x:.1f}%<br>Totale: %{customdata[0]}<br>Minori: %{customdata[2]}<extra></extra>";
+                  case "pct_maschi": return base + "Maschi: %{x:.1f}%<br>Totale: %{customdata[0]}<br>Maschi: %{customdata[3]}<extra></extra>";
+                  case "pct_femmine": return base + "Femmine: %{x:.1f}%<br>Totale: %{customdata[0]}<br>Femmine: %{customdata[4]}<extra></extra>";
+                  default: return base + "Tasso: %{x:.1f} per 100k<br>Totale: %{customdata[0]}<extra></extra>";
+                }
+              })(),
               customdata: sorted.map((r) => [
                 r.totale.toLocaleString("it-IT"),
                 r.stranieri.toLocaleString("it-IT"),
                 r.minori.toLocaleString("it-IT"),
+                r.maschi.toLocaleString("it-IT"),
+                r.femmine.toLocaleString("it-IT"),
               ]),
             },
           ]}

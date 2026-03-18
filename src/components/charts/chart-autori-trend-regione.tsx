@@ -28,11 +28,15 @@ interface RegioneRecord {
   totale: number;
   stranieri: number;
   minori: number;
+  maschi: number;
+  femmine: number;
   pct_stranieri: number;
   pct_minori: number | null;
+  pct_maschi: number | null;
+  pct_femmine: number | null;
 }
 
-type Metrica = "tasso" | "pct_stranieri" | "pct_minori";
+type Metrica = "tasso" | "pct_stranieri" | "pct_minori" | "pct_maschi" | "pct_femmine";
 
 interface Props {
   dataType: "OFFEND" | "VICTIM";
@@ -44,6 +48,8 @@ const METRICA_LABELS: Record<Metrica, string> = {
   tasso: "Tasso per 100k ab.",
   pct_stranieri: "% stranieri",
   pct_minori: "% minori",
+  pct_maschi: "% maschi",
+  pct_femmine: "% femmine",
 };
 
 export function ChartAutoriTrendRegione({ dataType }: Props) {
@@ -91,25 +97,35 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
     return Array.from(set).sort();
   }, [data, dataType, effectiveReato]);
 
-  // Verifica disponibilita' % minori per reato/dataType
+  // Verifica disponibilita' breakdown per reato/dataType
   const hasMinori = useMemo(() => {
     if (!data) return false;
     return data.some(
-      (r) =>
-        r.data_type === dataType &&
-        r.codice_reato === effectiveReato &&
-        r.pct_minori !== null
+      (r) => r.data_type === dataType && r.codice_reato === effectiveReato && r.pct_minori !== null
+    );
+  }, [data, dataType, effectiveReato]);
+  const hasSesso = useMemo(() => {
+    if (!data) return false;
+    return data.some(
+      (r) => r.data_type === dataType && r.codice_reato === effectiveReato && r.pct_maschi !== null
     );
   }, [data, dataType, effectiveReato]);
 
-  const effectiveMetrica = metrica === "pct_minori" && !hasMinori ? "tasso" : metrica;
+  const effectiveMetrica = (() => {
+    if (metrica === "pct_minori" && !hasMinori) return "tasso";
+    if ((metrica === "pct_maschi" || metrica === "pct_femmine") && !hasSesso) return "tasso";
+    return metrica;
+  })();
 
-  const getVal = (r: RegioneRecord): number | null =>
-    effectiveMetrica === "tasso"
-      ? r.tasso
-      : effectiveMetrica === "pct_stranieri"
-        ? r.pct_stranieri
-        : r.pct_minori;
+  const getVal = (r: RegioneRecord): number | null => {
+    switch (effectiveMetrica) {
+      case "tasso": return r.tasso;
+      case "pct_stranieri": return r.pct_stranieri;
+      case "pct_minori": return r.pct_minori;
+      case "pct_maschi": return r.pct_maschi;
+      case "pct_femmine": return r.pct_femmine;
+    }
+  };
 
   // Media nazionale ponderata
   const mediaNazionale = useMemo(() => {
@@ -133,6 +149,12 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
         const totSum = rows.reduce((s, r) => s + r.totale, 0);
         const strSum = rows.reduce((s, r) => s + r.stranieri, 0);
         map.set(anno, totSum > 0 ? (strSum / totSum) * 100 : 0);
+      } else if (effectiveMetrica === "pct_maschi" || effectiveMetrica === "pct_femmine") {
+        const field = effectiveMetrica === "pct_maschi" ? "maschi" : "femmine";
+        const withData = rows.filter((r) => r[effectiveMetrica] !== null);
+        const totSum = withData.reduce((s, r) => s + r.totale, 0);
+        const partSum = withData.reduce((s, r) => s + r[field], 0);
+        map.set(anno, totSum > 0 ? (partSum / totSum) * 100 : 0);
       } else {
         const withMinori = rows.filter((r) => r.pct_minori !== null);
         const totSum = withMinori.reduce((s, r) => s + r.totale, 0);
@@ -228,6 +250,12 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
             <option value="pct_stranieri">% stranieri</option>
             <option value="pct_minori" disabled={!hasMinori}>
               % minori{!hasMinori ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_maschi" disabled={!hasSesso}>
+              % maschi{!hasSesso ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_femmine" disabled={!hasSesso}>
+              % femmine{!hasSesso ? " (non disponibile)" : ""}
             </option>
           </select>
         </div>

@@ -313,11 +313,23 @@ def extract_metrics(df: pd.DataFrame) -> dict:
         ]["OBS_VALUE"].sum()
         minori = minori_frg + minori_itl  # 0 se nessuna delle due esiste
 
+    # Maschi (SEX=1) e femmine (SEX=2): hanno CITIZENSHIP=TOTAL anche pre-2022
+    maschi = df[
+        (df["SEX"] == "1") & (df["AGE"] == "TOTAL") & (df["CITIZENSHIP"] == "TOTAL")
+    ]["OBS_VALUE"].sum()
+    femmine = df[
+        (df["SEX"] == "2") & (df["AGE"] == "TOTAL") & (df["CITIZENSHIP"] == "TOTAL")
+    ]["OBS_VALUE"].sum()
+
     result = {
         "totale": int(totale),
         "stranieri": int(stranieri),
         "minori": int(minori),
+        "maschi": int(maschi),
+        "femmine": int(femmine),
         "pct_stranieri": round(stranieri / totale * 100, 1) if totale > 0 else 0,
+        "pct_maschi": round(maschi / totale * 100, 1) if totale > 0 and maschi > 0 else None,
+        "pct_femmine": round(femmine / totale * 100, 1) if totale > 0 and femmine > 0 else None,
     }
     # pct_minori solo se il dato minori e' disponibile
     if minori > 0:
