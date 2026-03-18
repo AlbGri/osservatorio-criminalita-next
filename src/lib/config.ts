@@ -72,8 +72,10 @@ export const PLOTLY_CONFIG: Partial<Plotly.Config> = {
 /** Proprietà base per tutti gli assi: disabilita zoom/pan/editing range */
 export const AXIS_FIXED = { fixedrange: true } as const;
 
-/** Asse x per anni: interi, no separatore migliaia, tick ogni anno */
-export const AXIS_YEAR = { ...AXIS_FIXED, tickformat: "d", dtick: 1 } as const;
+/** Asse x per anni: interi, no separatore migliaia, dtick condizionale (1 desktop, 2 mobile) */
+export function getAxisYear(isMobile: boolean) {
+  return { ...AXIS_FIXED, tickformat: "d", dtick: isMobile ? 2 : 1 };
+}
 
 /** Variazione % media triennale: media(2022-2024) vs media(2014-2016).
  *  Piu robusto del confronto puntuale perche smussa outlier annuali. */

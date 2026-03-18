@@ -10,8 +10,9 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
-  AXIS_YEAR,
+  getAxisYear,
 } from "@/lib/config";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -46,6 +47,7 @@ const METRICA_LABELS: Record<Metrica, string> = {
 };
 
 export function ChartAutoriTrendRegione({ dataType }: Props) {
+  const isMobile = useIsMobile();
   const { data, loading, error } = useFetchData<RegioneRecord[]>(
     "/data/autori_vittime_regioni.json"
   );
@@ -258,7 +260,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: CHART_HEIGHT_SMALL,
-            xaxis: { ...AXIS_YEAR, title: { text: "Anno" } },
+            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: {
               ...AXIS_FIXED,
               title: { text: yLabel, font: { size: 12 } },

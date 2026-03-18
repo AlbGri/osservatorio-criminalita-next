@@ -7,6 +7,7 @@ import { ChartAutoriRankingRegioni } from "@/components/charts/chart-autori-rank
 import { ChartAutoriTrendRegione } from "@/components/charts/chart-autori-trend-regione";
 import { ChartAutoriStranieriReato } from "@/components/charts/chart-autori-stranieri-reato";
 import { ChartAutoriMinoriReato } from "@/components/charts/chart-autori-minori-reato";
+import { ChartAutoriVsVittime } from "@/components/charts/chart-autori-vs-vittime";
 import { ChartAutoriTabellaProvince } from "@/components/charts/chart-autori-tabella-province";
 import { ChartAutoriTrendProvincia } from "@/components/charts/chart-autori-trend-provincia";
 import Link from "next/link";
@@ -50,6 +51,16 @@ export default function PersoneDenunciate() {
           ))}
         </div>
       </div>
+
+      {dataType === "VICTIM" && (
+        <Alert>
+          <AlertDescription className="block">
+            <strong>Nota:</strong> per le vittime il dato aggregato (totale per tutti i reati)
+            non &egrave; disponibile. Le analisi sono basate sui singoli reati.
+            Una stessa vittima pu&ograve; comparire in pi&ugrave; tipologie.
+          </AlertDescription>
+        </Alert>
+      )}
 
       {/* 1. KPI */}
       <KpiAutoriVittime dataType={dataType} />
@@ -113,7 +124,17 @@ export default function PersoneDenunciate() {
 
       <hr />
 
-      {/* 7. Dati Provinciali */}
+      {/* 7. Confronto Autori vs Vittime */}
+      <section className="space-y-3">
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
+          Confronto Autori vs Vittime per Reato (2022)
+        </h2>
+        <ChartAutoriVsVittime />
+      </section>
+
+      <hr />
+
+      {/* 8. Dati Provinciali */}
       <section className="space-y-3">
         <h2 className="text-xl sm:text-2xl font-semibold text-primary">
           Dati Provinciali

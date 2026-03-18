@@ -10,10 +10,11 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
-  AXIS_YEAR,
+  getAxisYear,
   varTriennale,
   TRIENNALE_PERIODI,
 } from "@/lib/config";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -28,6 +29,7 @@ interface DelittiRegione {
 }
 
 export function ChartTrendRegione() {
+  const isMobile = useIsMobile();
   const { data, loading } = useFetchData<DelittiRegione[]>(
     "/data/delitti_regioni.json"
   );
@@ -110,7 +112,7 @@ export function ChartTrendRegione() {
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: CHART_HEIGHT_SMALL,
-            xaxis: { ...AXIS_YEAR, title: { text: "Anno" } },
+            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: { ...AXIS_FIXED, title: { text: "Tasso per 1000 ab.", font: { size: 12 } } },
             legend: {
               x: 0,

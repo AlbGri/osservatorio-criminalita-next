@@ -10,7 +10,7 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
-  AXIS_YEAR,
+  getAxisYear,
 } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -177,7 +177,7 @@ export function ChartAutoriTrend({ dataType }: Props) {
             },
           ]}
           layout={{
-            xaxis: { ...AXIS_YEAR, title: { text: "Anno" } },
+            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: {
               ...AXIS_FIXED,
               title: {

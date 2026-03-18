@@ -10,7 +10,7 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
-  AXIS_YEAR,
+  getAxisYear,
   varTriennale,
   TRIENNALE_PERIODI,
 } from "@/lib/config";
@@ -144,7 +144,7 @@ export function ChartTrendNazionale() {
         <Plot
           data={isTipologia ? traceTipologia : traceTotale}
           layout={{
-            xaxis: { ...AXIS_YEAR, title: { text: "Anno" } },
+            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: { ...AXIS_FIXED, title: { text: "Tasso per 1.000 ab.", font: { size: 12 } } },
             dragmode: false,
             hovermode: "closest" as const,

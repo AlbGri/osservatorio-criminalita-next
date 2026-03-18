@@ -10,10 +10,11 @@ import {
   COVID_SHAPES,
   COVID_ANNOTATIONS,
   AXIS_FIXED,
-  AXIS_YEAR,
+  getAxisYear,
   varTriennale,
   TRIENNALE_PERIODI,
 } from "@/lib/config";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -42,6 +43,7 @@ interface Props {
 }
 
 export function ChartAllarmeTrendRegione({ reato }: Props) {
+  const isMobile = useIsMobile();
   const { data, loading } = useFetchData<AllarmeRegione[]>(
     "/data/reati_allarme_sociale_regioni.json"
   );
@@ -134,7 +136,7 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: CHART_HEIGHT_SMALL,
-            xaxis: { ...AXIS_YEAR, title: { text: "Anno" } },
+            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: { ...AXIS_FIXED,
               title: { text: "Tasso per 100k ab.", font: { size: 12 } },
             },
