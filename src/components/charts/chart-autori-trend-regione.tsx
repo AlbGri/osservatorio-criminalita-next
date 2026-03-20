@@ -292,6 +292,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
             yaxis: {
               ...AXIS_FIXED,
               title: { text: yLabel, font: { size: 12 } },
+              ...(effectiveMetrica !== "tasso" ? { range: [0, 100] } : {}),
             },
             legend: {
               x: 0,

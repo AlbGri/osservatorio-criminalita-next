@@ -264,7 +264,7 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
             xaxis: {
               ...AXIS_FIXED,
               title: { text: etichettaMetrica },
-              range: [0, maxVal * 1.2],
+              range: effectiveMetrica !== "tasso" ? [0, 100] : [0, maxVal * 1.2],
             },
             yaxis: { ...AXIS_FIXED, automargin: true },
             shapes: [

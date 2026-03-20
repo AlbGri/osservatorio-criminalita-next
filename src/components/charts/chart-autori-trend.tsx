@@ -33,8 +33,6 @@ interface TrendRecord {
   pct_femmine: number | null;
 }
 
-type Breakdown = "pct_stranieri" | "pct_minori" | "pct_maschi" | "pct_femmine";
-
 interface Props {
   dataType: "OFFEND" | "VICTIM";
 }
@@ -42,13 +40,19 @@ interface Props {
 /** Reato preferito come default VICTIM (serie lunga, alto volume) */
 const VICTIM_DEFAULT = "CULPINJU";
 
+const BREAKDOWN_LINES = [
+  { key: "pct_stranieri" as const, label: "% stranieri", color: COLORS.secondary },
+  { key: "pct_maschi" as const, label: "% maschi", color: "#2563eb" },
+  { key: "pct_femmine" as const, label: "% femmine", color: "#db2777" },
+  { key: "pct_minori" as const, label: "% minori", color: "#7c3aed" },
+];
+
 export function ChartAutoriTrend({ dataType }: Props) {
   const isMobile = useIsMobile();
   const { data, loading, error } = useFetchData<TrendRecord[]>(
     "/data/autori_vittime_trend.json"
   );
   const [codiceReato, setCodiceReato] = useState("TOT");
-  const [breakdown, setBreakdown] = useState<Breakdown>("pct_stranieri");
 
   // Lista reati disponibili per il data_type selezionato
   const reatiDisponibili = useMemo(() => {
@@ -91,21 +95,6 @@ export function ChartAutoriTrend({ dataType }: Props) {
       .sort((a, b) => a.anno - b.anno);
   }, [data, dataType, effectiveReato]);
 
-  // Disponibilita' breakdown
-  const hasMinori = useMemo(
-    () => filtered.some((r) => r.pct_minori !== null),
-    [filtered]
-  );
-  const hasSesso = useMemo(
-    () => filtered.some((r) => r.pct_maschi !== null),
-    [filtered]
-  );
-  const effectiveBreakdown = useMemo(() => {
-    if (breakdown === "pct_minori" && !hasMinori) return "pct_stranieri";
-    if ((breakdown === "pct_maschi" || breakdown === "pct_femmine") && !hasSesso) return "pct_stranieri";
-    return breakdown;
-  }, [breakdown, hasMinori, hasSesso]);
-
   if (loading)
     return (
       <div className="h-[250px] sm:h-[450px] animate-pulse bg-muted rounded" />
@@ -118,15 +107,35 @@ export function ChartAutoriTrend({ dataType }: Props) {
   const annoMin = anni[0];
   const annoMax = anni[anni.length - 1];
 
-  const BREAKDOWN_CONFIG: Record<Breakdown, { label: string; color: string }> = {
-    pct_stranieri: { label: "% stranieri", color: COLORS.secondary },
-    pct_minori: { label: "% minori", color: "#7c3aed" },
-    pct_maschi: { label: "% maschi", color: "#2563eb" },
-    pct_femmine: { label: "% femmine", color: "#db2777" },
-  };
-  const breakdownLabel = BREAKDOWN_CONFIG[effectiveBreakdown].label;
-  const breakdownColor = BREAKDOWN_CONFIG[effectiveBreakdown].color;
-  const breakdownValues = filtered.map((d) => d[effectiveBreakdown]);
+  // Linea totale
+  const traces: Plotly.Data[] = [
+    {
+      x: anni,
+      y: filtered.map((d) => d.totale),
+      mode: "lines+markers" as const,
+      name: `Totale ${dataType === "OFFEND" ? "autori" : "vittime"}`,
+      line: { color: COLORS.primary, width: 3 },
+      marker: { size: 8 },
+      yaxis: "y",
+    },
+  ];
+
+  // Linee breakdown % su asse destro, solo se hanno dati non-null
+  for (const bd of BREAKDOWN_LINES) {
+    const values = filtered.map((d) => d[bd.key]);
+    const hasData = values.some((v) => v !== null);
+    if (!hasData) continue;
+
+    traces.push({
+      x: anni,
+      y: values,
+      mode: "lines+markers" as const,
+      name: bd.label,
+      line: { color: bd.color, width: 2, dash: "dash" as const },
+      marker: { size: 5 },
+      yaxis: "y2",
+    });
+  }
 
   return (
     <div className="space-y-3">
@@ -148,56 +157,11 @@ export function ChartAutoriTrend({ dataType }: Props) {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="trend-breakdown-select" className="block text-sm font-medium mb-1">
-            Spaccato
-          </label>
-          <select
-            id="trend-breakdown-select"
-            value={effectiveBreakdown}
-            onChange={(e) => setBreakdown(e.target.value as Breakdown)}
-            className="border rounded-md px-3 py-2 text-sm bg-background"
-          >
-            <option value="pct_stranieri">% stranieri</option>
-            <option value="pct_minori" disabled={!hasMinori}>
-              % minori{!hasMinori ? " (non disponibile)" : ""}
-            </option>
-            <option value="pct_maschi" disabled={!hasSesso}>
-              % maschi{!hasSesso ? " (non disponibile)" : ""}
-            </option>
-            <option value="pct_femmine" disabled={!hasSesso}>
-              % femmine{!hasSesso ? " (non disponibile)" : ""}
-            </option>
-          </select>
-        </div>
       </div>
 
       <ChartFullscreenWrapper ariaDescription={`Grafico trend ${dataType === "OFFEND" ? "autori" : "vittime"} ${reatoLabel} ${annoMin}-${annoMax}`}>
         <Plot
-          data={[
-            {
-              x: anni,
-              y: filtered.map((d) => d.totale),
-              mode: "lines+markers" as const,
-              name: `Totale ${dataType === "OFFEND" ? "autori" : "vittime"}`,
-              line: { color: COLORS.primary, width: 3 },
-              marker: { size: 8 },
-              yaxis: "y",
-            },
-            {
-              x: anni,
-              y: breakdownValues,
-              mode: "lines+markers" as const,
-              name: breakdownLabel,
-              line: {
-                color: breakdownColor,
-                width: 3,
-                dash: "dash" as const,
-              },
-              marker: { size: 8 },
-              yaxis: "y2",
-            },
-          ]}
+          data={traces}
           layout={{
             xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: {
@@ -211,13 +175,10 @@ export function ChartAutoriTrend({ dataType }: Props) {
             },
             yaxis2: {
               ...AXIS_FIXED,
-              title: {
-                text: breakdownLabel,
-                font: { color: breakdownColor, size: 12 },
-              },
-              tickfont: { color: breakdownColor },
+              title: { text: "%", font: { size: 12 } },
               overlaying: "y" as const,
               side: "right",
+              range: [0, 100],
             },
             dragmode: false,
             hovermode: "closest" as const,
