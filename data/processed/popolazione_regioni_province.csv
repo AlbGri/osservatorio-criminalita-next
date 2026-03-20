@@ -1,4 +1,16 @@
 REF_AREA,Territorio,Anno,Popolazione,livello
+IT,Italia,2002,56993270,italia
+IT,Italia,2003,57186378,italia
+IT,Italia,2004,57611990,italia
+IT,Italia,2005,58044368,italia
+IT,Italia,2006,58288996,italia
+IT,Italia,2007,58510725,italia
+IT,Italia,2008,59001769,italia
+IT,Italia,2009,59420592,italia
+IT,Italia,2010,59690316,italia
+IT,Italia,2011,59948497,italia
+IT,Italia,2012,60105185,italia
+IT,Italia,2013,60277309,italia
 IT,Italia,2014,60345917,italia
 IT,Italia,2015,60295497,italia
 IT,Italia,2016,60163712,italia
@@ -11,6 +23,18 @@ IT,Italia,2022,59030133,italia
 IT,Italia,2023,58997201,italia
 IT,Italia,2024,58971230,italia
 IT,Italia,2025,58943464,italia
+IT108,Monza e della Brianza,2002,767029,provincia
+IT108,Monza e della Brianza,2003,772690,provincia
+IT108,Monza e della Brianza,2004,782550,provincia
+IT108,Monza e della Brianza,2005,792082,provincia
+IT108,Monza e della Brianza,2006,799025,provincia
+IT108,Monza e della Brianza,2007,806160,provincia
+IT108,Monza e della Brianza,2008,815081,provincia
+IT108,Monza e della Brianza,2009,825537,provincia
+IT108,Monza e della Brianza,2010,832109,provincia
+IT108,Monza e della Brianza,2011,839897,provincia
+IT108,Monza e della Brianza,2012,846580,provincia
+IT108,Monza e della Brianza,2013,855068,provincia
 IT108,Monza e della Brianza,2014,858244,provincia
 IT108,Monza e della Brianza,2015,860065,provincia
 IT108,Monza e della Brianza,2016,861122,provincia
@@ -23,6 +47,18 @@ IT108,Monza e della Brianza,2022,870407,provincia
 IT108,Monza e della Brianza,2023,873606,provincia
 IT108,Monza e della Brianza,2024,876792,provincia
 IT108,Monza e della Brianza,2025,879303,provincia
+IT109,Fermo,2002,166275,provincia
+IT109,Fermo,2003,167414,provincia
+IT109,Fermo,2004,169564,provincia
+IT109,Fermo,2005,170753,provincia
+IT109,Fermo,2006,171281,provincia
+IT109,Fermo,2007,171668,provincia
+IT109,Fermo,2008,173186,provincia
+IT109,Fermo,2009,174787,provincia
+IT109,Fermo,2010,175548,provincia
+IT109,Fermo,2011,175696,provincia
+IT109,Fermo,2012,176029,provincia
+IT109,Fermo,2013,176009,provincia
 IT109,Fermo,2014,176030,provincia
 IT109,Fermo,2015,175758,provincia
 IT109,Fermo,2016,174778,provincia
@@ -35,6 +71,18 @@ IT109,Fermo,2022,168294,provincia
 IT109,Fermo,2023,167824,provincia
 IT109,Fermo,2024,167345,provincia
 IT109,Fermo,2025,166957,provincia
+IT110,Barletta-Andria-Trani,2002,383225,provincia
+IT110,Barletta-Andria-Trani,2003,384351,provincia
+IT110,Barletta-Andria-Trani,2004,386476,provincia
+IT110,Barletta-Andria-Trani,2005,387835,provincia
+IT110,Barletta-Andria-Trani,2006,388450,provincia
+IT110,Barletta-Andria-Trani,2007,388886,provincia
+IT110,Barletta-Andria-Trani,2008,390767,provincia
+IT110,Barletta-Andria-Trani,2009,391965,provincia
+IT110,Barletta-Andria-Trani,2010,392851,provincia
+IT110,Barletta-Andria-Trani,2011,394520,provincia
+IT110,Barletta-Andria-Trani,2012,395210,provincia
+IT110,Barletta-Andria-Trani,2013,394565,provincia
 IT110,Barletta-Andria-Trani,2014,393804,provincia
 IT110,Barletta-Andria-Trani,2015,393704,provincia
 IT110,Barletta-Andria-Trani,2016,392171,provincia
@@ -47,6 +95,18 @@ IT110,Barletta-Andria-Trani,2022,380616,provincia
 IT110,Barletta-Andria-Trani,2023,379509,provincia
 IT110,Barletta-Andria-Trani,2024,377929,provincia
 IT110,Barletta-Andria-Trani,2025,377093,provincia
+IT111,Sud Sardegna,2002,367732,provincia
+IT111,Sud Sardegna,2003,367212,provincia
+IT111,Sud Sardegna,2004,365993,provincia
+IT111,Sud Sardegna,2005,365418,provincia
+IT111,Sud Sardegna,2006,365439,provincia
+IT111,Sud Sardegna,2007,365273,provincia
+IT111,Sud Sardegna,2008,365566,provincia
+IT111,Sud Sardegna,2009,365138,provincia
+IT111,Sud Sardegna,2010,364397,provincia
+IT111,Sud Sardegna,2011,364215,provincia
+IT111,Sud Sardegna,2012,363474,provincia
+IT111,Sud Sardegna,2013,361939,provincia
 IT111,Sud Sardegna,2014,360601,provincia
 IT111,Sud Sardegna,2015,358627,provincia
 IT111,Sud Sardegna,2016,355986,provincia
@@ -59,6 +119,18 @@ IT111,Sud Sardegna,2022,337178,provincia
 IT111,Sud Sardegna,2023,334198,provincia
 IT111,Sud Sardegna,2024,331817,provincia
 IT111,Sud Sardegna,2025,329556,provincia
+ITC11,Torino,2002,2165695,provincia
+ITC11,Torino,2003,2169876,provincia
+ITC11,Torino,2004,2189701,provincia
+ITC11,Torino,2005,2202292,provincia
+ITC11,Torino,2006,2208364,provincia
+ITC11,Torino,2007,2214122,provincia
+ITC11,Torino,2008,2245170,provincia
+ITC11,Torino,2009,2260921,provincia
+ITC11,Torino,2010,2268453,provincia
+ITC11,Torino,2011,2273859,provincia
+ITC11,Torino,2012,2278547,provincia
+ITC11,Torino,2013,2286885,provincia
 ITC11,Torino,2014,2285336,provincia
 ITC11,Torino,2015,2275771,provincia
 ITC11,Torino,2016,2268360,provincia
@@ -71,6 +143,18 @@ ITC11,Torino,2022,2208370,provincia
 ITC11,Torino,2023,2204632,provincia
 ITC11,Torino,2024,2204837,provincia
 ITC11,Torino,2025,2204276,provincia
+ITC12,Vercelli,2002,176591,provincia
+ITC12,Vercelli,2003,176249,provincia
+ITC12,Vercelli,2004,177176,provincia
+ITC12,Vercelli,2005,177634,provincia
+ITC12,Vercelli,2006,177455,provincia
+ITC12,Vercelli,2007,177249,provincia
+ITC12,Vercelli,2008,178300,provincia
+ITC12,Vercelli,2009,178646,provincia
+ITC12,Vercelli,2010,178626,provincia
+ITC12,Vercelli,2011,178522,provincia
+ITC12,Vercelli,2012,177960,provincia
+ITC12,Vercelli,2013,177580,provincia
 ITC12,Vercelli,2014,176707,provincia
 ITC12,Vercelli,2015,175540,provincia
 ITC12,Vercelli,2016,174247,provincia
@@ -83,6 +167,18 @@ ITC12,Vercelli,2022,166083,provincia
 ITC12,Vercelli,2023,165892,provincia
 ITC12,Vercelli,2024,165704,provincia
 ITC12,Vercelli,2025,165910,provincia
+ITC13,Biella,2002,186934,provincia
+ITC13,Biella,2003,187063,provincia
+ITC13,Biella,2004,187837,provincia
+ITC13,Biella,2005,187689,provincia
+ITC13,Biella,2006,187154,provincia
+ITC13,Biella,2007,186412,provincia
+ITC13,Biella,2008,186633,provincia
+ITC13,Biella,2009,186380,provincia
+ITC13,Biella,2010,185569,provincia
+ITC13,Biella,2011,184448,provincia
+ITC13,Biella,2012,183715,provincia
+ITC13,Biella,2013,182897,provincia
 ITC13,Biella,2014,181750,provincia
 ITC13,Biella,2015,180633,provincia
 ITC13,Biella,2016,179121,provincia
@@ -95,6 +191,18 @@ ITC13,Biella,2022,170027,provincia
 ITC13,Biella,2023,169106,provincia
 ITC13,Biella,2024,168583,provincia
 ITC13,Biella,2025,168328,provincia
+ITC14,Verbano-Cusio-Ossola,2002,158806,provincia
+ITC14,Verbano-Cusio-Ossola,2003,158947,provincia
+ITC14,Verbano-Cusio-Ossola,2004,159949,provincia
+ITC14,Verbano-Cusio-Ossola,2005,160811,provincia
+ITC14,Verbano-Cusio-Ossola,2006,160905,provincia
+ITC14,Verbano-Cusio-Ossola,2007,160981,provincia
+ITC14,Verbano-Cusio-Ossola,2008,161604,provincia
+ITC14,Verbano-Cusio-Ossola,2009,161931,provincia
+ITC14,Verbano-Cusio-Ossola,2010,162087,provincia
+ITC14,Verbano-Cusio-Ossola,2011,162004,provincia
+ITC14,Verbano-Cusio-Ossola,2012,161719,provincia
+ITC14,Verbano-Cusio-Ossola,2013,161356,provincia
 ITC14,Verbano-Cusio-Ossola,2014,160906,provincia
 ITC14,Verbano-Cusio-Ossola,2015,160240,provincia
 ITC14,Verbano-Cusio-Ossola,2016,159292,provincia
@@ -107,6 +215,18 @@ ITC14,Verbano-Cusio-Ossola,2022,154249,provincia
 ITC14,Verbano-Cusio-Ossola,2023,154038,provincia
 ITC14,Verbano-Cusio-Ossola,2024,153762,provincia
 ITC14,Verbano-Cusio-Ossola,2025,153283,provincia
+ITC15,Novara,2002,342805,provincia
+ITC15,Novara,2003,344546,provincia
+ITC15,Novara,2004,349174,provincia
+ITC15,Novara,2005,351962,provincia
+ITC15,Novara,2006,353538,provincia
+ITC15,Novara,2007,355551,provincia
+ITC15,Novara,2008,360063,provincia
+ITC15,Novara,2009,364378,provincia
+ITC15,Novara,2010,366302,provincia
+ITC15,Novara,2011,368573,provincia
+ITC15,Novara,2012,369167,provincia
+ITC15,Novara,2013,370383,provincia
 ITC15,Novara,2014,370255,provincia
 ITC15,Novara,2015,369393,provincia
 ITC15,Novara,2016,368071,provincia
@@ -119,6 +239,18 @@ ITC15,Novara,2022,361916,provincia
 ITC15,Novara,2023,362502,provincia
 ITC15,Novara,2024,363482,provincia
 ITC15,Novara,2025,364140,provincia
+ITC16,Cuneo,2002,556084,provincia
+ITC16,Cuneo,2003,559168,provincia
+ITC16,Cuneo,2004,564190,provincia
+ITC16,Cuneo,2005,568311,provincia
+ITC16,Cuneo,2006,570154,provincia
+ITC16,Cuneo,2007,571890,provincia
+ITC16,Cuneo,2008,579101,provincia
+ITC16,Cuneo,2009,584482,provincia
+ITC16,Cuneo,2010,587334,provincia
+ITC16,Cuneo,2011,589212,provincia
+ITC16,Cuneo,2012,591101,provincia
+ITC16,Cuneo,2013,592436,provincia
 ITC16,Cuneo,2014,592800,provincia
 ITC16,Cuneo,2015,592331,provincia
 ITC16,Cuneo,2016,590522,provincia
@@ -131,6 +263,18 @@ ITC16,Cuneo,2022,580155,provincia
 ITC16,Cuneo,2023,580736,provincia
 ITC16,Cuneo,2024,581631,provincia
 ITC16,Cuneo,2025,581526,provincia
+ITC17,Asti,2002,208136,provincia
+ITC17,Asti,2003,208754,provincia
+ITC17,Asti,2004,211147,provincia
+ITC17,Asti,2005,212223,provincia
+ITC17,Asti,2006,213242,provincia
+ITC17,Asti,2007,214038,provincia
+ITC17,Asti,2008,217223,provincia
+ITC17,Asti,2009,219136,provincia
+ITC17,Asti,2010,219775,provincia
+ITC17,Asti,2011,219957,provincia
+ITC17,Asti,2012,220159,provincia
+ITC17,Asti,2013,220609,provincia
 ITC17,Asti,2014,220111,provincia
 ITC17,Asti,2015,218708,provincia
 ITC17,Asti,2016,216756,provincia
@@ -143,6 +287,18 @@ ITC17,Asti,2022,208286,provincia
 ITC17,Asti,2023,207951,provincia
 ITC17,Asti,2024,207239,provincia
 ITC17,Asti,2025,207203,provincia
+ITC18,Alessandria,2002,417675,provincia
+ITC18,Alessandria,2003,417531,provincia
+ITC18,Alessandria,2004,421480,provincia
+ITC18,Alessandria,2005,423564,provincia
+ITC18,Alessandria,2006,425391,provincia
+ITC18,Alessandria,2007,425775,provincia
+ITC18,Alessandria,2008,430179,provincia
+ITC18,Alessandria,2009,433236,provincia
+ITC18,Alessandria,2010,433426,provincia
+ITC18,Alessandria,2011,434312,provincia
+ITC18,Alessandria,2012,434377,provincia
+ITC18,Alessandria,2013,433670,provincia
 ITC18,Alessandria,2014,433059,provincia
 ITC18,Alessandria,2015,430946,provincia
 ITC18,Alessandria,2016,427857,provincia
@@ -155,6 +311,18 @@ ITC18,Alessandria,2022,407264,provincia
 ITC18,Alessandria,2023,406494,provincia
 ITC18,Alessandria,2024,406385,provincia
 ITC18,Alessandria,2025,407202,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2002,119347,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2003,120383,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2004,121692,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2005,122799,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2006,123839,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2007,124636,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2008,125658,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2009,126515,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2010,126957,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2011,127153,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2012,127305,provincia
+ITC20,Valle d'Aosta / Vallée d'Aoste,2013,127951,provincia
 ITC20,Valle d'Aosta / Vallée d'Aoste,2014,128245,provincia
 ITC20,Valle d'Aosta / Vallée d'Aoste,2015,127972,provincia
 ITC20,Valle d'Aosta / Vallée d'Aoste,2016,127030,provincia
@@ -167,6 +335,18 @@ ITC20,Valle d'Aosta / Vallée d'Aoste,2022,123360,provincia
 ITC20,Valle d'Aosta / Vallée d'Aoste,2023,123130,provincia
 ITC20,Valle d'Aosta / Vallée d'Aoste,2024,122877,provincia
 ITC20,Valle d'Aosta / Vallée d'Aoste,2025,122532,provincia
+ITC31,Imperia,2002,204921,provincia
+ITC31,Imperia,2003,205688,provincia
+ITC31,Imperia,2004,207725,provincia
+ITC31,Imperia,2005,209635,provincia
+ITC31,Imperia,2006,210735,provincia
+ITC31,Imperia,2007,211665,provincia
+ITC31,Imperia,2008,213959,provincia
+ITC31,Imperia,2009,215563,provincia
+ITC31,Imperia,2010,216988,provincia
+ITC31,Imperia,2011,217934,provincia
+ITC31,Imperia,2012,218083,provincia
+ITC31,Imperia,2013,217545,provincia
 ITC31,Imperia,2014,216226,provincia
 ITC31,Imperia,2015,214981,provincia
 ITC31,Imperia,2016,213022,provincia
@@ -179,6 +359,18 @@ ITC31,Imperia,2022,208670,provincia
 ITC31,Imperia,2023,208792,provincia
 ITC31,Imperia,2024,208800,provincia
 ITC31,Imperia,2025,209348,provincia
+ITC32,Savona,2002,272149,provincia
+ITC32,Savona,2003,273546,provincia
+ITC32,Savona,2004,275809,provincia
+ITC32,Savona,2005,277127,provincia
+ITC32,Savona,2006,278149,provincia
+ITC32,Savona,2007,279310,provincia
+ITC32,Savona,2008,281398,provincia
+ITC32,Savona,2009,283062,provincia
+ITC32,Savona,2010,283640,provincia
+ITC32,Savona,2011,284364,provincia
+ITC32,Savona,2012,283660,provincia
+ITC32,Savona,2013,283440,provincia
 ITC32,Savona,2014,282258,provincia
 ITC32,Savona,2015,280806,provincia
 ITC32,Savona,2016,278768,provincia
@@ -191,6 +383,18 @@ ITC32,Savona,2022,268038,provincia
 ITC32,Savona,2023,267366,provincia
 ITC32,Savona,2024,267621,provincia
 ITC32,Savona,2025,267064,provincia
+ITC33,Genova,2002,877419,provincia
+ITC33,Genova,2003,873868,provincia
+ITC33,Genova,2004,873352,provincia
+ITC33,Genova,2005,877535,provincia
+ITC33,Genova,2006,875282,provincia
+ITC33,Genova,2007,872587,provincia
+ITC33,Genova,2008,869169,provincia
+ITC33,Genova,2009,870576,provincia
+ITC33,Genova,2010,869560,provincia
+ITC33,Genova,2011,868956,provincia
+ITC33,Genova,2012,867082,provincia
+ITC33,Genova,2013,865118,provincia
 ITC33,Genova,2014,860560,provincia
 ITC33,Genova,2015,853201,provincia
 ITC33,Genova,2016,846211,provincia
@@ -203,6 +407,18 @@ ITC33,Genova,2022,817402,provincia
 ITC33,Genova,2023,816606,provincia
 ITC33,Genova,2024,817628,provincia
 ITC33,Genova,2025,818812,provincia
+ITC34,La Spezia,2002,215663,provincia
+ITC34,La Spezia,2003,215091,provincia
+ITC34,La Spezia,2004,216024,provincia
+ITC34,La Spezia,2005,216316,provincia
+ITC34,La Spezia,2006,216734,provincia
+ITC34,La Spezia,2007,217252,provincia
+ITC34,La Spezia,2008,218923,provincia
+ITC34,La Spezia,2009,220601,provincia
+ITC34,La Spezia,2010,221349,provincia
+ITC34,La Spezia,2011,221339,provincia
+ITC34,La Spezia,2012,221271,provincia
+ITC34,La Spezia,2013,221219,provincia
 ITC34,La Spezia,2014,221278,provincia
 ITC34,La Spezia,2015,220439,provincia
 ITC34,La Spezia,2016,219741,provincia
@@ -215,6 +431,18 @@ ITC34,La Spezia,2022,215117,provincia
 ITC34,La Spezia,2023,214872,provincia
 ITC34,La Spezia,2024,215091,provincia
 ITC34,La Spezia,2025,214919,provincia
+ITC41,Varese,2002,813090,provincia
+ITC41,Varese,2003,818121,provincia
+ITC41,Varese,2004,826337,provincia
+ITC41,Varese,2005,835930,provincia
+ITC41,Varese,2006,841082,provincia
+ITC41,Varese,2007,848925,provincia
+ITC41,Varese,2008,856315,provincia
+ITC41,Varese,2009,863673,provincia
+ITC41,Varese,2010,867890,provincia
+ITC41,Varese,2011,873919,provincia
+ITC41,Varese,2012,877956,provincia
+ITC41,Varese,2013,882582,provincia
 ITC41,Varese,2014,885120,provincia
 ITC41,Varese,2015,885922,provincia
 ITC41,Varese,2016,885308,provincia
@@ -227,6 +455,18 @@ ITC41,Varese,2022,877668,provincia
 ITC41,Varese,2023,879731,provincia
 ITC41,Varese,2024,880257,provincia
 ITC41,Varese,2025,882592,provincia
+ITC42,Como,2002,537626,provincia
+ITC42,Como,2003,542295,provincia
+ITC42,Como,2004,549758,provincia
+ITC42,Como,2005,557525,provincia
+ITC42,Como,2006,563302,provincia
+ITC42,Como,2007,567881,provincia
+ITC42,Como,2008,573108,provincia
+ITC42,Como,2009,579168,provincia
+ITC42,Como,2010,583725,provincia
+ITC42,Como,2011,587914,provincia
+ITC42,Como,2012,591451,provincia
+ITC42,Como,2013,594725,provincia
 ITC42,Como,2014,596740,provincia
 ITC42,Como,2015,597842,provincia
 ITC42,Como,2016,597433,provincia
@@ -239,6 +479,18 @@ ITC42,Como,2022,594941,provincia
 ITC42,Como,2023,597117,provincia
 ITC42,Como,2024,597949,provincia
 ITC42,Como,2025,598191,provincia
+ITC43,Lecco,2002,309859,provincia
+ITC43,Lecco,2003,312579,provincia
+ITC43,Lecco,2004,316184,provincia
+ITC43,Lecco,2005,319609,provincia
+ITC43,Lecco,2006,322357,provincia
+ITC43,Lecco,2007,324413,provincia
+ITC43,Lecco,2008,328230,provincia
+ITC43,Lecco,2009,331738,provincia
+ITC43,Lecco,2010,333654,provincia
+ITC43,Lecco,2011,335414,provincia
+ITC43,Lecco,2012,336322,provincia
+ITC43,Lecco,2013,337545,provincia
 ITC43,Lecco,2014,337883,provincia
 ITC43,Lecco,2015,337162,provincia
 ITC43,Lecco,2016,335812,provincia
@@ -251,6 +503,18 @@ ITC43,Lecco,2022,332457,provincia
 ITC43,Lecco,2023,332775,provincia
 ITC43,Lecco,2024,333270,provincia
 ITC43,Lecco,2025,333747,provincia
+ITC44,Sondrio,2002,176671,provincia
+ITC44,Sondrio,2003,177182,provincia
+ITC44,Sondrio,2004,178036,provincia
+ITC44,Sondrio,2005,178755,provincia
+ITC44,Sondrio,2006,179447,provincia
+ITC44,Sondrio,2007,180058,provincia
+ITC44,Sondrio,2008,180791,provincia
+ITC44,Sondrio,2009,181277,provincia
+ITC44,Sondrio,2010,181620,provincia
+ITC44,Sondrio,2011,181789,provincia
+ITC44,Sondrio,2012,181848,provincia
+ITC44,Sondrio,2013,181974,provincia
 ITC44,Sondrio,2014,182348,provincia
 ITC44,Sondrio,2015,181859,provincia
 ITC44,Sondrio,2016,181469,provincia
@@ -263,6 +527,18 @@ ITC44,Sondrio,2022,178784,provincia
 ITC44,Sondrio,2023,178795,provincia
 ITC44,Sondrio,2024,178873,provincia
 ITC44,Sondrio,2025,179100,provincia
+ITC45,Milano,2002,2938627,provincia
+ITC45,Milano,2003,2935908,provincia
+ITC45,Milano,2004,2941233,provincia
+ITC45,Milano,2005,2983298,provincia
+ITC45,Milano,2006,2996002,provincia
+ITC45,Milano,2007,2999062,provincia
+ITC45,Milano,2008,3006001,provincia
+ITC45,Milano,2009,3013241,provincia
+ITC45,Milano,2010,3034843,provincia
+ITC45,Milano,2011,3063241,provincia
+ITC45,Milano,2012,3095104,provincia
+ITC45,Milano,2013,3125287,provincia
 ITC45,Milano,2014,3163522,provincia
 ITC45,Milano,2015,3186367,provincia
 ITC45,Milano,2016,3200447,provincia
@@ -275,6 +551,18 @@ ITC45,Milano,2022,3214630,provincia
 ITC45,Milano,2023,3228006,provincia
 ITC45,Milano,2024,3245459,provincia
 ITC45,Milano,2025,3246455,provincia
+ITC46,Bergamo,2002,975239,provincia
+ITC46,Bergamo,2003,985427,provincia
+ITC46,Bergamo,2004,1001536,provincia
+ITC46,Bergamo,2005,1019774,provincia
+ITC46,Bergamo,2006,1030911,provincia
+ITC46,Bergamo,2007,1040923,provincia
+ITC46,Bergamo,2008,1054956,provincia
+ITC46,Bergamo,2009,1069939,provincia
+ITC46,Bergamo,2010,1079639,provincia
+ITC46,Bergamo,2011,1089522,provincia
+ITC46,Bergamo,2012,1095388,provincia
+ITC46,Bergamo,2013,1101727,provincia
 ITC46,Bergamo,2014,1104999,provincia
 ITC46,Bergamo,2015,1105724,provincia
 ITC46,Bergamo,2016,1104383,provincia
@@ -287,6 +575,18 @@ ITC46,Bergamo,2022,1102997,provincia
 ITC46,Bergamo,2023,1106303,provincia
 ITC46,Bergamo,2024,1110427,provincia
 ITC46,Bergamo,2025,1114780,provincia
+ITC47,Brescia,2002,1110269,provincia
+ITC47,Brescia,2003,1123346,provincia
+ITC47,Brescia,2004,1145086,provincia
+ITC47,Brescia,2005,1163506,provincia
+ITC47,Brescia,2006,1177290,provincia
+ITC47,Brescia,2007,1189408,provincia
+ITC47,Brescia,2008,1204416,provincia
+ITC47,Brescia,2009,1220795,provincia
+ITC47,Brescia,2010,1230529,provincia
+ITC47,Brescia,2011,1241188,provincia
+ITC47,Brescia,2012,1247357,provincia
+ITC47,Brescia,2013,1253581,provincia
 ITC47,Brescia,2014,1255637,provincia
 ITC47,Brescia,2015,1255890,provincia
 ITC47,Brescia,2016,1253852,provincia
@@ -299,6 +599,18 @@ ITC47,Brescia,2022,1253157,provincia
 ITC47,Brescia,2023,1257326,provincia
 ITC47,Brescia,2024,1260955,provincia
 ITC47,Brescia,2025,1265884,provincia
+ITC48,Pavia,2002,493696,provincia
+ITC48,Pavia,2003,495906,provincia
+ITC48,Pavia,2004,502085,provincia
+ITC48,Pavia,2005,507236,provincia
+ITC48,Pavia,2006,512181,provincia
+ITC48,Pavia,2007,517608,provincia
+ITC48,Pavia,2008,526133,provincia
+ITC48,Pavia,2009,533069,provincia
+ITC48,Pavia,2010,536774,provincia
+ITC48,Pavia,2011,539471,provincia
+ITC48,Pavia,2012,541920,provincia
+ITC48,Pavia,2013,544494,provincia
 ITC48,Pavia,2014,544765,provincia
 ITC48,Pavia,2015,544841,provincia
 ITC48,Pavia,2016,543875,provincia
@@ -311,6 +623,18 @@ ITC48,Pavia,2022,534506,provincia
 ITC48,Pavia,2023,536406,provincia
 ITC48,Pavia,2024,538632,provincia
 ITC48,Pavia,2025,541949,provincia
+ITC49,Lodi,2002,198020,provincia
+ITC49,Lodi,2003,200403,provincia
+ITC49,Lodi,2004,204275,provincia
+ITC49,Lodi,2005,207729,provincia
+ITC49,Lodi,2006,210418,provincia
+ITC49,Lodi,2007,213393,provincia
+ITC49,Lodi,2008,217796,provincia
+ITC49,Lodi,2009,221492,provincia
+ITC49,Lodi,2010,223116,provincia
+ITC49,Lodi,2011,224518,provincia
+ITC49,Lodi,2012,225824,provincia
+ITC49,Lodi,2013,227168,provincia
 ITC49,Lodi,2014,227647,provincia
 ITC49,Lodi,2015,227637,provincia
 ITC49,Lodi,2016,226999,provincia
@@ -323,6 +647,18 @@ ITC49,Lodi,2022,227327,provincia
 ITC49,Lodi,2023,228136,provincia
 ITC49,Lodi,2024,229473,provincia
 ITC49,Lodi,2025,230250,provincia
+ITC4A,Cremona,2002,335821,provincia
+ITC4A,Cremona,2003,338134,provincia
+ITC4A,Cremona,2004,341952,provincia
+ITC4A,Cremona,2005,345245,provincia
+ITC4A,Cremona,2006,347353,provincia
+ITC4A,Cremona,2007,349092,provincia
+ITC4A,Cremona,2008,354211,provincia
+ITC4A,Cremona,2009,357980,provincia
+ITC4A,Cremona,2010,358849,provincia
+ITC4A,Cremona,2011,359451,provincia
+ITC4A,Cremona,2012,360175,provincia
+ITC4A,Cremona,2013,360815,provincia
 ITC4A,Cremona,2014,360160,provincia
 ITC4A,Cremona,2015,359489,provincia
 ITC4A,Cremona,2016,358243,provincia
@@ -335,6 +671,18 @@ ITC4A,Cremona,2022,351654,provincia
 ITC4A,Cremona,2023,352189,provincia
 ITC4A,Cremona,2024,352965,provincia
 ITC4A,Cremona,2025,353923,provincia
+ITC4B,Mantova,2002,377962,provincia
+ITC4B,Mantova,2003,380304,provincia
+ITC4B,Mantova,2004,384469,provincia
+ITC4B,Mantova,2005,389146,provincia
+ITC4B,Mantova,2006,391459,provincia
+ITC4B,Mantova,2007,394618,provincia
+ITC4B,Mantova,2008,400439,provincia
+ITC4B,Mantova,2009,405895,provincia
+ITC4B,Mantova,2010,407866,provincia
+ITC4B,Mantova,2011,409789,provincia
+ITC4B,Mantova,2012,411086,provincia
+ITC4B,Mantova,2013,412575,provincia
 ITC4B,Mantova,2014,412704,provincia
 ITC4B,Mantova,2015,411971,provincia
 ITC4B,Mantova,2016,409504,provincia
@@ -347,6 +695,18 @@ ITC4B,Mantova,2022,404476,provincia
 ITC4B,Mantova,2023,406119,provincia
 ITC4B,Mantova,2024,407002,provincia
 ITC4B,Mantova,2025,407744,provincia
+ITD10,Bolzano / Bozen,2002,462884,provincia
+ITD10,Bolzano / Bozen,2003,466605,provincia
+ITD10,Bolzano / Bozen,2004,470363,provincia
+ITD10,Bolzano / Bozen,2005,475176,provincia
+ITD10,Bolzano / Bozen,2006,480403,provincia
+ITD10,Bolzano / Bozen,2007,485196,provincia
+ITD10,Bolzano / Bozen,2008,491338,provincia
+ITD10,Bolzano / Bozen,2009,496079,provincia
+ITD10,Bolzano / Bozen,2010,500450,provincia
+ITD10,Bolzano / Bozen,2011,504406,provincia
+ITD10,Bolzano / Bozen,2012,507989,provincia
+ITD10,Bolzano / Bozen,2013,511619,provincia
 ITD10,Bolzano / Bozen,2014,515389,provincia
 ITD10,Bolzano / Bozen,2015,517994,provincia
 ITD10,Bolzano / Bozen,2016,520252,provincia
@@ -359,6 +719,18 @@ ITD10,Bolzano / Bozen,2022,532616,provincia
 ITD10,Bolzano / Bozen,2023,534147,provincia
 ITD10,Bolzano / Bozen,2024,537533,provincia
 ITD10,Bolzano / Bozen,2025,539679,provincia
+ITD20,Trento,2002,476750,provincia
+ITD20,Trento,2003,481750,provincia
+ITD20,Trento,2004,488099,provincia
+ITD20,Trento,2005,494740,provincia
+ITD20,Trento,2006,499712,provincia
+ITD20,Trento,2007,504098,provincia
+ITD20,Trento,2008,510511,provincia
+ITD20,Trento,2009,516859,provincia
+ITD20,Trento,2010,521531,provincia
+ITD20,Trento,2011,525833,provincia
+ITD20,Trento,2012,529246,provincia
+ITD20,Trento,2013,533435,provincia
 ITD20,Trento,2014,536813,provincia
 ITD20,Trento,2015,538188,provincia
 ITD20,Trento,2016,539513,provincia
@@ -371,6 +743,18 @@ ITD20,Trento,2022,540958,provincia
 ITD20,Trento,2023,542996,provincia
 ITD20,Trento,2024,545169,provincia
 ITD20,Trento,2025,546573,provincia
+ITD31,Verona,2002,826890,provincia
+ITD31,Verona,2003,834070,provincia
+ITD31,Verona,2004,844368,provincia
+ITD31,Verona,2005,853897,provincia
+ITD31,Verona,2006,862458,provincia
+ITD31,Verona,2007,871030,provincia
+ITD31,Verona,2008,886890,provincia
+ITD31,Verona,2009,898031,provincia
+ITD31,Verona,2010,902367,provincia
+ITD31,Verona,2011,906094,provincia
+ITD31,Verona,2012,909045,provincia
+ITD31,Verona,2013,914291,provincia
 ITD31,Verona,2014,917081,provincia
 ITD31,Verona,2015,918450,provincia
 ITD31,Verona,2016,918050,provincia
@@ -383,6 +767,18 @@ ITD31,Verona,2022,924024,provincia
 ITD31,Verona,2023,925656,provincia
 ITD31,Verona,2024,926970,provincia
 ITD31,Verona,2025,928622,provincia
+ITD32,Vicenza,2002,794977,provincia
+ITD32,Vicenza,2003,803988,provincia
+ITD32,Vicenza,2004,816293,provincia
+ITD32,Vicenza,2005,828857,provincia
+ITD32,Vicenza,2006,835920,provincia
+ITD32,Vicenza,2007,840571,provincia
+ITD32,Vicenza,2008,848024,provincia
+ITD32,Vicenza,2009,856830,provincia
+ITD32,Vicenza,2010,860002,provincia
+ITD32,Vicenza,2011,862700,provincia
+ITD32,Vicenza,2012,863323,provincia
+ITD32,Vicenza,2013,865839,provincia
 ITD32,Vicenza,2014,866418,provincia
 ITD32,Vicenza,2015,865350,provincia
 ITD32,Vicenza,2016,862551,provincia
@@ -395,6 +791,18 @@ ITD32,Vicenza,2022,852139,provincia
 ITD32,Vicenza,2023,852779,provincia
 ITD32,Vicenza,2024,853610,provincia
 ITD32,Vicenza,2025,854163,provincia
+ITD33,Belluno,2002,207980,provincia
+ITD33,Belluno,2003,208782,provincia
+ITD33,Belluno,2004,209731,provincia
+ITD33,Belluno,2005,210355,provincia
+ITD33,Belluno,2006,210187,provincia
+ITD33,Belluno,2007,210188,provincia
+ITD33,Belluno,2008,211364,provincia
+ITD33,Belluno,2009,211561,provincia
+ITD33,Belluno,2010,211077,provincia
+ITD33,Belluno,2011,210351,provincia
+ITD33,Belluno,2012,209590,provincia
+ITD33,Belluno,2013,208488,provincia
 ITD33,Belluno,2014,207418,provincia
 ITD33,Belluno,2015,205906,provincia
 ITD33,Belluno,2016,204687,provincia
@@ -407,6 +815,18 @@ ITD33,Belluno,2022,198676,provincia
 ITD33,Belluno,2023,198105,provincia
 ITD33,Belluno,2024,197788,provincia
 ITD33,Belluno,2025,197708,provincia
+ITD34,Treviso,2002,796147,provincia
+ITD34,Treviso,2003,806493,provincia
+ITD34,Treviso,2004,823344,provincia
+ITD34,Treviso,2005,837074,provincia
+ITD34,Treviso,2006,846082,provincia
+ITD34,Treviso,2007,852817,provincia
+ITD34,Treviso,2008,864674,provincia
+ITD34,Treviso,2009,873880,provincia
+ITD34,Treviso,2010,876779,provincia
+ITD34,Treviso,2011,879538,provincia
+ITD34,Treviso,2012,881011,provincia
+ITD34,Treviso,2013,883959,provincia
 ITD34,Treviso,2014,884463,provincia
 ITD34,Treviso,2015,883548,provincia
 ITD34,Treviso,2016,881315,provincia
@@ -419,6 +839,18 @@ ITD34,Treviso,2022,877890,provincia
 ITD34,Treviso,2023,878828,provincia
 ITD34,Treviso,2024,879388,provincia
 ITD34,Treviso,2025,879255,provincia
+ITD35,Venezia,2002,809661,provincia
+ITD35,Venezia,2003,811539,provincia
+ITD35,Venezia,2004,817736,provincia
+ITD35,Venezia,2005,822555,provincia
+ITD35,Venezia,2006,825268,provincia
+ITD35,Venezia,2007,828852,provincia
+ITD35,Venezia,2008,836440,provincia
+ITD35,Venezia,2009,844667,provincia
+ITD35,Venezia,2010,848803,provincia
+ITD35,Venezia,2011,852008,provincia
+ITD35,Venezia,2012,853311,provincia
+ITD35,Venezia,2013,854270,provincia
 ITD35,Venezia,2014,854685,provincia
 ITD35,Venezia,2015,854245,provincia
 ITD35,Venezia,2016,852177,provincia
@@ -431,6 +863,18 @@ ITD35,Venezia,2022,836916,provincia
 ITD35,Venezia,2023,835895,provincia
 ITD35,Venezia,2024,835405,provincia
 ITD35,Venezia,2025,834306,provincia
+ITD36,Padova,2002,849661,provincia
+ITD36,Padova,2003,855563,provincia
+ITD36,Padova,2004,867709,provincia
+ITD36,Padova,2005,878268,provincia
+ITD36,Padova,2006,885912,provincia
+ITD36,Padova,2007,892194,provincia
+ITD36,Padova,2008,903768,provincia
+ITD36,Padova,2009,914158,provincia
+ITD36,Padova,2010,919669,provincia
+ITD36,Padova,2011,924305,provincia
+ITD36,Padova,2012,927041,provincia
+ITD36,Padova,2013,930818,provincia
 ITD36,Padova,2014,932899,provincia
 ITD36,Padova,2015,934138,provincia
 ITD36,Padova,2016,932928,provincia
@@ -443,6 +887,18 @@ ITD36,Padova,2022,929198,provincia
 ITD36,Padova,2023,930349,provincia
 ITD36,Padova,2024,931607,provincia
 ITD36,Padova,2025,932284,provincia
+ITD37,Rovigo,2002,242283,provincia
+ITD37,Rovigo,2003,242056,provincia
+ITD37,Rovigo,2004,243312,provincia
+ITD37,Rovigo,2005,243928,provincia
+ITD37,Rovigo,2006,243941,provincia
+ITD37,Rovigo,2007,243715,provincia
+ITD37,Rovigo,2008,244902,provincia
+ITD37,Rovigo,2009,245212,provincia
+ITD37,Rovigo,2010,244675,provincia
+ITD37,Rovigo,2011,244610,provincia
+ITD37,Rovigo,2012,244007,provincia
+ITD37,Rovigo,2013,243750,provincia
 ITD37,Rovigo,2014,242748,provincia
 ITD37,Rovigo,2015,241057,provincia
 ITD37,Rovigo,2016,238940,provincia
@@ -455,6 +911,18 @@ ITD37,Rovigo,2022,228902,provincia
 ITD37,Rovigo,2023,227941,provincia
 ITD37,Rovigo,2024,227448,provincia
 ITD37,Rovigo,2025,227134,provincia
+ITD41,Pordenone,2002,286250,provincia
+ITD41,Pordenone,2003,289819,provincia
+ITD41,Pordenone,2004,293944,provincia
+ITD41,Pordenone,2005,296851,provincia
+ITD41,Pordenone,2006,298958,provincia
+ITD41,Pordenone,2007,302120,provincia
+ITD41,Pordenone,2008,306257,provincia
+ITD41,Pordenone,2009,310507,provincia
+ITD41,Pordenone,2010,311231,provincia
+ITD41,Pordenone,2011,311783,provincia
+ITD41,Pordenone,2012,311833,provincia
+ITD41,Pordenone,2013,312803,provincia
 ITD41,Pordenone,2014,312862,provincia
 ITD41,Pordenone,2015,312003,provincia
 ITD41,Pordenone,2016,310755,provincia
@@ -467,6 +935,18 @@ ITD41,Pordenone,2022,309473,provincia
 ITD41,Pordenone,2023,310133,provincia
 ITD41,Pordenone,2024,310763,provincia
 ITD41,Pordenone,2025,310742,provincia
+ITD42,Udine,2002,520220,provincia
+ITD42,Udine,2003,522826,provincia
+ITD42,Udine,2004,525828,provincia
+ITD42,Udine,2005,528070,provincia
+ITD42,Udine,2006,529308,provincia
+ITD42,Udine,2007,531124,provincia
+ITD42,Udine,2008,535256,provincia
+ITD42,Udine,2009,538393,provincia
+ITD42,Udine,2010,538952,provincia
+ITD42,Udine,2011,538619,provincia
+ITD42,Udine,2012,537947,provincia
+ITD42,Udine,2013,538776,provincia
 ITD42,Udine,2014,538692,provincia
 ITD42,Udine,2015,537054,provincia
 ITD42,Udine,2016,534391,provincia
@@ -479,6 +959,18 @@ ITD42,Udine,2022,518442,provincia
 ITD42,Udine,2023,517376,provincia
 ITD42,Udine,2024,517143,provincia
 ITD42,Udine,2025,516323,provincia
+ITD43,Gorizia,2002,136279,provincia
+ITD43,Gorizia,2003,137194,provincia
+ITD43,Gorizia,2004,137962,provincia
+ITD43,Gorizia,2005,138900,provincia
+ITD43,Gorizia,2006,139518,provincia
+ITD43,Gorizia,2007,139816,provincia
+ITD43,Gorizia,2008,140642,provincia
+ITD43,Gorizia,2009,141092,provincia
+ITD43,Gorizia,2010,141248,provincia
+ITD43,Gorizia,2011,140834,provincia
+ITD43,Gorizia,2012,140458,provincia
+ITD43,Gorizia,2013,140214,provincia
 ITD43,Gorizia,2014,140222,provincia
 ITD43,Gorizia,2015,139904,provincia
 ITD43,Gorizia,2016,139234,provincia
@@ -491,6 +983,18 @@ ITD43,Gorizia,2022,137899,provincia
 ITD43,Gorizia,2023,138034,provincia
 ITD43,Gorizia,2024,138314,provincia
 ITD43,Gorizia,2025,138427,provincia
+ITD44,Trieste,2002,241964,provincia
+ITD44,Trieste,2003,240261,provincia
+ITD44,Trieste,2004,238599,provincia
+ITD44,Trieste,2005,237529,provincia
+ITD44,Trieste,2006,236064,provincia
+ITD44,Trieste,2007,235070,provincia
+ITD44,Trieste,2008,234904,provincia
+ITD44,Trieste,2009,234661,provincia
+ITD44,Trieste,2010,234479,provincia
+ITD44,Trieste,2011,234125,provincia
+ITD44,Trieste,2012,233404,provincia
+ITD44,Trieste,2013,233194,provincia
 ITD44,Trieste,2014,233208,provincia
 ITD44,Trieste,2015,232703,provincia
 ITD44,Trieste,2016,231828,provincia
@@ -503,6 +1007,18 @@ ITD44,Trieste,2022,228833,provincia
 ITD44,Trieste,2023,228705,provincia
 ITD44,Trieste,2024,228396,provincia
 ITD44,Trieste,2025,227792,provincia
+ITD51,Piacenza,2002,263757,provincia
+ITD51,Piacenza,2003,265483,provincia
+ITD51,Piacenza,2004,268854,provincia
+ITD51,Piacenza,2005,271578,provincia
+ITD51,Piacenza,2006,273528,provincia
+ITD51,Piacenza,2007,275593,provincia
+ITD51,Piacenza,2008,278870,provincia
+ITD51,Piacenza,2009,283165,provincia
+ITD51,Piacenza,2010,284820,provincia
+ITD51,Piacenza,2011,286139,provincia
+ITD51,Piacenza,2012,287232,provincia
+ITD51,Piacenza,2013,287953,provincia
 ITD51,Piacenza,2014,288231,provincia
 ITD51,Piacenza,2015,287469,provincia
 ITD51,Piacenza,2016,286412,provincia
@@ -515,6 +1031,18 @@ ITD51,Piacenza,2022,283435,provincia
 ITD51,Piacenza,2023,284220,provincia
 ITD51,Piacenza,2024,285389,provincia
 ITD51,Piacenza,2025,286452,provincia
+ITD52,Parma,2002,393373,provincia
+ITD52,Parma,2003,396214,provincia
+ITD52,Parma,2004,401092,provincia
+ITD52,Parma,2005,406689,provincia
+ITD52,Parma,2006,409880,provincia
+ITD52,Parma,2007,412437,provincia
+ITD52,Parma,2008,417613,provincia
+ITD52,Parma,2009,424990,provincia
+ITD52,Parma,2010,428711,provincia
+ITD52,Parma,2011,432723,provincia
+ITD52,Parma,2012,435124,provincia
+ITD52,Parma,2013,438921,provincia
 ITD52,Parma,2014,442271,provincia
 ITD52,Parma,2015,443892,provincia
 ITD52,Parma,2016,446764,provincia
@@ -527,6 +1055,18 @@ ITD52,Parma,2022,448916,provincia
 ITD52,Parma,2023,451688,provincia
 ITD52,Parma,2024,454149,provincia
 ITD52,Parma,2025,455713,provincia
+ITD53,Reggio nell'Emilia,2002,454757,provincia
+ITD53,Reggio nell'Emilia,2003,461320,provincia
+ITD53,Reggio nell'Emilia,2004,470768,provincia
+ITD53,Reggio nell'Emilia,2005,480434,provincia
+ITD53,Reggio nell'Emilia,2006,487578,provincia
+ITD53,Reggio nell'Emilia,2007,494211,provincia
+ITD53,Reggio nell'Emilia,2008,502876,provincia
+ITD53,Reggio nell'Emilia,2009,511697,provincia
+ITD53,Reggio nell'Emilia,2010,516752,provincia
+ITD53,Reggio nell'Emilia,2011,521464,provincia
+ITD53,Reggio nell'Emilia,2012,524564,provincia
+ITD53,Reggio nell'Emilia,2013,528349,provincia
 ITD53,Reggio nell'Emilia,2014,530584,provincia
 ITD53,Reggio nell'Emilia,2015,529306,provincia
 ITD53,Reggio nell'Emilia,2016,529643,provincia
@@ -539,6 +1079,18 @@ ITD53,Reggio nell'Emilia,2022,525586,provincia
 ITD53,Reggio nell'Emilia,2023,526990,provincia
 ITD53,Reggio nell'Emilia,2024,528877,provincia
 ITD53,Reggio nell'Emilia,2025,530740,provincia
+ITD54,Modena,2002,634997,provincia
+ITD54,Modena,2003,641361,provincia
+ITD54,Modena,2004,649155,provincia
+ITD54,Modena,2005,656650,provincia
+ITD54,Modena,2006,661014,provincia
+ITD54,Modena,2007,664637,provincia
+ITD54,Modena,2008,671181,provincia
+ITD54,Modena,2009,680847,provincia
+ITD54,Modena,2010,686013,provincia
+ITD54,Modena,2011,691178,provincia
+ITD54,Modena,2012,693464,provincia
+ITD54,Modena,2013,696677,provincia
 ITD54,Modena,2014,699006,provincia
 ITD54,Modena,2015,700222,provincia
 ITD54,Modena,2016,700166,provincia
@@ -551,6 +1103,18 @@ ITD54,Modena,2022,701751,provincia
 ITD54,Modena,2023,704332,provincia
 ITD54,Modena,2024,706445,provincia
 ITD54,Modena,2025,708340,provincia
+ITD55,Bologna,2002,915218,provincia
+ITD55,Bologna,2003,919839,provincia
+ITD55,Bologna,2004,927109,provincia
+ITD55,Bologna,2005,935493,provincia
+ITD55,Bologna,2006,940326,provincia
+ITD55,Bologna,2007,945206,provincia
+ITD55,Bologna,2008,955086,provincia
+ITD55,Bologna,2009,966533,provincia
+ITD55,Bologna,2010,973567,provincia
+ITD55,Bologna,2011,979999,provincia
+ITD55,Bologna,2012,985902,provincia
+ITD55,Bologna,2013,993332,provincia
 ITD55,Bologna,2014,998967,provincia
 ITD55,Bologna,2015,1002098,provincia
 ITD55,Bologna,2016,1005022,provincia
@@ -563,6 +1127,18 @@ ITD55,Bologna,2022,1010812,provincia
 ITD55,Bologna,2023,1014124,provincia
 ITD55,Bologna,2024,1017536,provincia
 ITD55,Bologna,2025,1020193,provincia
+ITD56,Ferrara,2002,344175,provincia
+ITD56,Ferrara,2003,344107,provincia
+ITD56,Ferrara,2004,345357,provincia
+ITD56,Ferrara,2005,347217,provincia
+ITD56,Ferrara,2006,348661,provincia
+ITD56,Ferrara,2007,350206,provincia
+ITD56,Ferrara,2008,352901,provincia
+ITD56,Ferrara,2009,355098,provincia
+ITD56,Ferrara,2010,355871,provincia
+ITD56,Ferrara,2011,356585,provincia
+ITD56,Ferrara,2012,355747,provincia
+ITD56,Ferrara,2013,355163,provincia
 ITD56,Ferrara,2014,354362,provincia
 ITD56,Ferrara,2015,353293,provincia
 ITD56,Ferrara,2016,350704,provincia
@@ -575,6 +1151,18 @@ ITD56,Ferrara,2022,339573,provincia
 ITD56,Ferrara,2023,339287,provincia
 ITD56,Ferrara,2024,339664,provincia
 ITD56,Ferrara,2025,339612,provincia
+ITD57,Ravenna,2002,347972,provincia
+ITD57,Ravenna,2003,351136,provincia
+ITD57,Ravenna,2004,355285,provincia
+ITD57,Ravenna,2005,359871,provincia
+ITD57,Ravenna,2006,363983,provincia
+ITD57,Ravenna,2007,367900,provincia
+ITD57,Ravenna,2008,374367,provincia
+ITD57,Ravenna,2009,380588,provincia
+ITD57,Ravenna,2010,384305,provincia
+ITD57,Ravenna,2011,387032,provincia
+ITD57,Ravenna,2012,389072,provincia
+ITD57,Ravenna,2013,390631,provincia
 ITD57,Ravenna,2014,391295,provincia
 ITD57,Ravenna,2015,390424,provincia
 ITD57,Ravenna,2016,389996,provincia
@@ -587,6 +1175,18 @@ ITD57,Ravenna,2022,385631,provincia
 ITD57,Ravenna,2023,386355,provincia
 ITD57,Ravenna,2024,387229,provincia
 ITD57,Ravenna,2025,387205,provincia
+ITD58,Forlì-Cesena,2002,358617,provincia
+ITD58,Forlì-Cesena,2003,361817,provincia
+ITD58,Forlì-Cesena,2004,366146,provincia
+ITD58,Forlì-Cesena,2005,370207,provincia
+ITD58,Forlì-Cesena,2006,373237,provincia
+ITD58,Forlì-Cesena,2007,375993,provincia
+ITD58,Forlì-Cesena,2008,380858,provincia
+ITD58,Forlì-Cesena,2009,385399,provincia
+ITD58,Forlì-Cesena,2010,389330,provincia
+ITD58,Forlì-Cesena,2011,391936,provincia
+ITD58,Forlì-Cesena,2012,393718,provincia
+ITD58,Forlì-Cesena,2013,394753,provincia
 ITD58,Forlì-Cesena,2014,395737,provincia
 ITD58,Forlì-Cesena,2015,394957,provincia
 ITD58,Forlì-Cesena,2016,393717,provincia
@@ -599,6 +1199,18 @@ ITD58,Forlì-Cesena,2022,391293,provincia
 ITD58,Forlì-Cesena,2023,391648,provincia
 ITD58,Forlì-Cesena,2024,392812,provincia
 ITD58,Forlì-Cesena,2025,393367,provincia
+ITD59,Rimini,2002,290212,provincia
+ITD59,Rimini,2003,293158,provincia
+ITD59,Rimini,2004,297090,provincia
+ITD59,Rimini,2005,301386,provincia
+ITD59,Rimini,2006,304774,provincia
+ITD59,Rimini,2007,308776,provincia
+ITD59,Rimini,2008,312989,provincia
+ITD59,Rimini,2009,317632,provincia
+ITD59,Rimini,2010,321122,provincia
+ITD59,Rimini,2011,324539,provincia
+ITD59,Rimini,2012,326491,provincia
+ITD59,Rimini,2013,329679,provincia
 ITD59,Rimini,2014,331788,provincia
 ITD59,Rimini,2015,332716,provincia
 ITD59,Rimini,2016,333056,provincia
@@ -611,6 +1223,18 @@ ITD59,Rimini,2022,338369,provincia
 ITD59,Rimini,2023,338934,provincia
 ITD59,Rimini,2024,339837,provincia
 ITD59,Rimini,2025,340376,provincia
+ITE11,Massa-Carrara,2002,197371,provincia
+ITE11,Massa-Carrara,2003,197556,provincia
+ITE11,Massa-Carrara,2004,198299,provincia
+ITE11,Massa-Carrara,2005,199046,provincia
+ITE11,Massa-Carrara,2006,199080,provincia
+ITE11,Massa-Carrara,2007,199131,provincia
+ITE11,Massa-Carrara,2008,200982,provincia
+ITE11,Massa-Carrara,2009,202350,provincia
+ITE11,Massa-Carrara,2010,202289,provincia
+ITE11,Massa-Carrara,2011,202623,provincia
+ITE11,Massa-Carrara,2012,202427,provincia
+ITE11,Massa-Carrara,2013,201427,provincia
 ITE11,Massa-Carrara,2014,200083,provincia
 ITE11,Massa-Carrara,2015,198797,provincia
 ITE11,Massa-Carrara,2016,196689,provincia
@@ -623,6 +1247,18 @@ ITE11,Massa-Carrara,2022,188483,provincia
 ITE11,Massa-Carrara,2023,187583,provincia
 ITE11,Massa-Carrara,2024,186982,provincia
 ITE11,Massa-Carrara,2025,186783,provincia
+ITE12,Lucca,2002,372516,provincia
+ITE12,Lucca,2003,373503,provincia
+ITE12,Lucca,2004,376022,provincia
+ITE12,Lucca,2005,378683,provincia
+ITE12,Lucca,2006,380512,provincia
+ITE12,Lucca,2007,381999,provincia
+ITE12,Lucca,2008,386738,provincia
+ITE12,Lucca,2009,390339,provincia
+ITE12,Lucca,2010,392625,provincia
+ITE12,Lucca,2011,394298,provincia
+ITE12,Lucca,2012,394759,provincia
+ITE12,Lucca,2013,394493,provincia
 ITE12,Lucca,2014,393038,provincia
 ITE12,Lucca,2015,391332,provincia
 ITE12,Lucca,2016,388297,provincia
@@ -635,6 +1271,18 @@ ITE12,Lucca,2022,382464,provincia
 ITE12,Lucca,2023,382184,provincia
 ITE12,Lucca,2024,381826,provincia
 ITE12,Lucca,2025,381390,provincia
+ITE13,Pistoia,2002,268614,provincia
+ITE13,Pistoia,2003,270652,provincia
+ITE13,Pistoia,2004,273792,provincia
+ITE13,Pistoia,2005,277028,provincia
+ITE13,Pistoia,2006,279113,provincia
+ITE13,Pistoia,2007,281108,provincia
+ITE13,Pistoia,2008,285469,provincia
+ITE13,Pistoia,2009,288895,provincia
+ITE13,Pistoia,2010,290420,provincia
+ITE13,Pistoia,2011,291373,provincia
+ITE13,Pistoia,2012,291524,provincia
+ITE13,Pistoia,2013,291426,provincia
 ITE13,Pistoia,2014,291254,provincia
 ITE13,Pistoia,2015,291267,provincia
 ITE13,Pistoia,2016,290612,provincia
@@ -647,6 +1295,18 @@ ITE13,Pistoia,2022,289414,provincia
 ITE13,Pistoia,2023,289759,provincia
 ITE13,Pistoia,2024,289889,provincia
 ITE13,Pistoia,2025,289925,provincia
+ITE14,Firenze,2002,934404,provincia
+ITE14,Firenze,2003,937151,provincia
+ITE14,Firenze,2004,944177,provincia
+ITE14,Firenze,2005,951997,provincia
+ITE14,Firenze,2006,954130,provincia
+ITE14,Firenze,2007,957756,provincia
+ITE14,Firenze,2008,964323,provincia
+ITE14,Firenze,2009,972638,provincia
+ITE14,Firenze,2010,981089,provincia
+ITE14,Firenze,2011,987954,provincia
+ITE14,Firenze,2012,991721,provincia
+ITE14,Firenze,2013,999027,provincia
 ITE14,Firenze,2014,1003893,provincia
 ITE14,Firenze,2015,1005814,provincia
 ITE14,Firenze,2016,1005359,provincia
@@ -659,6 +1319,18 @@ ITE14,Firenze,2022,987260,provincia
 ITE14,Firenze,2023,988194,provincia
 ITE14,Firenze,2024,988785,provincia
 ITE14,Firenze,2025,988068,provincia
+ITE15,Prato,2002,228693,provincia
+ITE15,Prato,2003,231102,provincia
+ITE15,Prato,2004,233545,provincia
+ITE15,Prato,2005,237625,provincia
+ITE15,Prato,2006,241585,provincia
+ITE15,Prato,2007,244400,provincia
+ITE15,Prato,2008,245866,provincia
+ITE15,Prato,2009,246462,provincia
+ITE15,Prato,2010,248079,provincia
+ITE15,Prato,2011,249263,provincia
+ITE15,Prato,2012,249134,provincia
+ITE15,Prato,2013,251893,provincia
 ITE15,Prato,2014,253550,provincia
 ITE15,Prato,2015,252588,provincia
 ITE15,Prato,2016,253400,provincia
@@ -671,6 +1343,18 @@ ITE15,Prato,2022,258123,provincia
 ITE15,Prato,2023,259244,provincia
 ITE15,Prato,2024,259921,provincia
 ITE15,Prato,2025,259657,provincia
+ITE16,Livorno,2002,326554,provincia
+ITE16,Livorno,2003,327271,provincia
+ITE16,Livorno,2004,329003,provincia
+ITE16,Livorno,2005,331017,provincia
+ITE16,Livorno,2006,332340,provincia
+ITE16,Livorno,2007,333435,provincia
+ITE16,Livorno,2008,336224,provincia
+ITE16,Livorno,2009,338006,provincia
+ITE16,Livorno,2010,339455,provincia
+ITE16,Livorno,2011,341461,provincia
+ITE16,Livorno,2012,341636,provincia
+ITE16,Livorno,2013,341044,provincia
 ITE16,Livorno,2014,339683,provincia
 ITE16,Livorno,2015,338374,provincia
 ITE16,Livorno,2016,336860,provincia
@@ -683,6 +1367,18 @@ ITE16,Livorno,2022,327262,provincia
 ITE16,Livorno,2023,326605,provincia
 ITE16,Livorno,2024,326315,provincia
 ITE16,Livorno,2025,325749,provincia
+ITE17,Pisa,2002,384601,provincia
+ITE17,Pisa,2003,385347,provincia
+ITE17,Pisa,2004,389349,provincia
+ITE17,Pisa,2005,392206,provincia
+ITE17,Pisa,2006,394900,provincia
+ITE17,Pisa,2007,397731,provincia
+ITE17,Pisa,2008,403917,provincia
+ITE17,Pisa,2009,408315,provincia
+ITE17,Pisa,2010,411993,provincia
+ITE17,Pisa,2011,415375,provincia
+ITE17,Pisa,2012,417345,provincia
+ITE17,Pisa,2013,419298,provincia
 ITE17,Pisa,2014,420380,provincia
 ITE17,Pisa,2015,421062,provincia
 ITE17,Pisa,2016,419784,provincia
@@ -695,6 +1391,18 @@ ITE17,Pisa,2022,417041,provincia
 ITE17,Pisa,2023,417170,provincia
 ITE17,Pisa,2024,417674,provincia
 ITE17,Pisa,2025,418439,provincia
+ITE18,Arezzo,2002,323182,provincia
+ITE18,Arezzo,2003,325338,provincia
+ITE18,Arezzo,2004,329236,provincia
+ITE18,Arezzo,2005,332316,provincia
+ITE18,Arezzo,2006,334255,provincia
+ITE18,Arezzo,2007,335706,provincia
+ITE18,Arezzo,2008,340831,provincia
+ITE18,Arezzo,2009,344744,provincia
+ITE18,Arezzo,2010,346105,provincia
+ITE18,Arezzo,2011,347257,provincia
+ITE18,Arezzo,2012,347519,provincia
+ITE18,Arezzo,2013,347866,provincia
 ITE18,Arezzo,2014,346567,provincia
 ITE18,Arezzo,2015,345706,provincia
 ITE18,Arezzo,2016,343761,provincia
@@ -707,6 +1415,18 @@ ITE18,Arezzo,2022,334926,provincia
 ITE18,Arezzo,2023,334052,provincia
 ITE18,Arezzo,2024,333344,provincia
 ITE18,Arezzo,2025,333240,provincia
+ITE19,Siena,2002,252226,provincia
+ITE19,Siena,2003,253763,provincia
+ITE19,Siena,2004,256887,provincia
+ITE19,Siena,2005,259324,provincia
+ITE19,Siena,2006,260489,provincia
+ITE19,Siena,2007,261460,provincia
+ITE19,Siena,2008,264790,provincia
+ITE19,Siena,2009,267905,provincia
+ITE19,Siena,2010,269591,provincia
+ITE19,Siena,2011,270689,provincia
+ITE19,Siena,2012,271065,provincia
+ITE19,Siena,2013,271056,provincia
 ITE19,Siena,2014,270705,provincia
 ITE19,Siena,2015,269912,provincia
 ITE19,Siena,2016,268679,provincia
@@ -719,6 +1439,18 @@ ITE19,Siena,2022,261209,provincia
 ITE19,Siena,2023,260557,provincia
 ITE19,Siena,2024,259992,provincia
 ITE19,Siena,2025,259460,provincia
+ITE1A,Grosseto,2002,210948,provincia
+ITE1A,Grosseto,2003,211590,provincia
+ITE1A,Grosseto,2004,213363,provincia
+ITE1A,Grosseto,2005,215724,provincia
+ITE1A,Grosseto,2006,217088,provincia
+ITE1A,Grosseto,2007,218254,provincia
+ITE1A,Grosseto,2008,221042,provincia
+ITE1A,Grosseto,2009,223708,provincia
+ITE1A,Grosseto,2010,224946,provincia
+ITE1A,Grosseto,2011,225970,provincia
+ITE1A,Grosseto,2012,226405,provincia
+ITE1A,Grosseto,2013,226007,provincia
 ITE1A,Grosseto,2014,225140,provincia
 ITE1A,Grosseto,2015,224192,provincia
 ITE1A,Grosseto,2016,222981,provincia
@@ -731,6 +1463,18 @@ ITE1A,Grosseto,2022,217009,provincia
 ITE1A,Grosseto,2023,216633,provincia
 ITE1A,Grosseto,2024,215802,provincia
 ITE1A,Grosseto,2025,215005,provincia
+ITE21,Perugia,2002,606486,provincia
+ITE21,Perugia,2003,610814,provincia
+ITE21,Perugia,2004,619544,provincia
+ITE21,Perugia,2005,626317,provincia
+ITE21,Perugia,2006,631226,provincia
+ITE21,Perugia,2007,634441,provincia
+ITE21,Perugia,2008,643356,provincia
+ITE21,Perugia,2009,650960,provincia
+ITE21,Perugia,2010,655333,provincia
+ITE21,Perugia,2011,659129,provincia
+ITE21,Perugia,2012,660352,provincia
+ITE21,Perugia,2013,662252,provincia
 ITE21,Perugia,2014,661638,provincia
 ITE21,Perugia,2015,658819,provincia
 ITE21,Perugia,2016,655997,provincia
@@ -743,6 +1487,18 @@ ITE21,Perugia,2022,640482,provincia
 ITE21,Perugia,2023,639224,provincia
 ITE21,Perugia,2024,637222,provincia
 ITE21,Perugia,2025,636188,provincia
+ITE22,Terni,2002,219690,provincia
+ITE22,Terni,2003,220122,provincia
+ITE22,Terni,2004,222245,provincia
+ITE22,Terni,2005,223457,provincia
+ITE22,Terni,2006,224329,provincia
+ITE22,Terni,2007,224366,provincia
+ITE22,Terni,2008,226942,provincia
+ITE22,Terni,2009,228680,provincia
+ITE22,Terni,2010,229604,provincia
+ITE22,Terni,2011,230321,provincia
+ITE22,Terni,2012,230055,provincia
+ITE22,Terni,2013,230490,provincia
 ITE22,Terni,2014,230461,provincia
 ITE22,Terni,2015,229469,provincia
 ITE22,Terni,2016,228095,provincia
@@ -755,6 +1511,18 @@ ITE22,Terni,2022,218330,provincia
 ITE22,Terni,2023,217183,provincia
 ITE22,Terni,2024,215846,provincia
 ITE22,Terni,2025,215285,provincia
+ITE31,Pesaro e Urbino,2002,333721,provincia
+ITE31,Pesaro e Urbino,2003,336760,provincia
+ITE31,Pesaro e Urbino,2004,341485,provincia
+ITE31,Pesaro e Urbino,2005,344761,provincia
+ITE31,Pesaro e Urbino,2006,347759,provincia
+ITE31,Pesaro e Urbino,2007,350162,provincia
+ITE31,Pesaro e Urbino,2008,357069,provincia
+ITE31,Pesaro e Urbino,2009,362578,provincia
+ITE31,Pesaro e Urbino,2010,363902,provincia
+ITE31,Pesaro e Urbino,2011,364199,provincia
+ITE31,Pesaro e Urbino,2012,364117,provincia
+ITE31,Pesaro e Urbino,2013,363950,provincia
 ITE31,Pesaro e Urbino,2014,362931,provincia
 ITE31,Pesaro e Urbino,2015,361969,provincia
 ITE31,Pesaro e Urbino,2016,360203,provincia
@@ -767,6 +1535,18 @@ ITE31,Pesaro e Urbino,2022,349818,provincia
 ITE31,Pesaro e Urbino,2023,349529,provincia
 ITE31,Pesaro e Urbino,2024,349882,provincia
 ITE31,Pesaro e Urbino,2025,349558,provincia
+ITE32,Ancona,2002,448720,provincia
+ITE32,Ancona,2003,451402,provincia
+ITE32,Ancona,2004,456254,provincia
+ITE32,Ancona,2005,460027,provincia
+ITE32,Ancona,2006,462745,provincia
+ITE32,Ancona,2007,464468,provincia
+ITE32,Ancona,2008,468180,provincia
+ITE32,Ancona,2009,473012,provincia
+ITE32,Ancona,2010,474490,provincia
+ITE32,Ancona,2011,476219,provincia
+ITE32,Ancona,2012,476903,provincia
+ITE32,Ancona,2013,478001,provincia
 ITE32,Ancona,2014,477487,provincia
 ITE32,Ancona,2015,476111,provincia
 ITE32,Ancona,2016,474334,provincia
@@ -779,6 +1559,18 @@ ITE32,Ancona,2022,461687,provincia
 ITE32,Ancona,2023,461655,provincia
 ITE32,Ancona,2024,461629,provincia
 ITE32,Ancona,2025,461503,provincia
+ITE33,Macerata,2002,301577,provincia
+ITE33,Macerata,2003,304326,provincia
+ITE33,Macerata,2004,308140,provincia
+ITE33,Macerata,2005,310544,provincia
+ITE33,Macerata,2006,312168,provincia
+ITE33,Macerata,2007,313097,provincia
+ITE33,Macerata,2008,316587,provincia
+ITE33,Macerata,2009,319422,provincia
+ITE33,Macerata,2010,320934,provincia
+ITE33,Macerata,2011,321492,provincia
+ITE33,Macerata,2012,321322,provincia
+ITE33,Macerata,2013,321791,provincia
 ITE33,Macerata,2014,321356,provincia
 ITE33,Macerata,2015,320894,provincia
 ITE33,Macerata,2016,319057,provincia
@@ -791,6 +1583,18 @@ ITE33,Macerata,2022,304986,provincia
 ITE33,Macerata,2023,303828,provincia
 ITE33,Macerata,2024,302993,provincia
 ITE33,Macerata,2025,302030,provincia
+ITE34,Ascoli Piceno,2002,203120,provincia
+ITE34,Ascoli Piceno,2003,204178,provincia
+ITE34,Ascoli Piceno,2004,205675,provincia
+ITE34,Ascoli Piceno,2005,207018,provincia
+ITE34,Ascoli Piceno,2006,207938,provincia
+ITE34,Ascoli Piceno,2007,208586,provincia
+ITE34,Ascoli Piceno,2008,210252,provincia
+ITE34,Ascoli Piceno,2009,211455,provincia
+ITE34,Ascoli Piceno,2010,211926,provincia
+ITE34,Ascoli Piceno,2011,212010,provincia
+ITE34,Ascoli Piceno,2012,211639,provincia
+ITE34,Ascoli Piceno,2013,211917,provincia
 ITE34,Ascoli Piceno,2014,211674,provincia
 ITE34,Ascoli Piceno,2015,211137,provincia
 ITE34,Ascoli Piceno,2016,210070,provincia
@@ -803,6 +1607,18 @@ ITE34,Ascoli Piceno,2022,202365,provincia
 ITE34,Ascoli Piceno,2023,201462,provincia
 ITE34,Ascoli Piceno,2024,200897,provincia
 ITE34,Ascoli Piceno,2025,200497,provincia
+ITE41,Viterbo,2002,289055,provincia
+ITE41,Viterbo,2003,290476,provincia
+ITE41,Viterbo,2004,294204,provincia
+ITE41,Viterbo,2005,297174,provincia
+ITE41,Viterbo,2006,299353,provincia
+ITE41,Viterbo,2007,301265,provincia
+ITE41,Viterbo,2008,306638,provincia
+ITE41,Viterbo,2009,311308,provincia
+ITE41,Viterbo,2010,313270,provincia
+ITE41,Viterbo,2011,314801,provincia
+ITE41,Viterbo,2012,316475,provincia
+ITE41,Viterbo,2013,318165,provincia
 ITE41,Viterbo,2014,317858,provincia
 ITE41,Viterbo,2015,317302,provincia
 ITE41,Viterbo,2016,315682,provincia
@@ -815,6 +1631,18 @@ ITE41,Viterbo,2022,308737,provincia
 ITE41,Viterbo,2023,308158,provincia
 ITE41,Viterbo,2024,307686,provincia
 ITE41,Viterbo,2025,307405,provincia
+ITE42,Rieti,2002,147515,provincia
+ITE42,Rieti,2003,148183,provincia
+ITE42,Rieti,2004,149471,provincia
+ITE42,Rieti,2005,150749,provincia
+ITE42,Rieti,2006,151905,provincia
+ITE42,Rieti,2007,152474,provincia
+ITE42,Rieti,2008,154220,provincia
+ITE42,Rieti,2009,156414,provincia
+ITE42,Rieti,2010,157279,provincia
+ITE42,Rieti,2011,157401,provincia
+ITE42,Rieti,2012,157316,provincia
+ITE42,Rieti,2013,158188,provincia
 ITE42,Rieti,2014,158024,provincia
 ITE42,Rieti,2015,157477,provincia
 ITE42,Rieti,2016,156869,provincia
@@ -827,6 +1655,18 @@ ITE42,Rieti,2022,151143,provincia
 ITE42,Rieti,2023,150457,provincia
 ITE42,Rieti,2024,149988,provincia
 ITE42,Rieti,2025,149766,provincia
+ITE43,Roma,2002,3705022,provincia
+ITE43,Roma,2003,3720338,provincia
+ITE43,Roma,2004,3754711,provincia
+ITE43,Roma,2005,3796934,provincia
+ITE43,Roma,2006,3824411,provincia
+ITE43,Roma,2007,3863032,provincia
+ITE43,Roma,2008,3914771,provincia
+ITE43,Roma,2009,3964507,provincia
+ITE43,Roma,2010,4008077,provincia
+ITE43,Roma,2011,4048608,provincia
+ITE43,Roma,2012,4085141,provincia
+ITE43,Roma,2013,4149642,provincia
 ITE43,Roma,2014,4194085,provincia
 ITE43,Roma,2015,4216217,provincia
 ITE43,Roma,2016,4236445,provincia
@@ -839,6 +1679,18 @@ ITE43,Roma,2022,4216874,provincia
 ITE43,Roma,2023,4227059,provincia
 ITE43,Roma,2024,4225409,provincia
 ITE43,Roma,2025,4222648,provincia
+ITE44,Latina,2002,491666,provincia
+ITE44,Latina,2003,495542,provincia
+ITE44,Latina,2004,501470,provincia
+ITE44,Latina,2005,507943,provincia
+ITE44,Latina,2006,512845,provincia
+ITE44,Latina,2007,516999,provincia
+ITE44,Latina,2008,525815,provincia
+ITE44,Latina,2009,534833,provincia
+ITE44,Latina,2010,541737,provincia
+ITE44,Latina,2011,546421,provincia
+ITE44,Latina,2012,551248,provincia
+ITE44,Latina,2013,557713,provincia
 ITE44,Latina,2014,560527,provincia
 ITE44,Latina,2015,562493,provincia
 ITE44,Latina,2016,563643,provincia
@@ -851,6 +1703,18 @@ ITE44,Latina,2022,567439,provincia
 ITE44,Latina,2023,566996,provincia
 ITE44,Latina,2024,566873,provincia
 ITE44,Latina,2025,566698,provincia
+ITE45,Frosinone,2002,484525,provincia
+ITE45,Frosinone,2003,484625,provincia
+ITE45,Frosinone,2004,486482,provincia
+ITE45,Frosinone,2005,487803,provincia
+ITE45,Frosinone,2006,488839,provincia
+ITE45,Frosinone,2007,489159,provincia
+ITE45,Frosinone,2008,492566,provincia
+ITE45,Frosinone,2009,494937,provincia
+ITE45,Frosinone,2010,495663,provincia
+ITE45,Frosinone,2011,495815,provincia
+ITE45,Frosinone,2012,495526,provincia
+ITE45,Frosinone,2013,495056,provincia
 ITE45,Frosinone,2014,493461,provincia
 ITE45,Frosinone,2015,491410,provincia
 ITE45,Frosinone,2016,488869,provincia
@@ -863,6 +1727,18 @@ ITE45,Frosinone,2022,470689,provincia
 ITE45,Frosinone,2023,467866,provincia
 ITE45,Frosinone,2024,464789,provincia
 ITE45,Frosinone,2025,462661,provincia
+ITF11,L'Aquila,2002,297370,provincia
+ITF11,L'Aquila,2003,297726,provincia
+ITF11,L'Aquila,2004,300986,provincia
+ITF11,L'Aquila,2005,302480,provincia
+ITF11,L'Aquila,2006,303226,provincia
+ITF11,L'Aquila,2007,303094,provincia
+ITF11,L'Aquila,2008,305243,provincia
+ITF11,L'Aquila,2009,306499,provincia
+ITF11,L'Aquila,2010,305819,provincia
+ITF11,L'Aquila,2011,306124,provincia
+ITF11,L'Aquila,2012,306200,provincia
+ITF11,L'Aquila,2013,306279,provincia
 ITF11,L'Aquila,2014,305639,provincia
 ITF11,L'Aquila,2015,304136,provincia
 ITF11,L'Aquila,2016,302311,provincia
@@ -875,6 +1751,18 @@ ITF11,L'Aquila,2022,288956,provincia
 ITF11,L'Aquila,2023,287806,provincia
 ITF11,L'Aquila,2024,286832,provincia
 ITF11,L'Aquila,2025,286706,provincia
+ITF12,Teramo,2002,287282,provincia
+ITF12,Teramo,2003,289088,provincia
+ITF12,Teramo,2004,292302,provincia
+ITF12,Teramo,2005,295245,provincia
+ITF12,Teramo,2006,297838,provincia
+ITF12,Teramo,2007,299867,provincia
+ITF12,Teramo,2008,303587,provincia
+ITF12,Teramo,2009,307080,provincia
+ITF12,Teramo,2010,309023,provincia
+ITF12,Teramo,2011,309564,provincia
+ITF12,Teramo,2012,310139,provincia
+ITF12,Teramo,2013,310723,provincia
 ITF12,Teramo,2014,310157,provincia
 ITF12,Teramo,2015,309674,provincia
 ITF12,Teramo,2016,308326,provincia
@@ -887,6 +1775,18 @@ ITF12,Teramo,2022,299646,provincia
 ITF12,Teramo,2023,299071,provincia
 ITF12,Teramo,2024,299274,provincia
 ITF12,Teramo,2025,300049,provincia
+ITF13,Pescara,2002,295730,provincia
+ITF13,Pescara,2003,297628,provincia
+ITF13,Pescara,2004,300331,provincia
+ITF13,Pescara,2005,302834,provincia
+ITF13,Pescara,2006,305182,provincia
+ITF13,Pescara,2007,307299,provincia
+ITF13,Pescara,2008,312170,provincia
+ITF13,Pescara,2009,315846,provincia
+ITF13,Pescara,2010,318143,provincia
+ITF13,Pescara,2011,320237,provincia
+ITF13,Pescara,2012,321369,provincia
+ITF13,Pescara,2013,322011,provincia
 ITF13,Pescara,2014,322271,provincia
 ITF13,Pescara,2015,321830,provincia
 ITF13,Pescara,2016,320710,provincia
@@ -899,6 +1799,18 @@ ITF13,Pescara,2022,313631,provincia
 ITF13,Pescara,2023,313110,provincia
 ITF13,Pescara,2024,312246,provincia
 ITF13,Pescara,2025,311876,provincia
+ITF14,Chieti,2002,381805,provincia
+ITF14,Chieti,2003,383191,provincia
+ITF14,Chieti,2004,385039,provincia
+ITF14,Chieti,2005,386598,provincia
+ITF14,Chieti,2006,386753,provincia
+ITF14,Chieti,2007,386609,provincia
+ITF14,Chieti,2008,390307,provincia
+ITF14,Chieti,2009,392462,provincia
+ITF14,Chieti,2010,393030,provincia
+ITF14,Chieti,2011,393295,provincia
+ITF14,Chieti,2012,393916,provincia
+ITF14,Chieti,2013,393570,provincia
 ITF14,Chieti,2014,391851,provincia
 ITF14,Chieti,2015,390196,provincia
 ITF14,Chieti,2016,387947,provincia
@@ -911,6 +1823,18 @@ ITF14,Chieti,2022,373717,provincia
 ITF14,Chieti,2023,372640,provincia
 ITF14,Chieti,2024,371219,provincia
 ITF14,Chieti,2025,370487,provincia
+ITF21,Isernia,2002,89681,provincia
+ITF21,Isernia,2003,89866,provincia
+ITF21,Isernia,2004,89643,provincia
+ITF21,Isernia,2005,89420,provincia
+ITF21,Isernia,2006,89068,provincia
+ITF21,Isernia,2007,88541,provincia
+ITF21,Isernia,2008,88500,provincia
+ITF21,Isernia,2009,88040,provincia
+ITF21,Isernia,2010,87769,provincia
+ITF21,Isernia,2011,87431,provincia
+ITF21,Isernia,2012,87213,provincia
+ITF21,Isernia,2013,87043,provincia
 ITF21,Isernia,2014,86839,provincia
 ITF21,Isernia,2015,86489,provincia
 ITF21,Isernia,2016,86069,provincia
@@ -923,6 +1847,18 @@ ITF21,Isernia,2022,80564,provincia
 ITF21,Isernia,2023,79912,provincia
 ITF21,Isernia,2024,79236,provincia
 ITF21,Isernia,2025,78755,provincia
+ITF22,Campobasso,2002,230509,provincia
+ITF22,Campobasso,2003,230515,provincia
+ITF22,Campobasso,2004,230716,provincia
+ITF22,Campobasso,2005,230308,provincia
+ITF22,Campobasso,2006,229384,provincia
+ITF22,Campobasso,2007,228796,provincia
+ITF22,Campobasso,2008,229157,provincia
+ITF22,Campobasso,2009,229042,provincia
+ITF22,Campobasso,2010,228170,provincia
+ITF22,Campobasso,2011,227385,provincia
+ITF22,Campobasso,2012,226703,provincia
+ITF22,Campobasso,2013,226365,provincia
 ITF22,Campobasso,2014,226058,provincia
 ITF22,Campobasso,2015,224909,provincia
 ITF22,Campobasso,2016,223957,provincia
@@ -935,6 +1871,18 @@ ITF22,Campobasso,2022,211586,provincia
 ITF22,Campobasso,2023,210724,provincia
 ITF22,Campobasso,2024,209988,provincia
 ITF22,Campobasso,2025,209059,provincia
+ITF31,Caserta,2002,852314,provincia
+ITF31,Caserta,2003,854185,provincia
+ITF31,Caserta,2004,862791,provincia
+ITF31,Caserta,2005,873665,provincia
+ITF31,Caserta,2006,879789,provincia
+ITF31,Caserta,2007,885497,provincia
+ITF31,Caserta,2008,892751,provincia
+ITF31,Caserta,2009,899448,provincia
+ITF31,Caserta,2010,905721,provincia
+ITF31,Caserta,2011,913228,provincia
+ITF31,Caserta,2012,917426,provincia
+ITF31,Caserta,2013,917820,provincia
 ITF31,Caserta,2014,917923,provincia
 ITF31,Caserta,2015,918110,provincia
 ITF31,Caserta,2016,917423,provincia
@@ -947,6 +1895,18 @@ ITF31,Caserta,2022,905045,provincia
 ITF31,Caserta,2023,906074,provincia
 ITF31,Caserta,2024,906522,provincia
 ITF31,Caserta,2025,908451,provincia
+ITF32,Benevento,2002,286574,provincia
+ITF32,Benevento,2003,286264,provincia
+ITF32,Benevento,2004,287020,provincia
+ITF32,Benevento,2005,287793,provincia
+ITF32,Benevento,2006,287730,provincia
+ITF32,Benevento,2007,287254,provincia
+ITF32,Benevento,2008,287822,provincia
+ITF32,Benevento,2009,288215,provincia
+ITF32,Benevento,2010,287846,provincia
+ITF32,Benevento,2011,287513,provincia
+ITF32,Benevento,2012,286469,provincia
+ITF32,Benevento,2013,284901,provincia
 ITF32,Benevento,2014,283431,provincia
 ITF32,Benevento,2015,281563,provincia
 ITF32,Benevento,2016,279778,provincia
@@ -959,6 +1919,18 @@ ITF32,Benevento,2022,265055,provincia
 ITF32,Benevento,2023,263125,provincia
 ITF32,Benevento,2024,261419,provincia
 ITF32,Benevento,2025,259809,provincia
+ITF33,Napoli,2002,3059401,provincia
+ITF33,Napoli,2003,3060521,provincia
+ITF33,Napoli,2004,3069540,provincia
+ITF33,Napoli,2005,3076816,provincia
+ITF33,Napoli,2006,3072876,provincia
+ITF33,Napoli,2007,3070651,provincia
+ITF33,Napoli,2008,3074086,provincia
+ITF33,Napoli,2009,3068657,provincia
+ITF33,Napoli,2010,3076550,provincia
+ITF33,Napoli,2011,3081165,provincia
+ITF33,Napoli,2012,3081729,provincia
+ITF33,Napoli,2013,3079037,provincia
 ITF33,Napoli,2014,3078259,provincia
 ITF33,Napoli,2015,3075600,provincia
 ITF33,Napoli,2016,3071681,provincia
@@ -971,6 +1943,18 @@ ITF33,Napoli,2022,2988376,provincia
 ITF33,Napoli,2023,2980338,provincia
 ITF33,Napoli,2024,2970974,provincia
 ITF33,Napoli,2025,2963633,provincia
+ITF34,Avellino,2002,428746,provincia
+ITF34,Avellino,2003,429856,provincia
+ITF34,Avellino,2004,432617,provincia
+ITF34,Avellino,2005,434830,provincia
+ITF34,Avellino,2006,434893,provincia
+ITF34,Avellino,2007,434937,provincia
+ITF34,Avellino,2008,436481,provincia
+ITF34,Avellino,2009,437189,provincia
+ITF34,Avellino,2010,436525,provincia
+ITF34,Avellino,2011,436552,provincia
+ITF34,Avellino,2012,435787,provincia
+ITF34,Avellino,2013,432970,provincia
 ITF34,Avellino,2014,429901,provincia
 ITF34,Avellino,2015,426909,provincia
 ITF34,Avellino,2016,423372,provincia
@@ -983,6 +1967,18 @@ ITF34,Avellino,2022,401451,provincia
 ITF34,Avellino,2023,398932,provincia
 ITF34,Avellino,2024,396973,provincia
 ITF34,Avellino,2025,395072,provincia
+ITF35,Salerno,2002,1072927,provincia
+ITF35,Salerno,2003,1074077,provincia
+ITF35,Salerno,2004,1079473,provincia
+ITF35,Salerno,2005,1086346,provincia
+ITF35,Salerno,2006,1088131,provincia
+ITF35,Salerno,2007,1087924,provincia
+ITF35,Salerno,2008,1093905,provincia
+ITF35,Salerno,2009,1098578,provincia
+ITF35,Salerno,2010,1100822,provincia
+ITF35,Salerno,2011,1104369,provincia
+ITF35,Salerno,2012,1106182,provincia
+ITF35,Salerno,2013,1105702,provincia
 ITF35,Salerno,2014,1103254,provincia
 ITF35,Salerno,2015,1102188,provincia
 ITF35,Salerno,2016,1098529,provincia
@@ -995,6 +1991,18 @@ ITF35,Salerno,2022,1064493,provincia
 ITF35,Salerno,2023,1061067,provincia
 ITF35,Salerno,2024,1058018,provincia
 ITF35,Salerno,2025,1055372,provincia
+ITF41,Foggia,2002,649292,provincia
+ITF41,Foggia,2003,647467,provincia
+ITF41,Foggia,2004,646269,provincia
+ITF41,Foggia,2005,644687,provincia
+ITF41,Foggia,2006,642398,provincia
+ITF41,Foggia,2007,639399,provincia
+ITF41,Foggia,2008,640391,provincia
+ITF41,Foggia,2009,640212,provincia
+ITF41,Foggia,2010,640753,provincia
+ITF41,Foggia,2011,640725,provincia
+ITF41,Foggia,2012,638760,provincia
+ITF41,Foggia,2013,635508,provincia
 ITF41,Foggia,2014,632597,provincia
 ITF41,Foggia,2015,629554,provincia
 ITF41,Foggia,2016,625294,provincia
@@ -1007,6 +2015,18 @@ ITF41,Foggia,2022,599028,provincia
 ITF41,Foggia,2023,595682,provincia
 ITF41,Foggia,2024,593078,provincia
 ITF41,Foggia,2025,590263,provincia
+ITF42,Bari,2002,1218338,provincia
+ITF42,Bari,2003,1221455,provincia
+ITF42,Bari,2004,1226897,provincia
+ITF42,Bari,2005,1233973,provincia
+ITF42,Bari,2006,1237283,provincia
+ITF42,Bari,2007,1239946,provincia
+ITF42,Bari,2008,1244048,provincia
+ITF42,Bari,2009,1247513,provincia
+ITF42,Bari,2010,1251412,provincia
+ITF42,Bari,2011,1257549,provincia
+ITF42,Bari,2012,1259733,provincia
+ITF42,Bari,2013,1258054,provincia
 ITF42,Bari,2014,1256495,provincia
 ITF42,Bari,2015,1253461,provincia
 ITF42,Bari,2016,1249699,provincia
@@ -1019,6 +2039,18 @@ ITF42,Bari,2022,1226784,provincia
 ITF42,Bari,2023,1225048,provincia
 ITF42,Bari,2024,1221682,provincia
 ITF42,Bari,2025,1219545,provincia
+ITF43,Taranto,2002,579880,provincia
+ITF43,Taranto,2003,580172,provincia
+ITF43,Taranto,2004,580849,provincia
+ITF43,Taranto,2005,582590,provincia
+ITF43,Taranto,2006,583340,provincia
+ITF43,Taranto,2007,584442,provincia
+ITF43,Taranto,2008,586357,provincia
+ITF43,Taranto,2009,587549,provincia
+ITF43,Taranto,2010,588860,provincia
+ITF43,Taranto,2011,588940,provincia
+ITF43,Taranto,2012,588744,provincia
+ITF43,Taranto,2013,586653,provincia
 ITF43,Taranto,2014,584796,provincia
 ITF43,Taranto,2015,582400,provincia
 ITF43,Taranto,2016,579310,provincia
@@ -1031,6 +2063,18 @@ ITF43,Taranto,2022,559892,provincia
 ITF43,Taranto,2023,556692,provincia
 ITF43,Taranto,2024,553501,provincia
 ITF43,Taranto,2025,550436,provincia
+ITF44,Brindisi,2002,402302,provincia
+ITF44,Brindisi,2003,401498,provincia
+ITF44,Brindisi,2004,401307,provincia
+ITF44,Brindisi,2005,401420,provincia
+ITF44,Brindisi,2006,401925,provincia
+ITF44,Brindisi,2007,401613,provincia
+ITF44,Brindisi,2008,402411,provincia
+ITF44,Brindisi,2009,403009,provincia
+ITF44,Brindisi,2010,403964,provincia
+ITF44,Brindisi,2011,404901,provincia
+ITF44,Brindisi,2012,404888,provincia
+ITF44,Brindisi,2013,403260,provincia
 ITF44,Brindisi,2014,401494,provincia
 ITF44,Brindisi,2015,399338,provincia
 ITF44,Brindisi,2016,396312,provincia
@@ -1043,6 +2087,18 @@ ITF44,Brindisi,2022,381273,provincia
 ITF44,Brindisi,2023,379522,provincia
 ITF44,Brindisi,2024,377240,provincia
 ITF44,Brindisi,2025,375567,provincia
+ITF45,Lecce,2002,787657,provincia
+ITF45,Lecce,2003,790170,provincia
+ITF45,Lecce,2004,793043,provincia
+ITF45,Lecce,2005,797683,provincia
+ITF45,Lecce,2006,800384,provincia
+ITF45,Lecce,2007,803154,provincia
+ITF45,Lecce,2008,807270,provincia
+ITF45,Lecce,2009,809901,provincia
+ITF45,Lecce,2010,812271,provincia
+ITF45,Lecce,2011,814923,provincia
+ITF45,Lecce,2012,815462,provincia
+ITF45,Lecce,2013,812490,provincia
 ITF45,Lecce,2014,808602,provincia
 ITF45,Lecce,2015,804812,provincia
 ITF45,Lecce,2016,800949,provincia
@@ -1055,6 +2111,18 @@ ITF45,Lecce,2022,775348,provincia
 ITF45,Lecce,2023,771230,provincia
 ITF45,Lecce,2024,767231,provincia
 ITF45,Lecce,2025,764491,provincia
+ITF51,Potenza,2002,392955,provincia
+ITF51,Potenza,2003,391981,provincia
+ITF51,Potenza,2004,391473,provincia
+ITF51,Potenza,2005,390342,provincia
+ITF51,Potenza,2006,387973,provincia
+ITF51,Potenza,2007,385424,provincia
+ITF51,Potenza,2008,384685,provincia
+ITF51,Potenza,2009,383588,provincia
+ITF51,Potenza,2010,381758,provincia
+ITF51,Potenza,2011,379895,provincia
+ITF51,Potenza,2012,378517,provincia
+ITF51,Potenza,2013,376835,provincia
 ITF51,Potenza,2014,375370,provincia
 ITF51,Potenza,2015,373323,provincia
 ITF51,Potenza,2016,370854,provincia
@@ -1067,6 +2135,18 @@ ITF51,Potenza,2022,349616,provincia
 ITF51,Potenza,2023,346475,provincia
 ITF51,Potenza,2024,343252,provincia
 ITF51,Potenza,2025,340909,provincia
+ITF52,Matera,2002,204148,provincia
+ITF52,Matera,2003,203288,provincia
+ITF52,Matera,2004,203032,provincia
+ITF52,Matera,2005,202843,provincia
+ITF52,Matera,2006,202138,provincia
+ITF52,Matera,2007,201107,provincia
+ITF52,Matera,2008,201408,provincia
+ITF52,Matera,2009,201322,provincia
+ITF52,Matera,2010,200860,provincia
+ITF52,Matera,2011,200895,provincia
+ITF52,Matera,2012,200843,provincia
+ITF52,Matera,2013,200715,provincia
 ITF52,Matera,2014,200444,provincia
 ITF52,Matera,2015,199913,provincia
 ITF52,Matera,2016,199033,provincia
@@ -1079,6 +2159,18 @@ ITF52,Matera,2022,191552,provincia
 ITF52,Matera,2023,191102,provincia
 ITF52,Matera,2024,189981,provincia
 ITF52,Matera,2025,189095,provincia
+ITF61,Cosenza,2002,732785,provincia
+ITF61,Cosenza,2003,729822,provincia
+ITF61,Cosenza,2004,729549,provincia
+ITF61,Cosenza,2005,726321,provincia
+ITF61,Cosenza,2006,722119,provincia
+ITF61,Cosenza,2007,718008,provincia
+ITF61,Cosenza,2008,721200,provincia
+ITF61,Cosenza,2009,721074,provincia
+ITF61,Cosenza,2010,720506,provincia
+ITF61,Cosenza,2011,718703,provincia
+ITF61,Cosenza,2012,718158,provincia
+ITF61,Cosenza,2013,715559,provincia
 ITF61,Cosenza,2014,713368,provincia
 ITF61,Cosenza,2015,710806,provincia
 ITF61,Cosenza,2016,706823,provincia
@@ -1091,6 +2183,18 @@ ITF61,Cosenza,2022,674543,provincia
 ITF61,Cosenza,2023,672432,provincia
 ITF61,Cosenza,2024,670368,provincia
 ITF61,Cosenza,2025,669535,provincia
+ITF62,Crotone,2002,172966,provincia
+ITF62,Crotone,2003,172076,provincia
+ITF62,Crotone,2004,172166,provincia
+ITF62,Crotone,2005,171682,provincia
+ITF62,Crotone,2006,170776,provincia
+ITF62,Crotone,2007,170254,provincia
+ITF62,Crotone,2008,170776,provincia
+ITF62,Crotone,2009,170985,provincia
+ITF62,Crotone,2010,171176,provincia
+ITF62,Crotone,2011,171758,provincia
+ITF62,Crotone,2012,171465,provincia
+ITF62,Crotone,2013,171356,provincia
 ITF62,Crotone,2014,172000,provincia
 ITF62,Crotone,2015,171969,provincia
 ITF62,Crotone,2016,171985,provincia
@@ -1103,6 +2207,18 @@ ITF62,Crotone,2022,163553,provincia
 ITF62,Crotone,2023,162749,provincia
 ITF62,Crotone,2024,161902,provincia
 ITF62,Crotone,2025,161898,provincia
+ITF63,Catanzaro,2002,368911,provincia
+ITF63,Catanzaro,2003,367753,provincia
+ITF63,Catanzaro,2004,367316,provincia
+ITF63,Catanzaro,2005,365579,provincia
+ITF63,Catanzaro,2006,363711,provincia
+ITF63,Catanzaro,2007,362106,provincia
+ITF63,Catanzaro,2008,362715,provincia
+ITF63,Catanzaro,2009,362614,provincia
+ITF63,Catanzaro,2010,362248,provincia
+ITF63,Catanzaro,2011,362124,provincia
+ITF63,Catanzaro,2012,361571,provincia
+ITF63,Catanzaro,2013,361015,provincia
 ITF63,Catanzaro,2014,360340,provincia
 ITF63,Catanzaro,2015,359072,provincia
 ITF63,Catanzaro,2016,357926,provincia
@@ -1115,6 +2231,18 @@ ITF63,Catanzaro,2022,343673,provincia
 ITF63,Catanzaro,2023,342021,provincia
 ITF63,Catanzaro,2024,340659,provincia
 ITF63,Catanzaro,2025,339741,provincia
+ITF64,Vibo Valentia,2002,170363,provincia
+ITF64,Vibo Valentia,2003,169521,provincia
+ITF64,Vibo Valentia,2004,169335,provincia
+ITF64,Vibo Valentia,2005,168067,provincia
+ITF64,Vibo Valentia,2006,167640,provincia
+ITF64,Vibo Valentia,2007,166598,provincia
+ITF64,Vibo Valentia,2008,166554,provincia
+ITF64,Vibo Valentia,2009,165835,provincia
+ITF64,Vibo Valentia,2010,165131,provincia
+ITF64,Vibo Valentia,2011,164605,provincia
+ITF64,Vibo Valentia,2012,163824,provincia
+ITF64,Vibo Valentia,2013,162516,provincia
 ITF64,Vibo Valentia,2014,161634,provincia
 ITF64,Vibo Valentia,2015,160684,provincia
 ITF64,Vibo Valentia,2016,159824,provincia
@@ -1127,6 +2255,18 @@ ITF64,Vibo Valentia,2022,151558,provincia
 ITF64,Vibo Valentia,2023,150709,provincia
 ITF64,Vibo Valentia,2024,150486,provincia
 ITF64,Vibo Valentia,2025,150516,provincia
+ITF65,Reggio di Calabria,2002,563160,provincia
+ITF65,Reggio di Calabria,2003,560595,provincia
+ITF65,Reggio di Calabria,2004,562231,provincia
+ITF65,Reggio di Calabria,2005,560378,provincia
+ITF65,Reggio di Calabria,2006,557704,provincia
+ITF65,Reggio di Calabria,2007,554971,provincia
+ITF65,Reggio di Calabria,2008,557822,provincia
+ITF65,Reggio di Calabria,2009,556039,provincia
+ITF65,Reggio di Calabria,2010,554563,provincia
+ITF65,Reggio di Calabria,2011,554859,provincia
+ITF65,Reggio di Calabria,2012,553518,provincia
+ITF65,Reggio di Calabria,2013,551984,provincia
 ITF65,Reggio di Calabria,2014,550884,provincia
 ITF65,Reggio di Calabria,2015,549202,provincia
 ITF65,Reggio di Calabria,2016,546527,provincia
@@ -1139,6 +2279,18 @@ ITF65,Reggio di Calabria,2022,522127,provincia
 ITF65,Reggio di Calabria,2023,518699,provincia
 ITF65,Reggio di Calabria,2024,515153,provincia
 ITF65,Reggio di Calabria,2025,512956,provincia
+ITG11,Trapani,2002,425129,provincia
+ITG11,Trapani,2003,425892,provincia
+ITG11,Trapani,2004,427092,provincia
+ITG11,Trapani,2005,428603,provincia
+ITG11,Trapani,2006,429413,provincia
+ITG11,Trapani,2007,430169,provincia
+ITG11,Trapani,2008,432444,provincia
+ITG11,Trapani,2009,433389,provincia
+ITG11,Trapani,2010,434697,provincia
+ITG11,Trapani,2011,435961,provincia
+ITG11,Trapani,2012,436395,provincia
+ITG11,Trapani,2013,435260,provincia
 ITG11,Trapani,2014,433677,provincia
 ITG11,Trapani,2015,432813,provincia
 ITG11,Trapani,2016,431516,provincia
@@ -1151,6 +2303,18 @@ ITG11,Trapani,2022,417220,provincia
 ITG11,Trapani,2023,415006,provincia
 ITG11,Trapani,2024,412946,provincia
 ITG11,Trapani,2025,411393,provincia
+ITG12,Palermo,2002,1236098,provincia
+ITG12,Palermo,2003,1235279,provincia
+ITG12,Palermo,2004,1235747,provincia
+ITG12,Palermo,2005,1236807,provincia
+ITG12,Palermo,2006,1237529,provincia
+ITG12,Palermo,2007,1239981,provincia
+ITG12,Palermo,2008,1243180,provincia
+ITG12,Palermo,2009,1245961,provincia
+ITG12,Palermo,2010,1248936,provincia
+ITG12,Palermo,2011,1253450,provincia
+ITG12,Palermo,2012,1254504,provincia
+ITG12,Palermo,2013,1256056,provincia
 ITG12,Palermo,2014,1256483,provincia
 ITG12,Palermo,2015,1255334,provincia
 ITG12,Palermo,2016,1250836,provincia
@@ -1163,6 +2327,18 @@ ITG12,Palermo,2022,1208991,provincia
 ITG12,Palermo,2023,1204189,provincia
 ITG12,Palermo,2024,1200253,provincia
 ITG12,Palermo,2025,1198738,provincia
+ITG13,Messina,2002,661526,provincia
+ITG13,Messina,2003,658841,provincia
+ITG13,Messina,2004,658753,provincia
+ITG13,Messina,2005,657659,provincia
+ITG13,Messina,2006,655654,provincia
+ITG13,Messina,2007,654112,provincia
+ITG13,Messina,2008,654525,provincia
+ITG13,Messina,2009,655476,provincia
+ITG13,Messina,2010,654929,provincia
+ITG13,Messina,2011,655087,provincia
+ITG13,Messina,2012,653043,provincia
+ITG13,Messina,2013,649222,provincia
 ITG13,Messina,2014,645599,provincia
 ITG13,Messina,2015,641243,provincia
 ITG13,Messina,2016,635610,provincia
@@ -1175,6 +2351,18 @@ ITG13,Messina,2022,603229,provincia
 ITG13,Messina,2023,600180,provincia
 ITG13,Messina,2024,598071,provincia
 ITG13,Messina,2025,596147,provincia
+ITG14,Agrigento,2002,447719,provincia
+ITG14,Agrigento,2003,447896,provincia
+ITG14,Agrigento,2004,448937,provincia
+ITG14,Agrigento,2005,448738,provincia
+ITG14,Agrigento,2006,448752,provincia
+ITG14,Agrigento,2007,447968,provincia
+ITG14,Agrigento,2008,449492,provincia
+ITG14,Agrigento,2009,450199,provincia
+ITG14,Agrigento,2010,451030,provincia
+ITG14,Agrigento,2011,451892,provincia
+ITG14,Agrigento,2012,452122,provincia
+ITG14,Agrigento,2013,449845,provincia
 ITG14,Agrigento,2014,447397,provincia
 ITG14,Agrigento,2015,445117,provincia
 ITG14,Agrigento,2016,441375,provincia
@@ -1187,6 +2375,18 @@ ITG14,Agrigento,2022,415887,provincia
 ITG14,Agrigento,2023,413177,provincia
 ITG14,Agrigento,2024,410508,provincia
 ITG14,Agrigento,2025,408401,provincia
+ITG15,Caltanissetta,2002,273850,provincia
+ITG15,Caltanissetta,2003,272985,provincia
+ITG15,Caltanissetta,2004,273075,provincia
+ITG15,Caltanissetta,2005,273029,provincia
+ITG15,Caltanissetta,2006,272646,provincia
+ITG15,Caltanissetta,2007,272462,provincia
+ITG15,Caltanissetta,2008,273200,provincia
+ITG15,Caltanissetta,2009,273973,provincia
+ITG15,Caltanissetta,2010,274697,provincia
+ITG15,Caltanissetta,2011,275396,provincia
+ITG15,Caltanissetta,2012,274877,provincia
+ITG15,Caltanissetta,2013,273417,provincia
 ITG15,Caltanissetta,2014,272007,provincia
 ITG15,Caltanissetta,2015,270972,provincia
 ITG15,Caltanissetta,2016,268749,provincia
@@ -1199,6 +2399,18 @@ ITG15,Caltanissetta,2022,251715,provincia
 ITG15,Caltanissetta,2023,249431,provincia
 ITG15,Caltanissetta,2024,247118,provincia
 ITG15,Caltanissetta,2025,245421,provincia
+ITG16,Enna,2002,176965,provincia
+ITG16,Enna,2003,176434,provincia
+ITG16,Enna,2004,175732,provincia
+ITG16,Enna,2005,175295,provincia
+ITG16,Enna,2006,175227,provincia
+ITG16,Enna,2007,174849,provincia
+ITG16,Enna,2008,175252,provincia
+ITG16,Enna,2009,175281,provincia
+ITG16,Enna,2010,175076,provincia
+ITG16,Enna,2011,174761,provincia
+ITG16,Enna,2012,174251,provincia
+ITG16,Enna,2013,172799,provincia
 ITG16,Enna,2014,171480,provincia
 ITG16,Enna,2015,169922,provincia
 ITG16,Enna,2016,168273,provincia
@@ -1211,6 +2423,18 @@ ITG16,Enna,2022,156730,provincia
 ITG16,Enna,2023,154940,provincia
 ITG16,Enna,2024,153556,provincia
 ITG16,Enna,2025,152544,provincia
+ITG17,Catania,2002,1054633,provincia
+ITG17,Catania,2003,1056205,provincia
+ITG17,Catania,2004,1062321,provincia
+ITG17,Catania,2005,1066629,provincia
+ITG17,Catania,2006,1071805,provincia
+ITG17,Catania,2007,1074040,provincia
+ITG17,Catania,2008,1080037,provincia
+ITG17,Catania,2009,1084439,provincia
+ITG17,Catania,2010,1088517,provincia
+ITG17,Catania,2011,1092537,provincia
+ITG17,Catania,2012,1094229,provincia
+ITG17,Catania,2013,1095009,provincia
 ITG17,Catania,2014,1094665,provincia
 ITG17,Catania,2015,1093911,provincia
 ITG17,Catania,2016,1091100,provincia
@@ -1223,6 +2447,18 @@ ITG17,Catania,2022,1077515,provincia
 ITG17,Catania,2023,1074434,provincia
 ITG17,Catania,2024,1071813,provincia
 ITG17,Catania,2025,1070169,provincia
+ITG18,Ragusa,2002,295308,provincia
+ITG18,Ragusa,2003,295972,provincia
+ITG18,Ragusa,2004,298756,provincia
+ITG18,Ragusa,2005,300871,provincia
+ITG18,Ragusa,2006,302210,provincia
+ITG18,Ragusa,2007,303536,provincia
+ITG18,Ragusa,2008,306377,provincia
+ITG18,Ragusa,2009,308912,provincia
+ITG18,Ragusa,2010,311437,provincia
+ITG18,Ragusa,2011,314431,provincia
+ITG18,Ragusa,2012,316385,provincia
+ITG18,Ragusa,2013,317305,provincia
 ITG18,Ragusa,2014,317335,provincia
 ITG18,Ragusa,2015,317146,provincia
 ITG18,Ragusa,2016,317324,provincia
@@ -1235,6 +2471,18 @@ ITG18,Ragusa,2022,316142,provincia
 ITG18,Ragusa,2023,317793,provincia
 ITG18,Ragusa,2024,319236,provincia
 ITG18,Ragusa,2025,321300,provincia
+ITG19,Siracusa,2002,396078,provincia
+ITG19,Siracusa,2003,395886,provincia
+ITG19,Siracusa,2004,396684,provincia
+ITG19,Siracusa,2005,397590,provincia
+ITG19,Siracusa,2006,398083,provincia
+ITG19,Siracusa,2007,398723,provincia
+ITG19,Siracusa,2008,401459,provincia
+ITG19,Siracusa,2009,403806,provincia
+ITG19,Siracusa,2010,404726,provincia
+ITG19,Siracusa,2011,405967,provincia
+ITG19,Siracusa,2012,406140,provincia
+ITG19,Siracusa,2013,404627,provincia
 ITG19,Siracusa,2014,403111,provincia
 ITG19,Siracusa,2015,401808,provincia
 ITG19,Siracusa,2016,399617,provincia
@@ -1247,6 +2495,18 @@ ITG19,Siracusa,2022,385900,provincia
 ITG19,Siracusa,2023,384866,provincia
 ITG19,Siracusa,2024,383858,provincia
 ITG19,Siracusa,2025,383277,provincia
+ITG25,Sassari,2002,460277,provincia
+ITG25,Sassari,2003,462602,provincia
+ITG25,Sassari,2004,465358,provincia
+ITG25,Sassari,2005,468012,provincia
+ITG25,Sassari,2006,470188,provincia
+ITG25,Sassari,2007,472539,provincia
+ITG25,Sassari,2008,477508,provincia
+ITG25,Sassari,2009,481280,provincia
+ITG25,Sassari,2010,483032,provincia
+ITG25,Sassari,2011,485100,provincia
+ITG25,Sassari,2012,486257,provincia
+ITG25,Sassari,2013,487737,provincia
 ITG25,Sassari,2014,488789,provincia
 ITG25,Sassari,2015,488917,provincia
 ITG25,Sassari,2016,488904,provincia
@@ -1259,6 +2519,18 @@ ITG25,Sassari,2022,476516,provincia
 ITG25,Sassari,2023,474739,provincia
 ITG25,Sassari,2024,473493,provincia
 ITG25,Sassari,2025,471957,provincia
+ITG26,Nuoro,2002,220766,provincia
+ITG26,Nuoro,2003,220145,provincia
+ITG26,Nuoro,2004,219667,provincia
+ITG26,Nuoro,2005,219181,provincia
+ITG26,Nuoro,2006,218534,provincia
+ITG26,Nuoro,2007,217986,provincia
+ITG26,Nuoro,2008,217945,provincia
+ITG26,Nuoro,2009,217771,provincia
+ITG26,Nuoro,2010,217209,provincia
+ITG26,Nuoro,2011,216694,provincia
+ITG26,Nuoro,2012,216019,provincia
+ITG26,Nuoro,2013,215083,provincia
 ITG26,Nuoro,2014,214391,provincia
 ITG26,Nuoro,2015,213365,provincia
 ITG26,Nuoro,2016,211644,provincia
@@ -1271,6 +2543,18 @@ ITG26,Nuoro,2022,200376,provincia
 ITG26,Nuoro,2023,198520,provincia
 ITG26,Nuoro,2024,197090,provincia
 ITG26,Nuoro,2025,195331,provincia
+ITG27,Cagliari,2002,414654,provincia
+ITG27,Cagliari,2003,415727,provincia
+ITG27,Cagliari,2004,417368,provincia
+ITG27,Cagliari,2005,418506,provincia
+ITG27,Cagliari,2006,419789,provincia
+ITG27,Cagliari,2007,421135,provincia
+ITG27,Cagliari,2008,422247,provincia
+ITG27,Cagliari,2009,423662,provincia
+ITG27,Cagliari,2010,424257,provincia
+ITG27,Cagliari,2011,425431,provincia
+ITG27,Cagliari,2012,425735,provincia
+ITG27,Cagliari,2013,427056,provincia
 ITG27,Cagliari,2014,426740,provincia
 ITG27,Cagliari,2015,426678,provincia
 ITG27,Cagliari,2016,426011,provincia
@@ -1283,6 +2567,18 @@ ITG27,Cagliari,2022,421688,provincia
 ITG27,Cagliari,2023,420364,provincia
 ITG27,Cagliari,2024,418962,provincia
 ITG27,Cagliari,2025,417532,provincia
+ITG28,Oristano,2002,166575,provincia
+ITG28,Oristano,2003,166397,provincia
+ITG28,Oristano,2004,166287,provincia
+ITG28,Oristano,2005,166391,provincia
+ITG28,Oristano,2006,166244,provincia
+ITG28,Oristano,2007,166119,provincia
+ITG28,Oristano,2008,165792,provincia
+ITG28,Oristano,2009,165278,provincia
+ITG28,Oristano,2010,164816,provincia
+ITG28,Oristano,2011,164393,provincia
+ITG28,Oristano,2012,163594,provincia
+ITG28,Oristano,2013,162768,provincia
 ITG28,Oristano,2014,162007,provincia
 ITG28,Oristano,2015,161055,provincia
 ITG28,Oristano,2016,159947,provincia
@@ -1295,6 +2591,18 @@ ITG28,Oristano,2022,151655,provincia
 ITG28,Oristano,2023,150325,provincia
 ITG28,Oristano,2024,149091,provincia
 ITG28,Oristano,2025,148005,provincia
+ITC1,Piemonte,2002,4212726,regione
+ITC1,Piemonte,2003,4222134,regione
+ITC1,Piemonte,2004,4260654,regione
+ITC1,Piemonte,2005,4284486,regione
+ITC1,Piemonte,2006,4296203,regione
+ITC1,Piemonte,2007,4306018,regione
+ITC1,Piemonte,2008,4358273,regione
+ITC1,Piemonte,2009,4389110,regione
+ITC1,Piemonte,2010,4401572,regione
+ITC1,Piemonte,2011,4410887,regione
+ITC1,Piemonte,2012,4416745,regione
+ITC1,Piemonte,2013,4425816,regione
 ITC1,Piemonte,2014,4420924,regione
 ITC1,Piemonte,2015,4403562,regione
 ITC1,Piemonte,2016,4384226,regione
@@ -1307,6 +2615,18 @@ ITC1,Piemonte,2022,4256350,regione
 ITC1,Piemonte,2023,4251351,regione
 ITC1,Piemonte,2024,4251623,regione
 ITC1,Piemonte,2025,4251868,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2002,119347,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2003,120383,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2004,121692,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2005,122799,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2006,123839,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2007,124636,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2008,125658,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2009,126515,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2010,126957,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2011,127153,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2012,127305,regione
+ITC2,Valle d'Aosta / Vallée d'Aoste,2013,127951,regione
 ITC2,Valle d'Aosta / Vallée d'Aoste,2014,128245,regione
 ITC2,Valle d'Aosta / Vallée d'Aoste,2015,127972,regione
 ITC2,Valle d'Aosta / Vallée d'Aoste,2016,127030,regione
@@ -1319,6 +2639,18 @@ ITC2,Valle d'Aosta / Vallée d'Aoste,2022,123360,regione
 ITC2,Valle d'Aosta / Vallée d'Aoste,2023,123130,regione
 ITC2,Valle d'Aosta / Vallée d'Aoste,2024,122877,regione
 ITC2,Valle d'Aosta / Vallée d'Aoste,2025,122532,regione
+ITC3,Liguria,2002,1570152,regione
+ITC3,Liguria,2003,1568193,regione
+ITC3,Liguria,2004,1572910,regione
+ITC3,Liguria,2005,1580613,regione
+ITC3,Liguria,2006,1580900,regione
+ITC3,Liguria,2007,1580814,regione
+ITC3,Liguria,2008,1583449,regione
+ITC3,Liguria,2009,1589802,regione
+ITC3,Liguria,2010,1591537,regione
+ITC3,Liguria,2011,1592593,regione
+ITC3,Liguria,2012,1590096,regione
+ITC3,Liguria,2013,1587322,regione
 ITC3,Liguria,2014,1580322,regione
 ITC3,Liguria,2015,1569427,regione
 ITC3,Liguria,2016,1557742,regione
@@ -1331,6 +2663,18 @@ ITC3,Liguria,2022,1509227,regione
 ITC3,Liguria,2023,1507636,regione
 ITC3,Liguria,2024,1509140,regione
 ITC3,Liguria,2025,1510143,regione
+ITC4,Lombardia,2002,9033909,regione
+ITC4,Lombardia,2003,9082295,regione
+ITC4,Lombardia,2004,9173501,regione
+ITC4,Lombardia,2005,9299835,regione
+ITC4,Lombardia,2006,9370827,regione
+ITC4,Lombardia,2007,9431541,regione
+ITC4,Lombardia,2008,9517477,regione
+ITC4,Lombardia,2009,9603804,regione
+ITC4,Lombardia,2010,9670614,regione
+ITC4,Lombardia,2011,9746113,regione
+ITC4,Lombardia,2012,9811011,regione
+ITC4,Lombardia,2013,9877541,regione
 ITC4,Lombardia,2014,9929769,regione
 ITC4,Lombardia,2015,9954769,regione
 ITC4,Lombardia,2016,9958447,regione
@@ -1343,6 +2687,18 @@ ITC4,Lombardia,2022,9943004,regione
 ITC4,Lombardia,2023,9976509,regione
 ITC4,Lombardia,2024,10012054,regione
 ITC4,Lombardia,2025,10033918,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2002,462884,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2003,466605,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2004,470363,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2005,475176,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2006,480403,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2007,485196,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2008,491338,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2009,496079,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2010,500450,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2011,504406,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2012,507989,regione
+ITD1,Provincia Autonoma Bolzano / Bozen,2013,511619,regione
 ITD1,Provincia Autonoma Bolzano / Bozen,2014,515389,regione
 ITD1,Provincia Autonoma Bolzano / Bozen,2015,517994,regione
 ITD1,Provincia Autonoma Bolzano / Bozen,2016,520252,regione
@@ -1355,6 +2711,18 @@ ITD1,Provincia Autonoma Bolzano / Bozen,2022,532616,regione
 ITD1,Provincia Autonoma Bolzano / Bozen,2023,534147,regione
 ITD1,Provincia Autonoma Bolzano / Bozen,2024,537533,regione
 ITD1,Provincia Autonoma Bolzano / Bozen,2025,539679,regione
+ITD2,Provincia Autonoma Trento,2002,476750,regione
+ITD2,Provincia Autonoma Trento,2003,481750,regione
+ITD2,Provincia Autonoma Trento,2004,488099,regione
+ITD2,Provincia Autonoma Trento,2005,494740,regione
+ITD2,Provincia Autonoma Trento,2006,499712,regione
+ITD2,Provincia Autonoma Trento,2007,504098,regione
+ITD2,Provincia Autonoma Trento,2008,510511,regione
+ITD2,Provincia Autonoma Trento,2009,516859,regione
+ITD2,Provincia Autonoma Trento,2010,521531,regione
+ITD2,Provincia Autonoma Trento,2011,525833,regione
+ITD2,Provincia Autonoma Trento,2012,529246,regione
+ITD2,Provincia Autonoma Trento,2013,533435,regione
 ITD2,Provincia Autonoma Trento,2014,536813,regione
 ITD2,Provincia Autonoma Trento,2015,538188,regione
 ITD2,Provincia Autonoma Trento,2016,539513,regione
@@ -1367,6 +2735,18 @@ ITD2,Provincia Autonoma Trento,2022,540958,regione
 ITD2,Provincia Autonoma Trento,2023,542996,regione
 ITD2,Provincia Autonoma Trento,2024,545169,regione
 ITD2,Provincia Autonoma Trento,2025,546573,regione
+ITD3,Veneto,2002,4527599,regione
+ITD3,Veneto,2003,4562491,regione
+ITD3,Veneto,2004,4622493,regione
+ITD3,Veneto,2005,4674934,regione
+ITD3,Veneto,2006,4709768,regione
+ITD3,Veneto,2007,4739367,regione
+ITD3,Veneto,2008,4796062,regione
+ITD3,Veneto,2009,4844339,regione
+ITD3,Veneto,2010,4863372,regione
+ITD3,Veneto,2011,4879606,regione
+ITD3,Veneto,2012,4887328,regione
+ITD3,Veneto,2013,4901415,regione
 ITD3,Veneto,2014,4905712,regione
 ITD3,Veneto,2015,4902694,regione
 ITD3,Veneto,2016,4890648,regione
@@ -1379,6 +2759,18 @@ ITD3,Veneto,2022,4847745,regione
 ITD3,Veneto,2023,4849553,regione
 ITD3,Veneto,2024,4852216,regione
 ITD3,Veneto,2025,4853472,regione
+ITD4,Friuli-Venezia Giulia,2002,1184713,regione
+ITD4,Friuli-Venezia Giulia,2003,1190100,regione
+ITD4,Friuli-Venezia Giulia,2004,1196333,regione
+ITD4,Friuli-Venezia Giulia,2005,1201350,regione
+ITD4,Friuli-Venezia Giulia,2006,1203848,regione
+ITD4,Friuli-Venezia Giulia,2007,1208130,regione
+ITD4,Friuli-Venezia Giulia,2008,1217059,regione
+ITD4,Friuli-Venezia Giulia,2009,1224653,regione
+ITD4,Friuli-Venezia Giulia,2010,1225910,regione
+ITD4,Friuli-Venezia Giulia,2011,1225361,regione
+ITD4,Friuli-Venezia Giulia,2012,1223642,regione
+ITD4,Friuli-Venezia Giulia,2013,1224987,regione
 ITD4,Friuli-Venezia Giulia,2014,1224984,regione
 ITD4,Friuli-Venezia Giulia,2015,1221664,regione
 ITD4,Friuli-Venezia Giulia,2016,1216208,regione
@@ -1391,6 +2783,18 @@ ITD4,Friuli-Venezia Giulia,2022,1194647,regione
 ITD4,Friuli-Venezia Giulia,2023,1194248,regione
 ITD4,Friuli-Venezia Giulia,2024,1194616,regione
 ITD4,Friuli-Venezia Giulia,2025,1193284,regione
+ITD5,Emilia-Romagna,2002,4003078,regione
+ITD5,Emilia-Romagna,2003,4034435,regione
+ITD5,Emilia-Romagna,2004,4080856,regione
+ITD5,Emilia-Romagna,2005,4129525,regione
+ITD5,Emilia-Romagna,2006,4162981,regione
+ITD5,Emilia-Romagna,2007,4194959,regione
+ITD5,Emilia-Romagna,2008,4246741,regione
+ITD5,Emilia-Romagna,2009,4305949,regione
+ITD5,Emilia-Romagna,2010,4340491,regione
+ITD5,Emilia-Romagna,2011,4371595,regione
+ITD5,Emilia-Romagna,2012,4391314,regione
+ITD5,Emilia-Romagna,2013,4415458,regione
 ITD5,Emilia-Romagna,2014,4432241,regione
 ITD5,Emilia-Romagna,2015,4434377,regione
 ITD5,Emilia-Romagna,2016,4435480,regione
@@ -1403,6 +2807,18 @@ ITD5,Emilia-Romagna,2022,4425366,regione
 ITD5,Emilia-Romagna,2023,4437578,regione
 ITD5,Emilia-Romagna,2024,4451938,regione
 ITD5,Emilia-Romagna,2025,4461998,regione
+ITE1,Toscana,2002,3499109,regione
+ITE1,Toscana,2003,3513273,regione
+ITE1,Toscana,2004,3543673,regione
+ITE1,Toscana,2005,3574966,regione
+ITE1,Toscana,2006,3593492,regione
+ITE1,Toscana,2007,3610980,regione
+ITE1,Toscana,2008,3650182,regione
+ITE1,Toscana,2009,3683362,regione
+ITE1,Toscana,2010,3706592,regione
+ITE1,Toscana,2011,3726263,regione
+ITE1,Toscana,2012,3733535,regione
+ITE1,Toscana,2013,3743537,regione
 ITE1,Toscana,2014,3744293,regione
 ITE1,Toscana,2015,3739044,regione
 ITE1,Toscana,2016,3726422,regione
@@ -1415,6 +2831,18 @@ ITE1,Toscana,2022,3663191,regione
 ITE1,Toscana,2023,3661981,regione
 ITE1,Toscana,2024,3660530,regione
 ITE1,Toscana,2025,3657716,regione
+ITE2,Umbria,2002,826176,regione
+ITE2,Umbria,2003,830936,regione
+ITE2,Umbria,2004,841789,regione
+ITE2,Umbria,2005,849774,regione
+ITE2,Umbria,2006,855555,regione
+ITE2,Umbria,2007,858807,regione
+ITE2,Umbria,2008,870298,regione
+ITE2,Umbria,2009,879640,regione
+ITE2,Umbria,2010,884937,regione
+ITE2,Umbria,2011,889450,regione
+ITE2,Umbria,2012,890407,regione
+ITE2,Umbria,2013,892742,regione
 ITE2,Umbria,2014,892099,regione
 ITE2,Umbria,2015,888288,regione
 ITE2,Umbria,2016,884092,regione
@@ -1427,6 +2855,18 @@ ITE2,Umbria,2022,858812,regione
 ITE2,Umbria,2023,856407,regione
 ITE2,Umbria,2024,853068,regione
 ITE2,Umbria,2025,851473,regione
+ITE3,Marche,2002,1453413,regione
+ITE3,Marche,2003,1464080,regione
+ITE3,Marche,2004,1481118,regione
+ITE3,Marche,2005,1493103,regione
+ITE3,Marche,2006,1501891,regione
+ITE3,Marche,2007,1507981,regione
+ITE3,Marche,2008,1525274,regione
+ITE3,Marche,2009,1541254,regione
+ITE3,Marche,2010,1546800,regione
+ITE3,Marche,2011,1549616,regione
+ITE3,Marche,2012,1550010,regione
+ITE3,Marche,2013,1551668,regione
 ITE3,Marche,2014,1549478,regione
 ITE3,Marche,2015,1545869,regione
 ITE3,Marche,2016,1538442,regione
@@ -1439,6 +2879,18 @@ ITE3,Marche,2022,1487150,regione
 ITE3,Marche,2023,1484298,regione
 ITE3,Marche,2024,1482746,regione
 ITE3,Marche,2025,1480545,regione
+ITE4,Lazio,2002,5117783,regione
+ITE4,Lazio,2003,5139164,regione
+ITE4,Lazio,2004,5186338,regione
+ITE4,Lazio,2005,5240603,regione
+ITE4,Lazio,2006,5277353,regione
+ITE4,Lazio,2007,5322929,regione
+ITE4,Lazio,2008,5394010,regione
+ITE4,Lazio,2009,5461999,regione
+ITE4,Lazio,2010,5516026,regione
+ITE4,Lazio,2011,5563046,regione
+ITE4,Lazio,2012,5605706,regione
+ITE4,Lazio,2013,5678764,regione
 ITE4,Lazio,2014,5723955,regione
 ITE4,Lazio,2015,5744899,regione
 ITE4,Lazio,2016,5761508,regione
@@ -1451,6 +2903,18 @@ ITE4,Lazio,2022,5714882,regione
 ITE4,Lazio,2023,5720536,regione
 ITE4,Lazio,2024,5714745,regione
 ITE4,Lazio,2025,5709178,regione
+ITF1,Abruzzo,2002,1262187,regione
+ITF1,Abruzzo,2003,1267633,regione
+ITF1,Abruzzo,2004,1278658,regione
+ITF1,Abruzzo,2005,1287157,regione
+ITF1,Abruzzo,2006,1292999,regione
+ITF1,Abruzzo,2007,1296869,regione
+ITF1,Abruzzo,2008,1311307,regione
+ITF1,Abruzzo,2009,1321887,regione
+ITF1,Abruzzo,2010,1326015,regione
+ITF1,Abruzzo,2011,1329220,regione
+ITF1,Abruzzo,2012,1331624,regione
+ITF1,Abruzzo,2013,1332583,regione
 ITF1,Abruzzo,2014,1329918,regione
 ITF1,Abruzzo,2015,1325836,regione
 ITF1,Abruzzo,2016,1319294,regione
@@ -1463,6 +2927,18 @@ ITF1,Abruzzo,2022,1275950,regione
 ITF1,Abruzzo,2023,1272627,regione
 ITF1,Abruzzo,2024,1269571,regione
 ITF1,Abruzzo,2025,1269118,regione
+ITF2,Molise,2002,320190,regione
+ITF2,Molise,2003,320381,regione
+ITF2,Molise,2004,320359,regione
+ITF2,Molise,2005,319728,regione
+ITF2,Molise,2006,318452,regione
+ITF2,Molise,2007,317337,regione
+ITF2,Molise,2008,317657,regione
+ITF2,Molise,2009,317082,regione
+ITF2,Molise,2010,315939,regione
+ITF2,Molise,2011,314816,regione
+ITF2,Molise,2012,313916,regione
+ITF2,Molise,2013,313408,regione
 ITF2,Molise,2014,312897,regione
 ITF2,Molise,2015,311398,regione
 ITF2,Molise,2016,310026,regione
@@ -1475,6 +2951,18 @@ ITF2,Molise,2022,292150,regione
 ITF2,Molise,2023,290636,regione
 ITF2,Molise,2024,289224,regione
 ITF2,Molise,2025,287814,regione
+ITF3,Campania,2002,5699962,regione
+ITF3,Campania,2003,5704903,regione
+ITF3,Campania,2004,5731441,regione
+ITF3,Campania,2005,5759450,regione
+ITF3,Campania,2006,5763419,regione
+ITF3,Campania,2007,5766263,regione
+ITF3,Campania,2008,5785045,regione
+ITF3,Campania,2009,5792087,regione
+ITF3,Campania,2010,5807464,regione
+ITF3,Campania,2011,5822827,regione
+ITF3,Campania,2012,5827593,regione
+ITF3,Campania,2013,5820430,regione
 ITF3,Campania,2014,5812768,regione
 ITF3,Campania,2015,5804370,regione
 ITF3,Campania,2016,5790783,regione
@@ -1487,6 +2975,18 @@ ITF3,Campania,2022,5624420,regione
 ITF3,Campania,2023,5609536,regione
 ITF3,Campania,2024,5593906,regione
 ITF3,Campania,2025,5582337,regione
+ITF4,Puglia,2002,4020694,regione
+ITF4,Puglia,2003,4025113,regione
+ITF4,Puglia,2004,4034841,regione
+ITF4,Puglia,2005,4048188,regione
+ITF4,Puglia,2006,4053780,regione
+ITF4,Puglia,2007,4057440,regione
+ITF4,Puglia,2008,4071244,regione
+ITF4,Puglia,2009,4080149,regione
+ITF4,Puglia,2010,4090111,regione
+ITF4,Puglia,2011,4101558,regione
+ITF4,Puglia,2012,4102797,regione
+ITF4,Puglia,2013,4090530,regione
 ITF4,Puglia,2014,4077788,regione
 ITF4,Puglia,2015,4063269,regione
 ITF4,Puglia,2016,4043735,regione
@@ -1499,6 +2999,18 @@ ITF4,Puglia,2022,3922941,regione
 ITF4,Puglia,2023,3907683,regione
 ITF4,Puglia,2024,3890661,regione
 ITF4,Puglia,2025,3877395,regione
+ITF5,Basilicata,2002,597103,regione
+ITF5,Basilicata,2003,595269,regione
+ITF5,Basilicata,2004,594505,regione
+ITF5,Basilicata,2005,593185,regione
+ITF5,Basilicata,2006,590111,regione
+ITF5,Basilicata,2007,586531,regione
+ITF5,Basilicata,2008,586093,regione
+ITF5,Basilicata,2009,584910,regione
+ITF5,Basilicata,2010,582618,regione
+ITF5,Basilicata,2011,580790,regione
+ITF5,Basilicata,2012,579360,regione
+ITF5,Basilicata,2013,577550,regione
 ITF5,Basilicata,2014,575814,regione
 ITF5,Basilicata,2015,573236,regione
 ITF5,Basilicata,2016,569887,regione
@@ -1511,6 +3023,18 @@ ITF5,Basilicata,2022,541168,regione
 ITF5,Basilicata,2023,537577,regione
 ITF5,Basilicata,2024,533233,regione
 ITF5,Basilicata,2025,530004,regione
+ITF6,Calabria,2002,2008185,regione
+ITF6,Calabria,2003,1999767,regione
+ITF6,Calabria,2004,2000597,regione
+ITF6,Calabria,2005,1992027,regione
+ITF6,Calabria,2006,1981950,regione
+ITF6,Calabria,2007,1971937,regione
+ITF6,Calabria,2008,1979067,regione
+ITF6,Calabria,2009,1976547,regione
+ITF6,Calabria,2010,1973624,regione
+ITF6,Calabria,2011,1972049,regione
+ITF6,Calabria,2012,1968536,regione
+ITF6,Calabria,2013,1962430,regione
 ITF6,Calabria,2014,1958226,regione
 ITF6,Calabria,2015,1951733,regione
 ITF6,Calabria,2016,1943085,regione
@@ -1523,6 +3047,18 @@ ITF6,Calabria,2022,1855454,regione
 ITF6,Calabria,2023,1846610,regione
 ITF6,Calabria,2024,1838568,regione
 ITF6,Calabria,2025,1834646,regione
+ITG1,Sicilia,2002,4967306,regione
+ITG1,Sicilia,2003,4965390,regione
+ITG1,Sicilia,2004,4977097,regione
+ITG1,Sicilia,2005,4985221,regione
+ITG1,Sicilia,2006,4991319,regione
+ITG1,Sicilia,2007,4995840,regione
+ITG1,Sicilia,2008,5015966,regione
+ITG1,Sicilia,2009,5031436,regione
+ITG1,Sicilia,2010,5044045,regione
+ITG1,Sicilia,2011,5059482,regione
+ITG1,Sicilia,2012,5061946,regione
+ITG1,Sicilia,2013,5053540,regione
 ITG1,Sicilia,2014,5041754,regione
 ITG1,Sicilia,2015,5028266,regione
 ITG1,Sicilia,2016,5004400,regione
@@ -1535,6 +3071,18 @@ ITG1,Sicilia,2022,4833329,regione
 ITG1,Sicilia,2023,4814016,regione
 ITG1,Sicilia,2024,4797359,regione
 ITG1,Sicilia,2025,4787390,regione
+ITG2,Sardegna,2002,1630004,regione
+ITG2,Sardegna,2003,1632083,regione
+ITG2,Sardegna,2004,1634673,regione
+ITG2,Sardegna,2005,1637508,regione
+ITG2,Sardegna,2006,1640194,regione
+ITG2,Sardegna,2007,1643052,regione
+ITG2,Sardegna,2008,1649058,regione
+ITG2,Sardegna,2009,1653129,regione
+ITG2,Sardegna,2010,1653711,regione
+ITG2,Sardegna,2011,1655833,regione
+ITG2,Sardegna,2012,1655079,regione
+ITG2,Sardegna,2013,1654583,regione
 ITG2,Sardegna,2014,1652528,regione
 ITG2,Sardegna,2015,1648642,regione
 ITG2,Sardegna,2016,1642492,regione

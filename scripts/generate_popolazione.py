@@ -1,4 +1,4 @@
-"""Genera CSV popolazione unificato: intercensuaria (2014-2018) + DCIS_POPRES1 (2019+).
+"""Genera CSV popolazione unificato: intercensuaria (2002-2018) + DCIS_POPRES1 (2019+).
 
 Input:
   - data/raw/popolazione/PopolazioneEta-SingolaArea-Italia-Ripartizioni.csv (intercensuaria)
@@ -25,7 +25,7 @@ import pandas as pd
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
-YEARS_INTERCENSUARIA = list(range(2014, 2019))  # 2014-2018
+YEARS_INTERCENSUARIA = list(range(2002, 2019))  # 2002-2018
 
 # Mapping NUTS2 -> nome regione (come nel CSV attuale)
 NUTS2_NAMES = {
