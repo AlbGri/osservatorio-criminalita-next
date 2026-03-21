@@ -64,7 +64,7 @@ export function ChartAutoriTrendProvincia({ dataType }: Props) {
         set.add(r.regione);
       }
     }
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
   }, [data, dataType, effectiveReato]);
 
   const effectiveRegione = useMemo(() => {
@@ -81,7 +81,7 @@ export function ChartAutoriTrendProvincia({ dataType }: Props) {
         set.add(r.anno);
       }
     }
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a - b);
   }, [data, dataType, effectiveReato]);
 
   // Dati filtrati per regione, raggruppati per provincia

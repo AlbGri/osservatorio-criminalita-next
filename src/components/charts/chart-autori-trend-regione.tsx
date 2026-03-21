@@ -90,7 +90,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
         set.add(r.regione);
       }
     }
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
   }, [data, dataType, effectiveReato]);
 
   // Media nazionale ponderata per il tasso

@@ -10,12 +10,12 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CollapsibleSection } from "@/components/ui/collapsible-section";
 
 const REATI = [
-  "Omicidi volontari consumati",
-  "Tentati omicidi",
-  "Violenze sessuali",
   "Atti sessuali con minorenne",
+  "Omicidi volontari consumati",
   "Rapine in abitazione",
   "Sequestri di persona",
+  "Tentati omicidi",
+  "Violenze sessuali",
 ];
 
 const ANNI = Array.from({ length: 11 }, (_, i) => 2014 + i);

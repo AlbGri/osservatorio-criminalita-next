@@ -53,7 +53,7 @@ export function ChartAllarmeTrendProvincia({ reato }: Props) {
 
   const regioni = useMemo(() => {
     if (!data) return [];
-    return [...new Set(data.map((d) => d.Regione))].sort();
+    return [...new Set(data.map((d) => d.Regione))].sort((a, b) => a.localeCompare(b, "it"));
   }, [data]);
 
   const selectedRegione = regione || regioni[0] || "";
@@ -64,7 +64,7 @@ export function ChartAllarmeTrendProvincia({ reato }: Props) {
       data
         .filter((d) => d.Regione === selectedRegione && d.Reato === reato)
         .map((d) => d.Territorio)
-    )].sort();
+    )].sort((a, b) => a.localeCompare(b, "it"));
   }, [data, selectedRegione, reato]);
 
   const selectedProvincia = province.includes(provincia)

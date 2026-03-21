@@ -51,7 +51,7 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
 
   const regioni = useMemo(() => {
     if (!data) return [];
-    return [...new Set(data.map((d) => d.Territorio))].sort();
+    return [...new Set(data.map((d) => d.Territorio))].sort((a, b) => a.localeCompare(b, "it"));
   }, [data]);
 
   const mediaNazionale = useMemo(() => {

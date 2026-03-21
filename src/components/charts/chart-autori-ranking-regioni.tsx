@@ -77,7 +77,7 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
         set.add(r.anno);
       }
     }
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a - b);
   }, [data, dataType, effectiveReato]);
 
   const effectiveAnno = useMemo(() => {

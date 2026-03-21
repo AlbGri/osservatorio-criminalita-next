@@ -37,7 +37,7 @@ export function ChartTrendRegione() {
 
   const regioni = useMemo(() => {
     if (!data) return [];
-    return [...new Set(data.map((d) => d.Territorio))].sort();
+    return [...new Set(data.map((d) => d.Territorio))].sort((a, b) => a.localeCompare(b, "it"));
   }, [data]);
 
   // Media nazionale ponderata per anno

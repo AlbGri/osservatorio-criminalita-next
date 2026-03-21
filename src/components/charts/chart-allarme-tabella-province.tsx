@@ -39,7 +39,7 @@ export function ChartAllarmeTabellaProvince({ anno, reato }: Props) {
 
   const regioni = useMemo(() => {
     const set = new Set(dataReato.map((d) => d.Regione));
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
   }, [dataReato]);
 
   const handleSort = useCallback((key: SortKey) => {

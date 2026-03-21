@@ -33,7 +33,7 @@ export function ChartTabellaProvince({ anno }: Props) {
   const regioni = useMemo(() => {
     if (!data) return [];
     const set = new Set(data.map((d) => d.Regione));
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
   }, [data]);
 
   const handleSort = useCallback((key: SortKey) => {

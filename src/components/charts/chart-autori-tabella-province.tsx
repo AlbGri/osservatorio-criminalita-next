@@ -51,7 +51,7 @@ export function ChartAutoriTabellaProvince({ dataType }: Props) {
     for (const r of data) {
       if (r.data_type === dataType) set.add(r.anno);
     }
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a - b);
   }, [data, dataType]);
 
   // Se anno selezionato non disponibile, usa il piu' recente
@@ -110,7 +110,7 @@ export function ChartAutoriTabellaProvince({ dataType }: Props) {
     for (const r of data) {
       if (r.data_type === dataType) set.add(r.regione);
     }
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
   }, [data, dataType]);
 
   const handleSort = useCallback(
