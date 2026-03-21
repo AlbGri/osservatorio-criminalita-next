@@ -7,6 +7,7 @@ import { ChartAllarmeTrendRegione } from "@/components/charts/chart-allarme-tren
 import { ChartAllarmeTabellaProvince } from "@/components/charts/chart-allarme-tabella-province";
 import { ChartAllarmeTrendProvincia } from "@/components/charts/chart-allarme-trend-provincia";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CollapsibleSection } from "@/components/ui/collapsible-section";
 
 const REATI = [
   "Omicidi volontari consumati",
@@ -83,48 +84,49 @@ export default function ReatiAllarmeSociale() {
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Nazionale: {reato} (2014-2024)
-        </h2>
+      <CollapsibleSection
+        title={`Trend Nazionale: ${reato} (2014-2024)`}
+        description="Andamento temporale del reato selezionato a livello nazionale"
+        defaultOpen
+      >
         <ChartAllarmeTrendNazionale reatoSelezionato={reato} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Ranking Regioni: {reato} ({anno})
-        </h2>
+      <CollapsibleSection
+        title={`Ranking Regioni: ${reato} (${anno})`}
+        description="Classifica regioni per tasso del reato selezionato"
+      >
         <ChartAllarmeRankingRegioni anno={anno} reato={reato} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Regionale: {reato} (2014-2024)
-        </h2>
+      <CollapsibleSection
+        title={`Trend Regionale: ${reato} (2014-2024)`}
+        description="Andamento temporale per singola regione"
+      >
         <ChartAllarmeTrendRegione reato={reato} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Dati Provinciali: {reato} ({anno})
-        </h2>
+      <CollapsibleSection
+        title={`Dati Provinciali: ${reato} (${anno})`}
+        description="Tabella con dati per provincia"
+      >
         <ChartAllarmeTabellaProvince anno={anno} reato={reato} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Provinciale: {reato} (2014-2024)
-        </h2>
+      <CollapsibleSection
+        title={`Trend Provinciale: ${reato} (2014-2024)`}
+        description="Andamento temporale per singola provincia"
+      >
         <ChartAllarmeTrendProvincia reato={reato} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 

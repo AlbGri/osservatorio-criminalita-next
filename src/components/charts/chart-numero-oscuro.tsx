@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { COLORS, CHART_HEIGHT_SMALL, PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
+import { CollapsibleSection } from "@/components/ui/collapsible-section";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -295,10 +296,10 @@ export function ChartNumeroOscuro() {
         propensione più alta per i reati violenti (65.2%).
       </p>
 
-      <details className="space-y-6">
-        <summary className="cursor-pointer text-lg font-semibold text-primary hover:text-primary transition-colors">
-          Come cambia la propensione per territorio nel tempo (9 grafici)
-        </summary>
+      <CollapsibleSection
+        title="Come cambia la propensione per territorio nel tempo (9 grafici)"
+        description="Confronto propensione alla denuncia per macro-area tra 2015-2016 e 2022-2023"
+      >
 
         <Alert>
           <AlertDescription className="block">
@@ -379,7 +380,7 @@ export function ChartNumeroOscuro() {
           <strong>Isole</strong> (da 24.7% a 55.9%). I furti di oggetti dai
           veicoli aumentano al Nord ma calano alle Isole.
         </p>
-      </details>
+      </CollapsibleSection>
 
       <p className="text-xs text-muted-foreground">
         Fonti:{" "}

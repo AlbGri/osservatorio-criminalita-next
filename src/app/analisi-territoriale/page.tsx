@@ -6,6 +6,7 @@ import { ChartRankingRegioni } from "@/components/charts/chart-ranking-regioni";
 import { ChartTrendRegione } from "@/components/charts/chart-trend-regione";
 import { ChartTabellaProvince } from "@/components/charts/chart-tabella-province";
 import { ChartTrendProvincia } from "@/components/charts/chart-trend-provincia";
+import { CollapsibleSection } from "@/components/ui/collapsible-section";
 
 const ANNI = Array.from({ length: 11 }, (_, i) => 2014 + i);
 const PLAY_INTERVAL_MS = 1500;
@@ -86,48 +87,49 @@ export default function AnalisiTerritoriale() {
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Mappa Regionale ({anno})
-        </h2>
+      <CollapsibleSection
+        title={`Mappa Regionale (${anno})`}
+        description="Distribuzione territoriale dei delitti denunciati"
+        defaultOpen
+      >
         <ChartMappaRegioni anno={anno} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Ranking Regionale ({anno})
-        </h2>
+      <CollapsibleSection
+        title={`Ranking Regionale (${anno})`}
+        description="Classifica regioni per tasso di delitti denunciati"
+      >
         <ChartRankingRegioni anno={anno} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Regionale (2014-2024)
-        </h2>
+      <CollapsibleSection
+        title="Trend Regionale (2014-2024)"
+        description="Andamento temporale per singola regione"
+      >
         <ChartTrendRegione />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Dati Provinciali ({anno})
-        </h2>
+      <CollapsibleSection
+        title={`Dati Provinciali (${anno})`}
+        description="Tabella con dati per provincia e variazioni temporali"
+      >
         <ChartTabellaProvince anno={anno} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Provinciale (2014-2024)
-        </h2>
+      <CollapsibleSection
+        title="Trend Provinciale (2014-2024)"
+        description="Andamento temporale per singola provincia"
+      >
         <ChartTrendProvincia />
-      </section>
+      </CollapsibleSection>
     </main>
   );
 }
