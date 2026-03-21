@@ -29,8 +29,31 @@ interface RegioneRecord {
   pct_femmine: number | null;
 }
 
+type Metrica = "tasso" | "pct_stranieri" | "pct_maschi" | "pct_femmine" | "pct_minori";
+
+const METRICHE: { value: Metrica; label: string; color: string }[] = [
+  { value: "tasso", label: "Tasso per 100k ab.", color: "#2563eb" },
+  { value: "pct_stranieri", label: "% stranieri", color: "#2E86AB" },
+  { value: "pct_maschi", label: "% maschi", color: "#2563eb" },
+  { value: "pct_femmine", label: "% femmine", color: "#db2777" },
+  { value: "pct_minori", label: "% minori", color: "#7c3aed" },
+];
+
 interface Props {
   dataType: "OFFEND" | "VICTIM";
+}
+
+const MIN_CASI = 30;
+const TOP_N = 10;
+
+interface ChartItem {
+  reato: string;
+  value: number;
+  media: number;
+  scostamento: number;
+  totale: number;
+  isAltro?: boolean;
+  altroCount?: number;
 }
 
 export function ChartProfiloTerritorio({ dataType }: Props) {
@@ -41,6 +64,8 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
   const [selectedRegione, setSelectedRegione] = useState<string | null>(null);
   const setRegioneStable = useCallback((v: string) => setSelectedRegione(v), []);
   const [selectedAnno, setSelectedAnno] = useState<number | null>(null);
+  const [metrica, setMetrica] = useState<Metrica>("tasso");
+  const [expanded, setExpanded] = useState(false);
 
   const regioni = useMemo(() => {
     if (!data) return [];
@@ -61,12 +86,15 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
     if (!data) return [];
     const set = new Set<number>();
     for (const r of data) {
-      if (r.data_type === dataType && r.regione === regione && r.tasso !== null) {
+      if (r.data_type !== dataType || r.regione !== regione) continue;
+      if (metrica === "tasso") {
+        if (r.tasso !== null) set.add(r.anno);
+      } else if (r[metrica] !== null) {
         set.add(r.anno);
       }
     }
     return Array.from(set).sort((a, b) => b - a);
-  }, [data, dataType, regione]);
+  }, [data, dataType, regione, metrica]);
 
   const anno = selectedAnno && anniDisponibili.includes(selectedAnno)
     ? selectedAnno
@@ -77,59 +105,138 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
-  // Media nazionale (tasso per 100k) per ogni reato nell'anno selezionato
+  const isTasso = metrica === "tasso";
+  const metricaConfig = METRICHE.find((m) => m.value === metrica)!;
+
+  // Media nazionale per ogni reato
   const mediaNazionale = new Map<string, number>();
   const reatiPerAnno = data.filter(
-    (r) => r.data_type === dataType && r.anno === anno && r.tasso !== null
+    (r) => r.data_type === dataType && r.anno === anno
   );
-  const reatoGruppo = new Map<string, RegioneRecord[]>();
-  for (const r of reatiPerAnno) {
-    if (!reatoGruppo.has(r.codice_reato)) reatoGruppo.set(r.codice_reato, []);
-    reatoGruppo.get(r.codice_reato)!.push(r);
-  }
-  for (const [codice, records] of reatoGruppo) {
-    const totDel = records.reduce((s, r) => s + r.totale, 0);
-    const totPop = records.reduce(
-      (s, r) => s + (r.tasso! > 0 ? (r.totale / r.tasso!) * 100_000 : 0),
-      0
-    );
-    if (totPop > 0) mediaNazionale.set(codice, (totDel / totPop) * 100_000);
+
+  if (isTasso) {
+    const reatoGruppo = new Map<string, RegioneRecord[]>();
+    for (const r of reatiPerAnno) {
+      if (r.tasso === null) continue;
+      if (!reatoGruppo.has(r.codice_reato)) reatoGruppo.set(r.codice_reato, []);
+      reatoGruppo.get(r.codice_reato)!.push(r);
+    }
+    for (const [codice, records] of reatoGruppo) {
+      const totDel = records.reduce((s, r) => s + r.totale, 0);
+      const totPop = records.reduce(
+        (s, r) => s + (r.tasso! > 0 ? (r.totale / r.tasso!) * 100_000 : 0),
+        0
+      );
+      if (totPop > 0) mediaNazionale.set(codice, (totDel / totPop) * 100_000);
+    }
+  } else {
+    const reatoGruppo = new Map<string, { sum: number; totale: number }>();
+    for (const r of reatiPerAnno) {
+      const val = r[metrica] as number | null;
+      if (val === null || r.totale < MIN_CASI) continue;
+      if (!reatoGruppo.has(r.codice_reato)) {
+        reatoGruppo.set(r.codice_reato, { sum: 0, totale: 0 });
+      }
+      const g = reatoGruppo.get(r.codice_reato)!;
+      g.sum += val * r.totale;
+      g.totale += r.totale;
+    }
+    for (const [codice, g] of reatoGruppo) {
+      if (g.totale > 0) mediaNazionale.set(codice, g.sum / g.totale);
+    }
   }
 
-  // Dati regione selezionata
+  // Dati regione
   const regioneData = data.filter(
     (r) =>
       r.data_type === dataType &&
       r.regione === regione &&
       r.anno === anno &&
-      r.tasso !== null &&
-      r.codice_reato !== "TOT"
+      r.codice_reato !== "TOT" &&
+      r.totale >= MIN_CASI
   );
 
-  const items = regioneData
+  // Tutti gli item ordinati per valore decrescente
+  const allItems: ChartItem[] = regioneData
     .map((r) => {
+      const value = isTasso ? r.tasso : (r[metrica] as number | null);
+      if (value === null) return null;
       const media = mediaNazionale.get(r.codice_reato);
       if (!media || media === 0) return null;
-      const scostamento = ((r.tasso! - media) / media) * 100;
-      return {
-        reato: r.reato,
-        codice: r.codice_reato,
-        tasso: r.tasso!,
-        media,
-        scostamento,
-        totale: r.totale,
-      };
+      const scostamento = ((value - media) / media) * 100;
+      return { reato: r.reato, value, media, scostamento, totale: r.totale };
     })
     .filter((x): x is NonNullable<typeof x> => x !== null)
-    .sort((a, b) => a.tasso - b.tasso);
+    .sort((a, b) => b.value - a.value);
 
-  const nomi = items.map((i) => i.reato);
-  const valori = items.map((i) => i.tasso);
-  const medieNaz = items.map((i) => i.media);
+  const needsGrouping = allItems.length > TOP_N;
+
+  let displayItems: ChartItem[];
+  if (!needsGrouping || expanded) {
+    displayItems = [...allItems].reverse();
+  } else {
+    const topItems = allItems.slice(0, TOP_N);
+    const restItems = allItems.slice(TOP_N);
+
+    let altroValue: number;
+    let altroMedia: number;
+    if (isTasso) {
+      altroValue = restItems.reduce((s, i) => s + i.value, 0);
+      altroMedia = restItems.reduce((s, i) => s + i.media, 0);
+    } else {
+      const totW = restItems.reduce((s, i) => s + i.totale, 0);
+      altroValue = totW > 0
+        ? restItems.reduce((s, i) => s + i.value * i.totale, 0) / totW
+        : 0;
+      altroMedia = totW > 0
+        ? restItems.reduce((s, i) => s + i.media * i.totale, 0) / totW
+        : 0;
+    }
+    const altroScost = altroMedia > 0 ? ((altroValue - altroMedia) / altroMedia) * 100 : 0;
+
+    const altro: ChartItem = {
+      reato: `Altro (${restItems.length} reati)`,
+      value: altroValue,
+      media: altroMedia,
+      scostamento: altroScost,
+      totale: restItems.reduce((s, i) => s + i.totale, 0),
+      isAltro: true,
+      altroCount: restItems.length,
+    };
+
+    displayItems = [altro, ...topItems.reverse()];
+  }
+
+  const nomi = displayItems.map((i) => i.reato);
+  const valori = displayItems.map((i) => i.value);
+  const medieNaz = displayItems.map((i) => i.media);
+  const barColors = displayItems.map((i) =>
+    i.isAltro ? "#9ca3af" : metricaConfig.color
+  );
+
+  const nBars = displayItems.length;
 
   return (
     <div className="space-y-3">
       <div className="flex items-end gap-4 flex-wrap">
+        <div>
+          <label htmlFor="profilo-reg-metrica" className="block text-sm font-medium mb-1">
+            Metrica
+          </label>
+          <select
+            id="profilo-reg-metrica"
+            value={metrica}
+            onChange={(e) => setMetrica(e.target.value as Metrica)}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            {METRICHE.map((m) => (
+              <option key={m.value} value={m.value}>
+                {m.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div>
           <label htmlFor="profilo-regione" className="text-sm font-medium mb-1 flex items-center">
             Regione
@@ -165,7 +272,7 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
       </div>
 
       <ChartFullscreenWrapper
-        ariaDescription={`Profilo criminale ${regione}, tasso per 100k abitanti per tipo di reato, ${anno}`}
+        ariaDescription={`Profilo criminale ${regione}, ${metricaConfig.label} per tipo di reato, ${anno}`}
       >
         <Plot
           data={[
@@ -174,19 +281,27 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
               y: nomi,
               x: valori,
               orientation: "h" as const,
-              marker: { color: "#2563eb" },
-              text: valori.map((v) => v.toFixed(1)),
+              marker: { color: barColors },
+              text: valori.map((v) =>
+                isTasso ? v.toFixed(1) : `${v.toFixed(1)}%`
+              ),
               textposition: "outside" as const,
               name: regione,
-              hovertemplate: items.map(
-                (i) =>
-                  `<b>${i.reato}</b><br>` +
-                  `Tasso regione: ${i.tasso.toFixed(1)} per 100k<br>` +
-                  `Media nazionale: ${i.media.toFixed(1)} per 100k<br>` +
-                  `Scostamento: ${i.scostamento >= 0 ? "+" : ""}${i.scostamento.toFixed(1)}%<br>` +
-                  `Denunce: ${i.totale.toLocaleString("it-IT")}` +
-                  `<extra></extra>`
-              ),
+              hovertemplate: displayItems.map((i) => {
+                const lines = [`<b>${i.reato}</b>`];
+                if (isTasso) {
+                  lines.push(`Tasso regione: ${i.value.toFixed(1)} per 100k`);
+                  lines.push(`Media nazionale: ${i.media.toFixed(1)} per 100k`);
+                } else {
+                  lines.push(`${metricaConfig.label} regione: ${i.value.toFixed(1)}%`);
+                  lines.push(`${metricaConfig.label} nazionale: ${i.media.toFixed(1)}%`);
+                }
+                lines.push(
+                  `Scostamento: ${i.scostamento >= 0 ? "+" : ""}${i.scostamento.toFixed(1)}%`
+                );
+                lines.push(`Denunce: ${i.totale.toLocaleString("it-IT")}`);
+                return lines.join("<br>") + "<extra></extra>";
+              }),
             },
             {
               type: "scatter",
@@ -196,17 +311,20 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
               marker: { color: "#dc2626", symbol: "line-ns", size: 14, line: { width: 2, color: "#dc2626" } },
               name: "Media nazionale",
               hovertemplate: nomi.map(
-                (n, idx) => `<b>${n}</b><br>Media nazionale: ${medieNaz[idx].toFixed(1)} per 100k<extra></extra>`
+                (n, idx) => {
+                  const val = medieNaz[idx].toFixed(1);
+                  return `<b>${n}</b><br>Media nazionale: ${val}${isTasso ? " per 100k" : "%"}<extra></extra>`;
+                }
               ),
             },
           ]}
           layout={{
             xaxis: {
               ...AXIS_FIXED,
-              title: { text: "Tasso per 100k abitanti" },
+              title: { text: metricaConfig.label },
             },
             yaxis: { ...AXIS_FIXED, automargin: true },
-            height: isMobile ? 500 : Math.max(550, items.length * 28),
+            height: isMobile ? 500 : Math.max(550, nBars * 28),
             margin: { l: isMobile ? 140 : 200, r: 70, t: 10, b: 40 },
             dragmode: false,
             plot_bgcolor: "white",
@@ -219,6 +337,17 @@ export function ChartProfiloTerritorio({ dataType }: Props) {
           className="w-full"
         />
       </ChartFullscreenWrapper>
+
+      {needsGrouping && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-sm text-primary hover:underline"
+        >
+          {expanded
+            ? "Mostra top 10"
+            : `Mostra tutti i reati (${allItems.length})`}
+        </button>
+      )}
     </div>
   );
 }

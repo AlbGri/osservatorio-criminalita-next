@@ -124,6 +124,26 @@ export function ChartAllarmeTabellaProvince({ anno, reato }: Props) {
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!data) return null;
 
+  const handleDownloadCsv = () => {
+    const header = ["Provincia", "Regione", `Tasso ${anno}`, `${TRIENNALE_LABEL} (%)`, `Delitti ${anno}`, "Popolazione"];
+    const rows = righe.map((r) => [
+      r.Territorio,
+      r.Regione,
+      r.Tasso_per_100k.toFixed(2),
+      r.variazione !== "-" ? r.variazione : "",
+      r.Delitti,
+      r.Popolazione,
+    ]);
+    const csv = [header, ...rows].map((row) => row.join(";")).join("\n");
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `allarme_${reato.replace(/\s/g, "_")}_${anno}${regioneSelezionata !== "Tutte le regioni" ? "_" + regioneSelezionata.replace(/\s/g, "_") : ""}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const sortIcon = (key: SortKey) => {
     if (sortKey !== key) return <span className="text-muted-foreground/40 ml-1">&#8693;</span>;
     return sortDir === "asc"
@@ -167,6 +187,12 @@ export function ChartAllarmeTabellaProvince({ anno, reato }: Props) {
             ))}
           </select>
         </div>
+        <button
+          onClick={handleDownloadCsv}
+          className="border rounded-md px-3 py-2 text-sm bg-background hover:bg-muted transition-colors"
+        >
+          Scarica CSV
+        </button>
       </div>
 
       <div className="overflow-x-auto max-h-[250px] overflow-y-auto border rounded-lg">

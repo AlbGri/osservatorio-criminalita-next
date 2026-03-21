@@ -2,15 +2,14 @@
 
 import { useState } from "react";
 import { KpiAutoriVittime } from "@/components/charts/kpi-autori-vittime";
+import { ChartProfiloNazionale } from "@/components/charts/chart-profilo-nazionale";
+import { ChartAutoriVsVittime } from "@/components/charts/chart-autori-vs-vittime";
 import { ChartAutoriTrend } from "@/components/charts/chart-autori-trend";
 import { ChartAutoriRankingRegioni } from "@/components/charts/chart-autori-ranking-regioni";
-import { ChartAutoriTrendRegione } from "@/components/charts/chart-autori-trend-regione";
 import { ChartProfiloTerritorio } from "@/components/charts/chart-profilo-territorio";
-import { ChartProfiloProvincia } from "@/components/charts/chart-profilo-provincia";
-import { ChartAutoriStranieriReato } from "@/components/charts/chart-autori-stranieri-reato";
-import { ChartAutoriMinoriReato } from "@/components/charts/chart-autori-minori-reato";
-import { ChartAutoriVsVittime } from "@/components/charts/chart-autori-vs-vittime";
+import { ChartAutoriTrendRegione } from "@/components/charts/chart-autori-trend-regione";
 import { ChartAutoriTabellaProvince } from "@/components/charts/chart-autori-tabella-province";
+import { ChartProfiloProvincia } from "@/components/charts/chart-profilo-provincia";
 import { ChartAutoriTrendProvincia } from "@/components/charts/chart-autori-trend-provincia";
 import Link from "next/link";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -65,23 +64,47 @@ export default function PersoneDenunciate() {
         </Alert>
       )}
 
+      {/* === BLOCCO NAZIONALE === */}
+
       {/* 1. KPI */}
       <KpiAutoriVittime dataType={dataType} />
 
       <hr />
 
-      {/* 2. Trend Nazionale */}
+      {/* 2. Profilo Criminale Nazionale */}
+      <CollapsibleSection
+        title="Profilo Criminale Nazionale"
+        description="Composizione per tipo di reato: quota stranieri, maschi, femmine e minori"
+        defaultOpen
+      >
+        <ChartProfiloNazionale dataType={dataType} />
+      </CollapsibleSection>
+
+      <hr />
+
+      {/* 3. Confronto Autori vs Vittime */}
+      <CollapsibleSection
+        title="Confronto Autori vs Vittime per Reato"
+        description="Rapporto tra autori denunciati e vittime per tipologia di reato"
+      >
+        <ChartAutoriVsVittime />
+      </CollapsibleSection>
+
+      <hr />
+
+      {/* 4. Trend Nazionale */}
       <CollapsibleSection
         title="Trend Nazionale"
         description="Andamento temporale di autori denunciati e vittime per reato"
-        defaultOpen
       >
         <ChartAutoriTrend dataType={dataType} />
       </CollapsibleSection>
 
       <hr />
 
-      {/* 3. Ranking Regionale */}
+      {/* === BLOCCO REGIONALE === */}
+
+      {/* 5. Ranking Regionale */}
       <CollapsibleSection
         title="Ranking Regionale"
         description="Classifica regioni per numero di denunciati o vittime"
@@ -91,7 +114,7 @@ export default function PersoneDenunciate() {
 
       <hr />
 
-      {/* 4. Profilo Territorio */}
+      {/* 6. Profilo Criminale per Regione */}
       <CollapsibleSection
         title="Profilo Criminale per Regione"
         description="Distribuzione dei reati per regione rispetto alla media nazionale"
@@ -101,7 +124,7 @@ export default function PersoneDenunciate() {
 
       <hr />
 
-      {/* 5. Trend Regionale */}
+      {/* 7. Trend Regionale */}
       <CollapsibleSection
         title="Trend Regionale"
         description="Andamento temporale per singola regione"
@@ -111,44 +134,9 @@ export default function PersoneDenunciate() {
 
       <hr />
 
-      {/* 6. % Stranieri per Reato */}
-      <CollapsibleSection
-        title="Stranieri per Tipo di Reato (2022)"
-        description="Quota di stranieri tra i denunciati/vittime per tipologia di reato"
-      >
-        <Alert>
-          <AlertDescription className="block">
-            <strong>Nota:</strong> la quota di stranieri tra {dataType === "OFFEND" ? "gli autori denunciati" : "le vittime"} varia
-            molto in base al tipo di reato. I dati si riferiscono a persone denunciate/arrestate,
-            non a condanne definitive.
-          </AlertDescription>
-        </Alert>
-        <ChartAutoriStranieriReato dataType={dataType} />
-      </CollapsibleSection>
+      {/* === BLOCCO PROVINCIALE === */}
 
-      <hr />
-
-      {/* 7. % Minori per Reato */}
-      <CollapsibleSection
-        title="Minori per Tipo di Reato (2022)"
-        description="Quota di minorenni tra i denunciati/vittime per tipologia di reato"
-      >
-        <ChartAutoriMinoriReato dataType={dataType} />
-      </CollapsibleSection>
-
-      <hr />
-
-      {/* 8. Confronto Autori vs Vittime */}
-      <CollapsibleSection
-        title="Confronto Autori vs Vittime per Reato (2022)"
-        description="Rapporto tra autori denunciati e vittime per tipologia di reato"
-      >
-        <ChartAutoriVsVittime />
-      </CollapsibleSection>
-
-      <hr />
-
-      {/* 9. Profilo Provinciale */}
+      {/* 8. Profilo Criminale per Provincia */}
       <CollapsibleSection
         title="Profilo Criminale per Provincia"
         description="Distribuzione dei reati per provincia rispetto alla media nazionale (dal 2022)"
@@ -158,7 +146,7 @@ export default function PersoneDenunciate() {
 
       <hr />
 
-      {/* 10. Dati Provinciali */}
+      {/* 9. Dati Provinciali */}
       <CollapsibleSection
         title="Dati Provinciali"
         description="Tabella con dati per provincia e variazioni temporali"

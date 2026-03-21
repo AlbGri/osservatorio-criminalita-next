@@ -28,7 +28,7 @@ interface RegioneRecord {
   pct_femmine: number | null;
 }
 
-type Metrica = "pct_stranieri" | "pct_minori" | "pct_maschi" | "pct_femmine" | "tasso";
+type Metrica = "tasso" | "pct_stranieri" | "pct_minori" | "pct_maschi" | "pct_femmine";
 
 interface Props {
   dataType: "OFFEND" | "VICTIM";
@@ -186,6 +186,29 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
             ))}
           </select>
         </div>
+        <div>
+          <label htmlFor="ranking-reg-metrica" className="block text-sm font-medium mb-1">
+            Metrica
+          </label>
+          <select
+            id="ranking-reg-metrica"
+            value={metrica}
+            onChange={(e) => setMetrica(e.target.value as Metrica)}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            <option value="tasso">Tasso per 100k ab.</option>
+            <option value="pct_stranieri">% stranieri</option>
+            <option value="pct_minori" disabled={!hasMinori}>
+              % minori{!hasMinori ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_maschi" disabled={!hasSesso}>
+              % maschi{!hasSesso ? " (non disponibile)" : ""}
+            </option>
+            <option value="pct_femmine" disabled={!hasSesso}>
+              % femmine{!hasSesso ? " (non disponibile)" : ""}
+            </option>
+          </select>
+        </div>
         {anniDisponibili.length > 1 && (
           <div>
             <label htmlFor="ranking-reg-anno" className="block text-sm font-medium mb-1">
@@ -203,29 +226,6 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
             </select>
           </div>
         )}
-        <div>
-          <label htmlFor="ranking-reg-metrica" className="block text-sm font-medium mb-1">
-            Metrica
-          </label>
-          <select
-            id="ranking-reg-metrica"
-            value={metrica}
-            onChange={(e) => setMetrica(e.target.value as Metrica)}
-            className="border rounded-md px-3 py-2 text-sm bg-background"
-          >
-            <option value="pct_stranieri">% stranieri</option>
-            <option value="pct_minori" disabled={!hasMinori}>
-              % minori{!hasMinori ? " (non disponibile)" : ""}
-            </option>
-            <option value="pct_maschi" disabled={!hasSesso}>
-              % maschi{!hasSesso ? " (non disponibile)" : ""}
-            </option>
-            <option value="pct_femmine" disabled={!hasSesso}>
-              % femmine{!hasSesso ? " (non disponibile)" : ""}
-            </option>
-            <option value="tasso">Tasso per 100k ab.</option>
-          </select>
-        </div>
       </div>
 
       <ChartFullscreenWrapper

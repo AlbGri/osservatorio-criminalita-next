@@ -6,7 +6,7 @@ import { useFetchData } from "@/lib/use-fetch-data";
 import { PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
-import { useFilterSync } from "@/lib/filter-sync-context";
+import { useFilterSync, SyncButton } from "@/lib/filter-sync-context";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -36,8 +36,31 @@ interface PopolazioneRecord {
   Popolazione: number;
 }
 
+type Metrica = "tasso" | "pct_stranieri" | "pct_maschi" | "pct_femmine" | "pct_minori";
+
+const METRICHE: { value: Metrica; label: string; color: string }[] = [
+  { value: "tasso", label: "Tasso per 100k ab.", color: "#2563eb" },
+  { value: "pct_stranieri", label: "% stranieri", color: "#2E86AB" },
+  { value: "pct_maschi", label: "% maschi", color: "#2563eb" },
+  { value: "pct_femmine", label: "% femmine", color: "#db2777" },
+  { value: "pct_minori", label: "% minori", color: "#7c3aed" },
+];
+
 interface Props {
   dataType: "OFFEND" | "VICTIM";
+}
+
+const MIN_CASI = 30;
+const TOP_N = 10;
+
+interface ChartItem {
+  reato: string;
+  value: number;
+  media: number;
+  scostamento: number;
+  totale: number;
+  isAltro?: boolean;
+  altroCount?: number;
 }
 
 export function ChartProfiloProvincia({ dataType }: Props) {
@@ -48,8 +71,16 @@ export function ChartProfiloProvincia({ dataType }: Props) {
   const { data: popData, loading: l2, error: e2 } = useFetchData<PopolazioneRecord[]>(
     "/data/delitti_province.json"
   );
+  const [selectedRegione, setSelectedRegione] = useState<string | null>(null);
   const [selectedProvincia, setSelectedProvincia] = useState<string | null>(null);
   const [selectedAnno, setSelectedAnno] = useState<number | null>(null);
+  const [metrica, setMetrica] = useState<Metrica>("tasso");
+  const [expanded, setExpanded] = useState(false);
+
+  const setRegioneStable = useCallback((v: string) => {
+    setSelectedRegione(v);
+    setSelectedProvincia(null);
+  }, []);
 
   const popMap = useMemo(() => {
     if (!popData) return new Map<string, number>();
@@ -60,27 +91,33 @@ export function ChartProfiloProvincia({ dataType }: Props) {
     return m;
   }, [popData]);
 
-  const province = useMemo(() => {
+  const regioni = useMemo(() => {
     if (!provData) return [];
-    const map = new Map<string, string>();
+    const set = new Set<string>();
     for (const r of provData) {
-      if (r.data_type === dataType) map.set(r.provincia, r.regione);
+      if (r.data_type === dataType) set.add(r.regione);
     }
-    return Array.from(map.entries())
-      .sort(([a], [b]) => a.localeCompare(b, "it"))
-      .map(([provincia, regione]) => ({ provincia, regione }));
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
   }, [provData, dataType]);
 
-  const provincia = selectedProvincia && province.some((p) => p.provincia === selectedProvincia)
-    ? selectedProvincia
-    : province[0]?.provincia ?? "Agrigento";
+  const regione = selectedRegione && regioni.includes(selectedRegione)
+    ? selectedRegione
+    : regioni[0] ?? "Abruzzo";
 
-  // Sync regione: quando arriva broadcast regione, seleziona la prima provincia di quella regione
-  const setRegioneForSync = useCallback((v: string) => {
-    const match = province.find((p) => p.regione === v);
-    if (match) setSelectedProvincia(match.provincia);
-  }, [province]);
-  useFilterSync("regione", province.find((p) => p.provincia === provincia)?.regione ?? "", setRegioneForSync);
+  const { handleSync } = useFilterSync("regione", regione, setRegioneStable);
+
+  const province = useMemo(() => {
+    if (!provData) return [];
+    const set = new Set<string>();
+    for (const r of provData) {
+      if (r.data_type === dataType && r.regione === regione) set.add(r.provincia);
+    }
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "it"));
+  }, [provData, dataType, regione]);
+
+  const provincia = selectedProvincia && province.includes(selectedProvincia)
+    ? selectedProvincia
+    : province[0] ?? "";
 
   const anniDisponibili = useMemo(() => {
     if (!provData) return [];
@@ -105,24 +142,47 @@ export function ChartProfiloProvincia({ dataType }: Props) {
   if (error) return <p className="text-destructive">Errore: {error}</p>;
   if (!provData || !popData) return null;
 
-  // Media nazionale (tasso per 100k) per ogni reato
+  const isTasso = metrica === "tasso";
+  const metricaConfig = METRICHE.find((m) => m.value === metrica)!;
+
+  // Media nazionale per ogni reato
   const mediaNazionale = new Map<string, number>();
-  const reatoGruppo = new Map<string, { totale: number; popolazione: number }>();
-  for (const r of provData.filter(
-    (r) => r.data_type === dataType && r.anno === anno && r.codice_reato !== "TOT"
-  )) {
-    const pop = popMap.get(`${r.ref_area}|${anno}`);
-    if (!pop || pop === 0) continue;
-    if (!reatoGruppo.has(r.codice_reato)) {
-      reatoGruppo.set(r.codice_reato, { totale: 0, popolazione: 0 });
+
+  if (isTasso) {
+    const reatoGruppo = new Map<string, { totale: number; popolazione: number }>();
+    for (const r of provData.filter(
+      (r) => r.data_type === dataType && r.anno === anno && r.codice_reato !== "TOT"
+    )) {
+      const pop = popMap.get(`${r.ref_area}|${anno}`);
+      if (!pop || pop === 0) continue;
+      if (!reatoGruppo.has(r.codice_reato)) {
+        reatoGruppo.set(r.codice_reato, { totale: 0, popolazione: 0 });
+      }
+      const g = reatoGruppo.get(r.codice_reato)!;
+      g.totale += r.totale;
+      g.popolazione += pop;
     }
-    const g = reatoGruppo.get(r.codice_reato)!;
-    g.totale += r.totale;
-    g.popolazione += pop;
-  }
-  for (const [codice, g] of reatoGruppo) {
-    if (g.popolazione > 0) {
-      mediaNazionale.set(codice, (g.totale / g.popolazione) * 100_000);
+    for (const [codice, g] of reatoGruppo) {
+      if (g.popolazione > 0) {
+        mediaNazionale.set(codice, (g.totale / g.popolazione) * 100_000);
+      }
+    }
+  } else {
+    const reatoGruppo = new Map<string, { sum: number; totale: number }>();
+    for (const r of provData.filter(
+      (r) => r.data_type === dataType && r.anno === anno && r.codice_reato !== "TOT" && r.totale >= MIN_CASI
+    )) {
+      const val = r[metrica] as number | null;
+      if (val === null) continue;
+      if (!reatoGruppo.has(r.codice_reato)) {
+        reatoGruppo.set(r.codice_reato, { sum: 0, totale: 0 });
+      }
+      const g = reatoGruppo.get(r.codice_reato)!;
+      g.sum += val * r.totale;
+      g.totale += r.totale;
+    }
+    for (const [codice, g] of reatoGruppo) {
+      if (g.totale > 0) mediaNazionale.set(codice, g.sum / g.totale);
     }
   }
 
@@ -136,49 +196,128 @@ export function ChartProfiloProvincia({ dataType }: Props) {
       r.data_type === dataType &&
       r.provincia === provincia &&
       r.anno === anno &&
-      r.codice_reato !== "TOT"
+      r.codice_reato !== "TOT" &&
+      r.totale >= MIN_CASI
   );
 
-  const items = provinciaData
+  // Tutti gli item ordinati per valore decrescente
+  const allItems: ChartItem[] = provinciaData
     .map((r) => {
+      let value: number | null;
+      if (isTasso) {
+        value = pop && pop > 0 ? (r.totale / pop) * 100_000 : null;
+      } else {
+        value = r[metrica] as number | null;
+      }
+      if (value === null) return null;
       const media = mediaNazionale.get(r.codice_reato);
       if (!media || media === 0) return null;
-      const tasso = pop && pop > 0 ? (r.totale / pop) * 100_000 : null;
-      if (tasso === null) return null;
-      const scostamento = ((tasso - media) / media) * 100;
-      return {
-        reato: r.reato,
-        codice: r.codice_reato,
-        tasso,
-        media,
-        scostamento,
-        totale: r.totale,
-      };
+      const scostamento = ((value - media) / media) * 100;
+      return { reato: r.reato, value, media, scostamento, totale: r.totale };
     })
     .filter((x): x is NonNullable<typeof x> => x !== null)
-    .sort((a, b) => a.tasso - b.tasso);
+    .sort((a, b) => b.value - a.value);
 
-  const nomi = items.map((i) => i.reato);
-  const valori = items.map((i) => i.tasso);
-  const medieNaz = items.map((i) => i.media);
+  const needsGrouping = allItems.length > TOP_N;
+
+  let displayItems: ChartItem[];
+  if (!needsGrouping || expanded) {
+    displayItems = [...allItems].reverse();
+  } else {
+    const topItems = allItems.slice(0, TOP_N);
+    const restItems = allItems.slice(TOP_N);
+
+    let altroValue: number;
+    let altroMedia: number;
+    if (isTasso) {
+      altroValue = restItems.reduce((s, i) => s + i.value, 0);
+      altroMedia = restItems.reduce((s, i) => s + i.media, 0);
+    } else {
+      const totW = restItems.reduce((s, i) => s + i.totale, 0);
+      altroValue = totW > 0
+        ? restItems.reduce((s, i) => s + i.value * i.totale, 0) / totW
+        : 0;
+      altroMedia = totW > 0
+        ? restItems.reduce((s, i) => s + i.media * i.totale, 0) / totW
+        : 0;
+    }
+    const altroScost = altroMedia > 0 ? ((altroValue - altroMedia) / altroMedia) * 100 : 0;
+
+    const altro: ChartItem = {
+      reato: `Altro (${restItems.length} reati)`,
+      value: altroValue,
+      media: altroMedia,
+      scostamento: altroScost,
+      totale: restItems.reduce((s, i) => s + i.totale, 0),
+      isAltro: true,
+      altroCount: restItems.length,
+    };
+
+    displayItems = [altro, ...topItems.reverse()];
+  }
+
+  const nomi = displayItems.map((i) => i.reato);
+  const valori = displayItems.map((i) => i.value);
+  const medieNaz = displayItems.map((i) => i.media);
+  const barColors = displayItems.map((i) =>
+    i.isAltro ? "#9ca3af" : metricaConfig.color
+  );
+
+  const nBars = displayItems.length;
 
   return (
     <div className="space-y-3">
       <div className="flex items-end gap-4 flex-wrap">
         <div>
-          <label htmlFor="profilo-provincia" className="text-sm font-medium mb-1 flex items-center">
+          <label htmlFor="profilo-prov-metrica" className="block text-sm font-medium mb-1">
+            Metrica
+          </label>
+          <select
+            id="profilo-prov-metrica"
+            value={metrica}
+            onChange={(e) => setMetrica(e.target.value as Metrica)}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            {METRICHE.map((m) => (
+              <option key={m.value} value={m.value}>
+                {m.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="profilo-prov-regione" className="text-sm font-medium mb-1 flex items-center">
+            Regione
+            <SyncButton onClick={() => handleSync()} />
+          </label>
+          <select
+            id="profilo-prov-regione"
+            value={regione}
+            onChange={(e) => {
+              setSelectedRegione(e.target.value);
+              setSelectedProvincia(null);
+            }}
+            className="border rounded-md px-3 py-2 text-sm bg-background"
+          >
+            {regioni.map((r) => (
+              <option key={r} value={r}>{r}</option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="profilo-prov-provincia" className="block text-sm font-medium mb-1">
             Provincia
           </label>
           <select
-            id="profilo-provincia"
+            id="profilo-prov-provincia"
             value={provincia}
             onChange={(e) => setSelectedProvincia(e.target.value)}
             className="border rounded-md px-3 py-2 text-sm bg-background"
           >
             {province.map((p) => (
-              <option key={p.provincia} value={p.provincia}>
-                {p.provincia} ({p.regione})
-              </option>
+              <option key={p} value={p}>{p}</option>
             ))}
           </select>
         </div>
@@ -201,7 +340,7 @@ export function ChartProfiloProvincia({ dataType }: Props) {
       </div>
 
       <ChartFullscreenWrapper
-        ariaDescription={`Profilo criminale ${provincia}, tasso per 100k abitanti per tipo di reato, ${anno}`}
+        ariaDescription={`Profilo criminale ${provincia}, ${metricaConfig.label} per tipo di reato, ${anno}`}
       >
         <Plot
           data={[
@@ -210,19 +349,27 @@ export function ChartProfiloProvincia({ dataType }: Props) {
               y: nomi,
               x: valori,
               orientation: "h" as const,
-              marker: { color: "#2563eb" },
-              text: valori.map((v) => v.toFixed(1)),
+              marker: { color: barColors },
+              text: valori.map((v) =>
+                isTasso ? v.toFixed(1) : `${v.toFixed(1)}%`
+              ),
               textposition: "outside" as const,
               name: provincia,
-              hovertemplate: items.map(
-                (i) =>
-                  `<b>${i.reato}</b><br>` +
-                  `Tasso provincia: ${i.tasso.toFixed(1)} per 100k<br>` +
-                  `Media nazionale: ${i.media.toFixed(1)} per 100k<br>` +
-                  `Scostamento: ${i.scostamento >= 0 ? "+" : ""}${i.scostamento.toFixed(1)}%<br>` +
-                  `Denunce: ${i.totale.toLocaleString("it-IT")}` +
-                  `<extra></extra>`
-              ),
+              hovertemplate: displayItems.map((i) => {
+                const lines = [`<b>${i.reato}</b>`];
+                if (isTasso) {
+                  lines.push(`Tasso provincia: ${i.value.toFixed(1)} per 100k`);
+                  lines.push(`Media nazionale: ${i.media.toFixed(1)} per 100k`);
+                } else {
+                  lines.push(`${metricaConfig.label} provincia: ${i.value.toFixed(1)}%`);
+                  lines.push(`${metricaConfig.label} nazionale: ${i.media.toFixed(1)}%`);
+                }
+                lines.push(
+                  `Scostamento: ${i.scostamento >= 0 ? "+" : ""}${i.scostamento.toFixed(1)}%`
+                );
+                lines.push(`Denunce: ${i.totale.toLocaleString("it-IT")}`);
+                return lines.join("<br>") + "<extra></extra>";
+              }),
             },
             {
               type: "scatter",
@@ -232,17 +379,20 @@ export function ChartProfiloProvincia({ dataType }: Props) {
               marker: { color: "#dc2626", symbol: "line-ns", size: 14, line: { width: 2, color: "#dc2626" } },
               name: "Media nazionale",
               hovertemplate: nomi.map(
-                (n, idx) => `<b>${n}</b><br>Media nazionale: ${medieNaz[idx].toFixed(1)} per 100k<extra></extra>`
+                (n, idx) => {
+                  const val = medieNaz[idx].toFixed(1);
+                  return `<b>${n}</b><br>Media nazionale: ${val}${isTasso ? " per 100k" : "%"}<extra></extra>`;
+                }
               ),
             },
           ]}
           layout={{
             xaxis: {
               ...AXIS_FIXED,
-              title: { text: "Tasso per 100k abitanti" },
+              title: { text: metricaConfig.label },
             },
             yaxis: { ...AXIS_FIXED, automargin: true },
-            height: isMobile ? 500 : Math.max(550, items.length * 28),
+            height: isMobile ? 500 : Math.max(550, nBars * 28),
             margin: { l: isMobile ? 140 : 200, r: 70, t: 10, b: 40 },
             dragmode: false,
             plot_bgcolor: "white",
@@ -255,6 +405,17 @@ export function ChartProfiloProvincia({ dataType }: Props) {
           className="w-full"
         />
       </ChartFullscreenWrapper>
+
+      {needsGrouping && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-sm text-primary hover:underline"
+        >
+          {expanded
+            ? "Mostra top 10"
+            : `Mostra tutti i reati (${allItems.length})`}
+        </button>
+      )}
     </div>
   );
 }
