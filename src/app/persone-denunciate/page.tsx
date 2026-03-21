@@ -5,6 +5,8 @@ import { KpiAutoriVittime } from "@/components/charts/kpi-autori-vittime";
 import { ChartAutoriTrend } from "@/components/charts/chart-autori-trend";
 import { ChartAutoriRankingRegioni } from "@/components/charts/chart-autori-ranking-regioni";
 import { ChartAutoriTrendRegione } from "@/components/charts/chart-autori-trend-regione";
+import { ChartProfiloTerritorio } from "@/components/charts/chart-profilo-territorio";
+import { ChartProfiloProvincia } from "@/components/charts/chart-profilo-provincia";
 import { ChartAutoriStranieriReato } from "@/components/charts/chart-autori-stranieri-reato";
 import { ChartAutoriMinoriReato } from "@/components/charts/chart-autori-minori-reato";
 import { ChartAutoriVsVittime } from "@/components/charts/chart-autori-vs-vittime";
@@ -12,6 +14,7 @@ import { ChartAutoriTabellaProvince } from "@/components/charts/chart-autori-tab
 import { ChartAutoriTrendProvincia } from "@/components/charts/chart-autori-trend-provincia";
 import Link from "next/link";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CollapsibleSection } from "@/components/ui/collapsible-section";
 
 type DataType = "OFFEND" | "VICTIM";
 
@@ -68,40 +71,51 @@ export default function PersoneDenunciate() {
       <hr />
 
       {/* 2. Trend Nazionale */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Nazionale
-        </h2>
+      <CollapsibleSection
+        title="Trend Nazionale"
+        description="Andamento temporale di autori denunciati e vittime per reato"
+        defaultOpen
+      >
         <ChartAutoriTrend dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
       {/* 3. Ranking Regionale */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Ranking Regionale
-        </h2>
+      <CollapsibleSection
+        title="Ranking Regionale"
+        description="Classifica regioni per numero di denunciati o vittime"
+      >
         <ChartAutoriRankingRegioni dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      {/* 4. Trend Regionale */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Regionale
-        </h2>
+      {/* 4. Profilo Territorio */}
+      <CollapsibleSection
+        title="Profilo Criminale per Regione"
+        description="Distribuzione dei reati per regione rispetto alla media nazionale"
+      >
+        <ChartProfiloTerritorio dataType={dataType} />
+      </CollapsibleSection>
+
+      <hr />
+
+      {/* 5. Trend Regionale */}
+      <CollapsibleSection
+        title="Trend Regionale"
+        description="Andamento temporale per singola regione"
+      >
         <ChartAutoriTrendRegione dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      {/* 5. % Stranieri per Reato */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Stranieri per Tipo di Reato (2022)
-        </h2>
+      {/* 6. % Stranieri per Reato */}
+      <CollapsibleSection
+        title="Stranieri per Tipo di Reato (2022)"
+        description="Quota di stranieri tra i denunciati/vittime per tipologia di reato"
+      >
         <Alert>
           <AlertDescription className="block">
             <strong>Nota:</strong> la quota di stranieri tra {dataType === "OFFEND" ? "gli autori denunciati" : "le vittime"} varia
@@ -110,47 +124,57 @@ export default function PersoneDenunciate() {
           </AlertDescription>
         </Alert>
         <ChartAutoriStranieriReato dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      {/* 6. % Minori per Reato */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Minori per Tipo di Reato (2022)
-        </h2>
+      {/* 7. % Minori per Reato */}
+      <CollapsibleSection
+        title="Minori per Tipo di Reato (2022)"
+        description="Quota di minorenni tra i denunciati/vittime per tipologia di reato"
+      >
         <ChartAutoriMinoriReato dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      {/* 7. Confronto Autori vs Vittime */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Confronto Autori vs Vittime per Reato (2022)
-        </h2>
+      {/* 8. Confronto Autori vs Vittime */}
+      <CollapsibleSection
+        title="Confronto Autori vs Vittime per Reato (2022)"
+        description="Rapporto tra autori denunciati e vittime per tipologia di reato"
+      >
         <ChartAutoriVsVittime />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      {/* 8. Dati Provinciali */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Dati Provinciali
-        </h2>
+      {/* 9. Profilo Provinciale */}
+      <CollapsibleSection
+        title="Profilo Criminale per Provincia"
+        description="Distribuzione dei reati per provincia rispetto alla media nazionale (dal 2022)"
+      >
+        <ChartProfiloProvincia dataType={dataType} />
+      </CollapsibleSection>
+
+      <hr />
+
+      {/* 10. Dati Provinciali */}
+      <CollapsibleSection
+        title="Dati Provinciali"
+        description="Tabella con dati per provincia e variazioni temporali"
+      >
         <ChartAutoriTabellaProvince dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 
-      {/* 8. Trend Provinciale */}
-      <section className="space-y-3">
-        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
-          Trend Provinciale
-        </h2>
+      {/* 10. Trend Provinciale */}
+      <CollapsibleSection
+        title="Trend Provinciale"
+        description="Andamento temporale per singola provincia"
+      >
         <ChartAutoriTrendProvincia dataType={dataType} />
-      </section>
+      </CollapsibleSection>
 
       <hr />
 

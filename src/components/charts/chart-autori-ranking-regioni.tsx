@@ -41,7 +41,7 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
   );
   const [codiceReato, setCodiceReato] = useState("TOT");
   const [anno, setAnno] = useState(2022);
-  const [metrica, setMetrica] = useState<Metrica>("pct_stranieri");
+  const [metrica, setMetrica] = useState<Metrica>("tasso");
   const VICTIM_DEFAULT = "CULPINJU";
 
   const reatiDisponibili = useMemo(() => {
