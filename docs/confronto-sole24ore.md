@@ -36,13 +36,13 @@ Struttura record:
 
 ### Confronto
 
-| Dato | Sole 24 Ore | ISTAT (nostro) | Scarto |
+| Dato | Sole 24 Ore | Progetto | Scarto |
 |---|---|---|---|
-| Delitti 2024 | ~2.380.000 ("2,38 milioni") | 2.399.347 | +0,8% |
-| Delitti 2023 | (non esplicito) | 2.341.574 | - |
-| Delitti 2014 | (non esplicito) | 2.812.936 | - |
-| Var. 2024/2023 | +1,7% | +2,47% | **+0,77 p.p.** |
-| Var. 2024/2014 | -15% | -14,70% | -0,30 p.p. |
+| Delitti 2024 | ~2.380.000 ("2,38 milioni") | 2.399.347 (fonte ISTAT) | +0,8% |
+| Delitti 2023 | (non esplicito) | 2.341.574 (fonte ISTAT) | - |
+| Delitti 2014 | (non esplicito) | 2.812.936 (fonte ISTAT) | - |
+| Var. 2024/2023 | +1,7% | +2,47% (calcolata) | **+0,77 p.p.** |
+| Var. 2024/2014 | -15% | -14,70% (calcolata) | -0,30 p.p. |
 
 ### Calcolo variazioni (replicabile)
 
@@ -83,7 +83,7 @@ Struttura record:
 
 ### Top 5 (province con piu reati per 100k ab.)
 
-| Rank | Provincia | Sole (tasso/100k) | ISTAT (tasso/100k) | Sole (totale) | ISTAT (totale) | Scarto tasso | Scarto totale |
+| Rank | Provincia | Sole (tasso/100k) | Progetto (tasso/100k) | Sole (totale) | Progetto (totale) | Scarto tasso | Scarto totale |
 |---|---|---|---|---|---|---|---|
 | 1 | Milano | 6.952,3 | 6.990 | 225.786 | 226.860 | +0,5% | +0,5% |
 | 2 | Firenze | 6.507,8 | 6.564 | 64.392 | 64.908 | +0,9% | +0,8% |
@@ -93,7 +93,7 @@ Struttura record:
 
 ### Bottom 5 (province con meno reati per 100k ab.)
 
-| Rank | Provincia | Sole (tasso/100k) | ISTAT (tasso/100k) | Sole (totale) | ISTAT (totale) | Scarto tasso | Scarto totale |
+| Rank | Provincia | Sole (tasso/100k) | Progetto (tasso/100k) | Sole (totale) | Progetto (totale) | Scarto tasso | Scarto totale |
 |---|---|---|---|---|---|---|---|
 | 102 | Sondrio | 2.318,3 | 2.342 | 4.151 | 4.190 | +1,0% | +0,9% |
 | 103 | Enna | 2.309,9 | 2.324 | 3.520 | 3.569 | +0,6% | +1,4% |
@@ -103,7 +103,7 @@ Struttura record:
 
 ### Altre province citate nell'articolo
 
-| Provincia | Sole (tasso/100k) | ISTAT (tasso/100k) | Scarto |
+| Provincia | Sole (tasso/100k) | Progetto (tasso/100k) | Scarto |
 |---|---|---|---|
 | Napoli | 4.479 | 4.484 | +0,1% |
 | Palermo | 3.936 | 3.943 | +0,2% |
@@ -127,8 +127,8 @@ print(f"Tasso/100k: {milano_2024['Tasso_per_1000'] * 100}")  # 6990.0
 ### Note
 
 - Il ranking delle 106 province e identico tra le due fonti.
-- I dati ISTAT sono sistematicamente piu alti dello 0,2-1,5%. La differenza piu probabile e nella popolazione usata come denominatore: ISTAT usa la popolazione residente al 1 gennaio (fonte DCIS_POPRES1), il Ministero potrebbe usare una stima diversa.
-- Anche il numeratore (totale delitti) mostra scarti minimi ma consistenti (~+0,5% ISTAT), suggerendo un perimetro di reati leggermente diverso o dati consolidati in momenti diversi.
+- I dati del progetto sono sistematicamente piu alti dello 0,2-1,5%. La differenza piu probabile e nella popolazione usata come denominatore: il progetto calcola i tassi usando la popolazione residente al 1 gennaio (fonte ISTAT DCIS_POPRES1, scaricata e elaborata da `scripts/generate_popolazione.py`), mentre il Sole 24 Ore / Ministero dell'Interno potrebbe usare una stima diversa (es. popolazione media annua).
+- Anche il numeratore (totale delitti) mostra scarti minimi ma consistenti (~+0,5%), suggerendo un perimetro di reati leggermente diverso o dati consolidati in momenti diversi tra le due fonti.
 
 ---
 
@@ -154,7 +154,7 @@ def variazione(territorio):
 
 ### Confronto
 
-| Provincia | Sole (var. 2024/2023) | ISTAT 2023 | ISTAT 2024 | ISTAT var. | Scarto |
+| Provincia | Sole (var. 2024/2023) | Progetto 2023 | Progetto 2024 | Progetto var. | Scarto |
 |---|---|---|---|---|---|
 | Milano | -2,00% | 230.337 | 226.860 | -1,51% | +0,49 p.p. |
 | Firenze | +7,40% | 59.953 | 64.908 | +8,26% | +0,86 p.p. |
@@ -230,7 +230,7 @@ Struttura record:
 
 ### Confronto
 
-| Dato | Sole 24 Ore | ISTAT (somma per reato) | Confrontabile? |
+| Dato | Sole 24 Ore | Progetto (somma per reato) | Confrontabile? |
 |---|---|---|---|
 | Totale denunciati/arrestati 2024 | 828.714 | ~584.514 | **No** |
 | Minori segnalati 2024 | 38.247 | ~36.501 | **Parziale** |
@@ -270,7 +270,7 @@ print(f"Somma minori: {minori_somma}")        # ~36.501
 
 L'articolo del Sole cita anche affermazioni non numeriche verificabili contro i nostri dati:
 
-| Affermazione Sole 24 Ore | Verifica ISTAT |
+| Affermazione Sole 24 Ore | Verifica con dati progetto |
 |---|---|
 | "Quarto anno consecutivo di aumento delle denunce" | Confermato: 2021 < 2022 < 2023 < 2024 nel nostro dataset |
 | "Illeciti oltre i livelli 2018" | Confermato: 2024 (2.399.347) > 2018 (2.340.003) |
