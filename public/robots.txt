@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://albgri.github.io/osservatorio-criminalita-next/sitemap.xml

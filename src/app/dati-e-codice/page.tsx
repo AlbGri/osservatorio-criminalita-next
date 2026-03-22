@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dati e Codice Sorgente",
+  description:
+    "Fonti dati ISTAT, dataset scaricabili e codice sorgente dell\u0027Osservatorio Criminalit\u00e0.",
+};
+
 export default function DatiECodice() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-4 sm:py-8 space-y-8">

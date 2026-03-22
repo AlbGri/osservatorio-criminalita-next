@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Guida alla Lettura",
+  description:
+    "Come interpretare i dati sulla criminalit\u00e0: tassi per abitante, trend, bias noti e cosa non si pu\u00f2 concludere.",
+};
+
 export default function Guida() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-4 sm:py-8 space-y-8">
