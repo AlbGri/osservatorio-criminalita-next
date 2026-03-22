@@ -630,7 +630,13 @@ export default function Insights() {
           <p>
             Ogni candidato &egrave; stato poi valutato manualmente per escludere
             artefatti (cambiamenti normativi, effetto COVID, limiti dei dati
-            ISTAT) e per contestualizzare i risultati.
+            ISTAT) e per contestualizzare i risultati. Dei candidati
+            statisticamente significativi dopo correzione FDR, sono stati
+            selezionati quelli pi&ugrave; rappresentativi per ciascuna delle 5
+            categorie, privilegiando: effect size rilevante,
+            interpretabilit&agrave; per un pubblico non tecnico, e
+            diversit&agrave; tematica. La selezione &egrave; editoriale, non
+            automatica.
           </p>
 
           <p>

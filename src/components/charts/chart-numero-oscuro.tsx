@@ -112,7 +112,10 @@ export function ChartNumeroOscuro() {
           <strong>Il numero oscuro</strong> è la differenza tra reati commessi e
           reati denunciati. L&apos;Indagine ISTAT sulla Sicurezza dei Cittadini
           stima la quota di vittime che denuncia, permettendo di misurare quanto
-          le statistiche ufficiali sottostimino la realtà.
+          le statistiche ufficiali sottostimino la realt&agrave;. I dati
+          provengono dalle edizioni 2015-2016 e 2022-2023 dell&apos;indagine:
+          tra le due rilevazioni la propensione pu&ograve; essere variata e i
+          valori non coprono l&apos;intero periodo analizzato dal sito.
         </AlertDescription>
       </Alert>
 
