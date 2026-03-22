@@ -91,7 +91,7 @@ CRIME_NAMES = {
     # Frodi e informatica
     "SWINCYB": "Truffe e frodi informatiche",
     "CYBERCRIM": "Delitti informatici",
-    "INTPROP": "Violazioni proprieta' intellettuale",
+    "INTPROP": "Violazioni proprietà intellettuale",
     "COUNTER": "Contraffazione",
     # Criminalita' organizzata e altro
     "SMUGGL": "Contrabbando",

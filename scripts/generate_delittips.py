@@ -47,7 +47,7 @@ CRIME_LABELS = {
     "DAMAGE": "Danneggiamenti", "DAMARS": "Danneggiamento seguito da incendio",
     "DRUG": "Stupefacenti", "EXTORT": "Estorsioni", "FOREARS": "Incendi boschivi",
     "HOUSEROB": "Rapine in abitazione", "INFANTHOM": "Infanticidi",
-    "INTENHOM": "Omicidi volontari consumati", "INTPROP": "Violazione proprieta' intellettuale",
+    "INTENHOM": "Omicidi volontari consumati", "INTPROP": "Violazione proprietà intellettuale",
     "KIDNAPP": "Sequestri di persona", "MAFIAHOM": "Omicidi tipo mafioso",
     "MAFIASS": "Associazione tipo mafioso", "MANSHOM": "Omicidi preterintenzionali",
     "MASSMURD": "Strage", "MENACE": "Minacce", "MONEYLAU": "Riciclaggio",
