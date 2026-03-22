@@ -19,12 +19,12 @@ export default function DatiECodice() {
           Tutto il codice sorgente, i dati elaborati e la documentazione sono
           disponibili su GitHub:{" "}
           <a
-            href="https://github.com/AlbGri/osservatorio-criminalita-next"
+            href="https://github.com/AlbGri/datocrimine"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary underline hover:no-underline"
           >
-            github.com/AlbGri/osservatorio-criminalita-next
+            github.com/AlbGri/datocrimine
           </a>
         </p>
       </section>
@@ -165,8 +165,8 @@ export default function DatiECodice() {
         </p>
         <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
           <code>{`# Frontend
-git clone https://github.com/AlbGri/osservatorio-criminalita-next.git
-cd osservatorio-criminalita-next
+git clone https://github.com/AlbGri/datocrimine.git
+cd datocrimine
 npm install
 npm run dev
 

@@ -642,7 +642,7 @@ export default function Insights() {
           <p>
             Codice sorgente dell&apos;analisi:{" "}
             <a
-              href="https://github.com/AlbGri/osservatorio-criminalita-next/blob/main/scripts/generate_insights.py"
+              href="https://github.com/AlbGri/datocrimine/blob/main/scripts/generate_insights.py"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:no-underline"
@@ -652,7 +652,7 @@ export default function Insights() {
             . Report completo con tutti i candidati statisticamente
             significativi (non solo quelli selezionati per questa pagina):{" "}
             <a
-              href="https://github.com/AlbGri/osservatorio-criminalita-next/blob/main/docs/insights_report.md"
+              href="https://github.com/AlbGri/datocrimine/blob/main/docs/insights_report.md"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:no-underline"

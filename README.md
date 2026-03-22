@@ -2,7 +2,7 @@
 
 Un progetto open source per rendere accessibili e comprensibili i dati ufficiali ISTAT sulla criminalit&agrave; in Italia. Nasce dalla constatazione che il dibattito pubblico sulla sicurezza si basa spesso su percezioni e titoli di giornale anzich&eacute; sui dati: questo sito mette i numeri a disposizione di tutti, con metodologia trasparente e codice aperto.
 
-**[Vai al sito](https://albgri.github.io/osservatorio-criminalita-next/)**
+**[Vai al sito](https://datocrimine.it)**
 
 ![Osservatorio Criminalit&agrave;](public/og-image.png)
 

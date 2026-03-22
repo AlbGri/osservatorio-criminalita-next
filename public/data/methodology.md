@@ -348,7 +348,7 @@ Non esiste un calendario fisso per questo aggiornamento. ISTAT pubblica un [cale
 
 ### Perché non fonti alternative?
 
-Il **Sole 24 Ore** pubblica annualmente un [Indice della criminalità](https://lab24.ilsole24ore.com/indice-della-criminalita/) con dati ottenuti in esclusiva dalla banca dati interforze del Ministero dell'Interno, tipicamente in anticipo rispetto a ISTAT. Tuttavia questi dati **non sono scaricabili** in formato strutturato. Un confronto incrociato tra i dati ISTAT usati in questo progetto e quelli pubblicati dal Sole 24 Ore (edizione 2025, dati 2024) mostra alta coerenza: ranking provinciale identico, scarti sistematici dello 0,2-1,5% attribuibili a differenze nella popolazione di riferimento (vedi [analisi tecnica di confronto](https://github.com/AlbGri/osservatorio-criminalita-next/blob/main/docs/confronto-sole24ore.md)).
+Il **Sole 24 Ore** pubblica annualmente un [Indice della criminalità](https://lab24.ilsole24ore.com/indice-della-criminalita/) con dati ottenuti in esclusiva dalla banca dati interforze del Ministero dell'Interno, tipicamente in anticipo rispetto a ISTAT. Tuttavia questi dati **non sono scaricabili** in formato strutturato. Un confronto incrociato tra i dati ISTAT usati in questo progetto e quelli pubblicati dal Sole 24 Ore (edizione 2025, dati 2024) mostra alta coerenza: ranking provinciale identico, scarti sistematici dello 0,2-1,5% attribuibili a differenze nella popolazione di riferimento (vedi [analisi tecnica di confronto](https://github.com/AlbGri/datocrimine/blob/main/docs/confronto-sole24ore.md)).
 
 Il **Ministero dell'Interno** pubblica dati aggregati aperti (licenza CC-BY) su [dati-coll.dfp.gov.it](https://dati-coll.dfp.gov.it/dataset/?tags=delitti&tags=denunce&tags=capoluogo&organization=min-interni&license_id=CC-BY-4.0&res_format=JSON), ma a marzo 2026 il dataset risulta fermo al 2022. La banca dati CED/SDI interforze resta riservata alle forze dell'ordine.
 
@@ -377,4 +377,4 @@ Questo progetto è stato sviluppato con **VS Code** e **[Claude Code](https://do
 
 La statistica **non è una scienza esatta**: è uno strumento interpretativo, e come tale **uno strumento politico** in senso ampio. Le stesse cifre possono **sostenere narrative opposte** a seconda di cosa si sceglie di mostrare, come lo si aggrega e cosa si omette. Per questo il paradigma utile non è quello dell'"agente autonomo che esegue", ma quello del **collaboratore intelligente** che propone e lascia decidere. Il modello **non decide la storia** da raccontare: aiuta a **raccontare meglio** quella che l'analista ha già scelto di raccontare.
 
-Tutti i dati raw, script di elaborazione e codice sorgente della dashboard sono disponibili pubblicamente su GitHub: https://github.com/AlbGri/osservatorio-criminalita-next
+Tutti i dati raw, script di elaborazione e codice sorgente della dashboard sono disponibili pubblicamente su GitHub: https://github.com/AlbGri/datocrimine

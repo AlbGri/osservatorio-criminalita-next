@@ -8,7 +8,7 @@ export function Footer() {
         </p>
         <p>
           <a
-            href="https://github.com/AlbGri/osservatorio-criminalita-next"
+            href="https://github.com/AlbGri/datocrimine"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-foreground"

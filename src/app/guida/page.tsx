@@ -236,7 +236,7 @@ export default function Guida() {
           Se trovi errori nei dati, nei calcoli o nella comunicazione, segnalali
           aprendo una{" "}
           <a
-            href="https://github.com/AlbGri/osservatorio-criminalita-next/issues"
+            href="https://github.com/AlbGri/datocrimine/issues"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary underline hover:no-underline"
