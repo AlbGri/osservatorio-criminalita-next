@@ -64,6 +64,9 @@ scripts/download_delittips.py
 scripts/download_popolazione.py
 scripts/check_istat_updates.py
 
+# file privati e sorgenti
+_local/
+
 # docs privati
 docs/STATO_PROGETTO.md
 docs/FONTI_DATI.md
