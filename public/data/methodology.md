@@ -12,7 +12,7 @@ I dati provengono dal portale ufficiale ISTAT ([esploradati.istat.it](https://es
    - Indicatore: "Famiglie per presenza di alcuni problemi nella zona in cui abitano: rischio di criminalità: molto e abbastanza"
    - Espresso in percentuale di famiglie che percepiscono rischio
    - Dato 2024 (26.6%) da [Noi Italia 2025 - Criminalità e sicurezza](https://noi-italia.istat.it/pagina.php?id=3&categoria=9&action=show&L=0) (indicatore BES derivato dall'indagine Multiscopo)
-   - La serie storica è compilata manualmente da pubblicazioni ISTAT annuali (Noi Italia, rapporto BES, comunicati Multiscopo). Non esiste un dataset ISTAT scaricabile automaticamente per questo indicatore.
+   - La serie storica è compilata manualmente da pubblicazioni ISTAT annuali (Noi Italia, rapporto BES, comunicati Multiscopo). Non esiste un dataset ISTAT scaricabile automaticamente per questo indicatore. Ogni anno può provenire da una pubblicazione diversa, quindi la coerenza metodologica tra anni non è garantita (es. variazioni nel campione o nel questionario non sono sempre documentate da ISTAT).
 
 3. **Popolazione residente** - ISTAT
    - Ricostruzione intercensuaria 2002-2019
@@ -27,12 +27,26 @@ I dati provengono dal portale ufficiale ISTAT ([esploradati.istat.it](https://es
 
 ### Criticità dataset AUTVITTPS
 
+**Copertura temporale e territoriale:**
+
+| Dato | Autori (OFFEND) | Vittime (VICTIM) |
+|------|-----------------|------------------|
+| TOT nazionale | 2007-2022 | Non disponibile* |
+| Reati singoli nazionale | 2007-2024 | 2007-2024 |
+| Regioni (reati singoli) | 2007-2024 | 2007-2024 |
+| Province (reati singoli) | 2022-2024 | 2022-2024 |
+| Province (TOT) | Solo 2022 | Non disponibile* |
+
+*\*Una stessa persona può essere vittima di più reati: il totale vittime non è calcolabile sommando i singoli reati.*
+
+**Dettaglio criticità:**
+
 - **Dato aggregato (TOT) solo fino al 2022**: dal 2023 ISTAT pubblica solo i singoli tipi di reato, non il totale. Per questo il trend nazionale TOT si ferma al 2022; selezionando un singolo reato la serie arriva al 2024.
-- **Dati provinciali solo dal 2022**: prima del 2022 sono disponibili solo Italia, ripartizioni e regioni. Per i singoli reati il dato provinciale copre 2022-2024; per il totale solo 2022.
+- **Dati provinciali solo dal 2022**: prima del 2022 sono disponibili solo Italia, ripartizioni e regioni.
 - **CITIZENSHIP=TOTAL solo dal 2022**: per gli anni 2007-2021, il totale autori è calcolato come somma italiani + stranieri (FRG+ITL). Verifica 2022: FRG(270.567) + ITL(548.265) = TOTAL(818.832).
 - **Dato minori limitato**: AGE=Y_UN17 è disponibile solo dal 2022 per il totale; per anni precedenti il dato è assente.
 - **Duplicato STALK/CP612BIS**: entrambi i codici rappresentano l'art. 612-bis c.p. (atti persecutori). STALK copre 2007-2024 con breakdown limitato, CP612BIS copre 2022+ con breakdown completo. Nelle visualizzazioni viene escluso STALK per evitare doppi conteggi.
-- **Totale vittime non disponibile**: il codice TOT esiste solo per gli autori (OFFEND). Per le vittime (VICTIM) non è possibile calcolare un totale perché una stessa persona può essere vittima di più reati contemporaneamente.
+- **Subset reati per livello regionale**: i dati regionali espongono 20 reati selezionati (i più rilevanti per volume e interesse analitico) su circa 30 disponibili nel dataset ISTAT, per contenere la dimensione dei file. Il dato nazionale copre tutti i reati disponibili. Un reato assente nel dettaglio regionale è comunque incluso nel totale nazionale.
 
 ## Cosa rappresentano i dati
 
@@ -55,6 +69,7 @@ I dati NON mostrano:
 - **Crimini realmente commessi**: molti reati non vengono denunciati (es. furti minori, violenze domestiche). Il tasso di denuncia varia per tipo di reato.
 - **Crimini accertati**: una denuncia non implica che il reato sia confermato o che ci sia un colpevole.
 - **Condanne**: il dato è indipendente dall'esito processuale.
+- **Colpevoli accertati**: nella sezione "Persone Denunciate", gli autori sono persone denunciate o arrestate, non condannate. Una sovra-rappresentazione di un gruppo demografico tra i denunciati può riflettere pratiche di controllo differenziate (es. maggiori controlli in alcune aree o su alcune popolazioni), non necessariamente una maggiore propensione al crimine.
 - **Sicurezza oggettiva**: la percezione di insicurezza risponde a fattori molteplici (copertura mediatica, degrado urbano, fiducia istituzionale) non sempre correlati con i dati registrati.
 
 ## Limiti metodologici
@@ -90,7 +105,10 @@ Nuove leggi possono modificare:
 - **Modalità di registrazione** (es. GDPR 2018 limita pubblicazione dati disaggregati)
 - **Pene** (es. depenalizzazioni modificano classificazione)
 
-**Caso rilevante nei dati:** il D.Lgs. 7/2016 (in vigore dal 6 febbraio 2016) ha depenalizzato le ingiurie, trasformandole da reato penale a illecito civile. Questo spiega il calo del -23% nella categoria "Violenze contro la persona" tra 2015 e 2016: circa 50.000-60.000 denunce/anno per ingiurie sono uscite dalle statistiche penali. Non si tratta di un calo reale della violenza.
+**Casi rilevanti nei dati:**
+
+- **D.Lgs. 7/2016** (in vigore dal 6 febbraio 2016): ha depenalizzato le ingiurie, trasformandole da reato penale a illecito civile. Questo spiega il calo del -23% nella categoria "Violenze contro la persona" tra 2015 e 2016: circa 50.000-60.000 denunce/anno per ingiurie sono uscite dalle statistiche penali. Non si tratta di un calo reale della violenza.
+- **L. 69/2019 "Codice Rosso"** (in vigore dal 9 agosto 2019): ha introdotto procedure accelerate per violenza domestica e di genere (obbligo di ascolto vittima entro 3 giorni, nuovi reati come revenge porn). Può aver contribuito all'aumento delle denunce per violenze sessuali e maltrattamenti dal 2019 in poi, per effetto di maggiore fiducia nel sistema giudiziario, non necessariamente per aumento dei reati.
 
 ### Propensione a denunciare
 
@@ -168,6 +186,8 @@ Il **divario tra percezione e dati registrati** è documentato e normale. La per
 Questi fattori sono legittimi e non rendono la percezione "sbagliata". Il progetto mira a visualizzare questa differenza senza giudizi di valore.
 
 ## Limiti strutturali: cosa l'Italia potrebbe misurare ma non fa
+
+> La sezione seguente non descrive la metodologia del progetto ma il contesto istituzionale italiano sulla raccolta e pubblicazione dei dati di criminalità. È inclusa perché i limiti dei dati disponibili non sono limiti tecnici ma scelte politiche, e comprenderli è necessario per interpretare correttamente tutto ciò che il progetto mostra.
 
 Questo progetto è limitato ai dati delle denunce non per scelta metodologica, ma perché l'Italia non pubblica dati che altri paesi rendono disponibili.
 
@@ -299,13 +319,15 @@ I dati territoriali provengono dallo **stesso dataset ISTAT** dei delitti nazion
 
 I confronti territoriali richiedono estrema cautela per diversi motivi:
 
-1. **Propensione alla denuncia**: la propensione a denunciare varia significativamente per tipo di reato e territorio. L'Indagine ISTAT 2022-2023 mostra che il Sud denuncia più della media nazionale per reati contro la proprietà (52.6% vs 44.7%) e per reati violenti (58.6% vs 41.6%), mentre Nord-est e Isole denunciano meno (vedi sezione "Propensione alla denuncia per territorio"). Un tasso più alto non significa necessariamente più criminalità reale.
+1. **Propensione alla denuncia**: la propensione a denunciare varia significativamente per tipo di reato e territorio. L'Indagine ISTAT 2022-2023 mostra che il Sud denuncia più della media nazionale per reati contro la proprietà (52.6% vs 44.7%) e per reati violenti (58.6% vs 41.6%), mentre Nord-est e Isole denunciano meno (vedi sezione "Propensione alla denuncia per territorio"). Un tasso più alto non significa necessariamente più criminalità reale. Di conseguenza, **classifiche e confronti Nord-Sud basati sui tassi di denuncia non sono interpretabili senza correzione per propensione**, correzione che ISTAT non fornisce a livello regionale/provinciale.
 
 2. **Effetto turismo e pendolarismo**: regioni con alta presenza turistica (es. Lazio, Toscana) o forte pendolarismo mostrano tassi elevati perché il denominatore (popolazione residente) sottostima le persone effettivamente presenti.
 
 3. **Province piccole**: province con meno di 150.000 abitanti possono mostrare variabilità elevata anno su anno per effetto statistico (pochi eventi = alta variazione percentuale). Guardare trend pluriennali, non singoli anni.
 
 4. **Composizione reati**: territori diversi hanno mix diversi di reati. Il tasso totale maschera queste differenze qualitative.
+
+5. **Eterogeneità interna**: il dato provinciale è una media su territori molto diversi tra loro. Una provincia come Milano include zone centrali ad alta densità (più furti, più denunce) e aree rurali con dinamiche opposte. Il tasso provinciale non rappresenta nessuna delle due realtà.
 
 ### Confini geografici
 
