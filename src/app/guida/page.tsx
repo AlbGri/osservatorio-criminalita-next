@@ -121,8 +121,8 @@ export default function Guida() {
             incendiato)
           </li>
           <li>
-            <strong>Dati 2007-2022</strong>: la sezione Persone Denunciate
-            copre un arco temporale diverso (2007-2022) rispetto alle altre
+            <strong>Dati 2007-2024</strong>: la sezione Persone Denunciate
+            copre un arco temporale diverso (2007-2024) rispetto alle altre
             sezioni (2014-2024), perch&eacute; proviene da un dataset ISTAT
             separato (DCCV_AUTVITTPS)
           </li>

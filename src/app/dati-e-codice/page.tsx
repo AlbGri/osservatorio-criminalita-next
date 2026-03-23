@@ -57,7 +57,7 @@ export default function DatiECodice() {
                   <span className="text-xs">Delitti denunciati per provincia</span>
                 </td>
                 <td className="py-2 pr-4">2014-2024</td>
-                <td className="py-2">Home, Analisi Territoriale, Allarme Sociale</td>
+                <td className="py-2">Il contesto, Analisi Territoriale, Allarme Sociale</td>
               </tr>
               <tr className="border-b">
                 <td className="py-2 pr-4">
@@ -72,7 +72,7 @@ export default function DatiECodice() {
                   <br />
                   <span className="text-xs">Autori denunciati e vittime di delitto</span>
                 </td>
-                <td className="py-2 pr-4">2007-2022</td>
+                <td className="py-2 pr-4">2007-2024</td>
                 <td className="py-2">Persone Denunciate</td>
               </tr>
               <tr className="border-b">
@@ -82,7 +82,7 @@ export default function DatiECodice() {
                   <span className="text-xs">Percezione sicurezza famiglie</span>
                 </td>
                 <td className="py-2 pr-4">2014-2024</td>
-                <td className="py-2">Home (percezione vs dati)</td>
+                <td className="py-2">Il contesto (percezione vs dati)</td>
               </tr>
               <tr className="border-b">
                 <td className="py-2 pr-4">
@@ -140,14 +140,42 @@ export default function DatiECodice() {
                 </td>
               </tr>
               <tr className="border-b">
+                <td className="py-2 pr-4 font-mono text-xs">generate_popolazione.py</td>
+                <td className="py-2 pr-4 text-xs">
+                  3 fonti ISTAT popolazione (intercensuaria, POSAS, POPRES1)
+                </td>
+                <td className="py-2 text-xs">
+                  popolazione_regioni_province.csv
+                </td>
+              </tr>
+              <tr className="border-b">
                 <td className="py-2 pr-4 font-mono text-xs">generate_autori_vittime.py</td>
                 <td className="py-2 pr-4 text-xs">
                   CSV raw AUTVITTPS (DF_7 + DF_8)
                 </td>
                 <td className="py-2 text-xs">
                   autori_vittime_trend.json,
+                  autori_vittime_regioni.json,
                   autori_vittime_reati.json,
                   autori_vittime_province.json
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2 pr-4 font-mono text-xs">generate_insights.py</td>
+                <td className="py-2 pr-4 text-xs">
+                  JSON in public/data/ + popolazione CSV
+                </td>
+                <td className="py-2 text-xs">
+                  insights_candidates.csv (2.209 combinazioni, 9 test statistici)
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2 pr-4 font-mono text-xs">generate_report.py</td>
+                <td className="py-2 pr-4 text-xs">
+                  JSON in public/data/
+                </td>
+                <td className="py-2 text-xs">
+                  report_2024.json (report annuale interattivo)
                 </td>
               </tr>
             </tbody>
@@ -172,9 +200,12 @@ npm run dev
 
 # Rigenerare JSON (richiede conda + environment osservatorio)
 conda activate osservatorio
+python scripts/generate_popolazione.py
 python scripts/generate_delittips.py
+python scripts/generate_autori_vittime.py
 python scripts/csv_to_json.py
-python scripts/generate_autori_vittime.py`}</code>
+python scripts/generate_insights.py
+python scripts/generate_report.py`}</code>
         </pre>
         <p className="text-sm text-muted-foreground">
           I dati raw ISTAT (CSV ~80 MB) non sono nel repository per dimensioni.
