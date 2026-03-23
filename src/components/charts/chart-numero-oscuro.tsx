@@ -319,8 +319,9 @@ export function ChartNumeroOscuro() {
 
         <p className="text-muted-foreground">
           Confronto tra le edizioni 2015-2016 e 2022-2023 per tutti i singoli
-          reati disponibili. I valori con asterisco (*) nel report ISTAT hanno
-          errore campionario &gt;35%.
+          reati disponibili. I valori con asterisco (*) hanno un elevato
+          margine di incertezza statistica (errore campionario &gt;35% nel
+          report ISTAT) e vanno interpretati con cautela.
         </p>
 
         {reatiStorico.map((reato) => (

@@ -19,8 +19,7 @@ export default function Home() {
               Report 2024: cosa dicono i dati
             </p>
             <p className="text-sm text-muted-foreground mt-1">
-              Variazioni, tendenze e mappa regionale dell&apos;anno appena
-              trascorso.
+              Variazioni, tendenze e mappa regionale del 2024.
             </p>
           </div>
           <span className="text-primary text-xl shrink-0" aria-hidden="true">
