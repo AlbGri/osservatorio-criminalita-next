@@ -252,12 +252,12 @@ const INSIGHTS: Insight[] = [
   // --- ANOMALIE E DIVERGENZE ---
   {
     id: "percezione",
-    title: "Percezione e realt\u00e0: direzioni indipendenti",
+    title: "Percezione e realt\u00e0: trend simili, nesso incerto",
     category: "anomalie",
     dimensions: [],
     tests: ["spearman"],
     period: "2014-2024",
-    body: "Il tasso di delitti denunciati non mostra una tendenza chiara (da 46,6 a 40,7 per 1.000 abitanti). La percezione di insicurezza delle famiglie ha avuto un andamento indipendente: picco al 41% nel 2015, discesa al 21% nel 2021, risalita al 27% nel 2024. La correlazione tra le due serie \u00e8 debole.",
+    body: "Dal 2015 al 2020 entrambe le serie calano; dal 2021 entrambe risalgono. La correlazione sui livelli \u00e8 positiva e significativa (Spearman), ma con soli 11 punti e un possibile cambio metodologico nel 2015 va interpretata con cautela. La somiglianza dei trend potrebbe riflettere fattori comuni (COVID, ciclo mediatico) pi\u00f9 che un nesso diretto tra criminalit\u00e0 reale e percezione.",
     caveat:
       "La percezione di insicurezza \u00e8 influenzata dalla copertura mediatica, dal clima politico e da fattori locali che i dati aggregati non catturano. Il salto 2014-2015 potrebbe riflettere un cambio metodologico ISTAT.",
   },

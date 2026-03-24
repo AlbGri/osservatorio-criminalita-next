@@ -655,7 +655,7 @@ def analyze_percezione(df: pd.DataFrame) -> list[dict]:
     candidates.append(result)
 
     # Correlazione percezione-tasso
-    corr, p_val = stats.pearsonr(percezione, tasso)
+    corr, p_val = stats.spearmanr(percezione, tasso)
     # Divergenza: tasso scende ma percezione sale?
     mk_tasso = mk.original_test(tasso)
     mk_perc = mk.original_test(percezione)
