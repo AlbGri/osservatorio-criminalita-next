@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { COLORS, CHART_HEIGHT_SMALL, PLOTLY_CONFIG, AXIS_FIXED } from "@/lib/config";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -104,7 +105,16 @@ const asterischi2023: Record<string, boolean[]> = {
 const fmtAst = (vals: number[], ast: boolean[]) =>
   vals.map((v, i) => `${v}%${ast[i] ? "*" : ""}`);
 
+const MACRO_DETTAGLIO: Record<string, string> = {
+  "Reati proprietà individuale": "scippi, borseggi, furti di oggetti personali",
+  "Reati violenti": "aggressioni, minacce",
+  "Reati abitazione": "furti in abitazione, tentati furti in abitazione",
+  "Reati veicoli": "furti di veicoli, furti di oggetti dai veicoli",
+};
+
 export function ChartNumeroOscuro() {
+  const [showMacro, setShowMacro] = useState(false);
+
   return (
     <div className="space-y-6">
       <Alert>
@@ -240,6 +250,29 @@ export function ChartNumeroOscuro() {
         </p>
       </div>
 
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => setShowMacro((v) => !v)}
+          className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 transition-colors"
+          aria-expanded={showMacro}
+          aria-label="Mostra dettaglio macro-categorie"
+        >
+          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border border-current text-xs font-medium">i</span>
+          <span>{showMacro ? "Nascondi categorie" : "Cosa include ogni categoria?"}</span>
+        </button>
+      </div>
+
+      {showMacro && (
+        <div className="grid gap-2 sm:grid-cols-2 text-sm">
+          {Object.entries(MACRO_DETTAGLIO).map(([cat, dettaglio], i) => (
+            <div key={cat} className="rounded-md border border-border p-2">
+              <span className="font-medium" style={{ color: coloriMacro[i] }}>{cat}</span>
+              <span className="text-muted-foreground">: {dettaglio}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       <ChartFullscreenWrapper ariaDescription="Grafico propensione alla denuncia per macro-area geografica e tipo di reato, 2022-2023. Il Sud denuncia piu' della media per reati violenti e contro la proprieta'">
         <Plot
           data={[
@@ -308,19 +341,6 @@ export function ChartNumeroOscuro() {
         title="Come cambia la propensione per territorio nel tempo (9 grafici)"
         description="Confronto propensione alla denuncia per macro-area tra 2015-2016 e 2022-2023"
       >
-
-        <Alert>
-          <AlertDescription className="block">
-            <strong>Macro-categorie vs singoli reati.</strong> Le macro-categorie
-            ISTAT aggregano pi&ugrave; reati: &quot;Reati propriet&agrave; individuale&quot; =
-            scippi + borseggi + furti oggetti personali;
-            &quot;Reati violenti&quot; = aggressioni + minacce;
-            &quot;Reati abitazione&quot; = furti in abitazione + tentati furti;
-            &quot;Reati veicoli&quot; = furti di veicoli + furti di oggetti dai
-            veicoli. Le macro-categorie sono disponibili solo per il 2022-2023;
-            il report 2015-2016 riporta solo i singoli reati.
-          </AlertDescription>
-        </Alert>
 
         <p className="text-muted-foreground">
           Confronto tra le edizioni 2015-2016 e 2022-2023 per tutti i singoli

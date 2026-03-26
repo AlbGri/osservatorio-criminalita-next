@@ -45,12 +45,22 @@ const COLORI_CATEGORIE: Record<string, string> = {
   Altro: COLORS.altro,
 };
 
+const CATEGORIE_DETTAGLIO: Record<string, string> = {
+  "Furti": "furti in abitazione, auto, con destrezza, con strappo, ecc.",
+  "Violenze contro la persona": "omicidi volontari e tentati, lesioni dolose, percosse, minacce, sequestri di persona, violenze sessuali, atti sessuali con minorenne, pornografia minorile, sfruttamento prostituzione",
+  "Truffe e Frodi": "truffe e frodi informatiche, delitti informatici, contraffazione, violazione proprieta' intellettuale",
+  "Rapine": "rapine in abitazione, in banca, in pubblica via, ecc.",
+  "Droga": "produzione, traffico e spaccio di stupefacenti",
+  "Altro": "estorsioni, ricettazione, danneggiamenti, incendi dolosi, riciclaggio, usura, associazione per delinquere e di tipo mafioso, contrabbando, omicidi stradali e colposi, altri delitti",
+};
+
 type ViewMode = "totale" | "tipologia";
 type Metrica = "tasso" | "assoluto";
 
 export function ChartTrendNazionale() {
   const [view, setView] = useState<ViewMode>("totale");
   const [metrica, setMetrica] = useState<Metrica>("tasso");
+  const [showCategorie, setShowCategorie] = useState(false);
   const isMobile = useIsMobile();
 
   const { data, loading, error } = useFetchData<DelittiItalia[]>(
@@ -112,15 +122,7 @@ export function ChartTrendNazionale() {
     <div className="space-y-4">
       <Alert>
         <AlertDescription className="block">
-          {isTipologia ? (
-            <>
-              <strong>Composizione per tipologia:</strong> ogni reato rientra in una sola categoria. La somma pu&ograve; differire lievemente dal totale nazionale per effetto delle aggregazioni ISTAT.
-            </>
-          ) : (
-            <>
-              <strong>Nota metodologica:</strong> questi dati mostrano <strong>denunce registrate</strong>, non crimini effettivamente commessi. Alcuni reati hanno bassa propensione alla denuncia (es. violenze domestiche), altri alta (es. furti auto assicurati).
-            </>
-          )}
+          <strong>Nota metodologica:</strong> questi dati mostrano <strong>denunce registrate</strong>, non crimini effettivamente commessi. Alcuni reati hanno bassa propensione alla denuncia (es. violenze domestiche), altri alta (es. furti auto assicurati).
         </AlertDescription>
       </Alert>
 
@@ -166,7 +168,29 @@ export function ChartTrendNazionale() {
             <option value="assoluto">Numero assoluto</option>
           </select>
         </div>
+        {isTipologia && (
+          <button
+            onClick={() => setShowCategorie((v) => !v)}
+            className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 pb-2 transition-colors"
+            aria-expanded={showCategorie}
+            aria-label="Mostra dettaglio categorie"
+          >
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border border-current text-xs font-medium">i</span>
+            <span>{showCategorie ? "Nascondi categorie" : "Cosa include ogni categoria?"}</span>
+          </button>
+        )}
       </div>
+
+      {isTipologia && showCategorie && (
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+          {Object.entries(CATEGORIE_DETTAGLIO).map(([cat, dettaglio]) => (
+            <div key={cat} className="rounded-md border border-border p-2">
+              <span className="font-medium" style={{ color: COLORI_CATEGORIE[cat] }}>{cat}</span>
+              <span className="text-muted-foreground">: {dettaglio}</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       <ChartFullscreenWrapper ariaDescription={isTipologia ? "Grafico trend delitti per tipologia in Italia dal 2014 al 2024: furti in calo, truffe in crescita costante" : "Grafico trend tasso delitti denunciati per 1.000 abitanti in Italia dal 2014 al 2024"}>
         <Plot
