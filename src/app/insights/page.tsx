@@ -261,9 +261,11 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "OFFEND", code: "ROBBER", xField: "anno", yField: "pct_stranieri", label: "% stranieri (autori)", color: "#E63946" },
+        { dataType: "OFFEND", code: "ROBBER", xField: "anno", yField: "totale", label: "Autori denunciati", color: "#2E86AB" },
+        { dataType: "OFFEND", code: "ROBBER", xField: "anno", yField: "pct_stranieri", label: "% stranieri", color: "#E63946", yaxis: "y2" },
       ],
-      yAxisLabel: "%",
+      yAxisLabel: "Autori",
+      y2AxisLabel: "% stranieri",
     },
   },
   {
@@ -279,8 +281,10 @@ const INSIGHTS: Insight[] = [
       series: [
         { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "pct_femmine", label: "% donne", color: "#e377c2" },
         { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "pct_maschi", label: "% uomini", color: "#2E86AB" },
+        { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "totale", label: "Vittime totali", color: "#8c564b", yaxis: "y2" },
       ],
       yAxisLabel: "%",
+      y2AxisLabel: "Vittime",
     },
   },
   {
@@ -296,8 +300,10 @@ const INSIGHTS: Insight[] = [
       series: [
         { dataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "pct_femmine", label: "% donne (delitti inform.)", color: "#ff7f0e" },
         { dataType: "VICTIM", code: "SWINCYB", xField: "anno", yField: "pct_femmine", label: "% donne (truffe)", color: "#ff7f0e", dash: "dash" },
+        { dataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "totale", label: "Vittime delitti inform.", color: "#2ca02c", yaxis: "y2" },
       ],
-      yAxisLabel: "%",
+      yAxisLabel: "% donne",
+      y2AxisLabel: "Vittime",
     },
   },
   {
@@ -311,9 +317,11 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "VICTIM", code: "INTENHOM", xField: "anno", yField: "pct_femmine", label: "% vittime donne", color: "#e377c2" },
+        { dataType: "VICTIM", code: "INTENHOM", xField: "anno", yField: "totale", label: "Vittime totali", color: "#d62728" },
+        { dataType: "VICTIM", code: "INTENHOM", xField: "anno", yField: "pct_femmine", label: "% donne", color: "#e377c2", yaxis: "y2" },
       ],
-      yAxisLabel: "%",
+      yAxisLabel: "Vittime",
+      y2AxisLabel: "% donne",
     },
   },
   {
@@ -330,9 +338,11 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "VICTIM", code: "RAPE", xField: "anno", yField: "pct_stranieri", label: "% vittime straniere", color: "#E63946" },
+        { dataType: "VICTIM", code: "RAPE", xField: "anno", yField: "totale", label: "Vittime totali", color: "#d62728" },
+        { dataType: "VICTIM", code: "RAPE", xField: "anno", yField: "pct_stranieri", label: "% straniere", color: "#E63946", yaxis: "y2" },
       ],
-      yAxisLabel: "%",
+      yAxisLabel: "Vittime",
+      y2AxisLabel: "% straniere",
     },
   },
   {
