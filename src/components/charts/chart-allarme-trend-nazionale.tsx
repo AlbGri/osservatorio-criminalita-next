@@ -101,6 +101,7 @@ export function ChartAllarmeTrendNazionale({ reatoSelezionato }: Props) {
 
       <ChartFullscreenWrapper ariaDescription={`Grafico trend nazionale reati allarme sociale 2014-2024, evidenziato: ${reatoSelezionato}`}>
         <Plot
+          key={metrica}
           data={traces}
           layout={{
             separators: PLOTLY_IT_SEPARATORS,
@@ -110,7 +111,7 @@ export function ChartAllarmeTrendNazionale({ reatoSelezionato }: Props) {
           paper_bgcolor: "white",
           height: CHART_HEIGHT_SMALL,
           xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
-          yaxis: { ...AXIS_FIXED, title: { text: isAssoluto ? "Delitti denunciati" : "Tasso per 100k ab.", font: { size: 12 } }, ...(isAssoluto && { tickformat: ",", hoverformat: "," }) },
+          yaxis: { ...AXIS_FIXED, title: { text: isAssoluto ? "Delitti denunciati" : "Tasso per 100k ab.", font: { size: 12 } }, ...(isAssoluto && { tickformat: "~s", hoverformat: ",.0f" }) },
           legend: {
             x: 0,
             y: -0.25,

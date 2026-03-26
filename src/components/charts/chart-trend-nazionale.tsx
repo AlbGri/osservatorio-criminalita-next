@@ -170,11 +170,12 @@ export function ChartTrendNazionale() {
 
       <ChartFullscreenWrapper ariaDescription={isTipologia ? "Grafico trend delitti per tipologia in Italia dal 2014 al 2024: furti in calo, truffe in crescita costante" : "Grafico trend tasso delitti denunciati per 1.000 abitanti in Italia dal 2014 al 2024"}>
         <Plot
+          key={`${metrica}-${view}`}
           data={isTipologia ? traceTipologia : traceTotale}
           layout={{
             separators: PLOTLY_IT_SEPARATORS,
             xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
-            yaxis: { ...AXIS_FIXED, title: { text: isAssoluto ? "Delitti denunciati" : "Tasso per 1.000 ab.", font: { size: 12 } }, ...(isAssoluto && { tickformat: ",", hoverformat: "," }) },
+            yaxis: { ...AXIS_FIXED, title: { text: isAssoluto ? "Delitti denunciati" : "Tasso per 1.000 ab.", font: { size: 12 } }, ...(isAssoluto && { tickformat: "~s", hoverformat: ",.0f" }) },
             dragmode: false,
             hovermode: "closest" as const,
             plot_bgcolor: "white",

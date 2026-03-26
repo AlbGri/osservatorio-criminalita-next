@@ -275,6 +275,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
         ariaDescription={`Trend ${effectiveReato} per ${selected} vs media nazionale con composizione %`}
       >
         <Plot
+          key={metrica}
           data={traces}
           layout={{
             separators: PLOTLY_IT_SEPARATORS,
@@ -290,7 +291,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
                 text: isAssoluto ? (dataType === "OFFEND" ? "Autori denunciati" : "Vittime") : "Tasso per 100k ab.",
                 font: { color: COLORS.primary, size: 12 },
               },
-              ...(isAssoluto && { tickformat: ",", hoverformat: "," }),
+              ...(isAssoluto && { tickformat: "~s", hoverformat: ",.0f" }),
               tickfont: { color: COLORS.primary },
               side: "left",
             },

@@ -161,6 +161,7 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
               line: { width: 2, color: "#999999", dash: "dash" as const },
             }] : []),
           ]}
+          key={metrica}
           layout={{
             separators: PLOTLY_IT_SEPARATORS,
             dragmode: false as const,
@@ -171,7 +172,7 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
             xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
             yaxis: { ...AXIS_FIXED,
               title: { text: isAssoluto ? "Delitti denunciati" : "Tasso per 100k ab.", font: { size: 12 } },
-              ...(isAssoluto && { tickformat: ",", hoverformat: "," }),
+              ...(isAssoluto && { tickformat: "~s", hoverformat: ",.0f" }),
             },
             legend: {
               x: 0,
