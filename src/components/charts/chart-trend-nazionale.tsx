@@ -72,6 +72,9 @@ export function ChartTrendNazionale() {
       y: data.map((d) => isAssoluto ? d.Delitti : d.Tasso_per_1000),
       mode: "lines+markers" as const,
       name: isAssoluto ? "Delitti denunciati" : "Tasso delitti per 1.000 ab.",
+      hovertemplate: isAssoluto
+        ? "<b>%{fullData.name}</b><br>Anno: %{x}<br>Delitti: %{y:,.0f}<extra></extra>"
+        : "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:.2f} per 1.000 ab.<extra></extra>",
       line: { color: COLORS.primary, width: 3 },
       marker: { size: 8 },
     },
@@ -85,6 +88,9 @@ export function ChartTrendNazionale() {
       y: filtered.map((d) => isAssoluto ? d.Delitti : d.Tasso_per_1000),
       mode: "lines+markers" as const,
       name: cat,
+      hovertemplate: isAssoluto
+        ? "<b>%{fullData.name}</b><br>Anno: %{x}<br>Delitti: %{y:,.0f}<extra></extra>"
+        : "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:.2f} per 1.000 ab.<extra></extra>",
       line: { width: 2, color: COLORI_CATEGORIE[cat] ?? "#999999" },
       marker: { size: isMobile ? 4 : 6 },
     };

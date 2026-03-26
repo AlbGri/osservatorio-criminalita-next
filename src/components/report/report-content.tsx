@@ -416,6 +416,7 @@ function ChartPercezione({ anno }: { anno: number }) {
             type: "scatter",
             mode: "lines+markers",
             name: "Tasso delitti (per 1.000 ab.)",
+            hovertemplate: "<b>Tasso delitti</b><br>Anno: %{x}<br>%{y:.2f} per 1.000 ab.<extra></extra>",
             line: { color: COLORS.primary },
             marker: {
               size: anni.map((a) => (a === anno ? 12 : 6)),
@@ -435,6 +436,7 @@ function ChartPercezione({ anno }: { anno: number }) {
             type: "scatter",
             mode: "lines+markers",
             name: "Percezione insicurezza (%)",
+            hovertemplate: "<b>Percezione insicurezza</b><br>Anno: %{x}<br>%{y:.1f}%<extra></extra>",
             line: { color: COLORS.secondary, dash: "dash" },
             marker: {
               size: anni.map((a) => (a === anno ? 12 : 6)),

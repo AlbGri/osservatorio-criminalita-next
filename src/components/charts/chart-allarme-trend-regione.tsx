@@ -146,6 +146,9 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
               y: regioneData.map((d) => isAssoluto ? d.Delitti : d.Tasso_per_100k),
               mode: "lines+markers" as const,
               name: selected,
+              hovertemplate: isAssoluto
+                ? "<b>%{fullData.name}</b>: %{y:,.0f}<extra></extra>"
+                : "<b>%{fullData.name}</b>: %{y:.2f} per 100k ab.<extra></extra>",
               line: { width: 3, color: lineColor },
               marker: { size: 6 },
             },
@@ -154,6 +157,7 @@ export function ChartAllarmeTrendRegione({ reato }: Props) {
               y: mediaNazArr,
               mode: "lines" as const,
               name: "Media nazionale",
+              hovertemplate: "<b>%{fullData.name}</b>: %{y:.2f} per 100k ab.<extra></extra>",
               line: { width: 2, color: "#999999", dash: "dash" as const },
             }] : []),
           ]}

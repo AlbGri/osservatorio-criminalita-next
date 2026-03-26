@@ -63,6 +63,9 @@ export function ChartAllarmeTrendNazionale({ reatoSelezionato }: Props) {
         y: filtered.map((d) => isAssoluto ? d.Delitti : d.Tasso_per_100k),
         mode: "lines+markers" as const,
         name: reato,
+        hovertemplate: isAssoluto
+          ? "<b>%{fullData.name}</b><br>Anno: %{x}<br>Delitti: %{y:,.0f}<extra></extra>"
+          : "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:.2f} per 100k ab.<extra></extra>",
         line: {
           width: isSelected ? 3 : 1.5,
           color: COLORI_ALLARME[reato] ?? "#999999",

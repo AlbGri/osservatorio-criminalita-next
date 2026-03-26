@@ -131,6 +131,7 @@ export function ChartNumeroOscuro() {
               marker: { color: COLORS.primary },
               text: pctDenunciati.map((v) => `${v}%`),
               textposition: "inside" as const,
+              hovertemplate: "<b>%{y}</b><br>%{fullData.name}: %{x}%<extra></extra>",
             },
             {
               name: "Non denunciati (numero oscuro)",
@@ -141,6 +142,7 @@ export function ChartNumeroOscuro() {
               marker: { color: "#d3d3d3" },
               text: pctNonDenunciati.map((v) => `${v}%`),
               textposition: "inside" as const,
+              hovertemplate: "<b>%{y}</b><br>%{fullData.name}: %{x}%<extra></extra>",
             },
           ]}
           layout={{
@@ -181,6 +183,7 @@ export function ChartNumeroOscuro() {
               marker: { color: "#b0c4de" },
               text: pct2016.map((v) => `${v}%`),
               textposition: "outside" as const,
+              hovertemplate: "<b>%{x}</b><br>%{fullData.name}: %{y:.1f}%<extra></extra>",
             },
             {
               name: "2022-2023",
@@ -190,6 +193,7 @@ export function ChartNumeroOscuro() {
               marker: { color: COLORS.primary },
               text: pct2023.map((v) => `${v}%`),
               textposition: "outside" as const,
+              hovertemplate: "<b>%{x}</b><br>%{fullData.name}: %{y:.1f}%<extra></extra>",
             },
           ]}
           layout={{
@@ -248,6 +252,7 @@ export function ChartNumeroOscuro() {
               text: vals.map((v) => `${v}%`),
               textposition: "outside" as const,
               textfont: { size: 10 },
+              hovertemplate: "<b>%{fullData.name}</b><br>%{x}: %{y:.1f}%<extra></extra>",
             })),
           ]}
           layout={{
@@ -338,6 +343,7 @@ export function ChartNumeroOscuro() {
                     marker: { color: "#b0c4de" },
                     text: fmtAst(storico2016[reato], asterischi2016[reato]),
                     textposition: "outside" as const,
+                    hovertemplate: "<b>%{x}</b><br>%{fullData.name}: %{y:.1f}%<extra></extra>",
                   },
                   {
                     name: "2022-2023",
@@ -347,6 +353,7 @@ export function ChartNumeroOscuro() {
                     marker: { color: COLORS.primary },
                     text: fmtAst(storico2023[reato], asterischi2023[reato]),
                     textposition: "outside" as const,
+                    hovertemplate: "<b>%{x}</b><br>%{fullData.name}: %{y:.1f}%<extra></extra>",
                   },
                 ]}
                 layout={{

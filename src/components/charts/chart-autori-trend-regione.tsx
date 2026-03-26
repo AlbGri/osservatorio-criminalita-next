@@ -149,12 +149,17 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
     Number((mediaNazionaleTasso.get(a) ?? 0).toFixed(1))
   );
 
+  const hoverTpl = isAssoluto
+    ? "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:,.0f}<extra></extra>"
+    : "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:.2f} per 100k ab.<extra></extra>";
+
   const traces: Plotly.Data[] = [
     {
       x: isAssoluto ? anni : anniTasso,
       y: isAssoluto ? regioneData.map((r) => r.totale) : valoriTasso,
       mode: "lines+markers" as const,
       name: selected,
+      hovertemplate: hoverTpl,
       line: { width: 3, color: COLORS.primary },
       marker: { size: 6 },
       yaxis: "y",
@@ -164,6 +169,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
       y: mediaNazArr,
       mode: "lines" as const,
       name: "Media nazionale",
+      hovertemplate: "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:.2f} per 100k ab.<extra></extra>",
       line: { width: 2, color: "#999999", dash: "dash" as const },
       yaxis: "y" as const,
     }] : []),
@@ -180,6 +186,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
       y: values,
       mode: "lines+markers" as const,
       name: bd.label,
+      hovertemplate: "<b>%{fullData.name}</b><br>Anno: %{x}<br>%{y:.1f}%<extra></extra>",
       line: { color: bd.color, width: 2, dash: "dash" as const },
       marker: { size: 5 },
       yaxis: "y2",

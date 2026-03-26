@@ -167,6 +167,9 @@ export function ChartTrendProvincia() {
               y: provData.map((d) => isAssoluto ? d.Delitti : d.Tasso_per_1000),
               mode: "lines+markers" as const,
               name: selectedProvincia,
+              hovertemplate: isAssoluto
+                ? "<b>%{fullData.name}</b>: %{y:,.0f}<extra></extra>"
+                : "<b>%{fullData.name}</b>: %{y:.2f} per 1.000 ab.<extra></extra>",
               line: { width: 3, color: COLORS.primary },
               marker: { size: 6 },
             },
@@ -175,6 +178,7 @@ export function ChartTrendProvincia() {
               y: mediaRegArr,
               mode: "lines" as const,
               name: `Media ${selectedRegione}`,
+              hovertemplate: "<b>%{fullData.name}</b>: %{y:.2f} per 1.000 ab.<extra></extra>",
               line: { width: 2, color: "#999999", dash: "dash" as const },
             }] : []),
           ]}
