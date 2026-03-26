@@ -71,7 +71,6 @@ _local/
 
 # insights (rigenerabili con scripts/generate_insights.py)
 data/processed/insights_candidates.csv
-docs/insights_report.md
 
 # audit
 audit/
