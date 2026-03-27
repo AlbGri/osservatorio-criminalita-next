@@ -400,6 +400,15 @@ const INSIGHTS: Insight[] = [
     tests: ["divergenza"],
     period: "2007-2024",
     body: "La dispersione dei tassi di violenze sessuali tra regioni aumenta significativamente nel tempo, sia per gli autori sia per le vittime. Il fenomeno non \u00e8 uniforme sul territorio: alcune regioni mostrano aumenti marcati, altre stagnazione. Questo pu\u00f2 riflettere differenze nella propensione alla denuncia pi\u00f9 che nella diffusione del reato.",
+    chart: {
+      file: "autori_vittime_regioni.json",
+      series: [
+        { dataType: "VICTIM", code: "RAPE", xField: "anno", yField: "tasso", label: "Tasso vittime", color: "#8B008B" },
+      ],
+      aggregation: "divergenza-regionale",
+      yAxisLabel: "Tasso per 100k",
+    },
+    chartInfo: "L\u2019area colorata rappresenta la dispersione (media \u00b1 1 deviazione standard) del tasso di violenze sessuali tra le 20 regioni italiane. Un\u2019area che si allarga nel tempo indica che le regioni stanno divergendo tra loro.",
   },
   {
     id: "reati-fisici-digitali",
@@ -409,6 +418,17 @@ const INSIGHTS: Insight[] = [
     tests: ["rapporto-av"],
     period: "2007-2024",
     body: "Per i reati fisici, il rapporto tra autori identificati e vittime migliora costantemente: nelle rapine passa da 0,45 a 1,05 (oggi si identifica pi\u00f9 di un autore per ogni vittima), nelle rapine in esercizi commerciali da 0,64 a 1,87. Per i reati digitali accade l\u2019opposto: nei delitti informatici il rapporto crolla da 0,29 a 0,08 (un autore ogni 12 vittime), nelle truffe da 0,43 a 0,31. Le vittime digitali crescono molto pi\u00f9 velocemente della capacit\u00e0 di identificare gli autori.",
+    chart: {
+      file: "autori_vittime_trend.json",
+      series: [
+        { dataType: "OFFEND", ratioDataType: "VICTIM", code: "ROBBER", xField: "anno", yField: "totale", label: "Rapine", color: "#8B4513" },
+        { dataType: "OFFEND", ratioDataType: "VICTIM", code: "SHOPROB", xField: "anno", yField: "totale", label: "Rapine in esercizi", color: "#bcbd22" },
+        { dataType: "OFFEND", ratioDataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "totale", label: "Delitti informatici", color: "#2E86AB" },
+        { dataType: "OFFEND", ratioDataType: "VICTIM", code: "SWINCYB", xField: "anno", yField: "totale", label: "Truffe e frodi inf.", color: "#ff7f0e" },
+      ],
+      yAxisLabel: "Rapporto autori/vittime",
+    },
+    chartInfo: "Il rapporto autori/vittime indica quanti autori vengono identificati per ogni vittima che denuncia. Un valore sopra 1 significa che si identificano pi\u00f9 autori che vittime; sotto 1 significa che molte vittime restano senza un autore identificato.",
   },
   // --- CONFRONTI TRA CATEGORIE ---
   {
@@ -457,6 +477,16 @@ const INSIGHTS: Insight[] = [
     body: "La differenza nella percentuale di autori stranieri tra reati violenti e informatici \u00e8 in crescita (+9,2 punti percentuali): la quota di stranieri aumenta pi\u00f9 nei reati violenti che in quelli informatici, dove anzi diminuisce (dal 37% al 20%).",
     caveat:
       "La composizione degli autori denunciati riflette anche pratiche di controllo differenziate e differente visibilit\u00e0 dei reati, non solo la reale distribuzione della criminalit\u00e0.",
+    chart: {
+      file: "autori_vittime_trend.json",
+      series: [
+        { dataType: "OFFEND", code: "ROBBER", xField: "anno", yField: "pct_stranieri", label: "Rapine", color: "#8B4513" },
+        { dataType: "OFFEND", code: "SWINCYB", xField: "anno", yField: "pct_stranieri", label: "Truffe e frodi informatiche", color: "#ff7f0e" },
+        { dataType: "OFFEND", code: "DRUG", xField: "anno", yField: "pct_stranieri", label: "Stupefacenti", color: "#9467bd" },
+      ],
+      yAxisLabel: "% autori stranieri",
+    },
+    chartInfo: "Codici rappresentativi per categoria: rapine (reati violenti), truffe e frodi informatiche (reati informatici), stupefacenti (droga). La % si riferisce agli autori denunciati con cittadinanza straniera sul totale degli autori denunciati per ciascun reato.",
   },
   // --- CONFRONTI TERRITORIALI ---
   {

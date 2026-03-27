@@ -34,6 +34,9 @@ export type InsightChartSeries = {
   yaxis?: "y2";
   /** Stile linea */
   dash?: "solid" | "dash" | "dot";
+  /** data_type denominatore per calcolo ratio (numeratore = dataType).
+   *  Es. OFFEND.totale / VICTIM.totale -> dataType="OFFEND", ratioDataType="VICTIM" */
+  ratioDataType?: string;
 };
 
 export type InsightChartConfig = {
@@ -45,9 +48,11 @@ export type InsightChartConfig = {
   yAxisLabel?: string;
   /** Label asse y destro (se dual-y) */
   y2AxisLabel?: string;
-  /** Aggregazione: genera 3 linee Nord/Centro/Sud dalla media delle regioni.
+  /** Aggregazione territoriale:
+   *  - "ripartizione": 3 linee Nord/Centro/Sud dalla media delle regioni
+   *  - "divergenza-regionale": area chart media +/- std-dev tra 20 regioni
    *  Usa la prima serie come template per filtro (dataType, code) e yField. */
-  aggregation?: "ripartizione";
+  aggregation?: "ripartizione" | "divergenza-regionale";
 };
 
 /* ================================================================
@@ -121,6 +126,96 @@ function buildRipartizioneTraces(
 }
 
 /* ================================================================
+   Divergenza regionale: media +/- std-dev tra 20 regioni per anno
+   ================================================================ */
+
+function buildDivergenzaTraces(
+  rawData: Record<string, unknown>[],
+  template: InsightChartSeries,
+): Plotly.Data[] {
+  const filtered = rawData.filter((row) => {
+    if (template.dataType && row.data_type !== template.dataType) return false;
+    if (template.code && row.codice_reato !== template.code) return false;
+    return true;
+  });
+
+  // Raggruppa per anno, raccogli valori da tutte le regioni
+  const byAnno = new Map<number, number[]>();
+  for (const row of filtered) {
+    const reg = row.codice_regione as string;
+    if (!REGIONE_TO_RIPARTIZIONE[reg]) continue; // solo 20 regioni
+    const anno = row[template.xField] as number;
+    const val = row[template.yField] as number;
+    if (val == null) continue;
+    if (!byAnno.has(anno)) byAnno.set(anno, []);
+    byAnno.get(anno)!.push(val);
+  }
+
+  const anni = [...byAnno.keys()].sort((a, b) => a - b);
+  const medie: number[] = [];
+  const stdDevs: number[] = [];
+
+  for (const anno of anni) {
+    const vals = byAnno.get(anno)!;
+    const mean = vals.reduce((s, v) => s + v, 0) / vals.length;
+    const variance = vals.reduce((s, v) => s + (v - mean) ** 2, 0) / vals.length;
+    medie.push(mean);
+    stdDevs.push(Math.sqrt(variance));
+  }
+
+  const upper = medie.map((m, i) => m + stdDevs[i]);
+  const lower = medie.map((m, i) => m - stdDevs[i]);
+  const color = template.color || "#2E86AB";
+
+  // Converti hex in rgba per il fill semitrasparente
+  const hexToRgba = (hex: string, alpha: number) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r},${g},${b},${alpha})`;
+  };
+  const fillColor = hexToRgba(color, 0.2);
+
+  return [
+    // Fascia superiore (bordo area)
+    {
+      x: anni,
+      y: upper,
+      type: "scatter" as const,
+      mode: "lines" as const,
+      name: "Media + 1 std",
+      line: { width: 0 },
+      showlegend: false,
+      hovertemplate: `%{x}: %{y:.1f}<extra>+1 std</extra>`,
+    },
+    // Fascia inferiore (riempie area fino a upper)
+    {
+      x: anni,
+      y: lower,
+      type: "scatter" as const,
+      mode: "lines" as const,
+      name: "Media \u2212 1 std",
+      line: { width: 0 },
+      fill: "tonexty" as const,
+      fillcolor: fillColor,
+      showlegend: false,
+      hovertemplate: `%{x}: %{y:.1f}<extra>\u22121 std</extra>`,
+    },
+    // Linea media
+    {
+      x: anni,
+      y: medie,
+      type: "scatter" as const,
+      mode: "lines+markers" as const,
+      name: "Media regionale",
+      line: { color, width: 2 },
+      marker: { size: 4 },
+      hovertemplate: `%{x}: %{y:.1f}<extra>Media</extra>`,
+    },
+  ];
+}
+
+/* ================================================================
    Componente
    ================================================================ */
 
@@ -135,9 +230,12 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
   if (loading || !rawData)
     return <div className="h-[300px] animate-pulse bg-muted rounded" />;
 
+  const isDivergenza = config.aggregation === "divergenza-regionale";
   const isRipartizione = config.aggregation === "ripartizione";
 
-  const traces: Plotly.Data[] = isRipartizione
+  const traces: Plotly.Data[] = isDivergenza
+    ? buildDivergenzaTraces(rawData, config.series[0])
+    : isRipartizione
     ? buildRipartizioneTraces(rawData, config.series[0])
     : config.series.map((s) => {
         const filtered = rawData.filter((row) => {
@@ -162,11 +260,37 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
           const sorted = [...byAnno.entries()].sort((a, b) => a[0] - b[0]);
           xVals = sorted.map(([a]) => a);
           yVals = sorted.map(([, v]) => v);
+        } else if (s.ratioDataType) {
+          // Ratio: numeratore (dataType) / denominatore (ratioDataType) per anno
+          const denomFiltered = rawData.filter((row) => {
+            if (row.data_type !== s.ratioDataType) return false;
+            if (s.code && row.codice_reato !== s.code) return false;
+            return true;
+          });
+          const numByAnno = new Map<number, number>();
+          for (const row of filtered) {
+            const anno = row[s.xField] as number;
+            const val = row[s.yField] as number;
+            if (val != null) numByAnno.set(anno, val);
+          }
+          const denByAnno = new Map<number, number>();
+          for (const row of denomFiltered) {
+            const anno = row[s.xField] as number;
+            const val = row[s.yField] as number;
+            if (val != null) denByAnno.set(anno, val);
+          }
+          const anni = [...numByAnno.keys()].filter((a) => denByAnno.has(a)).sort((a, b) => a - b);
+          xVals = anni;
+          yVals = anni.map((a) => {
+            const den = denByAnno.get(a)!;
+            return den > 0 ? numByAnno.get(a)! / den : 0;
+          });
         } else {
           xVals = filtered.map((r) => r[s.xField] as number);
           yVals = filtered.map((r) => r[s.yField] as number);
         }
 
+        const isRatio = !!s.ratioDataType;
         return {
           x: xVals,
           y: yVals,
@@ -176,14 +300,15 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
           line: { color: s.color, width: 2, dash: s.dash ?? "solid" },
           marker: { size: 4 },
           yaxis: s.yaxis ?? "y",
-          hovertemplate:
-            s.yField.startsWith("pct_") || s.yField === "Percezione_pct"
+          hovertemplate: isRatio
+            ? `%{x}: %{y:.2f}<extra>${s.label}</extra>`
+            : s.yField.startsWith("pct_") || s.yField === "Percezione_pct"
               ? `%{x}: %{y:.1f}%<extra>${s.label}</extra>`
               : `%{x}: %{y:,.0f}<extra>${s.label}</extra>`,
         };
       });
 
-  const hasDualY = !isRipartizione && config.series.some((s) => s.yaxis === "y2");
+  const hasDualY = !isRipartizione && !isDivergenza && config.series.some((s) => s.yaxis === "y2");
 
   // Colore asse Y derivato dalla prima serie su ciascun asse
   const y1Color = config.series.find((s) => !s.yaxis)?.color;
