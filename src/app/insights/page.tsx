@@ -142,8 +142,9 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "OFFEND", code: "BANKROB", xField: "anno", yField: "totale", label: "Autori denunciati", color: "#8B4513" },
+        { dataType: "OFFEND", code: "BANKROB", xField: "anno", yField: "totale", label: "Autori denunciati", color: "#2E86AB" },
       ],
+      yAxisLabel: "Persone",
     },
   },
   {
@@ -161,6 +162,7 @@ const INSIGHTS: Insight[] = [
       series: [
         { dataType: "VICTIM", code: "CP612BIS", xField: "anno", yField: "totale", label: "Vittime", color: "#d62728" },
       ],
+      yAxisLabel: "Persone",
     },
   },
   {
@@ -174,9 +176,10 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "VICTIM", code: "SWINCYB", xField: "anno", yField: "totale", label: "Vittime", color: "#ff7f0e" },
-        { dataType: "OFFEND", code: "SWINCYB", xField: "anno", yField: "totale", label: "Autori", color: "#ff7f0e", dash: "dash" },
+        { dataType: "VICTIM", code: "SWINCYB", xField: "anno", yField: "totale", label: "Vittime", color: "#d62728" },
+        { dataType: "OFFEND", code: "SWINCYB", xField: "anno", yField: "totale", label: "Autori", color: "#2E86AB", dash: "dash" },
       ],
+      yAxisLabel: "Persone",
     },
   },
   {
@@ -191,8 +194,9 @@ const INSIGHTS: Insight[] = [
       file: "autori_vittime_trend.json",
       series: [
         { dataType: "VICTIM", code: "INTENHOM", xField: "anno", yField: "totale", label: "Vittime", color: "#d62728" },
-        { dataType: "OFFEND", code: "INTENHOM", xField: "anno", yField: "totale", label: "Autori", color: "#d62728", dash: "dash" },
+        { dataType: "OFFEND", code: "INTENHOM", xField: "anno", yField: "totale", label: "Autori", color: "#2E86AB", dash: "dash" },
       ],
+      yAxisLabel: "Persone",
     },
   },
   {
@@ -206,9 +210,10 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "VICTIM", code: "KIDNAPP", xField: "anno", yField: "totale", label: "Vittime", color: "#17becf" },
-        { dataType: "OFFEND", code: "KIDNAPP", xField: "anno", yField: "totale", label: "Autori", color: "#17becf", dash: "dash" },
+        { dataType: "VICTIM", code: "KIDNAPP", xField: "anno", yField: "totale", label: "Vittime", color: "#d62728" },
+        { dataType: "OFFEND", code: "KIDNAPP", xField: "anno", yField: "totale", label: "Autori", color: "#2E86AB", dash: "dash" },
       ],
+      yAxisLabel: "Persone",
     },
   },
   {
@@ -224,9 +229,10 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "OFFEND", code: "USURY", xField: "anno", yField: "totale", label: "Autori", color: "#9467bd" },
-        { dataType: "VICTIM", code: "USURY", xField: "anno", yField: "totale", label: "Vittime", color: "#9467bd", dash: "dash" },
+        { dataType: "OFFEND", code: "USURY", xField: "anno", yField: "totale", label: "Autori", color: "#2E86AB" },
+        { dataType: "VICTIM", code: "USURY", xField: "anno", yField: "totale", label: "Vittime", color: "#d62728", dash: "dash" },
       ],
+      yAxisLabel: "Persone",
     },
   },
   {
@@ -240,7 +246,7 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "VICTIM", code: "EXTORT", xField: "anno", yField: "totale", label: "Vittime", color: "#2E86AB" },
+        { dataType: "VICTIM", code: "EXTORT", xField: "anno", yField: "totale", label: "Vittime", color: "#d62728" },
         { dataType: "VICTIM", code: "EXTORT", xField: "anno", yField: "pct_stranieri", label: "% stranieri", color: "#E63946", yaxis: "y2" },
       ],
       yAxisLabel: "Vittime",
@@ -281,7 +287,7 @@ const INSIGHTS: Insight[] = [
       series: [
         { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "pct_femmine", label: "% donne", color: "#e377c2" },
         { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "pct_maschi", label: "% uomini", color: "#2E86AB" },
-        { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "totale", label: "Vittime totali", color: "#8c564b", yaxis: "y2" },
+        { dataType: "VICTIM", code: "PICKTHEF", xField: "anno", yField: "totale", label: "Vittime totali", color: "#d62728", yaxis: "y2" },
       ],
       yAxisLabel: "%",
       y2AxisLabel: "Vittime",
@@ -298,9 +304,9 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "pct_femmine", label: "% donne (delitti inform.)", color: "#ff7f0e" },
-        { dataType: "VICTIM", code: "SWINCYB", xField: "anno", yField: "pct_femmine", label: "% donne (truffe)", color: "#ff7f0e", dash: "dash" },
-        { dataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "totale", label: "Vittime delitti inform.", color: "#2ca02c", yaxis: "y2" },
+        { dataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "pct_femmine", label: "% donne (delitti inform.)", color: "#e377c2" },
+        { dataType: "VICTIM", code: "SWINCYB", xField: "anno", yField: "pct_femmine", label: "% donne (truffe)", color: "#e377c2", dash: "dash" },
+        { dataType: "VICTIM", code: "CYBERCRIM", xField: "anno", yField: "totale", label: "Vittime delitti inform.", color: "#d62728", yaxis: "y2" },
       ],
       yAxisLabel: "% donne",
       y2AxisLabel: "Vittime",
@@ -356,7 +362,7 @@ const INSIGHTS: Insight[] = [
     chart: {
       file: "autori_vittime_trend.json",
       series: [
-        { dataType: "OFFEND", code: "ARSON", xField: "anno", yField: "totale", label: "Autori", color: "#d62728" },
+        { dataType: "OFFEND", code: "ARSON", xField: "anno", yField: "totale", label: "Autori", color: "#2E86AB" },
         { dataType: "OFFEND", code: "ARSON", xField: "anno", yField: "pct_stranieri", label: "% stranieri", color: "#E63946", yaxis: "y2" },
       ],
       yAxisLabel: "Autori",

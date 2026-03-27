@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { PLOTLY_CONFIG, AXIS_FIXED, getAxisYear } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED, getAxisYear, COVID_SHAPES, COVID_ANNOTATIONS } from "@/lib/config";
 import { PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
 
@@ -61,6 +61,10 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
 
   const hasDualY = config.series.some((s) => s.yaxis === "y2");
 
+  // Colore asse Y derivato dalla prima serie su ciascun asse
+  const y1Color = config.series.find((s) => !s.yaxis)?.color;
+  const y2Color = config.series.find((s) => s.yaxis === "y2")?.color;
+
   const traces: Plotly.Data[] = config.series.map((s) => {
     const filtered = rawData.filter((row) => {
       if (s.dataType && row.data_type !== s.dataType) return false;
@@ -91,7 +95,7 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
     yaxis: {
       ...AXIS_FIXED,
       title: config.yAxisLabel
-        ? { text: config.yAxisLabel, standoff: 5 }
+        ? { text: config.yAxisLabel, standoff: 5, font: hasDualY && y1Color ? { color: y1Color } : undefined }
         : undefined,
       ...(hasDualY ? { side: "left" as const } : {}),
     },
@@ -100,6 +104,8 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
     plot_bgcolor: "white",
     paper_bgcolor: "white",
     separators: PLOTLY_IT_SEPARATORS,
+    shapes: COVID_SHAPES,
+    annotations: COVID_ANNOTATIONS,
     legend: {
       orientation: "h" as const,
       y: -0.2,
@@ -107,14 +113,14 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
       xanchor: "center" as const,
       font: { size: 11 },
     },
-    showlegend: config.series.length > 1,
+    showlegend: true,
   };
 
   if (hasDualY) {
     layout.yaxis2 = {
       ...AXIS_FIXED,
       title: config.y2AxisLabel
-        ? { text: config.y2AxisLabel, standoff: 5 }
+        ? { text: config.y2AxisLabel, standoff: 5, font: y2Color ? { color: y2Color } : undefined }
         : undefined,
       overlaying: "y" as const,
       side: "right" as const,
