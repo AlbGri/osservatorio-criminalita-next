@@ -15,8 +15,11 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 export type InsightChartSeries = {
   /** Filtro data_type (OFFEND/VICTIM) — solo per autori_vittime_trend */
   dataType?: string;
-  /** Filtro codice_reato — solo per autori_vittime_trend */
+  /** Filtro codice_reato singolo — solo per autori_vittime_trend */
   code?: string;
+  /** Filtro codici reato multipli — somma totale per anno.
+   *  Mutualmente esclusivo con code. */
+  codes?: string[];
   /** Filtro Categoria — solo per delitti_categorie */
   category?: string;
   /** Campo x (anno/Anno) */
@@ -42,7 +45,80 @@ export type InsightChartConfig = {
   yAxisLabel?: string;
   /** Label asse y destro (se dual-y) */
   y2AxisLabel?: string;
+  /** Aggregazione: genera 3 linee Nord/Centro/Sud dalla media delle regioni.
+   *  Usa la prima serie come template per filtro (dataType, code) e yField. */
+  aggregation?: "ripartizione";
 };
+
+/* ================================================================
+   Mapping regioni -> ripartizioni (per aggregation: "ripartizione")
+   ================================================================ */
+
+const REGIONE_TO_RIPARTIZIONE: Record<string, string> = {
+  ITC1: "Nord", ITC2: "Nord", ITC3: "Nord", ITC4: "Nord",
+  "ITD1+ITD2": "Nord", ITD3: "Nord", ITD4: "Nord", ITD5: "Nord",
+  ITE1: "Centro", ITE2: "Centro", ITE3: "Centro", ITE4: "Centro",
+  ITF1: "Sud", ITF2: "Sud", ITF3: "Sud", ITF4: "Sud",
+  ITF5: "Sud", ITF6: "Sud", ITG1: "Sud", ITG2: "Sud",
+};
+
+const RIPARTIZIONE_COLORS: Record<string, string> = {
+  Nord: "#2E86AB",
+  Centro: "#ff7f0e",
+  Sud: "#E63946",
+};
+
+const RIPARTIZIONE_ORDER = ["Nord", "Centro", "Sud"];
+
+function buildRipartizioneTraces(
+  rawData: Record<string, unknown>[],
+  template: InsightChartSeries,
+): Plotly.Data[] {
+  const filtered = rawData.filter((row) => {
+    if (template.dataType && row.data_type !== template.dataType) return false;
+    if (template.code && row.codice_reato !== template.code) return false;
+    return true;
+  });
+
+  // Raggruppa per ripartizione + anno, calcola media
+  const grouped = new Map<string, Map<number, number[]>>();
+  for (const rip of RIPARTIZIONE_ORDER) grouped.set(rip, new Map());
+
+  for (const row of filtered) {
+    const rip = REGIONE_TO_RIPARTIZIONE[row.codice_regione as string];
+    if (!rip) continue;
+    const anno = row[template.xField] as number;
+    const val = row[template.yField] as number;
+    if (val == null) continue;
+    const byAnno = grouped.get(rip)!;
+    if (!byAnno.has(anno)) byAnno.set(anno, []);
+    byAnno.get(anno)!.push(val);
+  }
+
+  const isPct = template.yField.startsWith("pct_");
+
+  return RIPARTIZIONE_ORDER.map((rip) => {
+    const byAnno = grouped.get(rip)!;
+    const anni = [...byAnno.keys()].sort((a, b) => a - b);
+    const medie = anni.map((a) => {
+      const vals = byAnno.get(a)!;
+      return vals.reduce((s, v) => s + v, 0) / vals.length;
+    });
+
+    return {
+      x: anni,
+      y: medie,
+      type: "scatter" as const,
+      mode: "lines+markers" as const,
+      name: rip,
+      line: { color: RIPARTIZIONE_COLORS[rip], width: 2 },
+      marker: { size: 4 },
+      hovertemplate: isPct
+        ? `%{x}: %{y:.1f}%<extra>${rip}</extra>`
+        : `%{x}: %{y:.1f}<extra>${rip}</extra>`,
+    };
+  });
+}
 
 /* ================================================================
    Componente
@@ -59,35 +135,59 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
   if (loading || !rawData)
     return <div className="h-[300px] animate-pulse bg-muted rounded" />;
 
-  const hasDualY = config.series.some((s) => s.yaxis === "y2");
+  const isRipartizione = config.aggregation === "ripartizione";
+
+  const traces: Plotly.Data[] = isRipartizione
+    ? buildRipartizioneTraces(rawData, config.series[0])
+    : config.series.map((s) => {
+        const filtered = rawData.filter((row) => {
+          if (s.dataType && row.data_type !== s.dataType) return false;
+          if (s.codes && !s.codes.includes(row.codice_reato as string)) return false;
+          if (s.code && row.codice_reato !== s.code) return false;
+          if (s.category && row.Categoria !== s.category) return false;
+          return true;
+        });
+
+        // Se codes (multi-codice): aggrega sommando yField per anno
+        let xVals: number[];
+        let yVals: number[];
+        if (s.codes) {
+          const byAnno = new Map<number, number>();
+          for (const row of filtered) {
+            const anno = row[s.xField] as number;
+            const val = row[s.yField] as number;
+            if (val == null) continue;
+            byAnno.set(anno, (byAnno.get(anno) ?? 0) + val);
+          }
+          const sorted = [...byAnno.entries()].sort((a, b) => a[0] - b[0]);
+          xVals = sorted.map(([a]) => a);
+          yVals = sorted.map(([, v]) => v);
+        } else {
+          xVals = filtered.map((r) => r[s.xField] as number);
+          yVals = filtered.map((r) => r[s.yField] as number);
+        }
+
+        return {
+          x: xVals,
+          y: yVals,
+          type: "scatter" as const,
+          mode: "lines+markers" as const,
+          name: s.label,
+          line: { color: s.color, width: 2, dash: s.dash ?? "solid" },
+          marker: { size: 4 },
+          yaxis: s.yaxis ?? "y",
+          hovertemplate:
+            s.yField.startsWith("pct_") || s.yField === "Percezione_pct"
+              ? `%{x}: %{y:.1f}%<extra>${s.label}</extra>`
+              : `%{x}: %{y:,.0f}<extra>${s.label}</extra>`,
+        };
+      });
+
+  const hasDualY = !isRipartizione && config.series.some((s) => s.yaxis === "y2");
 
   // Colore asse Y derivato dalla prima serie su ciascun asse
   const y1Color = config.series.find((s) => !s.yaxis)?.color;
   const y2Color = config.series.find((s) => s.yaxis === "y2")?.color;
-
-  const traces: Plotly.Data[] = config.series.map((s) => {
-    const filtered = rawData.filter((row) => {
-      if (s.dataType && row.data_type !== s.dataType) return false;
-      if (s.code && row.codice_reato !== s.code) return false;
-      if (s.category && row.Categoria !== s.category) return false;
-      return true;
-    });
-
-    return {
-      x: filtered.map((r) => r[s.xField] as number),
-      y: filtered.map((r) => r[s.yField] as number),
-      type: "scatter" as const,
-      mode: "lines+markers" as const,
-      name: s.label,
-      line: { color: s.color, width: 2, dash: s.dash ?? "solid" },
-      marker: { size: 4 },
-      yaxis: s.yaxis ?? "y",
-      hovertemplate:
-        s.yField.startsWith("pct_") || s.yField === "Percezione_pct"
-          ? `%{x}: %{y:.1f}%<extra>${s.label}</extra>`
-          : `%{x}: %{y:,.0f}<extra>${s.label}</extra>`,
-    };
-  });
 
   const layout: Partial<Plotly.Layout> = {
     height: MINI_CHART_HEIGHT,
