@@ -60,15 +60,16 @@ export default function ReatiAllarmeSociale() {
           </select>
         </div>
 
-        <div>
-          <span className="block text-sm font-medium mb-1">
+        <fieldset>
+          <legend className="block text-sm font-medium mb-1">
             Anno
-          </span>
-          <div className="flex flex-wrap gap-1">
+          </legend>
+          <div className="flex flex-wrap gap-1" role="group" aria-label="Selezione anno">
             {ANNI.map((a) => (
               <button
                 key={a}
                 onClick={() => setAnno(a)}
+                aria-pressed={anno === a}
                 className={`px-2.5 py-1.5 text-sm rounded-md transition-colors ${
                   anno === a
                     ? "bg-primary text-primary-foreground"
@@ -79,7 +80,7 @@ export default function ReatiAllarmeSociale() {
               </button>
             ))}
           </div>
-        </div>
+        </fieldset>
       </div>
 
       <hr />

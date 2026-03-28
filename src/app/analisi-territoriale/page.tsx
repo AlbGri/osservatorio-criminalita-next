@@ -58,11 +58,11 @@ export default function AnalisiTerritoriale() {
         <h1 className="text-2xl sm:text-4xl font-bold">
           Analisi Territoriale
         </h1>
-        <div className="mt-4 flex flex-wrap items-center gap-2">
+        <div className="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Selezione anno">
           <button
             onClick={togglePlay}
             className="px-3 py-1.5 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            aria-label={playing ? "Pausa" : "Play"}
+            aria-label={playing ? "Pausa animazione anni" : "Avvia animazione anni"}
           >
             {playing ? "||" : "\u25B6"}
           </button>
@@ -73,6 +73,7 @@ export default function AnalisiTerritoriale() {
                 stopPlay();
                 setAnno(a);
               }}
+              aria-pressed={anno === a}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
                 anno === a
                   ? "bg-primary text-primary-foreground"

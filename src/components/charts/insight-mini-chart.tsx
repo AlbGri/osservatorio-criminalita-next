@@ -221,7 +221,7 @@ function buildDivergenzaTraces(
 
 const MINI_CHART_HEIGHT = 300;
 
-export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
+export function InsightMiniChart({ config, ariaLabel }: { config: InsightChartConfig; ariaLabel?: string }) {
   const { data: rawData, loading } = useFetchData<Record<string, unknown>[]>(
     `/data/${config.file}`
   );
@@ -353,12 +353,14 @@ export function InsightMiniChart({ config }: { config: InsightChartConfig }) {
   }
 
   return (
-    <Plot
-      data={traces}
-      layout={layout}
-      config={PLOTLY_CONFIG}
-      useResizeHandler
-      className="w-full"
-    />
+    <div role="img" aria-label={ariaLabel ?? "Grafico insight"}>
+      <Plot
+        data={traces}
+        layout={layout}
+        config={PLOTLY_CONFIG}
+        useResizeHandler
+        className="w-full"
+      />
+    </div>
   );
 }

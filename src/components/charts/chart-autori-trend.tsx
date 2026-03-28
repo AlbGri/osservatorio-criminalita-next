@@ -173,7 +173,7 @@ export function ChartAutoriTrend({ dataType }: Props) {
             },
             yaxis2: {
               ...AXIS_FIXED,
-              title: { text: "%", font: { size: 12 } },
+              title: { text: "%", font: { size: 12, color: "#6b7280" } },
               overlaying: "y" as const,
               side: "right",
               range: [0, 100],

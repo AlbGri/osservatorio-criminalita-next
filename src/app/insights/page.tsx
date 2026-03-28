@@ -973,7 +973,7 @@ function InsightCard({
                   <div className="h-[300px] animate-pulse bg-muted rounded" />
                 }
               >
-                <InsightMiniChart config={insight.chart} />
+                <InsightMiniChart config={insight.chart} ariaLabel={`Grafico: ${insight.title}`} />
               </Suspense>
               {insight.chartInfo && (
                 <div className="mt-1">

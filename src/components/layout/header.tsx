@@ -57,6 +57,8 @@ export function Header() {
             className="md:hidden p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu navigazione"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
           >
             <svg
               className="h-6 w-6"
@@ -76,7 +78,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <nav className="md:hidden pb-3 space-y-1" aria-label="Navigazione principale">
+          <nav id="mobile-nav" className="md:hidden pb-3 space-y-1" aria-label="Menu navigazione">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
