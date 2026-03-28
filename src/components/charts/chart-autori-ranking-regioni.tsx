@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { PLOTLY_CONFIG, AXIS_FIXED, COLORS } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED, COLORS, VICTIM_DEFAULT, CHART_HEIGHT_RANKING, CHART_HEIGHT_RANKING_MOBILE } from "@/lib/config";
 import { fmtNum, fmtPct, PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -43,8 +43,6 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
   const [codiceReato, setCodiceReato] = useState("TOT");
   const [anno, setAnno] = useState(2022);
   const [metrica, setMetrica] = useState<Metrica>("tasso");
-  const VICTIM_DEFAULT = "CULPINJU";
-
   const reatiDisponibili = useMemo(() => {
     if (!data) return [];
     const info = new Map<string, string>();
@@ -289,7 +287,7 @@ export function ChartAutoriRankingRegioni({ dataType }: Props) {
                 xshift: 4,
               },
             ],
-            height: isMobile ? 500 : 550,
+            height: isMobile ? CHART_HEIGHT_RANKING_MOBILE : CHART_HEIGHT_RANKING,
             margin: { l: isMobile ? 130 : 180, r: 60, t: 10, b: 40 },
             dragmode: false,
             plot_bgcolor: "white",

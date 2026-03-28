@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { PLOTLY_CONFIG, AXIS_FIXED, COLORS } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED, COLORS, CHART_HEIGHT_RANKING, CHART_HEIGHT_RANKING_MOBILE } from "@/lib/config";
 import { fmtNum, PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -94,7 +94,7 @@ export function ChartRankingRegioni({ anno }: Props) {
               xshift: 4,
             },
           ],
-          height: isMobile ? 500 : 550,
+          height: isMobile ? CHART_HEIGHT_RANKING_MOBILE : CHART_HEIGHT_RANKING,
           margin: { l: isMobile ? 120 : 180, r: 50, t: 10, b: 40 },
           dragmode: false,
           plot_bgcolor: "white",

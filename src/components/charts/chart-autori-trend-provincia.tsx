@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { useFetchData } from "@/lib/use-fetch-data";
+import { VICTIM_DEFAULT } from "@/lib/config";
 import { useFilterSync, SyncButton } from "@/lib/filter-sync-context";
 import { fmtNum, fmtPctSigned } from "@/lib/format";
 
@@ -28,7 +29,6 @@ export function ChartAutoriTrendProvincia({ dataType }: Props) {
   const { data, loading, error } = useFetchData<ProvinciaRecord[]>(
     "/data/autori_vittime_province.json"
   );
-  const VICTIM_DEFAULT = "CULPINJU";
   const [codiceReato, setCodiceReato] = useState(VICTIM_DEFAULT);
   const [regioneSelezionata, setRegioneSelezionata] = useState("");
   const setRegioneStable = useCallback((v: string) => setRegioneSelezionata(v), []);

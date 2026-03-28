@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { COLORS, PLOTLY_CONFIG, AXIS_FIXED, MetricaProfilo, METRICHE_PROFILO } from "@/lib/config";
+import { COLORS, PLOTLY_CONFIG, AXIS_FIXED, MetricaProfilo, METRICHE_PROFILO, MIN_CASI, TOP_N } from "@/lib/config";
 import { fmtNum, fmtPct, PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -40,8 +40,6 @@ interface Props {
   dataType: "OFFEND" | "VICTIM";
 }
 
-const MIN_CASI = 30;
-const TOP_N = 10;
 
 interface ChartItem {
   reato: string;

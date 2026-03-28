@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { PLOTLY_CONFIG, AXIS_FIXED, COLORS } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED, COLORS, MIN_CASI } from "@/lib/config";
 import { fmtNum, PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { ChartFullscreenWrapper } from "@/components/charts/chart-fullscreen-wrapper";
@@ -20,8 +20,6 @@ interface ReatiRecord {
   pct_stranieri: number;
   pct_minori: number | null;
 }
-
-const MIN_CASI = 30;
 
 export function ChartAutoriVsVittime() {
   const isMobile = useIsMobile();

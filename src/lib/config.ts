@@ -64,6 +64,16 @@ export const COVID_PERIOD = {
 export const CHART_HEIGHT = 450;
 export const CHART_HEIGHT_SMALL = 400;
 export const CHART_HEIGHT_MAP = 550;
+export const CHART_HEIGHT_RANKING = 550;
+export const CHART_HEIGHT_RANKING_MOBILE = 500;
+export const CHART_HEIGHT_MINI = 300;
+
+/** Soglia minima casi per calcoli percentuali affidabili */
+export const MIN_CASI = 30;
+/** Numero di reati nel ranking top N */
+export const TOP_N = 10;
+/** Codice reato default per VICTIM (serie lunga, alto volume) */
+export const VICTIM_DEFAULT = "CULPINJU";
 
 export const NUTS_TO_ISTAT: Record<string, number> = {
   ITC1: 1,

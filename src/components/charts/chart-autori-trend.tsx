@@ -12,6 +12,7 @@ import {
   AXIS_FIXED,
   getAxisYear,
   BREAKDOWN_LINES,
+  VICTIM_DEFAULT,
 } from "@/lib/config";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { PLOTLY_IT_SEPARATORS } from "@/lib/format";
@@ -38,10 +39,6 @@ interface TrendRecord {
 interface Props {
   dataType: "OFFEND" | "VICTIM";
 }
-
-/** Reato preferito come default VICTIM (serie lunga, alto volume) */
-const VICTIM_DEFAULT = "CULPINJU";
-
 
 export function ChartAutoriTrend({ dataType }: Props) {
   const isMobile = useIsMobile();

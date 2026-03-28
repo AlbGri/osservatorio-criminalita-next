@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useFetchData } from "@/lib/use-fetch-data";
-import { PLOTLY_CONFIG, AXIS_FIXED, getAxisYear, COVID_SHAPES, COVID_ANNOTATIONS } from "@/lib/config";
+import { PLOTLY_CONFIG, AXIS_FIXED, getAxisYear, COVID_SHAPES, COVID_ANNOTATIONS, CHART_HEIGHT_MINI } from "@/lib/config";
 import { PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
 
@@ -219,7 +219,6 @@ function buildDivergenzaTraces(
    Componente
    ================================================================ */
 
-const MINI_CHART_HEIGHT = 300;
 
 export function InsightMiniChart({ config, ariaLabel }: { config: InsightChartConfig; ariaLabel?: string }) {
   const { data: rawData, loading } = useFetchData<Record<string, unknown>[]>(
@@ -315,7 +314,7 @@ export function InsightMiniChart({ config, ariaLabel }: { config: InsightChartCo
   const y2Color = config.series.find((s) => s.yaxis === "y2")?.color;
 
   const layout: Partial<Plotly.Layout> = {
-    height: MINI_CHART_HEIGHT,
+    height: CHART_HEIGHT_MINI,
     xaxis: getAxisYear(isMobile),
     yaxis: {
       ...AXIS_FIXED,

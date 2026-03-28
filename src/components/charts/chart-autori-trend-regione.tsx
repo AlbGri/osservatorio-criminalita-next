@@ -12,6 +12,7 @@ import {
   AXIS_FIXED,
   getAxisYear,
   BREAKDOWN_LINES,
+  VICTIM_DEFAULT,
 } from "@/lib/config";
 import { fmtPctSigned, PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
@@ -42,9 +43,6 @@ interface RegioneRecord {
 interface Props {
   dataType: "OFFEND" | "VICTIM";
 }
-
-const VICTIM_DEFAULT = "CULPINJU";
-
 
 type Metrica = "tasso" | "assoluto";
 
