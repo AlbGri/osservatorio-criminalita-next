@@ -13,6 +13,7 @@ import {
   getCovidAnnotations,
   AXIS_FIXED,
   getAxisYear,
+  getLegendMultiSeries,
   varTriennale,
   TRIENNALE_PERIODI,
 } from "@/lib/config";
@@ -200,7 +201,7 @@ export function ChartTrendNazionale() {
           data={isTipologia ? traceTipologia : traceTotale}
           layout={{
             separators: PLOTLY_IT_SEPARATORS,
-            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
+            xaxis: getAxisYear(isMobile),
             yaxis: { ...AXIS_FIXED, title: { text: isAssoluto ? "Delitti denunciati" : "Tasso per 1.000 ab.", font: { size: PLOTLY_FONT.axisTitle } }, ...(isAssoluto && { tickformat: "~s", hoverformat: ",.0f" }) },
             dragmode: false,
             hovermode: "closest" as const,
@@ -209,9 +210,7 @@ export function ChartTrendNazionale() {
             height: isMobile ? CHART_HEIGHT_MINI : CHART_HEIGHT,
             margin: isMobile ? { l: 45, r: 20, t: 20, b: 60 } : { l: 50, r: 20, t: 20, b: 50 },
             legend: isTipologia
-              ? isMobile
-                ? { x: 0.5, y: -0.35, xanchor: "center" as const, yanchor: "top" as const, orientation: "h" as const, font: { size: PLOTLY_FONT.legendMobile } }
-                : { x: 0.5, y: 1.08, xanchor: "center" as const, orientation: "h" as const }
+              ? getLegendMultiSeries(isMobile)
               : { x: 0.5, y: -0.15, xanchor: "center" as const, orientation: "h" as const },
             showlegend: true,
             shapes: COVID_SHAPES,

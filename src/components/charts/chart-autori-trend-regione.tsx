@@ -12,6 +12,7 @@ import {
   getCovidAnnotations,
   AXIS_FIXED,
   getAxisYear,
+  getLegendMultiSeries,
   BREAKDOWN_LINES,
   VICTIM_DEFAULT,
 } from "@/lib/config";
@@ -278,7 +279,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
             plot_bgcolor: "white",
             paper_bgcolor: "white",
             height: CHART_HEIGHT_SMALL,
-            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
+            xaxis: getAxisYear(isMobile),
             yaxis: {
               ...AXIS_FIXED,
               title: {
@@ -297,21 +298,7 @@ export function ChartAutoriTrendRegione({ dataType }: Props) {
               range: [0, 100],
               showgrid: false,
             },
-            legend: isMobile
-              ? {
-                  x: 0.5,
-                  y: -0.3,
-                  xanchor: "center" as const,
-                  yanchor: "top" as const,
-                  orientation: "h" as const,
-                  font: { size: PLOTLY_FONT.legendMobile },
-                }
-              : {
-                  x: 0.5,
-                  y: 1.08,
-                  xanchor: "center" as const,
-                  orientation: "h" as const,
-                },
+            legend: getLegendMultiSeries(isMobile),
             margin: isMobile
               ? { l: 45, r: 45, t: 40, b: 60 }
               : { l: 60, r: 60, t: 30, b: 80 },

@@ -138,6 +138,19 @@ export const PLOTLY_CONFIG: Partial<Plotly.Config> = {
   },
 };
 
+/** Layout legenda sotto il grafico, orizzontale, allineata a sinistra */
+export const LEGEND_BOTTOM_LEFT = {
+  x: 0, y: -0.2, xanchor: "left" as const, orientation: "h" as const,
+  font: { size: PLOTLY_FONT.legendFixed },
+};
+
+/** Layout legenda per grafici multi-serie: sopra su desktop, sotto centrata su mobile */
+export function getLegendMultiSeries(isMobile: boolean) {
+  return isMobile
+    ? { x: 0.5, y: -0.25, xanchor: "center" as const, yanchor: "top" as const, orientation: "h" as const, font: { size: PLOTLY_FONT.legendMobile } }
+    : { x: 0.5, y: 1.08, xanchor: "center" as const, orientation: "h" as const };
+}
+
 /** Proprietà base per tutti gli assi: disabilita zoom/pan/editing range */
 export const AXIS_FIXED = { fixedrange: true } as const;
 

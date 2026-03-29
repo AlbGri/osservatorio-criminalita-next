@@ -324,7 +324,7 @@ export function InsightMiniChart({ config, ariaLabel }: { config: InsightChartCo
         : undefined,
       ...(hasDualY ? { side: "left" as const } : {}),
     },
-    margin: { t: 10, l: 55, r: hasDualY ? 55 : 20, b: 35 },
+    margin: { t: 10, l: 55, r: hasDualY ? 55 : 20, b: 40 },
     dragmode: false,
     plot_bgcolor: "white",
     paper_bgcolor: "white",
@@ -333,7 +333,7 @@ export function InsightMiniChart({ config, ariaLabel }: { config: InsightChartCo
     annotations: COVID_ANNOTATIONS,
     legend: {
       orientation: "h" as const,
-      y: -0.2,
+      y: -0.15,
       x: 0.5,
       xanchor: "center" as const,
       font: { size: PLOTLY_FONT.legendMini },

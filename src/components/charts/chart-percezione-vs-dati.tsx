@@ -11,6 +11,7 @@ import {
   getCovidAnnotations,
   AXIS_FIXED,
   getAxisYear,
+  getLegendMultiSeries,
 } from "@/lib/config";
 import { PLOTLY_IT_SEPARATORS } from "@/lib/format";
 import { useIsMobile } from "@/lib/use-is-mobile";
@@ -74,7 +75,7 @@ export function ChartPercezioneVsDati() {
           ]}
           layout={{
             separators: PLOTLY_IT_SEPARATORS,
-            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
+            xaxis: getAxisYear(isMobile),
             yaxis: { ...AXIS_FIXED,
               title: { text: "% Percezione rischio", font: { color: COLORS.secondary, size: PLOTLY_FONT.axisTitle } },
               tickfont: { color: COLORS.secondary },
@@ -92,9 +93,7 @@ export function ChartPercezioneVsDati() {
             paper_bgcolor: "white",
             height: isMobile ? 300 : CHART_HEIGHT,
             margin: isMobile ? { l: 45, r: 45, t: 40, b: 60 } : { l: 50, r: 50, t: 30, b: 50 },
-            legend: isMobile
-              ? { x: 0.5, y: -0.3, xanchor: "center", yanchor: "top", orientation: "h" as const, font: { size: PLOTLY_FONT.legendMobile } }
-              : { x: 0.5, y: 1.08, xanchor: "center", orientation: "h" as const },
+            legend: getLegendMultiSeries(isMobile),
             shapes: COVID_SHAPES,
             annotations: [
               ...getCovidAnnotations(isMobile),

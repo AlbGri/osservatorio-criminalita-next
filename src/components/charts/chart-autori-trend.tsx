@@ -12,6 +12,7 @@ import {
   getCovidAnnotations,
   AXIS_FIXED,
   getAxisYear,
+  getLegendMultiSeries,
   BREAKDOWN_LINES,
   VICTIM_DEFAULT,
 } from "@/lib/config";
@@ -159,7 +160,7 @@ export function ChartAutoriTrend({ dataType }: Props) {
         <Plot
           data={traces}
           layout={{
-            xaxis: { ...getAxisYear(isMobile), title: { text: "Anno" } },
+            xaxis: getAxisYear(isMobile),
             yaxis: {
               ...AXIS_FIXED,
               title: {
@@ -185,21 +186,7 @@ export function ChartAutoriTrend({ dataType }: Props) {
             margin: isMobile
               ? { l: 45, r: 45, t: 40, b: 60 }
               : { l: 60, r: 60, t: 30, b: 50 },
-            legend: isMobile
-              ? {
-                  x: 0.5,
-                  y: -0.3,
-                  xanchor: "center",
-                  yanchor: "top",
-                  orientation: "h" as const,
-                  font: { size: PLOTLY_FONT.legendMobile },
-                }
-              : {
-                  x: 0.5,
-                  y: 1.08,
-                  xanchor: "center",
-                  orientation: "h" as const,
-                },
+            legend: getLegendMultiSeries(isMobile),
             separators: PLOTLY_IT_SEPARATORS,
             shapes: COVID_SHAPES,
             annotations: getCovidAnnotations(isMobile),
