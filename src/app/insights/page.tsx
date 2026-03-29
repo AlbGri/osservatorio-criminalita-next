@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, lazy, Suspense } from "react";
+import Link from "next/link";
 import { CollapsibleSection } from "@/components/ui/collapsible-section";
 import type { InsightChartConfig } from "@/components/charts/insight-mini-chart";
 
@@ -508,7 +509,7 @@ const INSIGHTS: Insight[] = [
   },
   {
     id: "truffe-nord",
-    title: "Truffe informatiche: il Nord corre di pi\u00f9",
+    title: "Truffe e frodi informatiche: il Nord corre di pi\u00f9",
     category: "territoriali",
     dimensions: ["territoriale"],
     tests: ["confronto-territoriale"],
@@ -873,6 +874,22 @@ export default function Insights() {
           </p>
         </div>
       </section>
+
+      {/* Link al Report */}
+      <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 text-sm">
+        <Link
+          href="/report/2024"
+          className="flex items-center justify-between gap-4 hover:underline"
+        >
+          <span>
+            <strong>Report 2024</strong> &mdash; variazioni, tendenze e mappa
+            regionale dei delitti denunciati.
+          </span>
+          <span className="text-primary text-xl shrink-0" aria-hidden="true">
+            &rarr;
+          </span>
+        </Link>
+      </div>
     </main>
   );
 }

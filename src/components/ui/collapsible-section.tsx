@@ -4,6 +4,7 @@ interface CollapsibleSectionProps {
   title: string;
   description?: string;
   defaultOpen?: boolean;
+  id?: string;
   children: React.ReactNode;
 }
 
@@ -11,10 +12,11 @@ export function CollapsibleSection({
   title,
   description,
   defaultOpen = false,
+  id,
   children,
 }: CollapsibleSectionProps) {
   return (
-    <details open={defaultOpen || undefined} className="group">
+    <details id={id} open={defaultOpen || undefined} className="group">
       <summary className="cursor-pointer list-none select-none">
         <div className="flex items-center gap-2">
           <span

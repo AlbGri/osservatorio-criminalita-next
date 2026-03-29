@@ -12,6 +12,16 @@ export default function Home() {
         Osservatorio Criminalit&agrave;
       </h1>
 
+      <p className="text-sm text-muted-foreground">
+        I dati si riferiscono ai delitti denunciati alle Forze dell&apos;ordine
+        e non rappresentano la totalit&agrave; dei crimini commessi. Per
+        approfondire il divario tra denunce e realt&agrave;, vedi la sezione{" "}
+        <a href="#numero-oscuro" className="underline hover:no-underline">
+          Il Numero Oscuro
+        </a>
+        .
+      </p>
+
       <Link
         href="/report/2024"
         className="block rounded-lg border border-primary/30 bg-primary/5 p-4 sm:p-5 transition-colors hover:bg-primary/10"
@@ -56,6 +66,7 @@ export default function Home() {
       <hr />
 
       <CollapsibleSection
+        id="numero-oscuro"
         title="Il Numero Oscuro: Cosa Non Vediamo"
         description="Propensione alla denuncia per tipo di reato e territorio"
       >
